@@ -1,0 +1,37 @@
+//
+//  TimerManager.swift
+//  Run
+//
+//  Created by Лукичев Сергей on 24.08.2023.
+//
+
+import UIKit
+import Combine
+
+final class TimerManager {
+    
+    private var timer: Timer?
+    
+    @Published var elapsedTime = 0.0
+    @Published var isRunning = false
+    
+    func startTimer() {
+        timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
+            self.elapsedTime += 0.1
+        }
+    }
+    
+    func stopTimer() {
+        isRunning = false
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    func resetTimer() {
+        isRunning = false
+        elapsedTime = 0.0
+        timer?.invalidate()
+        timer = nil
+    }
+    
+}

@@ -26,6 +26,9 @@
 		8705D8A82A978A51002BBDC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8A32A978A51002BBDC2 /* ProfileViewController.swift */; };
 		8705D8A92A978A51002BBDC2 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8A42A978A51002BBDC2 /* ProfileInteractor.swift */; };
 		8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8A52A978A51002BBDC2 /* ProfileConfigurator.swift */; };
+		8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AC2A979621002BBDC2 /* RoundButton.swift */; };
+		8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AF2A97992A002BBDC2 /* TimerManager.swift */; };
+		8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +52,9 @@
 		8705D8A32A978A51002BBDC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		8705D8A42A978A51002BBDC2 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
 		8705D8A52A978A51002BBDC2 /* ProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
+		8705D8AC2A979621002BBDC2 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
+		8705D8AF2A97992A002BBDC2 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
+		8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +88,9 @@
 		8705D8762A978427002BBDC2 /* Run */ = {
 			isa = PBXGroup;
 			children = (
+				8705D8B12A979A23002BBDC2 /* Extensions */,
+				8705D8AE2A979918002BBDC2 /* Helper */,
+				8705D8AB2A9795EF002BBDC2 /* CustomUI */,
 				8705D88B2A9786B7002BBDC2 /* MainApplication */,
 				8705D8772A978427002BBDC2 /* AppDelegate.swift */,
 				8705D8792A978427002BBDC2 /* SceneDelegate.swift */,
@@ -127,6 +136,30 @@
 				8705D8A52A978A51002BBDC2 /* ProfileConfigurator.swift */,
 			);
 			path = Profile;
+			sourceTree = "<group>";
+		};
+		8705D8AB2A9795EF002BBDC2 /* CustomUI */ = {
+			isa = PBXGroup;
+			children = (
+				8705D8AC2A979621002BBDC2 /* RoundButton.swift */,
+			);
+			path = CustomUI;
+			sourceTree = "<group>";
+		};
+		8705D8AE2A979918002BBDC2 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				8705D8AF2A97992A002BBDC2 /* TimerManager.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		8705D8B12A979A23002BBDC2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -206,6 +239,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */,
 				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
 				8705D8A62A978A51002BBDC2 /* ProfilePresenter.swift in Sources */,
 				8705D87C2A978427002BBDC2 /* ViewController.swift in Sources */,
@@ -217,10 +251,12 @@
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
 				8705D89B2A978A38002BBDC2 /* StopwatchPresenter.swift in Sources */,
+				8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */,
 				8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */,
 				8705D8A82A978A51002BBDC2 /* ProfileViewController.swift in Sources */,
 				8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */,
 				8705D87A2A978427002BBDC2 /* SceneDelegate.swift in Sources */,
+				8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
