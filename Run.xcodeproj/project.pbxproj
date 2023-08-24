@@ -13,6 +13,19 @@
 		8705D87F2A978427002BBDC2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8705D87D2A978427002BBDC2 /* Main.storyboard */; };
 		8705D8812A978428002BBDC2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8705D8802A978428002BBDC2 /* Assets.xcassets */; };
 		8705D8842A978428002BBDC2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8705D8822A978428002BBDC2 /* LaunchScreen.storyboard */; };
+		8705D88D2A978716002BBDC2 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D88C2A978716002BBDC2 /* StartViewController.swift */; };
+		8705D88F2A97876F002BBDC2 /* RootMainApplicitionController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D88E2A97876F002BBDC2 /* RootMainApplicitionController.swift */; };
+		8705D8942A9789AD002BBDC2 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 8705D8932A9789AD002BBDC2 /* SnapKit */; };
+		8705D89B2A978A38002BBDC2 /* StopwatchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8962A978A38002BBDC2 /* StopwatchPresenter.swift */; };
+		8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8972A978A38002BBDC2 /* StopwatchRouter.swift */; };
+		8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8982A978A38002BBDC2 /* StopwatchViewController.swift */; };
+		8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8992A978A38002BBDC2 /* StopwatchInteractor.swift */; };
+		8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D89A2A978A38002BBDC2 /* StopwatchConfigurator.swift */; };
+		8705D8A62A978A51002BBDC2 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8A12A978A51002BBDC2 /* ProfilePresenter.swift */; };
+		8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8A22A978A51002BBDC2 /* ProfileRouter.swift */; };
+		8705D8A82A978A51002BBDC2 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8A32A978A51002BBDC2 /* ProfileViewController.swift */; };
+		8705D8A92A978A51002BBDC2 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8A42A978A51002BBDC2 /* ProfileInteractor.swift */; };
+		8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8A52A978A51002BBDC2 /* ProfileConfigurator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +37,18 @@
 		8705D8802A978428002BBDC2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8705D8832A978428002BBDC2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8705D8852A978428002BBDC2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8705D88C2A978716002BBDC2 /* StartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
+		8705D88E2A97876F002BBDC2 /* RootMainApplicitionController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootMainApplicitionController.swift; sourceTree = "<group>"; };
+		8705D8962A978A38002BBDC2 /* StopwatchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchPresenter.swift; sourceTree = "<group>"; };
+		8705D8972A978A38002BBDC2 /* StopwatchRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchRouter.swift; sourceTree = "<group>"; };
+		8705D8982A978A38002BBDC2 /* StopwatchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchViewController.swift; sourceTree = "<group>"; };
+		8705D8992A978A38002BBDC2 /* StopwatchInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchInteractor.swift; sourceTree = "<group>"; };
+		8705D89A2A978A38002BBDC2 /* StopwatchConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopwatchConfigurator.swift; sourceTree = "<group>"; };
+		8705D8A12A978A51002BBDC2 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		8705D8A22A978A51002BBDC2 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		8705D8A32A978A51002BBDC2 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8705D8A42A978A51002BBDC2 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		8705D8A52A978A51002BBDC2 /* ProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileConfigurator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8705D8942A9789AD002BBDC2 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -56,6 +82,7 @@
 		8705D8762A978427002BBDC2 /* Run */ = {
 			isa = PBXGroup;
 			children = (
+				8705D88B2A9786B7002BBDC2 /* MainApplication */,
 				8705D8772A978427002BBDC2 /* AppDelegate.swift */,
 				8705D8792A978427002BBDC2 /* SceneDelegate.swift */,
 				8705D87B2A978427002BBDC2 /* ViewController.swift */,
@@ -65,6 +92,41 @@
 				8705D8852A978428002BBDC2 /* Info.plist */,
 			);
 			path = Run;
+			sourceTree = "<group>";
+		};
+		8705D88B2A9786B7002BBDC2 /* MainApplication */ = {
+			isa = PBXGroup;
+			children = (
+				8705D8A02A978A3D002BBDC2 /* Profile */,
+				8705D8952A978A29002BBDC2 /* Stopwatch */,
+				8705D88C2A978716002BBDC2 /* StartViewController.swift */,
+				8705D88E2A97876F002BBDC2 /* RootMainApplicitionController.swift */,
+			);
+			path = MainApplication;
+			sourceTree = "<group>";
+		};
+		8705D8952A978A29002BBDC2 /* Stopwatch */ = {
+			isa = PBXGroup;
+			children = (
+				8705D8962A978A38002BBDC2 /* StopwatchPresenter.swift */,
+				8705D8972A978A38002BBDC2 /* StopwatchRouter.swift */,
+				8705D8982A978A38002BBDC2 /* StopwatchViewController.swift */,
+				8705D8992A978A38002BBDC2 /* StopwatchInteractor.swift */,
+				8705D89A2A978A38002BBDC2 /* StopwatchConfigurator.swift */,
+			);
+			path = Stopwatch;
+			sourceTree = "<group>";
+		};
+		8705D8A02A978A3D002BBDC2 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8705D8A12A978A51002BBDC2 /* ProfilePresenter.swift */,
+				8705D8A22A978A51002BBDC2 /* ProfileRouter.swift */,
+				8705D8A32A978A51002BBDC2 /* ProfileViewController.swift */,
+				8705D8A42A978A51002BBDC2 /* ProfileInteractor.swift */,
+				8705D8A52A978A51002BBDC2 /* ProfileConfigurator.swift */,
+			);
+			path = Profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -83,6 +145,9 @@
 			dependencies = (
 			);
 			name = Run;
+			packageProductDependencies = (
+				8705D8932A9789AD002BBDC2 /* SnapKit */,
+			);
 			productName = Run;
 			productReference = 8705D8742A978427002BBDC2 /* Run.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +176,9 @@
 				Base,
 			);
 			mainGroup = 8705D86B2A978427002BBDC2;
+			packageReferences = (
+				8705D8922A9789AD002BBDC2 /* XCRemoteSwiftPackageReference "SnapKit" */,
+			);
 			productRefGroup = 8705D8752A978427002BBDC2 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -138,8 +206,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
+				8705D8A62A978A51002BBDC2 /* ProfilePresenter.swift in Sources */,
 				8705D87C2A978427002BBDC2 /* ViewController.swift in Sources */,
+				8705D88D2A978716002BBDC2 /* StartViewController.swift in Sources */,
+				8705D88F2A97876F002BBDC2 /* RootMainApplicitionController.swift in Sources */,
 				8705D8782A978427002BBDC2 /* AppDelegate.swift in Sources */,
+				8705D8A92A978A51002BBDC2 /* ProfileInteractor.swift in Sources */,
+				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,
+				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
+				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
+				8705D89B2A978A38002BBDC2 /* StopwatchPresenter.swift in Sources */,
+				8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */,
+				8705D8A82A978A51002BBDC2 /* ProfileViewController.swift in Sources */,
+				8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */,
 				8705D87A2A978427002BBDC2 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -216,7 +296,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -270,7 +350,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -295,6 +375,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -323,6 +404,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -358,6 +440,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8705D8922A9789AD002BBDC2 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8705D8932A9789AD002BBDC2 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8705D8922A9789AD002BBDC2 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 8705D86C2A978427002BBDC2 /* Project object */;
 }
