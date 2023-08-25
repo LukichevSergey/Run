@@ -25,10 +25,12 @@ class StopwatchViewController: UIViewController {
     // MARK: - Property
     var presenter: StopwatchViewToPresenterProtocol!
     
+    private lazy var gradientLayer = PaletteApp.timerBackgroundGradient()
+    
     private lazy var timerLabel: UILabel = {
         let label = UILabel()
-        label.textColor = .black
-        label.font = .boldSystemFont(ofSize: 72)
+        label.textColor = PaletteApp.black
+        label.font = OurFonts.fontPTSansBold72
         label.textAlignment = .center
         label.numberOfLines = 1
         
@@ -66,9 +68,14 @@ class StopwatchViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemGreen
         configureUI()
         presenter.viewDidLoad()
+    }
+    
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        
+        gradientLayer.frame = view.bounds
     }
     
     // MARK: - private func
@@ -77,6 +84,8 @@ class StopwatchViewController: UIViewController {
     }
 
     private func configureUI() {
+        view.layer.insertSublayer(gradientLayer, at: 0)
+        
         view.addSubview(mainVStack)
         mainVStack.snp.makeConstraints { make in
             make.center.equalToSuperview()

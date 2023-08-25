@@ -29,6 +29,13 @@
 		8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AC2A979621002BBDC2 /* RoundButton.swift */; };
 		8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AF2A97992A002BBDC2 /* TimerManager.swift */; };
 		8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */; };
+		878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBBFD2A98D4E8001219F9 /* PaletteApp.swift */; };
+		878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBC002A98D538001219F9 /*  UIColor+HEX.swift */; };
+		878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBC032A98D7D2001219F9 /* OurFonts.swift */; };
+		878EBC0C2A98D8C2001219F9 /* PTSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 878EBC082A98D8C2001219F9 /* PTSans-BoldItalic.ttf */; };
+		878EBC0D2A98D8C2001219F9 /* PTSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 878EBC092A98D8C2001219F9 /* PTSans-Italic.ttf */; };
+		878EBC0E2A98D8C2001219F9 /* PTSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 878EBC0A2A98D8C2001219F9 /* PTSans-Regular.ttf */; };
+		878EBC0F2A98D8C2001219F9 /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 878EBC0B2A98D8C2001219F9 /* PTSans-Bold.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +62,13 @@
 		8705D8AC2A979621002BBDC2 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		8705D8AF2A97992A002BBDC2 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		878EBBFD2A98D4E8001219F9 /* PaletteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteApp.swift; sourceTree = "<group>"; };
+		878EBC002A98D538001219F9 /*  UIColor+HEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " UIColor+HEX.swift"; sourceTree = "<group>"; };
+		878EBC032A98D7D2001219F9 /* OurFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurFonts.swift; sourceTree = "<group>"; };
+		878EBC082A98D8C2001219F9 /* PTSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		878EBC092A98D8C2001219F9 /* PTSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Italic.ttf"; sourceTree = "<group>"; };
+		878EBC0A2A98D8C2001219F9 /* PTSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Regular.ttf"; sourceTree = "<group>"; };
+		878EBC0B2A98D8C2001219F9 /* PTSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Bold.ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +102,8 @@
 		8705D8762A978427002BBDC2 /* Run */ = {
 			isa = PBXGroup;
 			children = (
+				878EBC052A98D871001219F9 /* Support Files */,
+				878EBBFB2A98D48D001219F9 /* Application */,
 				8705D8B12A979A23002BBDC2 /* Extensions */,
 				8705D8AE2A979918002BBDC2 /* Helper */,
 				8705D8AB2A9795EF002BBDC2 /* CustomUI */,
@@ -157,9 +173,70 @@
 		8705D8B12A979A23002BBDC2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */,
+				878EBC022A98D56C001219F9 /* Double */,
+				878EBBFF2A98D52F001219F9 /* UIColor */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		878EBBFB2A98D48D001219F9 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				878EBBFC2A98D4A8001219F9 /* OurSettings */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		878EBBFC2A98D4A8001219F9 /* OurSettings */ = {
+			isa = PBXGroup;
+			children = (
+				878EBBFD2A98D4E8001219F9 /* PaletteApp.swift */,
+				878EBC032A98D7D2001219F9 /* OurFonts.swift */,
+			);
+			path = OurSettings;
+			sourceTree = "<group>";
+		};
+		878EBBFF2A98D52F001219F9 /* UIColor */ = {
+			isa = PBXGroup;
+			children = (
+				878EBC002A98D538001219F9 /*  UIColor+HEX.swift */,
+			);
+			path = UIColor;
+			sourceTree = "<group>";
+		};
+		878EBC022A98D56C001219F9 /* Double */ = {
+			isa = PBXGroup;
+			children = (
+				8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */,
+			);
+			path = Double;
+			sourceTree = "<group>";
+		};
+		878EBC052A98D871001219F9 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				878EBC062A98D88B001219F9 /* Fonts */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		878EBC062A98D88B001219F9 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				878EBC072A98D8AD001219F9 /* PT_Sans */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		878EBC072A98D8AD001219F9 /* PT_Sans */ = {
+			isa = PBXGroup;
+			children = (
+				878EBC0B2A98D8C2001219F9 /* PTSans-Bold.ttf */,
+				878EBC082A98D8C2001219F9 /* PTSans-BoldItalic.ttf */,
+				878EBC092A98D8C2001219F9 /* PTSans-Italic.ttf */,
+				878EBC0A2A98D8C2001219F9 /* PTSans-Regular.ttf */,
+			);
+			path = PT_Sans;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -226,9 +303,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				878EBC0E2A98D8C2001219F9 /* PTSans-Regular.ttf in Resources */,
 				8705D8842A978428002BBDC2 /* LaunchScreen.storyboard in Resources */,
 				8705D8812A978428002BBDC2 /* Assets.xcassets in Resources */,
+				878EBC0D2A98D8C2001219F9 /* PTSans-Italic.ttf in Resources */,
+				878EBC0C2A98D8C2001219F9 /* PTSans-BoldItalic.ttf in Resources */,
 				8705D87F2A978427002BBDC2 /* Main.storyboard in Resources */,
+				878EBC0F2A98D8C2001219F9 /* PTSans-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -249,7 +330,10 @@
 				8705D8A92A978A51002BBDC2 /* ProfileInteractor.swift in Sources */,
 				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
+				878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */,
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
+				878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */,
+				878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */,
 				8705D89B2A978A38002BBDC2 /* StopwatchPresenter.swift in Sources */,
 				8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */,
 				8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */,
