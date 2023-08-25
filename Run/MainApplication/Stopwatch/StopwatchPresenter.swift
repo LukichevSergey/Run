@@ -12,7 +12,7 @@ import Combine
 // MARK: Protocol - StopwatchViewToPresenterProtocol (View -> Presenter)
 protocol StopwatchViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
-    func roundButtonTapped(with type: RoundButton.RoundButtonStatus)
+    func roundButtonTapped(with type: RoundButton.RoundButtonType)
 }
 
 // MARK: Protocol - StopwatchInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -33,16 +33,18 @@ class StopwatchPresenter {
 // MARK: Extension - StopwatchViewToPresenterProtocol
 extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
     
-    func roundButtonTapped(with type: RoundButton.RoundButtonStatus) {
+    func roundButtonTapped(with type: RoundButton.RoundButtonType) {
         switch type {
         case .startButton(let isStarted):
             isStarted ? interactor.startTimer() : interactor.resetTimer()
-        case .endButton:
+        case .endButton, .roundButton:
             return
         }
     }
     
     func viewDidLoad() {
+        view.setTimer(with: interactor.getTimerData())
+        
         interactor.timer.$elapsedTime.sink { [weak self] time in
             self?.view.setTimer(with: time)
         }.store(in: &subscriptions)

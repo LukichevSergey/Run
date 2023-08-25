@@ -11,10 +11,10 @@ struct PaletteApp {
     
     //MARK: - Colors
     
-    static var white:                      UIColor { return UIColor(hex: "#FFFFFF") }  // белый
     static var black:                      UIColor { return UIColor(hex: "#000000") }  // черный
-    static var gray:                       UIColor { return UIColor(hex: "#EAEFF2") }  // Cерый
-    static var darkGray:                   UIColor { return UIColor(hex: "#8D8D8D") }  // Темносерый
+    static var green:                      UIColor { return UIColor(hex: "#35ff27") }  // Зеленый
+    static var red:                        UIColor { return UIColor(hex: "#fb000e") }  // Красный
+    static var yellow:                     UIColor { return UIColor(hex: "#ffff28") }  // Желтый
 
     //MARK: - Gradients
     

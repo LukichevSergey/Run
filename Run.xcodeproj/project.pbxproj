@@ -36,6 +36,11 @@
 		878EBC0D2A98D8C2001219F9 /* PTSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 878EBC092A98D8C2001219F9 /* PTSans-Italic.ttf */; };
 		878EBC0E2A98D8C2001219F9 /* PTSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 878EBC0A2A98D8C2001219F9 /* PTSans-Regular.ttf */; };
 		878EBC0F2A98D8C2001219F9 /* PTSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 878EBC0B2A98D8C2001219F9 /* PTSans-Bold.ttf */; };
+		878EBC112A98E347001219F9 /* TimerStatsLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBC102A98E347001219F9 /* TimerStatsLabel.swift */; };
+		878EBC142A98F212001219F9 /* TimerStatsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBC132A98F212001219F9 /* TimerStatsViewModel.swift */; };
+		878EBC162A98F24F001219F9 /* ConfigurableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBC152A98F24F001219F9 /* ConfigurableViewProtocol.swift */; };
+		878EBC192A98FB7E001219F9 /* Digest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBC182A98FB7E001219F9 /* Digest.swift */; };
+		878EBC1B2A98FBCF001219F9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 878EBC1A2A98FBCF001219F9 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +74,11 @@
 		878EBC092A98D8C2001219F9 /* PTSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Italic.ttf"; sourceTree = "<group>"; };
 		878EBC0A2A98D8C2001219F9 /* PTSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Regular.ttf"; sourceTree = "<group>"; };
 		878EBC0B2A98D8C2001219F9 /* PTSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PTSans-Bold.ttf"; sourceTree = "<group>"; };
+		878EBC102A98E347001219F9 /* TimerStatsLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStatsLabel.swift; sourceTree = "<group>"; };
+		878EBC132A98F212001219F9 /* TimerStatsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerStatsViewModel.swift; sourceTree = "<group>"; };
+		878EBC152A98F24F001219F9 /* ConfigurableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableViewProtocol.swift; sourceTree = "<group>"; };
+		878EBC182A98FB7E001219F9 /* Digest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digest.swift; sourceTree = "<group>"; };
+		878EBC1A2A98FBCF001219F9 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,6 +143,7 @@
 		8705D8952A978A29002BBDC2 /* Stopwatch */ = {
 			isa = PBXGroup;
 			children = (
+				878EBC122A98F203001219F9 /* Model */,
 				8705D8962A978A38002BBDC2 /* StopwatchPresenter.swift */,
 				8705D8972A978A38002BBDC2 /* StopwatchRouter.swift */,
 				8705D8982A978A38002BBDC2 /* StopwatchViewController.swift */,
@@ -158,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				8705D8AC2A979621002BBDC2 /* RoundButton.swift */,
+				878EBC102A98E347001219F9 /* TimerStatsLabel.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -182,7 +194,9 @@
 		878EBBFB2A98D48D001219F9 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				878EBC172A98FB65001219F9 /* Localization */,
 				878EBBFC2A98D4A8001219F9 /* OurSettings */,
+				878EBC152A98F24F001219F9 /* ConfigurableViewProtocol.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -237,6 +251,23 @@
 				878EBC0A2A98D8C2001219F9 /* PTSans-Regular.ttf */,
 			);
 			path = PT_Sans;
+			sourceTree = "<group>";
+		};
+		878EBC122A98F203001219F9 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				878EBC132A98F212001219F9 /* TimerStatsViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		878EBC172A98FB65001219F9 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				878EBC182A98FB7E001219F9 /* Digest.swift */,
+				878EBC1A2A98FBCF001219F9 /* Localizable.strings */,
+			);
+			path = Localization;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -308,6 +339,7 @@
 				8705D8812A978428002BBDC2 /* Assets.xcassets in Resources */,
 				878EBC0D2A98D8C2001219F9 /* PTSans-Italic.ttf in Resources */,
 				878EBC0C2A98D8C2001219F9 /* PTSans-BoldItalic.ttf in Resources */,
+				878EBC1B2A98FBCF001219F9 /* Localizable.strings in Resources */,
 				8705D87F2A978427002BBDC2 /* Main.storyboard in Resources */,
 				878EBC0F2A98D8C2001219F9 /* PTSans-Bold.ttf in Resources */,
 			);
@@ -322,18 +354,22 @@
 			files = (
 				8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */,
 				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
+				878EBC142A98F212001219F9 /* TimerStatsViewModel.swift in Sources */,
 				8705D8A62A978A51002BBDC2 /* ProfilePresenter.swift in Sources */,
 				8705D87C2A978427002BBDC2 /* ViewController.swift in Sources */,
 				8705D88D2A978716002BBDC2 /* StartViewController.swift in Sources */,
 				8705D88F2A97876F002BBDC2 /* RootMainApplicitionController.swift in Sources */,
+				878EBC162A98F24F001219F9 /* ConfigurableViewProtocol.swift in Sources */,
 				8705D8782A978427002BBDC2 /* AppDelegate.swift in Sources */,
 				8705D8A92A978A51002BBDC2 /* ProfileInteractor.swift in Sources */,
 				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,
+				878EBC192A98FB7E001219F9 /* Digest.swift in Sources */,
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
 				878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */,
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
 				878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */,
 				878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */,
+				878EBC112A98E347001219F9 /* TimerStatsLabel.swift in Sources */,
 				8705D89B2A978A38002BBDC2 /* StopwatchPresenter.swift in Sources */,
 				8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */,
 				8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */,
