@@ -16,15 +16,19 @@ protocol StopwatchPresenterToInteractorProtocol: AnyObject {
     func startTimer()
     func stopTimer()
     func resetTimer()
+    func getTimerData() -> [TimerStatsViewModel]
 }
 
 class StopwatchInteractor {
     
     private let timerManager = TimerManager()
+    
+    private let kilometrModel: TimerStatsViewModel = .init(data: "1.72", description: Tx.Timer.kilometr)
+    private let tempModel: TimerStatsViewModel = .init(data: "5:30", description: Tx.Timer.temp)
+    private let averageTempModel: TimerStatsViewModel = .init(data: "5:45", description: Tx.Timer.averageTemp)
 
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
-
 }
 
 // MARK: Extension - StopwatchPresenterToInteractorProtocol
@@ -43,5 +47,9 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     
     func resetTimer() {
         timerManager.resetTimer()
+    }
+    
+    func getTimerData() -> [TimerStatsViewModel] {
+        return [kilometrModel, tempModel, averageTempModel]
     }
 }

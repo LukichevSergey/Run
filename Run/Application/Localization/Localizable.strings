@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  Run
+
+  Created by Лукичев Сергей on 25.08.2023.
+  
+*/
+
+// MARK: - Timer
+"Timer.subtitle" = "Время";
+"Timer.kilometr" = "КМ";
+"Timer.temp" = "Темп";
+"Timer.averageTemp" = "Сред.Темп";
