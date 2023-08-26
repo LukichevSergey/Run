@@ -17,10 +17,10 @@ protocol StopwatchViewToPresenterProtocol: AnyObject {
 
 // MARK: Protocol - StopwatchInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol StopwatchInteractorToPresenterProtocol: AnyObject {
-
+    func userLocationIsUpdated()
 }
 
-class StopwatchPresenter {
+final class StopwatchPresenter {
 
     // MARK: Properties
     var router: StopwatchPresenterToRouterProtocol!
@@ -36,13 +36,18 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
     func roundButtonTapped(with type: RoundButton.RoundButtonType) {
         switch type {
         case .startButton(let isStarted):
-            isStarted ? interactor.startTimer() : interactor.resetTimer()
-        case .endButton, .roundButton:
+            isStarted ? interactor.startTimer() : interactor.stopTimer()
+        case .endButton:
+            interactor.resetTimer()
+            view.setTimer(with: interactor.getTimerData())
+        case .roundButton:
             return
         }
     }
     
     func viewDidLoad() {
+        interactor.requestAuthorization()
+        
         view.setTimer(with: interactor.getTimerData())
         
         interactor.timer.$elapsedTime.sink { [weak self] time in
@@ -53,5 +58,7 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
 
 // MARK: Extension - StopwatchInteractorToPresenterProtocol
 extension StopwatchPresenter: StopwatchInteractorToPresenterProtocol {
-    
+    func userLocationIsUpdated() {
+        view.setTimer(with: interactor.getTimerData())
+    }
 }

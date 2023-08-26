@@ -120,7 +120,7 @@ final class RoundButton: UIView {
             self.type = isStarted ? .startButton(isStarted: false) : .startButton(isStarted: true)
             self.button.setImage(type.image, for: .normal)
         case .endButton, .roundButton:
-            return
+            break
         }
         
         delegate?.roundButtonTapped(with: type)
