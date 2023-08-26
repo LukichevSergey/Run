@@ -17,18 +17,21 @@ final class RootMainApplicitionController: UITabBarController {
         modalTransitionStyle = .coverVertical
 
         let stopwatchViewController = StopwatchConfigurator().configure()
+        let trainingViewController = TrainingConfigurator().configure()
         let profileViewController = ProfileConfigurator().configure()
 
         stopwatchViewController.title = "Секундомер"
+        trainingViewController.title = "Тренировки"
         profileViewController.title = "Профиль"
 
-        viewControllers = [stopwatchViewController, profileViewController]
+        viewControllers = [stopwatchViewController, trainingViewController, profileViewController]
 
         guard let items = self.tabBar.items else { return }
 
         let imageStopwatch = UIImage(systemName: "clock.arrow.circlepath")!
+        let imageTraining = UIImage(systemName: "figure.run")!
         let imageProfile = UIImage(systemName: "person.crop.circle")!
-        let views = [imageStopwatch, imageProfile]
+        let views = [imageStopwatch, imageTraining, imageProfile]
 
         for item in 0..<items.count {
             items[item].image = views[item]
