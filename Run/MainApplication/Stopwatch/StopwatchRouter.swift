@@ -13,7 +13,7 @@ protocol StopwatchPresenterToRouterProtocol: AnyObject {
 
 }
 
-class StopwatchRouter {
+final class StopwatchRouter {
 
     // MARK: Properties
     weak var view: StopwatchRouterToViewProtocol!

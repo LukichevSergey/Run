@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIBackgroundModes</key>
+	<array>
+		<string>location</string>
+	</array>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>This app lets you keep track of interesting places. It needs access to the GPS coordinates for your location</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This app lets you keep track of interesting places. It needs access to the GPS coordinates for your location</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>PTSans-Bold.ttf</string>

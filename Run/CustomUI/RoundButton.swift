@@ -63,7 +63,8 @@ final class RoundButton: UIView {
     private lazy var button: UIButton = {
         let button = UIButton()
         button.tintColor = type.tintColor
-        button.addTarget(self, action: #selector(buttonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(buttonPressed), for: .touchDown)
+        button.addTarget(self, action: #selector(buttonReleased), for: .touchUpInside)
         button.backgroundColor = type.backgroundColor
         
         switch type {
@@ -112,15 +113,30 @@ final class RoundButton: UIView {
         
         button.layer.cornerRadius = bounds.height / 2
         button.clipsToBounds = true
+        
+        button.layer.masksToBounds = false
+        button.layer.shadowColor = UIColor.black.cgColor
+        button.layer.shadowOpacity = 0.5
+        button.layer.shadowOffset = CGSize(width: 0, height: 2)
+        button.layer.shadowRadius = 4
     }
     
-    @objc private func buttonTapped() {
+    @objc private func buttonPressed() {
+        UIView.animate(withDuration: 0.3) {
+            self.button.layer.shadowOpacity = 0.2
+        }
+    }
+    
+    @objc private func buttonReleased() {
+        UIView.animate(withDuration: 0.3) {
+            self.button.layer.shadowOpacity = 0.5
+        }
         switch type {
         case .startButton(let isStarted):
             self.type = isStarted ? .startButton(isStarted: false) : .startButton(isStarted: true)
             self.button.setImage(type.image, for: .normal)
         case .endButton, .roundButton:
-            return
+            break
         }
         
         delegate?.roundButtonTapped(with: type)

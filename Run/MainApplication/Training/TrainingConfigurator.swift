@@ -1,19 +1,19 @@
 //
-//  StopwatchConfigurator.swift
+//  TrainingConfigurator.swift
 //  Run
 //
-//  Created by Лукичев Сергей on 24.08.2023.
+//  Created by Лукичев Сергей on 26.08.2023.
 //  
 //
 
 import UIKit
 
-final class StopwatchConfigurator {
+class TrainingConfigurator {
     func configure() -> UIViewController {
-        let view = StopwatchViewController()
-        let presenter = StopwatchPresenter()
-        let router = StopwatchRouter()
-        let interactor = StopwatchInteractor()
+        let view = TrainingViewController()
+        let presenter = TrainingPresenter()
+        let router = TrainingRouter()
+        let interactor = TrainingInteractor()
         
         view.presenter = presenter
 

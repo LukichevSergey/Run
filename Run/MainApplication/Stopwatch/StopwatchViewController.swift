@@ -12,7 +12,7 @@ import Combine
 // MARK: Protocol - StopwatchPresenterToViewProtocol (Presenter -> View)
 protocol StopwatchPresenterToViewProtocol: AnyObject {
     func setTimer(with time: Double)
-    func setTimer(with data: [TimerStatsViewModel])
+    func setTimer(with data: TimerViewModel)
 }
 
 // MARK: Protocol - StopwatchRouterToViewProtocol (Router -> View)
@@ -21,20 +21,17 @@ protocol StopwatchRouterToViewProtocol: AnyObject {
     func pushView(view: UIViewController)
 }
 
-class StopwatchViewController: UIViewController {
+final class StopwatchViewController: UIViewController {
     
     // MARK: - Property
     var presenter: StopwatchViewToPresenterProtocol!
     
     private lazy var gradientLayer = PaletteApp.timerBackgroundGradient()
     
-    private lazy var dataHStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .horizontal
-        stack.alignment = .center
-        stack.distribution = .equalSpacing
-
-        return stack
+    private lazy var dataView: TimerDataView = {
+        let view = TimerDataView()
+        
+        return view
     }()
     
     private lazy var timerLabel: UILabel = {
@@ -127,8 +124,8 @@ class StopwatchViewController: UIViewController {
     private func configureUI() {
         view.layer.insertSublayer(gradientLayer, at: 0)
         
-        view.addSubview(dataHStack)
-        dataHStack.snp.makeConstraints { make in
+        view.addSubview(dataView)
+        dataView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
         }
@@ -142,12 +139,8 @@ class StopwatchViewController: UIViewController {
 
 // MARK: Extension - StopwatchPresenterToViewProtocol 
 extension StopwatchViewController: StopwatchPresenterToViewProtocol{
-    func setTimer(with data: [TimerStatsViewModel]) {
-        data.forEach({ viewModel in
-            let view = TimerStatsLabel()
-            view.configure(with: viewModel)
-            dataHStack.addArrangedSubview(view)
-        })
+    func setTimer(with data: TimerViewModel) {
+        dataView.configure(with: data)
     }
     
     func setTimer(with time: Double) {
