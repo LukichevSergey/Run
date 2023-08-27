@@ -19,7 +19,7 @@ final class Training {
     var trainingStatus: TrainingStatus
     var coordinates: [[CLLocationCoordinate2D]] = []
     
-    internal init(startTime: Date = Date(),
+    init(startTime: Date = Date(),
                   finishTime: Date? = nil,
                   trainingStatus: TrainingStatus = .start,
                   coordinates: [[CLLocationCoordinate2D]] = []) {
