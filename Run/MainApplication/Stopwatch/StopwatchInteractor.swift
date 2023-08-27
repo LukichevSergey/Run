@@ -75,7 +75,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         }
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
                               tempModel: .init(data: "5:30", description: Tx.Timer.temp),
-                              averageTempModel: .init(data: "5:45", description: Tx.Timer.averageTemp))
+                              averageTempModel: .init(data: "\(String(format: "%.2f", (timer.elapsedTime / distance) ))", description: Tx.Timer.averageTemp))
     }
     
     func requestAuthorization() {
