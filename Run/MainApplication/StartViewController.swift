@@ -25,8 +25,7 @@ final class StartViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        let mainApplication = RootMainApplicitionController()
-        mainApplication.modalPresentationStyle = .fullScreen
-        present(mainApplication, animated: false)
+        let authView = AuthViewController()
+        navigationController?.pushViewController(authView, animated: false)
     }
 }
