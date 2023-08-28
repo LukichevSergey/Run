@@ -29,7 +29,11 @@ extension Double {
         let minutes = Int(self / 60)
         let seconds = Int(self.truncatingRemainder(dividingBy: 60))
         
-        return String(format: "%d:%02d", minutes, seconds)
+        if minutes < 0 && seconds < 0 {
+            return "0:00"
+        } else {
+            return String(format: "%d:%02d", minutes, seconds)
+        }
     }
 }
 
