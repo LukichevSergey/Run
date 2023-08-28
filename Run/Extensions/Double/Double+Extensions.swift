@@ -15,3 +15,21 @@ extension Double {
         return String(format: format, minutes, seconds, milliseconds)
     }
 }
+
+extension Double {
+    func toSeconds() -> Double {
+        return self * 60
+    }
+    
+    func toMinutesAndSeconds() -> String {
+        if self.isInfinite || self.isNaN {
+            return "0.00"
+        }
+        
+        let minutes = Int(self / 60)
+        let seconds = Int(self.truncatingRemainder(dividingBy: 60))
+        
+        return String(format: "%d:%02d", minutes, seconds)
+    }
+}
+
