@@ -23,7 +23,7 @@ extension Double {
     
     func toMinutesAndSeconds() -> String {
         if self.isInfinite || self.isNaN {
-            return "0.00"
+            return "0:00"
         }
         
         let minutes = Int(self / 60)
