@@ -80,7 +80,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
             let formatedTime = seconds.toMinutesAndSeconds()
             return "\(formatedTime)"
         }
-        print(avg)
         
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
                               tempModel: .init(data: "5:30", description: Tx.Timer.temp),
