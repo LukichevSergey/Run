@@ -121,6 +121,16 @@ final class RoundButton: UIView {
         button.layer.shadowRadius = 4
     }
     
+    func resetButton() {
+        switch type {
+        case .startButton:
+            self.type = .startButton(isStarted: false)
+            self.button.setImage(type.image, for: .normal)
+        case .endButton, .roundButton:
+            break
+        }
+    }
+    
     @objc private func buttonPressed() {
         UIView.animate(withDuration: 0.3) {
             self.button.layer.shadowOpacity = 0.2

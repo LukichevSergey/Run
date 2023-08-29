@@ -39,6 +39,7 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
             isStarted ? interactor.startTimer() : interactor.stopTimer()
         case .endButton:
             interactor.resetTimer()
+            view.resetStartButton()
             view.setTimer(with: interactor.getTimerData())
         case .roundButton:
             return
