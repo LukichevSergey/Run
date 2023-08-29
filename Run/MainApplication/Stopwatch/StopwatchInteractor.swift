@@ -83,11 +83,9 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         
         var tempOneKillomert: String {
             let tempOneKM = ((1000 / distance) * self.timer.elapsedTime)
-            let secondTempOneKM = tempOneKM.toSeconds()
-            let minutTempOneKM = secondTempOneKM.toMinutesAndSeconds()
+            let minutTempOneKM = tempOneKM.toMinutesAndSeconds()
             
             return "\(minutTempOneKM)"
-        
         }
                 
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
