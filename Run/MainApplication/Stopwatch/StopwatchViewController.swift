@@ -13,6 +13,7 @@ import Combine
 protocol StopwatchPresenterToViewProtocol: AnyObject {
     func setTimer(with time: Double)
     func setTimer(with data: TimerViewModel)
+    func resetStartButton()
 }
 
 // MARK: Protocol - StopwatchRouterToViewProtocol (Router -> View)
@@ -139,6 +140,10 @@ final class StopwatchViewController: UIViewController {
 
 // MARK: Extension - StopwatchPresenterToViewProtocol 
 extension StopwatchViewController: StopwatchPresenterToViewProtocol{
+    func resetStartButton() {
+        startButton.resetButton()
+    }
+    
     func setTimer(with data: TimerViewModel) {
         dataView.configure(with: data)
     }
