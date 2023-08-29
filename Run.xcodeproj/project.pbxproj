@@ -29,6 +29,7 @@
 		8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AC2A979621002BBDC2 /* RoundButton.swift */; };
 		8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AF2A97992A002BBDC2 /* TimerManager.swift */; };
 		8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */; };
+		876A77FD2A9CC7B400E64269 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A77FC2A9CC7B400E64269 /* AuthViewController.swift */; };
 		878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBBFD2A98D4E8001219F9 /* PaletteApp.swift */; };
 		878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBC002A98D538001219F9 /*  UIColor+HEX.swift */; };
 		878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 878EBC032A98D7D2001219F9 /* OurFonts.swift */; };
@@ -78,6 +79,7 @@
 		8705D8AC2A979621002BBDC2 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		8705D8AF2A97992A002BBDC2 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		876A77FC2A9CC7B400E64269 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		878EBBFD2A98D4E8001219F9 /* PaletteApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaletteApp.swift; sourceTree = "<group>"; };
 		878EBC002A98D538001219F9 /*  UIColor+HEX.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = " UIColor+HEX.swift"; sourceTree = "<group>"; };
 		878EBC032A98D7D2001219F9 /* OurFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OurFonts.swift; sourceTree = "<group>"; };
@@ -154,6 +156,7 @@
 		8705D88B2A9786B7002BBDC2 /* MainApplication */ = {
 			isa = PBXGroup;
 			children = (
+				876A77FB2A9CC79000E64269 /* Auth */,
 				87EE80A82A99C92A00EF4ADD /* Training */,
 				8705D8A02A978A3D002BBDC2 /* Profile */,
 				8705D8952A978A29002BBDC2 /* Stopwatch */,
@@ -215,6 +218,14 @@
 				878EBBFF2A98D52F001219F9 /* UIColor */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		876A77FB2A9CC79000E64269 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				876A77FC2A9CC7B400E64269 /* AuthViewController.swift */,
+			);
+			path = Auth;
 			sourceTree = "<group>";
 		};
 		878EBBFB2A98D48D001219F9 /* Application */ = {
@@ -434,6 +445,7 @@
 				87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */,
 				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,
 				878EBC192A98FB7E001219F9 /* Digest.swift in Sources */,
+				876A77FD2A9CC7B400E64269 /* AuthViewController.swift in Sources */,
 				87EE80A52A99C8BB00EF4ADD /* LocationManager.swift in Sources */,
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
 				878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */,
