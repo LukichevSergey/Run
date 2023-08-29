@@ -81,8 +81,19 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
             return "\(formatedTime)"
         }
         
+        var tempOneKillomert: String {
+            let tempOneKM = ((1000 / distance) * self.timer.elapsedTime)
+            let secondTempOneKM = tempOneKM.toSeconds()
+            let minutTempOneKM = secondTempOneKM.toMinutesAndSeconds()
+            
+            return "\(minutTempOneKM)"
+        
+        }
+        
+//        темп = (1000/100=10)*30сек=300сек/60сек = 5мин.
+        
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
-                              tempModel: .init(data: "5:30", description: Tx.Timer.temp),
+                              tempModel: .init(data: "\(tempOneKillomert)", description: Tx.Timer.temp),
                               averageTempModel: .init(data: "\(avgerageTemp)", description: Tx.Timer.averageTemp))
     }
     
