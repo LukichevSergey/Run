@@ -89,9 +89,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
             return "\(minutTempOneKM)"
         
         }
-        
-//        темп = (1000/100=10)*30сек=300сек/60сек = 5мин.
-        
+                
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
                               tempModel: .init(data: "\(tempOneKillomert)", description: Tx.Timer.temp),
                               averageTempModel: .init(data: "\(avgerageTemp)", description: Tx.Timer.averageTemp))
