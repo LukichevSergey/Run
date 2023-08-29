@@ -73,9 +73,26 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let distance = coordinates.reduce(0) { partialResult, coordinates in
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
+        
+        var avgerageTemp: String {
+            let avgtemp = (timer.elapsedTime / distance)
+            let seconds = avgtemp.toSeconds()
+            let formatedTime = seconds.toMinutesAndSeconds()
+            return "\(formatedTime)"
+        }
+        
+        var tempOneKillomert: String {
+            let tempOneKM = ((1000 / distance) * self.timer.elapsedTime)
+            let secondTempOneKM = tempOneKM.toSeconds()
+            let minutTempOneKM = secondTempOneKM.toMinutesAndSeconds()
+            
+            return "\(minutTempOneKM)"
+        
+        }
+                
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
-                              tempModel: .init(data: "5:30", description: Tx.Timer.temp),
-                              averageTempModel: .init(data: "5:45", description: Tx.Timer.averageTemp))
+                              tempModel: .init(data: "\(tempOneKillomert)", description: Tx.Timer.temp),
+                              averageTempModel: .init(data: "\(avgerageTemp)", description: Tx.Timer.averageTemp))
     }
     
     func requestAuthorization() {

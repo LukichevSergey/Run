@@ -28,9 +28,9 @@ final class RootMainApplicitionController: UITabBarController {
 
         guard let items = self.tabBar.items else { return }
 
-        let imageStopwatch = UIImage(systemName: "clock.arrow.circlepath")!
-        let imageTraining = UIImage(systemName: "figure.run")!
-        let imageProfile = UIImage(systemName: "person.crop.circle")!
+        let imageStopwatch = UIImage(systemName: "clock.arrow.circlepath")
+        let imageTraining = UIImage(systemName: "figure.walk.circle")
+        let imageProfile = UIImage(systemName: "person.crop.circle")
         let views = [imageStopwatch, imageTraining, imageProfile]
 
         for item in 0..<items.count {
@@ -40,6 +40,7 @@ final class RootMainApplicitionController: UITabBarController {
         let customTabBar = UITabBar()
         customTabBar.items = items
         customTabBar.tintColor = .black
+        customTabBar.selectedItem = customTabBar.items?.first
         
         selectedIndex = 0
 
