@@ -76,8 +76,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         
         var avgerageTemp: String {
             let avgtemp = (timer.elapsedTime / distance) * 100
-            let seconds = avgtemp.toSeconds()
-            let formatedTime = seconds.toMinutesAndSeconds()
+            let formatedTime = avgtemp.toMinutesAndSeconds()
             return "\(formatedTime)"
         }
         

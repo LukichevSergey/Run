@@ -17,9 +17,6 @@ extension Double {
 }
 
 extension Double {
-    func toSeconds() -> Double {
-        return self * 60
-    }
     
     func toMinutesAndSeconds() -> String {
         if self.isInfinite || self.isNaN {
