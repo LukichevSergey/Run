@@ -16,11 +16,7 @@ extension Double {
     }
 }
 
-extension Double {
-    func toSeconds() -> Double {
-        return self * 60
-    }
-    
+extension Double {    
     func toMinutesAndSeconds() -> String {
         if self.isInfinite || self.isNaN {
             return "0:00"

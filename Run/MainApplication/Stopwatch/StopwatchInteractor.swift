@@ -28,6 +28,8 @@ final class StopwatchInteractor {
     private let trainingManager = TrainingManager()
     
     private var coordinates: [CLLocationCoordinate2D] = []
+    private var km = 0
+    private var previousValue = "0:00"
 
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
@@ -65,6 +67,8 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.updateTraining(with: coordinates)
         trainingManager.stopTraining()
         coordinates = []
+        km = 0
+        previousValue = "0:00"
     }
     
     func getTimerData() -> TimerViewModel {
@@ -76,16 +80,23 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         
         var avgerageTemp: String {
             let avgtemp = (timer.elapsedTime / distance) * 100
-            let seconds = avgtemp.toSeconds()
-            let formatedTime = seconds.toMinutesAndSeconds()
+            let formatedTime = avgtemp.toMinutesAndSeconds()
             return "\(formatedTime)"
         }
-        
         var tempOneKillomert: String {
-            let tempOneKM = ((1000 / distance) * self.timer.elapsedTime)
-            let minutTempOneKM = tempOneKM.toMinutesAndSeconds()
             
-            return "\(minutTempOneKM)"
+            if Int(distance / 1000) > km {
+                
+                let tempOneKM = (1000 / (distance - Double((km * 1000)))) * timer.elapsedTime
+                let minutTempOneKM = tempOneKM.toMinutesAndSeconds()
+                
+                km += 1
+                previousValue = "\(minutTempOneKM)"
+                return "\(minutTempOneKM)"
+            } else {
+                return "\(previousValue)"
+            }
+            
         }
                 
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
