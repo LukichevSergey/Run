@@ -17,11 +17,7 @@ extension Double {
 }
 
 extension Double {
-    func toSeconds() -> Double {
-        return self * 60
-    }
-    
-    func toMinutesAndSeconds() -> String {
+    func toMinutesAndSeconds() -> String { // возвращает строку с минутой и секундой.если не число или бесконечность или 0< выдает default "0:00"
         if self.isInfinite || self.isNaN {
             return "0:00"
         }
