@@ -16,8 +16,8 @@ extension Double {
     }
 }
 
-extension Double {    
-    func toMinutesAndSeconds() -> String {
+extension Double {
+    func toMinutesAndSeconds() -> String { // возвращает строку с минутой и секундой.если не число или бесконечность или 0< выдает default "0:00"
         if self.isInfinite || self.isNaN {
             return "0:00"
         }
