@@ -98,7 +98,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
             } else {
                 return "\(previousValue)"
             }
-            
         }
                 
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
