@@ -11,6 +11,7 @@ import Foundation
 // MARK: Protocol - ProfileViewToPresenterProtocol (View -> Presenter)
 protocol ProfileViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
+    func exitButtonTapped()
 }
 
 // MARK: Protocol - ProfileInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -18,7 +19,7 @@ protocol ProfileInteractorToPresenterProtocol: AnyObject {
 
 }
 
-class ProfilePresenter {
+final class ProfilePresenter {
 
     // MARK: Properties
     var router: ProfilePresenterToRouterProtocol!
@@ -28,6 +29,10 @@ class ProfilePresenter {
 
 // MARK: Extension - ProfileViewToPresenterProtocol
 extension ProfilePresenter: ProfileViewToPresenterProtocol {
+    func exitButtonTapped() {
+        interactor.signOut()
+    }
+    
     func viewDidLoad() {
     
     }

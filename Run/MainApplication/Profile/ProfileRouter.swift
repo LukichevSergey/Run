@@ -13,7 +13,7 @@ protocol ProfilePresenterToRouterProtocol: AnyObject {
 
 }
 
-class ProfileRouter {
+final class ProfileRouter {
 
     // MARK: Properties
     weak var view: ProfileRouterToViewProtocol!

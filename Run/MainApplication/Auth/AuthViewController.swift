@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AuthViewController: UIViewController {
+final class AuthViewController: UIViewController {
     
     private lazy var titleView: UIView = {
         let view = UIView()
@@ -42,7 +42,7 @@ class AuthViewController: UIViewController {
     private lazy var authButton: UIButton = {
         let button = UIButton()
         button.setTitle("Зарегистрироваться", for: .normal)
-        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -94,17 +94,17 @@ class AuthViewController: UIViewController {
     }
     
     override func viewDidLoad() {
+        super.viewDidLoad()
         configureUI()
     }
     
     @objc private func loginButtonTapped() {
-        let mainApplication = RootMainApplicitionController()
-        mainApplication.modalPresentationStyle = .fullScreen
-        present(mainApplication, animated: false)
+        let loginVC = LoginConfigurator().configure()
+        navigationController?.pushViewController(loginVC, animated: true)
     }
     
     @objc private func authButtonTapped() {
-        print("authButtonTapped")
+        let regVC = RegistrationConfigurator().configure()
+        navigationController?.pushViewController(regVC, animated: true)
     }
-    
 }

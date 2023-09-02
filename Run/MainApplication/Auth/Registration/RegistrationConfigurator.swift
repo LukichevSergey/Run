@@ -1,19 +1,19 @@
 //
-//  ProfileConfigurator.swift
+//  RegistrationConfigurator.swift
 //  Run
 //
-//  Created by Лукичев Сергей on 24.08.2023.
+//  Created by Лукичев Сергей on 29.08.2023.
 //  
 //
 
 import UIKit
 
-final class ProfileConfigurator {
+class RegistrationConfigurator {
     func configure() -> UIViewController {
-        let view = ProfileViewController()
-        let presenter = ProfilePresenter()
-        let router = ProfileRouter()
-        let interactor = ProfileInteractor()
+        let view = RegistrationViewController()
+        let presenter = RegistrationPresenter()
+        let router = RegistrationRouter()
+        let interactor = RegistrationInteractor()
         
         view.presenter = presenter
 
