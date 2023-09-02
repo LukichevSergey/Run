@@ -19,10 +19,21 @@ protocol ProfileRouterToViewProtocol: AnyObject {
     func pushView(view: UIViewController)
 }
 
-class ProfileViewController: UIViewController {
+final class ProfileViewController: UIViewController {
     
     // MARK: - Property
     var presenter: ProfileViewToPresenterProtocol!
+    
+    private lazy var exitButton: UIButton = {
+        let button = UIButton()
+        button.titleLabel?.font = OurFonts.fontPTSansBold72
+        button.setTitleColor(PaletteApp.black, for: .normal)
+        button.setTitle("Выход", for: .normal)
+        button.backgroundColor = .clear
+        button.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
+        
+        return button
+    }()
 
     // MARK: - init
     init() {
@@ -39,7 +50,7 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .systemYellow
+        view.backgroundColor = PaletteApp.white
         configureUI()
         presenter.viewDidLoad()
     }
@@ -50,7 +61,10 @@ class ProfileViewController: UIViewController {
     }
 
     private func configureUI() {
-
+        view.addSubview(exitButton)
+        exitButton.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+        }
     }
 }
 
@@ -67,5 +81,11 @@ extension ProfileViewController: ProfileRouterToViewProtocol{
 
     func pushView(view: UIViewController) {
         navigationController?.pushViewController(view, animated: true)
+    }
+}
+
+private extension ProfileViewController {
+    @objc private func exitButtonTapped() {
+        presenter.exitButtonTapped()
     }
 }

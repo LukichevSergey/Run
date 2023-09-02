@@ -20,12 +20,19 @@ final class StartViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
+
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
-        let authView = AuthViewController()
-        navigationController?.pushViewController(authView, animated: false)
+
+        if GlobalData.userModel == nil {
+            let authView = AuthViewController()
+            navigationController?.pushViewController(authView, animated: false)
+        } else {
+            let mainApplication = RootMainApplicitionController()
+            mainApplication.modalPresentationStyle = .fullScreen
+            present(mainApplication, animated: false)
+        }
     }
 }

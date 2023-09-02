@@ -10,10 +10,10 @@ import Foundation
 
 // MARK: Protocol - ProfilePresenterToInteractorProtocol (Presenter -> Interactor)
 protocol ProfilePresenterToInteractorProtocol: AnyObject {
-
+    func signOut()
 }
 
-class ProfileInteractor {
+final class ProfileInteractor {
 
     // MARK: Properties
     weak var presenter: ProfileInteractorToPresenterProtocol!
@@ -22,5 +22,7 @@ class ProfileInteractor {
 
 // MARK: Extension - ProfilePresenterToInteractorProtocol
 extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
-    
+    func signOut() {
+        
+    }
 }
