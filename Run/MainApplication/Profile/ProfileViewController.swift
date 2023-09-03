@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Protocol - ProfilePresenterToViewProtocol (Presenter -> View)
 protocol ProfilePresenterToViewProtocol: AnyObject {
-
+    func setUsername(on name: String)
 }
 
 // MARK: Protocol - ProfileRouterToViewProtocol (Router -> View)
@@ -24,11 +24,21 @@ final class ProfileViewController: UIViewController {
     // MARK: - Property
     var presenter: ProfileViewToPresenterProtocol!
     
+    private lazy var nameLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = PaletteApp.black
+        label.font = OurFonts.fontPTSansBold32
+        label.textAlignment = .left
+        label.numberOfLines = 0
+        
+        return label
+    }()
+    
     private lazy var exitButton: UIButton = {
         let button = UIButton()
         button.titleLabel?.font = OurFonts.fontPTSansBold72
         button.setTitleColor(PaletteApp.black, for: .normal)
-        button.setTitle("Выход", for: .normal)
+        button.setTitle(Tx.Profile.exit, for: .normal)
         button.backgroundColor = .clear
         button.addTarget(self, action: #selector(exitButtonTapped), for: .touchUpInside)
         
@@ -61,6 +71,12 @@ final class ProfileViewController: UIViewController {
     }
 
     private func configureUI() {
+        view.addSubview(nameLabel)
+        nameLabel.snp.makeConstraints { make in
+            make.top.equalTo(view.safeAreaLayoutGuide)
+            make.directionalHorizontalEdges.equalToSuperview().inset(16)
+        }
+        
         view.addSubview(exitButton)
         exitButton.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -70,7 +86,9 @@ final class ProfileViewController: UIViewController {
 
 // MARK: Extension - ProfilePresenterToViewProtocol 
 extension ProfileViewController: ProfilePresenterToViewProtocol{
-    
+    func setUsername(on name: String) {
+        nameLabel.text = name
+    }
 }
 
 // MARK: Extension - ProfileRouterToViewProtocol

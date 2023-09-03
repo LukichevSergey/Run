@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Protocol - RegistrationPresenterToViewProtocol (Presenter -> View)
 protocol RegistrationPresenterToViewProtocol: AnyObject {
-
+    func showErrorAlert(with text: String)
 }
 
 // MARK: Protocol - RegistrationRouterToViewProtocol (Router -> View)
@@ -26,10 +26,24 @@ class RegistrationViewController: UIViewController {
     
     private lazy var usernameTextField: UITextField = {
         let textField = UITextField()
+        textField.placeholder = Tx.Auth.name
+        textField.borderStyle = .roundedRect
+        textField.layer.cornerRadius = 12
+        textField.layer.borderColor = PaletteApp.lightGreen.cgColor
+        textField.autocapitalizationType = .none
+        textField.tag = 0
+        textField.delegate = self
+
+        return textField
+    }()
+    
+    private lazy var emailTextField: UITextField = {
+        let textField = UITextField()
         textField.placeholder = "Email"
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 12
         textField.layer.borderColor = PaletteApp.lightGreen.cgColor
+        textField.autocapitalizationType = .none
         textField.tag = 1
         textField.delegate = self
 
@@ -42,6 +56,7 @@ class RegistrationViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 12
         textField.layer.borderColor = PaletteApp.lightGreen.cgColor
+        textField.autocapitalizationType = .none
         textField.tag = 2
         textField.delegate = self
 
@@ -50,7 +65,7 @@ class RegistrationViewController: UIViewController {
     
     private lazy var authButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Зарегистрироваться", for: .normal)
+        button.setTitle(Tx.Auth.signUp, for: .normal)
         button.titleLabel?.font = OurFonts.fontPTSansBold16
         button.backgroundColor = PaletteApp.lightGreen
         button.setTitleColor(PaletteApp.white, for: .normal)
@@ -102,7 +117,7 @@ class RegistrationViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.8)
         }
         
-        [usernameTextField, passwordTextField, authButton].forEach { item in
+        [usernameTextField, emailTextField, passwordTextField, authButton].forEach { item in
             item.snp.makeConstraints { make in
                 make.height.equalTo(50)
             }
@@ -118,7 +133,9 @@ class RegistrationViewController: UIViewController {
 
 // MARK: Extension - RegistrationPresenterToViewProtocol 
 extension RegistrationViewController: RegistrationPresenterToViewProtocol{
-    
+    func showErrorAlert(with text: String) {
+        showAlert(with: text)
+    }
 }
 
 // MARK: Extension - RegistrationRouterToViewProtocol
@@ -134,8 +151,10 @@ extension RegistrationViewController: RegistrationRouterToViewProtocol{
 
 // MARK: UITextFieldDelegate
 extension RegistrationViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField.tag {
+        case 0:
+            presenter.usernameIsChanged(to: textField.text ?? "")
         case 1:
             presenter.emailIsChanged(to: textField.text ?? "")
         case 2:

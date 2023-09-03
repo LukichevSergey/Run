@@ -29,6 +29,7 @@
 		8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AC2A979621002BBDC2 /* RoundButton.swift */; };
 		8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AF2A97992A002BBDC2 /* TimerManager.swift */; };
 		8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */; };
+		875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875896882AA4C2D0002027FA /* UIViewController+Alert.swift */; };
 		876A77FD2A9CC7B400E64269 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A77FC2A9CC7B400E64269 /* AuthViewController.swift */; };
 		8775B9652AA0C20100EEA6F9 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8775B9642AA0C20100EEA6F9 /* GlobalData.swift */; };
 		8775B9672AA0D49D00EEA6F9 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8775B9662AA0D49D00EEA6F9 /* AuthManager.swift */; };
@@ -98,6 +99,7 @@
 		8705D8AC2A979621002BBDC2 /* RoundButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundButton.swift; sourceTree = "<group>"; };
 		8705D8AF2A97992A002BBDC2 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		875896882AA4C2D0002027FA /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		876A77FC2A9CC7B400E64269 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8775B9642AA0C20100EEA6F9 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		8775B9662AA0D49D00EEA6F9 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -255,10 +257,19 @@
 		8705D8B12A979A23002BBDC2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				875896872AA4C2BE002027FA /* UIViewController */,
 				878EBC022A98D56C001219F9 /* Double */,
 				878EBBFF2A98D52F001219F9 /* UIColor */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		875896872AA4C2BE002027FA /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				875896882AA4C2D0002027FA /* UIViewController+Alert.swift */,
+			);
+			path = UIViewController;
 			sourceTree = "<group>";
 		};
 		876A77FB2A9CC79000E64269 /* Auth */ = {
@@ -546,6 +557,7 @@
 				87EE80A72A99C90B00EF4ADD /* TrainingManager.swift in Sources */,
 				87C46D2C2A9E37DF0094A8F0 /* LoginViewController.swift in Sources */,
 				878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */,
+				875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */,
 				87EE80AF2A99C93800EF4ADD /* TrainingRouter.swift in Sources */,
 				87EE80BF2A99C95D00EF4ADD /* Training.swift in Sources */,
 				87C46D2D2A9E37DF0094A8F0 /* LoginInteractor.swift in Sources */,

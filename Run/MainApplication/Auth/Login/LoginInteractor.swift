@@ -41,7 +41,7 @@ extension LoginInteractor: LoginPresenterToInteractorProtocol {
                 GlobalData.userModel = user
                 presenter?.userIsSingIn()
             case .failure(let error):
-                print(error.localizedDescription)
+                presenter?.userIsSignInWithError(error: error)
             }
         }
     }

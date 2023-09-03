@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: Protocol - LoginPresenterToViewProtocol (Presenter -> View)
 protocol LoginPresenterToViewProtocol: AnyObject {
-
+    func showErrorAlert(with text: String)
 }
 
 // MARK: Protocol - LoginRouterToViewProtocol (Router -> View)
@@ -31,6 +31,7 @@ class LoginViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 12
         textField.layer.borderColor = PaletteApp.lightGreen.cgColor
+        textField.autocapitalizationType = .none
         textField.tag = 1
         textField.delegate = self
 
@@ -43,6 +44,7 @@ class LoginViewController: UIViewController {
         textField.borderStyle = .roundedRect
         textField.layer.cornerRadius = 12
         textField.layer.borderColor = PaletteApp.lightGreen.cgColor
+        textField.autocapitalizationType = .none
         textField.tag = 2
         textField.delegate = self
 
@@ -51,7 +53,7 @@ class LoginViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Войти", for: .normal)
+        button.setTitle(Tx.Auth.signIn, for: .normal)
         button.titleLabel?.font = OurFonts.fontPTSansBold16
         button.backgroundColor = PaletteApp.lightGreen
         button.setTitleColor(PaletteApp.white, for: .normal)
@@ -119,7 +121,9 @@ class LoginViewController: UIViewController {
 
 // MARK: Extension - LoginPresenterToViewProtocol 
 extension LoginViewController: LoginPresenterToViewProtocol{
-    
+    func showErrorAlert(with text: String) {
+        showAlert(with: text)
+    }
 }
 
 // MARK: Extension - LoginRouterToViewProtocol
@@ -139,7 +143,7 @@ extension LoginViewController: LoginRouterToViewProtocol{
 
 // MARK: UITextFieldDelegate
 extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField.tag {
         case 1:
             presenter.emailIsChanged(to: textField.text ?? "")

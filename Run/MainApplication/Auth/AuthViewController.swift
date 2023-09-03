@@ -33,7 +33,7 @@ final class AuthViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Войти", for: .normal)
+        button.setTitle(Tx.Auth.signIn, for: .normal)
         button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         
         return button
@@ -41,7 +41,7 @@ final class AuthViewController: UIViewController {
     
     private lazy var authButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Зарегистрироваться", for: .normal)
+        button.setTitle(Tx.Auth.signUp, for: .normal)
         button.addTarget(self, action: #selector(authButtonTapped), for: .touchUpInside)
         
         return button

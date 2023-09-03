@@ -39,10 +39,10 @@ final class AuthManager {
         }
     }
     
-    func signUp(email: String, password: String, completion: @escaping (Result<AppUser, Error>) -> Void) {
+    func signUp(username: String, email: String, password: String, completion: @escaping (Result<AppUser, Error>) -> Void) {
         auth.createUser(withEmail: email, password: password) { result, error in
             if let result {
-                let user = AppUser(id: result.user.uid, name: "")
+                let user = AppUser(id: result.user.uid, name: username)
                 DatabaseService.shared.setUser(user: user) { resultDB in
                     switch resultDB {
                     case .success:

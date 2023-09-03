@@ -34,7 +34,7 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     }
     
     func viewDidLoad() {
-    
+        view.setUsername(on: interactor.user.name)
     }
 }
 

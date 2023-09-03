@@ -19,6 +19,7 @@ protocol LoginViewToPresenterProtocol: AnyObject {
 // MARK: Protocol - LoginInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol LoginInteractorToPresenterProtocol: AnyObject {
     func userIsSingIn()
+    func userIsSignInWithError(error: Error)
 }
 
 class LoginPresenter {
@@ -50,6 +51,10 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
 
 // MARK: Extension - LoginInteractorToPresenterProtocol
 extension LoginPresenter: LoginInteractorToPresenterProtocol {
+    func userIsSignInWithError(error: Error) {
+        view.showErrorAlert(with: error.localizedDescription)
+    }
+    
     func userIsSingIn() {
         router.navigateToMainPage()
     }

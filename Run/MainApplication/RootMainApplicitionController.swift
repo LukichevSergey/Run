@@ -18,11 +18,11 @@ final class RootMainApplicitionController: UITabBarController {
 
         let stopwatchViewController = StopwatchConfigurator().configure()
         let trainingViewController = TrainingConfigurator().configure()
-        let profileViewController = ProfileConfigurator().configure()
+        let profileViewController = UINavigationController(rootViewController: ProfileConfigurator().configure()) 
 
-        stopwatchViewController.title = "Секундомер"
-        trainingViewController.title = "Тренировки"
-        profileViewController.title = "Профиль"
+        stopwatchViewController.title = Tx.Timer.title
+        trainingViewController.title = Tx.Training.title
+        profileViewController.title = Tx.Profile.title
 
         viewControllers = [stopwatchViewController, trainingViewController, profileViewController]
 
