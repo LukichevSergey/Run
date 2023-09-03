@@ -11,6 +11,8 @@ import UIKit
 // MARK: Protocol - LoginPresenterToViewProtocol (Presenter -> View)
 protocol LoginPresenterToViewProtocol: AnyObject {
     func showErrorAlert(with text: String)
+    func showActivityIndicator()
+    func removeActivityIndicator()
 }
 
 // MARK: Protocol - LoginRouterToViewProtocol (Router -> View)

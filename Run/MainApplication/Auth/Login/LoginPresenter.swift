@@ -41,6 +41,7 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
     }
     
     func loginButtonTapped() {
+        view.showActivityIndicator()
         interactor.fetchLoginData()
     }
     
@@ -52,10 +53,12 @@ extension LoginPresenter: LoginViewToPresenterProtocol {
 // MARK: Extension - LoginInteractorToPresenterProtocol
 extension LoginPresenter: LoginInteractorToPresenterProtocol {
     func userIsSignInWithError(error: Error) {
+        view.removeActivityIndicator()
         view.showErrorAlert(with: error.localizedDescription)
     }
     
     func userIsSingIn() {
+        view.removeActivityIndicator()
         router.navigateToMainPage()
     }
 }

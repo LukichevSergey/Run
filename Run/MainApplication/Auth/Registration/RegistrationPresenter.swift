@@ -46,6 +46,7 @@ extension RegistrationPresenter: RegistrationViewToPresenterProtocol {
     }
     
     func authButtonTapped() {
+        view.showActivityIndicator()
         interactor.signUp()
     }
     
@@ -57,10 +58,12 @@ extension RegistrationPresenter: RegistrationViewToPresenterProtocol {
 // MARK: Extension - RegistrationInteractorToPresenterProtocol
 extension RegistrationPresenter: RegistrationInteractorToPresenterProtocol {
     func userIsSignUpWithError(error: Error) {
+        view.removeActivityIndicator()
         view.showErrorAlert(with: error.localizedDescription)
     }
     
     func userIsSingUp() {
+        view.removeActivityIndicator()
         router.navigateToMainPage()
     }
 }
