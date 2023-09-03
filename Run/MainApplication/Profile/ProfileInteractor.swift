@@ -11,19 +11,22 @@ import Foundation
 // MARK: Protocol - ProfilePresenterToInteractorProtocol (Presenter -> Interactor)
 protocol ProfilePresenterToInteractorProtocol: AnyObject {
     var user: AppUser { get }
+    var dataSource: ProfileViewModel { get }
     
     func signOut()
 }
 
 final class ProfileInteractor {
-
+    
     // MARK: Properties
     weak var presenter: ProfileInteractorToPresenterProtocol!
     
     private let _user: AppUser
+    private let _dataSource: [ProfileTableViewCellViewModel.CellType]
 
     init() {
         _user = GlobalData.userModel ?? .init(id: "", name: "")
+        _dataSource = [.editProfile, .exit]
     }
 }
 
@@ -31,6 +34,10 @@ final class ProfileInteractor {
 extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
     var user: AppUser {
         return _user
+    }
+    
+    var dataSource: ProfileViewModel {
+        return .init(cells: _dataSource.map {.init(type: $0)})
     }
     
     func signOut() {

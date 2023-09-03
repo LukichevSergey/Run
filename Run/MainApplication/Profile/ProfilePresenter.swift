@@ -11,7 +11,7 @@ import Foundation
 // MARK: Protocol - ProfileViewToPresenterProtocol (View -> Presenter)
 protocol ProfileViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
-    func exitButtonTapped()
+    func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType)
 }
 
 // MARK: Protocol - ProfileInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -29,12 +29,18 @@ final class ProfilePresenter {
 
 // MARK: Extension - ProfileViewToPresenterProtocol
 extension ProfilePresenter: ProfileViewToPresenterProtocol {
-    func exitButtonTapped() {
-        interactor.signOut()
+    func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType) {
+        switch type {
+        case .editProfile:
+            return
+        case .exit:
+            interactor.signOut()
+        }
     }
     
     func viewDidLoad() {
         view.setUsername(on: interactor.user.name)
+        view.setData(interactor.dataSource)
     }
 }
 

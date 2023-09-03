@@ -30,6 +30,9 @@
 		8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AF2A97992A002BBDC2 /* TimerManager.swift */; };
 		8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */; };
 		875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875896882AA4C2D0002027FA /* UIViewController+Alert.swift */; };
+		8758968D2AA4CAEA002027FA /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758968C2AA4CAEA002027FA /* ProfileTableViewCell.swift */; };
+		875896912AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875896902AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift */; };
+		875896932AA4CDC1002027FA /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875896922AA4CDC1002027FA /* ProfileViewModel.swift */; };
 		876A77FD2A9CC7B400E64269 /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 876A77FC2A9CC7B400E64269 /* AuthViewController.swift */; };
 		8775B9652AA0C20100EEA6F9 /* GlobalData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8775B9642AA0C20100EEA6F9 /* GlobalData.swift */; };
 		8775B9672AA0D49D00EEA6F9 /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8775B9662AA0D49D00EEA6F9 /* AuthManager.swift */; };
@@ -100,6 +103,9 @@
 		8705D8AF2A97992A002BBDC2 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		875896882AA4C2D0002027FA /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
+		8758968C2AA4CAEA002027FA /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
+		875896902AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		875896922AA4CDC1002027FA /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		876A77FC2A9CC7B400E64269 /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		8775B9642AA0C20100EEA6F9 /* GlobalData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalData.swift; sourceTree = "<group>"; };
 		8775B9662AA0D49D00EEA6F9 /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
@@ -224,6 +230,8 @@
 		8705D8A02A978A3D002BBDC2 /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				8758968E2AA4CB3D002027FA /* Model */,
+				8758968A2AA4CAD1002027FA /* View */,
 				8705D8A12A978A51002BBDC2 /* ProfilePresenter.swift */,
 				8705D8A22A978A51002BBDC2 /* ProfileRouter.swift */,
 				8705D8A32A978A51002BBDC2 /* ProfileViewController.swift */,
@@ -270,6 +278,39 @@
 				875896882AA4C2D0002027FA /* UIViewController+Alert.swift */,
 			);
 			path = UIViewController;
+			sourceTree = "<group>";
+		};
+		8758968A2AA4CAD1002027FA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				8758968B2AA4CAD9002027FA /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		8758968B2AA4CAD9002027FA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				8758968C2AA4CAEA002027FA /* ProfileTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
+		8758968E2AA4CB3D002027FA /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8758968F2AA4CB49002027FA /* Cell */,
+				875896922AA4CDC1002027FA /* ProfileViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8758968F2AA4CB49002027FA /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				875896902AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 		876A77FB2A9CC79000E64269 /* Auth */ = {
@@ -532,6 +573,7 @@
 				87A8DEEB2AA3087800F49A62 /* DatabaseService.swift in Sources */,
 				8775B9652AA0C20100EEA6F9 /* GlobalData.swift in Sources */,
 				87EE80B22A99C93800EF4ADD /* TrainingConfigurator.swift in Sources */,
+				8758968D2AA4CAEA002027FA /* ProfileTableViewCell.swift in Sources */,
 				8705D8A62A978A51002BBDC2 /* ProfilePresenter.swift in Sources */,
 				87C46D352A9E38530094A8F0 /* RegistrationPresenter.swift in Sources */,
 				8705D87C2A978427002BBDC2 /* ViewController.swift in Sources */,
@@ -552,6 +594,7 @@
 				87EE80A52A99C8BB00EF4ADD /* LocationManager.swift in Sources */,
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
 				878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */,
+				875896932AA4CDC1002027FA /* ProfileViewModel.swift in Sources */,
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
 				878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */,
 				87EE80A72A99C90B00EF4ADD /* TrainingManager.swift in Sources */,
@@ -564,6 +607,7 @@
 				8775B9672AA0D49D00EEA6F9 /* AuthManager.swift in Sources */,
 				878EBC112A98E347001219F9 /* TimerStatsLabel.swift in Sources */,
 				8705D89B2A978A38002BBDC2 /* StopwatchPresenter.swift in Sources */,
+				875896912AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift in Sources */,
 				8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */,
 				87EE80AE2A99C93800EF4ADD /* TrainingPresenter.swift in Sources */,
 				8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */,
