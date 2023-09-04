@@ -12,6 +12,7 @@ import Foundation
 protocol RegistrationViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
     func authButtonTapped()
+    func usernameIsChanged(to username: String)
     func emailIsChanged(to email: String)
     func passwordIsChanged(to password: String)
 }
@@ -19,6 +20,7 @@ protocol RegistrationViewToPresenterProtocol: AnyObject {
 // MARK: Protocol - RegistrationInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol RegistrationInteractorToPresenterProtocol: AnyObject {
     func userIsSingUp()
+    func userIsSignUpWithError(error: Error)
 }
 
 class RegistrationPresenter {
@@ -31,6 +33,10 @@ class RegistrationPresenter {
 
 // MARK: Extension - RegistrationViewToPresenterProtocol
 extension RegistrationPresenter: RegistrationViewToPresenterProtocol {
+    func usernameIsChanged(to username: String) {
+        interactor.setUsername(to: username)
+    }
+    
     func emailIsChanged(to email: String) {
         interactor.setEmail(to: email)
     }
@@ -40,6 +46,7 @@ extension RegistrationPresenter: RegistrationViewToPresenterProtocol {
     }
     
     func authButtonTapped() {
+        view.showActivityIndicator()
         interactor.signUp()
     }
     
@@ -50,7 +57,13 @@ extension RegistrationPresenter: RegistrationViewToPresenterProtocol {
 
 // MARK: Extension - RegistrationInteractorToPresenterProtocol
 extension RegistrationPresenter: RegistrationInteractorToPresenterProtocol {
+    func userIsSignUpWithError(error: Error) {
+        view.removeActivityIndicator()
+        view.showErrorAlert(with: error.localizedDescription)
+    }
+    
     func userIsSingUp() {
+        view.removeActivityIndicator()
         router.navigateToMainPage()
     }
 }
