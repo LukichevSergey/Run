@@ -15,7 +15,7 @@ protocol LoginPresenterToInteractorProtocol: AnyObject {
     func setPassword(to password: String)
 }
 
-class LoginInteractor {
+final class LoginInteractor {
 
     // MARK: Properties
     weak var presenter: LoginInteractorToPresenterProtocol!

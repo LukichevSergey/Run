@@ -22,7 +22,7 @@ protocol LoginInteractorToPresenterProtocol: AnyObject {
     func userIsSignInWithError(error: Error)
 }
 
-class LoginPresenter {
+final class LoginPresenter {
 
     // MARK: Properties
     var router: LoginPresenterToRouterProtocol!

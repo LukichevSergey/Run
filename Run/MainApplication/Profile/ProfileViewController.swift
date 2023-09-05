@@ -44,6 +44,7 @@ final class ProfileViewController: UIViewController {
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.reuseIdentifier)
         tableView.keyboardDismissMode = .onDrag
         tableView.separatorColor = .clear
+        tableView.backgroundColor = PaletteApp.white
 
         return tableView
     }()

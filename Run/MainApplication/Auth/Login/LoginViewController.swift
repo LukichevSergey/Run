@@ -22,32 +22,20 @@ protocol LoginRouterToViewProtocol: AnyObject {
     func popView()
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     // MARK: - Property
     var presenter: LoginViewToPresenterProtocol!
     
-    private lazy var usernameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 12
-        textField.layer.borderColor = PaletteApp.lightGreen.cgColor
-        textField.autocapitalizationType = .none
-        textField.tag = 1
+    private lazy var emailTextField: AuthTextField = {
+        let textField = AuthTextField(with: .email)
         textField.delegate = self
 
         return textField
     }()
     
-    private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 12
-        textField.layer.borderColor = PaletteApp.lightGreen.cgColor
-        textField.autocapitalizationType = .none
-        textField.tag = 2
+    private lazy var passwordTextField: AuthTextField = {
+        let textField = AuthTextField(with: .password)
         textField.delegate = self
 
         return textField
@@ -91,6 +79,9 @@ class LoginViewController: UIViewController {
 
         configureUI()
         presenter.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - private func
@@ -107,7 +98,7 @@ class LoginViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.8)
         }
         
-        [usernameTextField, passwordTextField, loginButton].forEach { item in
+        [emailTextField, passwordTextField, loginButton].forEach { item in
             item.snp.makeConstraints { make in
                 make.height.equalTo(50)
             }
@@ -118,6 +109,10 @@ class LoginViewController: UIViewController {
     
     @objc private func loginButtonTapped() {
         presenter.loginButtonTapped()
+    }
+    
+    @objc private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(false)
     }
 }
 
@@ -144,7 +139,7 @@ extension LoginViewController: LoginRouterToViewProtocol{
 }
 
 // MARK: UITextFieldDelegate
-extension LoginViewController: UITextFieldDelegate {
+extension LoginViewController: AuthTextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField.tag {
         case 1:

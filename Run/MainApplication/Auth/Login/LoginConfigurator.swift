@@ -8,7 +8,7 @@
 
 import UIKit
 
-class LoginConfigurator {
+final class LoginConfigurator {
     func configure() -> UIViewController {
         let view = LoginViewController()
         let presenter = LoginPresenter()
