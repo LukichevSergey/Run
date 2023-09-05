@@ -72,6 +72,8 @@
 		87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */; };
 		87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */; };
 		87EE80C72A99D27900EF4ADD /* coordinates.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 87EE80C62A99D27900EF4ADD /* coordinates.gpx */; };
+		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
+		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -137,6 +139,8 @@
 		87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDataView.swift; sourceTree = "<group>"; };
 		87EE80C62A99D27900EF4ADD /* coordinates.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = coordinates.gpx; sourceTree = "<group>"; };
+		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
+		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -236,6 +240,7 @@
 			children = (
 				8705D8AC2A979621002BBDC2 /* RoundButton.swift */,
 				878EBC102A98E347001219F9 /* TimerStatsLabel.swift */,
+				9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -341,6 +346,7 @@
 			children = (
 				878EBC132A98F212001219F9 /* TimerStatsViewModel.swift */,
 				87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */,
+				9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -515,6 +521,7 @@
 				87EE80B02A99C93800EF4ADD /* TrainingViewController.swift in Sources */,
 				87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */,
 				87B551782A9F8A1400726D59 /* AppUser.swift in Sources */,
+				9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */,
 				8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */,
 				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
 				878EBC142A98F212001219F9 /* TimerStatsViewModel.swift in Sources */,
@@ -538,6 +545,7 @@
 				878EBC192A98FB7E001219F9 /* Digest.swift in Sources */,
 				876A77FD2A9CC7B400E64269 /* AuthViewController.swift in Sources */,
 				87C46D382A9E38530094A8F0 /* RegistrationInteractor.swift in Sources */,
+				9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */,
 				87EE80A52A99C8BB00EF4ADD /* LocationManager.swift in Sources */,
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
 				878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */,

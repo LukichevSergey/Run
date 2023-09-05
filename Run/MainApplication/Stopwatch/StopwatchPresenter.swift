@@ -41,7 +41,10 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
             interactor.resetTimer()
             view.resetStartButton()
             view.setTimer(with: interactor.getTimerData())
+            
         case .roundButton:
+            let circleData = interactor.roundResult()
+            view.setCircleResult(with: circleData)
             return
         }
     }
@@ -50,6 +53,7 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
         interactor.requestAuthorization()
         
         view.setTimer(with: interactor.getTimerData())
+        
         
         interactor.timer.$elapsedTime.sink { [weak self] time in
             self?.view.setTimer(with: time)
@@ -61,5 +65,7 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
 extension StopwatchPresenter: StopwatchInteractorToPresenterProtocol {
     func userLocationIsUpdated() {
         view.setTimer(with: interactor.getTimerData())
+        
+        
     }
 }
