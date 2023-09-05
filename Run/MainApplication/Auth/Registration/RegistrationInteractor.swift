@@ -16,7 +16,7 @@ protocol RegistrationPresenterToInteractorProtocol: AnyObject {
     func setPassword(to password: String)
 }
 
-class RegistrationInteractor {
+final class RegistrationInteractor {
 
     // MARK: Properties
     weak var presenter: RegistrationInteractorToPresenterProtocol!

@@ -21,45 +21,27 @@ protocol RegistrationRouterToViewProtocol: AnyObject {
     func pushView(view: UIViewController)
 }
 
-class RegistrationViewController: UIViewController {
+final class RegistrationViewController: UIViewController {
     
     // MARK: - Property
     var presenter: RegistrationViewToPresenterProtocol!
     
-    private lazy var usernameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = Tx.Auth.name
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 12
-        textField.layer.borderColor = PaletteApp.lightGreen.cgColor
-        textField.autocapitalizationType = .none
-        textField.tag = 0
+    private lazy var usernameTextField: AuthTextField = {
+        let textField = AuthTextField(with: .name)
         textField.delegate = self
 
         return textField
     }()
     
-    private lazy var emailTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 12
-        textField.layer.borderColor = PaletteApp.lightGreen.cgColor
-        textField.autocapitalizationType = .none
-        textField.tag = 1
+    private lazy var emailTextField: AuthTextField = {
+        let textField = AuthTextField(with: .email)
         textField.delegate = self
 
         return textField
     }()
     
-    private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 12
-        textField.layer.borderColor = PaletteApp.lightGreen.cgColor
-        textField.autocapitalizationType = .none
-        textField.tag = 2
+    private lazy var passwordTextField: AuthTextField = {
+        let textField = AuthTextField(with: .password)
         textField.delegate = self
 
         return textField
@@ -103,6 +85,9 @@ class RegistrationViewController: UIViewController {
 
         configureUI()
         presenter.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - private func
@@ -131,6 +116,10 @@ class RegistrationViewController: UIViewController {
     @objc private func authButtonTapped() {
         presenter.authButtonTapped()
     }
+    
+    @objc private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(false)
+    }
 }
 
 // MARK: Extension - RegistrationPresenterToViewProtocol 
@@ -151,8 +140,8 @@ extension RegistrationViewController: RegistrationRouterToViewProtocol{
     }
 }
 
-// MARK: UITextFieldDelegate
-extension RegistrationViewController: UITextFieldDelegate {
+// MARK: AuthTextFieldDelegate
+extension RegistrationViewController: AuthTextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField.tag {
         case 0:

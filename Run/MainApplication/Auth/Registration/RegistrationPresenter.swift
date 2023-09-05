@@ -23,7 +23,7 @@ protocol RegistrationInteractorToPresenterProtocol: AnyObject {
     func userIsSignUpWithError(error: Error)
 }
 
-class RegistrationPresenter {
+final class RegistrationPresenter {
 
     // MARK: Properties
     var router: RegistrationPresenterToRouterProtocol!
