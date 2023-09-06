@@ -13,7 +13,7 @@ protocol LoginPresenterToRouterProtocol: AnyObject {
     func navigateToMainPage()
 }
 
-class LoginRouter {
+final class LoginRouter {
 
     // MARK: Properties
     weak var view: LoginRouterToViewProtocol!

@@ -6,8 +6,11 @@
 //
 
 import UIKit
+import Combine
 
 final class StartViewController: UIViewController {
+    
+    private var subscriptions = Set<AnyCancellable>()
         
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -17,10 +20,23 @@ final class StartViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
+    deinit {
+        subscriptions.removeAll()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
 
+        GlobalData.$userModel
+            .dropFirst()
+            .sink { [weak self] userModel in
+            
+                if userModel == nil {
+                    self?.navigationController?.presentedViewController?.dismiss(animated: false)
+                    self?.navigationController?.setViewControllers([StartViewController()], animated: false)
+                }
+            }.store(in: &subscriptions)
     }
     
     override func viewDidAppear(_ animated: Bool) {

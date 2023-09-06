@@ -13,7 +13,7 @@ protocol RegistrationPresenterToRouterProtocol: AnyObject {
     func navigateToMainPage()
 }
 
-class RegistrationRouter {
+final class RegistrationRouter {
 
     // MARK: Properties
     weak var view: RegistrationRouterToViewProtocol!

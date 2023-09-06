@@ -15,7 +15,7 @@ protocol LoginPresenterToInteractorProtocol: AnyObject {
     func setPassword(to password: String)
 }
 
-class LoginInteractor {
+final class LoginInteractor {
 
     // MARK: Properties
     weak var presenter: LoginInteractorToPresenterProtocol!
@@ -41,7 +41,7 @@ extension LoginInteractor: LoginPresenterToInteractorProtocol {
                 GlobalData.userModel = user
                 presenter?.userIsSingIn()
             case .failure(let error):
-                print(error.localizedDescription)
+                presenter?.userIsSignInWithError(error: error)
             }
         }
     }

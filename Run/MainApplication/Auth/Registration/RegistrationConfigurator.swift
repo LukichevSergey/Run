@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RegistrationConfigurator {
+final class RegistrationConfigurator {
     func configure() -> UIViewController {
         let view = RegistrationViewController()
         let presenter = RegistrationPresenter()

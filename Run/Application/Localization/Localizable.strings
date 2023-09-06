@@ -6,8 +6,25 @@
   
 */
 
+// MARK: - System
+"System.error" = "Ошибка";
+"System.close" = "Закрыть";
+
 // MARK: - Timer
+"Timer.title" = "Секундомер";
 "Timer.subtitle" = "Время";
 "Timer.kilometr" = "КМ";
 "Timer.temp" = "Темп";
 "Timer.averageTemp" = "Сред.Темп";
+
+// MARK: - Auth
+"Auth.signIn" = "Войти";
+"Auth.signUp" = "Зарегистрироваться";
+"Auth.name" = "Имя";
+
+// MARK: - Profile
+"Profile.title" = "Профиль";
+"Profile.exit" = "Выход";
+
+// MARK: - Training
+"Training.title" = "Тренировки";

@@ -10,7 +10,9 @@ import UIKit
 
 // MARK: Protocol - LoginPresenterToViewProtocol (Presenter -> View)
 protocol LoginPresenterToViewProtocol: AnyObject {
-
+    func showErrorAlert(with text: String)
+    func showActivityIndicator()
+    func removeActivityIndicator()
 }
 
 // MARK: Protocol - LoginRouterToViewProtocol (Router -> View)
@@ -20,30 +22,20 @@ protocol LoginRouterToViewProtocol: AnyObject {
     func popView()
 }
 
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
     
     // MARK: - Property
     var presenter: LoginViewToPresenterProtocol!
     
-    private lazy var usernameTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Email"
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 12
-        textField.layer.borderColor = PaletteApp.lightGreen.cgColor
-        textField.tag = 1
+    private lazy var emailTextField: AuthTextField = {
+        let textField = AuthTextField(with: .email)
         textField.delegate = self
 
         return textField
     }()
     
-    private lazy var passwordTextField: UITextField = {
-        let textField = UITextField()
-        textField.placeholder = "Password"
-        textField.borderStyle = .roundedRect
-        textField.layer.cornerRadius = 12
-        textField.layer.borderColor = PaletteApp.lightGreen.cgColor
-        textField.tag = 2
+    private lazy var passwordTextField: AuthTextField = {
+        let textField = AuthTextField(with: .password)
         textField.delegate = self
 
         return textField
@@ -51,7 +43,7 @@ class LoginViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Войти", for: .normal)
+        button.setTitle(Tx.Auth.signIn, for: .normal)
         button.titleLabel?.font = OurFonts.fontPTSansBold16
         button.backgroundColor = PaletteApp.lightGreen
         button.setTitleColor(PaletteApp.white, for: .normal)
@@ -87,6 +79,9 @@ class LoginViewController: UIViewController {
 
         configureUI()
         presenter.viewDidLoad()
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
+        view.addGestureRecognizer(tapGesture)
     }
     
     // MARK: - private func
@@ -103,7 +98,7 @@ class LoginViewController: UIViewController {
             make.width.equalToSuperview().multipliedBy(0.8)
         }
         
-        [usernameTextField, passwordTextField, loginButton].forEach { item in
+        [emailTextField, passwordTextField, loginButton].forEach { item in
             item.snp.makeConstraints { make in
                 make.height.equalTo(50)
             }
@@ -115,11 +110,17 @@ class LoginViewController: UIViewController {
     @objc private func loginButtonTapped() {
         presenter.loginButtonTapped()
     }
+    
+    @objc private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        view.endEditing(false)
+    }
 }
 
 // MARK: Extension - LoginPresenterToViewProtocol 
 extension LoginViewController: LoginPresenterToViewProtocol{
-    
+    func showErrorAlert(with text: String) {
+        showAlert(with: text)
+    }
 }
 
 // MARK: Extension - LoginRouterToViewProtocol
@@ -138,8 +139,8 @@ extension LoginViewController: LoginRouterToViewProtocol{
 }
 
 // MARK: UITextFieldDelegate
-extension LoginViewController: UITextFieldDelegate {
-    func textFieldDidEndEditing(_ textField: UITextField) {
+extension LoginViewController: AuthTextFieldDelegate {
+    func textFieldDidChangeSelection(_ textField: UITextField) {
         switch textField.tag {
         case 1:
             presenter.emailIsChanged(to: textField.text ?? "")
