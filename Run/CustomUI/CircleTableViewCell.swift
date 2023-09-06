@@ -36,7 +36,6 @@ final class CircleTableViewCell: UITableViewCell {
     
     private func commonInit() {
         addSubview(circleLabel)
-        // Располагаем circleLabel
         circleLabel.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.top).offset(10)
             make.leading.equalTo(contentView.snp.leading).offset(10)
