@@ -49,6 +49,7 @@ extension EditProfilePresenter: EditProfileViewToPresenterProtocol {
 extension EditProfilePresenter: EditProfileInteractorToPresenterProtocol {
     func userIsSaved() {
         view.removeActivityIndicator()
+        router.navigateToPreviouslyLevel()
     }
     
     func userIsSavedWithError(error: Error) {

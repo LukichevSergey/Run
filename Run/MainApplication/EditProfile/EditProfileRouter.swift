@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Protocol - EditProfilePresenterToRouterProtocol (Presenter -> Router)
 protocol EditProfilePresenterToRouterProtocol: AnyObject {
-
+    func navigateToPreviouslyLevel()
 }
 
 final class EditProfileRouter {
@@ -21,5 +21,7 @@ final class EditProfileRouter {
 
 // MARK: Extension - EditProfilePresenterToRouterProtocol
 extension EditProfileRouter: EditProfilePresenterToRouterProtocol {
-    
+    func navigateToPreviouslyLevel() {
+        view.popView()
+    }
 }

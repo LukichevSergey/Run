@@ -20,6 +20,7 @@ protocol EditProfilePresenterToViewProtocol: AnyObject {
 protocol EditProfileRouterToViewProtocol: AnyObject {
     func presentView(view: UIViewController)
     func pushView(view: UIViewController)
+    func popView()
 }
 
 final class EditProfileViewController: UIViewController {
@@ -121,6 +122,10 @@ extension EditProfileViewController: EditProfileRouterToViewProtocol{
 
     func pushView(view: UIViewController) {
         navigationController?.pushViewController(view, animated: true)
+    }
+    
+    func popView() {
+        navigationController?.popViewController(animated: true)
     }
 }
 

@@ -11,13 +11,12 @@ import Foundation
 // MARK: Protocol - ProfileViewToPresenterProtocol (View -> Presenter)
 protocol ProfileViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
-    func viewDidAppear()
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType)
 }
 
 // MARK: Protocol - ProfileInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol ProfileInteractorToPresenterProtocol: AnyObject {
-
+    func userIsChanged()
 }
 
 final class ProfilePresenter {
@@ -40,15 +39,14 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     }
     
     func viewDidLoad() {
+        interactor.subscribeOnUserChanged()
         view.setData(interactor.dataSource)
-    }
-    
-    func viewDidAppear() {
-        view.setUsername(on: interactor.user.getName())
     }
 }
 
 // MARK: Extension - ProfileInteractorToPresenterProtocol
 extension ProfilePresenter: ProfileInteractorToPresenterProtocol {
-    
+    func userIsChanged() {
+        view.setUsername(on: interactor.user.getName())
+    }
 }

@@ -44,7 +44,7 @@ extension RegistrationInteractor: RegistrationPresenterToInteractorProtocol {
         AuthManager.shared.signUp(username: username, email: email, password: password) { [weak presenter] result in
             switch result {
             case .success(let user):
-                GlobalData.userModel = user
+                GlobalData.userModel.send(user)
                 presenter?.userIsSingUp()
             case .failure(let error):
                 presenter?.userIsSignUpWithError(error: error)

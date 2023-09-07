@@ -42,7 +42,7 @@ extension EditProfileInteractor: EditProfilePresenterToInteractorProtocol {
         DatabaseService.shared.setUser(user: _profile) { [weak presenter] result in
             switch result {
             case .success(let user):
-                GlobalData.userModel = user
+                GlobalData.userModel.send(user)
                 presenter?.userIsSaved()
             case .failure(let error):
                 presenter?.userIsSavedWithError(error: error)
