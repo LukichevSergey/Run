@@ -54,7 +54,6 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
         
         view.setTimer(with: interactor.getTimerData())
         
-        
         interactor.timer.$elapsedTime.sink { [weak self] time in
             self?.view.setTimer(with: time)
         }.store(in: &subscriptions)
@@ -65,7 +64,5 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
 extension StopwatchPresenter: StopwatchInteractorToPresenterProtocol {
     func userLocationIsUpdated() {
         view.setTimer(with: interactor.getTimerData())
-        
-        
     }
 }

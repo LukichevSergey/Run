@@ -33,9 +33,8 @@ final class StopwatchInteractor {
     private var km = 0
     private var previousValue = "0:00"
     private var timeAllKM: Double = 0
-    
     private var circle = 0
-    
+    private var circleTimeAll: Double = 0
 
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
@@ -64,6 +63,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         locationManager.startUpdatingLocation()
         trainingManager.createTraining()
         trainingManager.setTrainingStatus(on: .start)
+        
     }
     
     func resetTimer() {
@@ -77,19 +77,21 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         previousValue = "0:00"
         timeAllKM = 0
         circle = 0
+        circleTimeAll = 0
     }
     
     func roundResult() -> CircleViewModel {
-        let timeRound = timer.elapsedTime.toMinutesAndSeconds()
-        
+                
         var coordinates = trainingManager.getCurrentTrainingCoordinates()
         coordinates.append(self.coordinates)
         let distance = coordinates.reduce(0) { partialResult, coordinates in
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
         circle += 1
+        let timeCircles = timer.elapsedTime - circleTimeAll
+        circleTimeAll += timeCircles
         
-         return CircleViewModel(circle: "Круг \(circle)", distance: "\(String(format: "%.2f", distance / 1000))", time: "\(timeRound)")
+        return CircleViewModel(circle: "Круг \(circle)", distance: "\(String(format: "%.2f", distance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
         
     }
         

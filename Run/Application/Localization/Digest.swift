@@ -35,4 +35,5 @@ enum Tx {
     enum Training {
         static let title = NSLocalizedString("Training.title", comment: "Тренировки")
     }
+    
 }

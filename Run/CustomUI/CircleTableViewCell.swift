@@ -9,12 +9,12 @@ import UIKit
 
 final class CircleTableViewCell: UITableViewCell {
     
-    
     private let circleLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.tintColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
+        
         return label
     }()
     
@@ -23,6 +23,7 @@ final class CircleTableViewCell: UITableViewCell {
         label.textColor = PaletteApp.black
         label.tintColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
+        
         return label
     }()
     
@@ -31,24 +32,25 @@ final class CircleTableViewCell: UITableViewCell {
         label.textColor = PaletteApp.black
         label.tintColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
+        
         return label
     }()
     
     private func commonInit() {
         addSubview(circleLabel)
-        circleLabel.snp.makeConstraints { (make) in
-            make.top.equalTo(contentView.snp.top).offset(10)
+        circleLabel.snp.makeConstraints { make in
+            make.top.equalTo(contentView).offset(10)
             make.leading.equalTo(contentView.snp.leading).offset(10)
         }
 
         addSubview(distancseLabel)
-        distancseLabel.snp.makeConstraints { (make) in
+        distancseLabel.snp.makeConstraints { make in
             make.top.equalTo(circleLabel.snp.top)
             make.leading.equalTo(circleLabel.snp.trailing).offset(40) // Отступ справа от circleLabel
         }
 
         addSubview(timeLabel)
-        timeLabel.snp.makeConstraints { (make) in
+        timeLabel.snp.makeConstraints { make in
             make.top.equalTo(distancseLabel.snp.top)
             make.leading.equalTo(distancseLabel.snp.trailing).offset(40) // Отступ справа от distancseLabel
         }
@@ -57,17 +59,14 @@ final class CircleTableViewCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         commonInit()
-        
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
 }
 
 extension CircleTableViewCell: ConfigurableViewProtocol {
-
     func configure(with model: CircleViewModel) {
         circleLabel.text = model.circle
         distancseLabel.text = model.distance

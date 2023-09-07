@@ -21,9 +21,6 @@ protocol StopwatchPresenterToViewProtocol: AnyObject {
 protocol StopwatchRouterToViewProtocol: AnyObject {
     func presentView(view: UIViewController)
     func pushView(view: UIViewController)
-
-    
-    
 }
 
 final class StopwatchViewController: UIViewController {
@@ -31,8 +28,8 @@ final class StopwatchViewController: UIViewController {
     // MARK: - Property
     var presenter: StopwatchViewToPresenterProtocol!
     
-    var arrayCircleResult = [CircleViewModel]()
-    
+    private var arrayCircleResult = [CircleViewModel]()
+        
     private lazy var gradientLayer = PaletteApp.timerBackgroundGradient()
     
     private lazy var dataView: TimerDataView = {
@@ -84,7 +81,7 @@ final class StopwatchViewController: UIViewController {
     private lazy var resultTable: UITableView = {
         let table = UITableView()
         table.tintColor = PaletteApp.black
-        table.backgroundColor = UIColor.clear
+        table.backgroundColor = .clear
         table.showsVerticalScrollIndicator = false
         
         return table
@@ -92,12 +89,12 @@ final class StopwatchViewController: UIViewController {
     
     private let headerLabel: UILabel = {
         let headerLabel = UILabel()
-        headerLabel.text = "Ваш статичный заголовок"
-        headerLabel.textColor = UIColor.black
-        headerLabel.font = UIFont.boldSystemFont(ofSize: 16)
+        headerLabel.textColor = PaletteApp.black
+        headerLabel.font = OurFonts.fontPTSansBold16
+        headerLabel.backgroundColor = PaletteApp.white
+        
         return headerLabel
     }()
-
     
     private lazy var buttonsHStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [roundButton, startButton, endButton])
@@ -121,16 +118,14 @@ final class StopwatchViewController: UIViewController {
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
-
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
         commonInit()
     }
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
         resultTable.delegate = self
@@ -138,11 +133,11 @@ final class StopwatchViewController: UIViewController {
         configureUI()
         presenter.viewDidLoad()
         resultTable.register(CircleTableViewCell.self, forCellReuseIdentifier: "cell")
+        
     }
-    
+
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         gradientLayer.frame = view.bounds
     }
     
@@ -151,8 +146,6 @@ final class StopwatchViewController: UIViewController {
 
     private func configureUI() {
         view.layer.insertSublayer(gradientLayer, at: 0)
-
-        
         view.addSubview(dataView)
         dataView.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -166,12 +159,11 @@ final class StopwatchViewController: UIViewController {
         
         view.addSubview(resultTable)
         resultTable.snp.makeConstraints { make in
-            make.top.equalToSuperview().offset(120)
-            make.bottom.equalToSuperview().inset(590)
-            make.leading.trailing.equalToSuperview().inset(30)
+            make.top.equalTo(dataView).offset(70)
+            make.bottom.equalTo(timerLabel).inset(80)
+            make.horizontalEdges.equalToSuperview().inset(30)
         }
     }
-    
 }
 
 // MARK: Extension - StopwatchPresenterToViewProtocol 
@@ -197,7 +189,6 @@ extension StopwatchViewController: StopwatchPresenterToViewProtocol{
     func setTimer(with time: Double) {
         timerLabel.text = time.formatTime()
     }
-
 }
 
 // MARK: Extension - StopwatchRouterToViewProtocol
@@ -216,7 +207,6 @@ extension StopwatchViewController: StopwatchRouterToViewProtocol{
 extension StopwatchViewController: RoundButtonDelegate {
     func roundButtonTapped(with type: RoundButton.RoundButtonType) {
         presenter.roundButtonTapped(with: type)
-        
     }
 }
 
@@ -239,13 +229,24 @@ extension StopwatchViewController: UITableViewDataSource, UITableViewDelegate {
     }
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView(frame: CGRect(x: 0, y: 0, width: tableView.frame.width, height: 50))
-        headerView.backgroundColor = .white
-
-        let label = UILabel(frame: CGRect(x: 16, y: 0, width: tableView.frame.width - 32, height: 50))
-        label.text = "Круг      Дистанция      Время"
-        label.textColor = .black
+        let headerView = UIView()
+        headerView.backgroundColor = PaletteApp.white
+        let headerTitles = ["Круг", "Дистанция", "Время"]
+        let separator = "       "
+        let labelText = headerTitles.joined(separator: separator)
+        let attributedText = NSMutableAttributedString(string: labelText)
+        attributedText.addAttribute(.kern, value: 0, range: NSRange(location: 0, length: labelText.count))
+        
+        let label = UILabel()
+        label.attributedText = attributedText
+        label.font = OurFonts.fontPTSansBold16
+        label.textColor = PaletteApp.black
         headerView.addSubview(label)
+
+        label.snp.makeConstraints { make in
+            make.horizontalEdges.equalToSuperview().offset(16)
+            make.verticalEdges.equalToSuperview()
+        }
 
         return headerView
     }
@@ -253,6 +254,7 @@ extension StopwatchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 50 
     }
-    
-
 }
+
+
+
