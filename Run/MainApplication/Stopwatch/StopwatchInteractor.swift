@@ -35,6 +35,7 @@ final class StopwatchInteractor {
     private var timeAllKM: Double = 0
     private var circle = 0
     private var circleTimeAll: Double = 0
+    private var circleDistanceAll: Double = 0
 
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
@@ -91,7 +92,10 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let timeCircles = timer.elapsedTime - circleTimeAll
         circleTimeAll += timeCircles
         
-        return CircleViewModel(circle: "Круг \(circle)", distance: "\(String(format: "%.2f", distance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
+        let circleDistance = distance - circleDistanceAll
+        circleDistanceAll += circleDistance
+        
+        return CircleViewModel(circle: "Круг \(circle)", distance: "\(String(format: "%.2f", circleDistance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
     }
         
     func getTimerData() -> TimerViewModel {
