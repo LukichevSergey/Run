@@ -82,6 +82,12 @@ final class ProfileViewController: UIViewController {
         presenter.viewDidLoad()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        presenter.viewDidAppear()
+    }
+    
     // MARK: - private func
     private func commonInit() {
 

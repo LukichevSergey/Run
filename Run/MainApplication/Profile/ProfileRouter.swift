@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: Protocol - ProfilePresenterToRouterProtocol (Presenter -> Router)
 protocol ProfilePresenterToRouterProtocol: AnyObject {
-
+    func navigateToEditProfile(with profile: AppUser)
 }
 
 final class ProfileRouter {
@@ -21,5 +21,8 @@ final class ProfileRouter {
 
 // MARK: Extension - ProfilePresenterToRouterProtocol
 extension ProfileRouter: ProfilePresenterToRouterProtocol {
-    
+    func navigateToEditProfile(with profile: AppUser) {
+        let editProfileViewController = EditProfileConfigurator().configure(with: profile)
+        view.pushView(view: editProfileViewController)
+    }
 }
