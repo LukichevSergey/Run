@@ -79,6 +79,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         timeAllKM = 0
         circle = 0
         circleTimeAll = 0
+        circleDistanceAll = 0
     }
     
     func roundResult() -> CircleViewModel {
