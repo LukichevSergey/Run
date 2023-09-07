@@ -37,19 +37,19 @@ final class CircleTableViewCell: UITableViewCell {
     }()
     
     private func commonInit() {
-        addSubview(circleLabel)
+        contentView.addSubview(circleLabel)
         circleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(10)
-            make.leading.equalTo(contentView.snp.leading).offset(10)
+            make.leading.equalTo(contentView).offset(10)
         }
 
-        addSubview(distancseLabel)
+        contentView.addSubview(distancseLabel)
         distancseLabel.snp.makeConstraints { make in
             make.top.equalTo(circleLabel.snp.top)
             make.leading.equalTo(circleLabel.snp.trailing).offset(40) // Отступ справа от circleLabel
         }
 
-        addSubview(timeLabel)
+        contentView.addSubview(timeLabel)
         timeLabel.snp.makeConstraints { make in
             make.top.equalTo(distancseLabel.snp.top)
             make.leading.equalTo(distancseLabel.snp.trailing).offset(40) // Отступ справа от distancseLabel

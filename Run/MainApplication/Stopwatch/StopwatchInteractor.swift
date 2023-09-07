@@ -92,7 +92,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         circleTimeAll += timeCircles
         
         return CircleViewModel(circle: "Круг \(circle)", distance: "\(String(format: "%.2f", distance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
-        
     }
         
     func getTimerData() -> TimerViewModel {

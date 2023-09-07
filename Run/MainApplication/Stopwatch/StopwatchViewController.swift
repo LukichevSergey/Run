@@ -159,8 +159,8 @@ final class StopwatchViewController: UIViewController {
         
         view.addSubview(resultTable)
         resultTable.snp.makeConstraints { make in
-            make.top.equalTo(dataView).offset(70)
-            make.bottom.equalTo(timerLabel).inset(80)
+            make.top.equalTo(dataView.snp.bottom).offset(10)
+            make.bottom.equalTo(timerLabel.snp.top).inset(10)
             make.horizontalEdges.equalToSuperview().inset(30)
         }
     }
@@ -215,7 +215,7 @@ extension StopwatchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return arrayCircleResult.count
     }
-
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CircleTableViewCell
         guard let cell = cell else { return UITableViewCell() }
@@ -227,34 +227,15 @@ extension StopwatchViewController: UITableViewDataSource, UITableViewDelegate {
         
         return cell
     }
-
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = UIView()
+        let headerView = HeaderCircleTableView()
         headerView.backgroundColor = PaletteApp.white
-        let headerTitles = ["Круг", "Дистанция", "Время"]
-        let separator = "       "
-        let labelText = headerTitles.joined(separator: separator)
-        let attributedText = NSMutableAttributedString(string: labelText)
-        attributedText.addAttribute(.kern, value: 0, range: NSRange(location: 0, length: labelText.count))
-        
-        let label = UILabel()
-        label.attributedText = attributedText
-        label.font = OurFonts.fontPTSansBold16
-        label.textColor = PaletteApp.black
-        headerView.addSubview(label)
-
-        label.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().offset(16)
-            make.verticalEdges.equalToSuperview()
-        }
 
         return headerView
     }
-
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 50 
+        return 50
     }
 }
-
-
-
