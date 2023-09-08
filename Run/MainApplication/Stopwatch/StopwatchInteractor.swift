@@ -30,8 +30,8 @@ final class StopwatchInteractor {
     
     private var coordinates: [CLLocationCoordinate2D] = []
     
-    private var km = 0
-    private var previousValue = "0:00"
+    private var kmIteration = 0
+    private var kmTraveled: Double = 0
     private var timeAllKM: Double = 0
     private var circle = 0
     private var circleTimeAll: Double = 0
@@ -74,8 +74,8 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.updateTraining(with: coordinates)
         trainingManager.stopTraining()
         coordinates = []
-        km = 0
-        previousValue = "0:00"
+        kmIteration = 0
+        kmTraveled = 0
         timeAllKM = 0
         circle = 0
         circleTimeAll = 0
@@ -83,7 +83,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     }
     
     func roundResult() -> CircleViewModel {
-                
+        
         var coordinates = trainingManager.getCurrentTrainingCoordinates()
         coordinates.append(self.coordinates)
         let distance = coordinates.reduce(0) { partialResult, coordinates in
@@ -92,13 +92,13 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         circle += 1
         let timeCircles = timer.elapsedTime - circleTimeAll
         circleTimeAll += timeCircles
-
+        
         let circleDistance = distance - circleDistanceAll
         circleDistanceAll += circleDistance
         
         return CircleViewModel(circle: "Круг \(circle)", distance: "\(String(format: "%.2f", circleDistance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
     }
-        
+    
     func getTimerData() -> TimerViewModel {
         var coordinates = trainingManager.getCurrentTrainingCoordinates()
         coordinates.append(self.coordinates)
@@ -109,19 +109,24 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         var avgerageTemp: String {
             let avgtemp = (timer.elapsedTime / distance) * 1000
             let formatedTime = avgtemp.toMinutesAndSeconds()
+            
             return "\(formatedTime)"
         }
         
         var tempOneKillomert: String {
-            if Int(distance / 1000) > km {
-                let tempOneKM = (1000 / (distance - Double((km * 1000)))) * (timer.elapsedTime - timeAllKM) < 0 ? 0.0 : (1000 / (distance - Double((km * 1000)))) * (timer.elapsedTime - timeAllKM) // расчет формулы (1000м. / (общее расстояние - ((1км(зависит от того сколько пробежал) * 1000)))) * (общее время - время до прыдыдущего пройденного КМ)
-                let minutTempOneKM = tempOneKM.toMinutesAndSeconds()
-                timeAllKM += timer.elapsedTime
-                km += 1
-                previousValue = "\(minutTempOneKM)"
-                return "\(minutTempOneKM)"
+            if Int(distance / 1000) > kmIteration {
+                kmIteration += 1
+                kmTraveled = distance
+                timeAllKM = timer.elapsedTime
+                let length = 1000 / (distance - kmTraveled)
+                let tempSec = (timer.elapsedTime - timeAllKM) * length
+                
+                return tempSec.toMinutesAndSeconds()
             } else {
-                return "\(previousValue)"
+                let length = 1000 / (distance - kmTraveled)
+                let tempSec = (timer.elapsedTime - timeAllKM) * length
+                
+                return tempSec.toMinutesAndSeconds()
             }
         }
                 
