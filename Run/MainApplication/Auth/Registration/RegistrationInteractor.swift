@@ -46,12 +46,12 @@ extension RegistrationInteractor: RegistrationPresenterToInteractorProtocol {
             do {
                 let user = try await AuthManager.shared.signUp(username: username, email: email, password: password)
                 try await DatabaseService.shared.setUser(user: user)
-                try await DatabaseService.shared.setBalance(balance: Balance(userId: user.id))
-                try await DatabaseService.shared.setSneakers(sneakers: Sneakers(userId: user.id))
-                GlobalData.userModel = user
+                try await DatabaseService.shared.setBalance(balance: Balance(userId: user.getId()))
+                try await DatabaseService.shared.setSneakers(sneakers: Sneakers(userId: user.getId()))
+                GlobalData.userModel.send(user)
                 presenter?.userIsSingUp()
             } catch {
-                GlobalData.userModel = nil
+                GlobalData.userModel.send(nil)
                 presenter?.userIsSignUpWithError(error: error)
             }
         }

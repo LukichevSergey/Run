@@ -40,10 +40,10 @@ extension LoginInteractor: LoginPresenterToInteractorProtocol {
             do {
                 let userResult = try await AuthManager.shared.signIn(email: email, password: password)
                 let user = try await DatabaseService.shared.getUser(with: userResult.user.uid)
-                GlobalData.userModel = user
+                GlobalData.userModel.send(user)
                 presenter?.userIsSingIn()
             } catch {
-                GlobalData.userModel = nil
+                GlobalData.userModel.send(nil)
                 presenter?.userIsSignInWithError(error: error)
             }
         }

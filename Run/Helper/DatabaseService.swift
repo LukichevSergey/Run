@@ -32,7 +32,7 @@ final class DatabaseService {
     }
     
     func setUser(user: AppUser) async throws {
-        try await userRef.document(user.id).setData(user.toDict)
+        try await userRef.document(user.getId()).setData(user.toDict)
     }
     
     func setBalance(balance: Balance) async throws {
