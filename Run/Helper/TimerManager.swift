@@ -18,6 +18,10 @@ final class TimerManager {
     func startTimer() {
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             self.elapsedTime += 0.1
+            
+            if let timer = self.timer {
+                RunLoop.main.add(timer, forMode: RunLoop.Mode.common)
+            }
         }
     }
     
