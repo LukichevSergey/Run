@@ -28,7 +28,7 @@ final class StartViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .white
 
-        GlobalData.$userModel
+        GlobalData.userModel
             .dropFirst()
             .sink { [weak self] userModel in
             
@@ -42,7 +42,7 @@ final class StartViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
 
-        if GlobalData.userModel == nil {
+        if GlobalData.userModel.value == nil {
             let authView = AuthViewController()
             navigationController?.pushViewController(authView, animated: false)
         } else {

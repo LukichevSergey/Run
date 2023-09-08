@@ -30,6 +30,11 @@
 		8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8AF2A97992A002BBDC2 /* TimerManager.swift */; };
 		8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */; };
 		871815942AA76418007CD141 /* AuthTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871815932AA76418007CD141 /* AuthTextField.swift */; };
+		8718159B2AA76C0C007CD141 /* EditProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871815962AA76C0C007CD141 /* EditProfilePresenter.swift */; };
+		8718159C2AA76C0C007CD141 /* EditProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871815972AA76C0C007CD141 /* EditProfileRouter.swift */; };
+		8718159D2AA76C0C007CD141 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871815982AA76C0C007CD141 /* EditProfileViewController.swift */; };
+		8718159E2AA76C0C007CD141 /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871815992AA76C0C007CD141 /* EditProfileInteractor.swift */; };
+		8718159F2AA76C0C007CD141 /* EditProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718159A2AA76C0C007CD141 /* EditProfileConfigurator.swift */; };
 		875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875896882AA4C2D0002027FA /* UIViewController+Alert.swift */; };
 		8758968D2AA4CAEA002027FA /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758968C2AA4CAEA002027FA /* ProfileTableViewCell.swift */; };
 		875896912AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875896902AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift */; };
@@ -78,6 +83,9 @@
 		87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */; };
 		87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */; };
 		87EE80C72A99D27900EF4ADD /* coordinates.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 87EE80C62A99D27900EF4ADD /* coordinates.gpx */; };
+		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
+		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
+		9BA2E2912AAA820700A947E2 /* HeaderCircleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -105,6 +113,11 @@
 		8705D8AF2A97992A002BBDC2 /* TimerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerManager.swift; sourceTree = "<group>"; };
 		8705D8B22A979A38002BBDC2 /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		871815932AA76418007CD141 /* AuthTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTextField.swift; sourceTree = "<group>"; };
+		871815962AA76C0C007CD141 /* EditProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfilePresenter.swift; sourceTree = "<group>"; };
+		871815972AA76C0C007CD141 /* EditProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileRouter.swift; sourceTree = "<group>"; };
+		871815982AA76C0C007CD141 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
+		871815992AA76C0C007CD141 /* EditProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
+		8718159A2AA76C0C007CD141 /* EditProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfigurator.swift; sourceTree = "<group>"; };
 		875896882AA4C2D0002027FA /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		8758968C2AA4CAEA002027FA /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		875896902AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -149,6 +162,9 @@
 		87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDataView.swift; sourceTree = "<group>"; };
 		87EE80C62A99D27900EF4ADD /* coordinates.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = coordinates.gpx; sourceTree = "<group>"; };
+		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
+		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
+		9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCircleTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +223,7 @@
 		8705D88B2A9786B7002BBDC2 /* MainApplication */ = {
 			isa = PBXGroup;
 			children = (
+				871815952AA76BEC007CD141 /* EditProfile */,
 				876A77FB2A9CC79000E64269 /* Auth */,
 				87EE80A82A99C92A00EF4ADD /* Training */,
 				8705D8A02A978A3D002BBDC2 /* Profile */,
@@ -250,7 +267,9 @@
 			children = (
 				8705D8AC2A979621002BBDC2 /* RoundButton.swift */,
 				878EBC102A98E347001219F9 /* TimerStatsLabel.swift */,
+				9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */,
 				871815932AA76418007CD141 /* AuthTextField.swift */,
+				9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -275,6 +294,18 @@
 				878EBBFF2A98D52F001219F9 /* UIColor */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		871815952AA76BEC007CD141 /* EditProfile */ = {
+			isa = PBXGroup;
+			children = (
+				871815962AA76C0C007CD141 /* EditProfilePresenter.swift */,
+				871815972AA76C0C007CD141 /* EditProfileRouter.swift */,
+				871815982AA76C0C007CD141 /* EditProfileViewController.swift */,
+				871815992AA76C0C007CD141 /* EditProfileInteractor.swift */,
+				8718159A2AA76C0C007CD141 /* EditProfileConfigurator.swift */,
+			);
+			path = EditProfile;
 			sourceTree = "<group>";
 		};
 		875896872AA4C2BE002027FA /* UIViewController */ = {
@@ -399,6 +430,7 @@
 			children = (
 				878EBC132A98F212001219F9 /* TimerStatsViewModel.swift */,
 				87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */,
+				9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -570,16 +602,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8718159D2AA76C0C007CD141 /* EditProfileViewController.swift in Sources */,
 				87EE80B02A99C93800EF4ADD /* TrainingViewController.swift in Sources */,
 				87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */,
 				87B551782A9F8A1400726D59 /* AppUser.swift in Sources */,
+				9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */,
 				8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */,
+				9BA2E2912AAA820700A947E2 /* HeaderCircleTableView.swift in Sources */,
 				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
 				878EBC142A98F212001219F9 /* TimerStatsViewModel.swift in Sources */,
 				87A8DEEB2AA3087800F49A62 /* DatabaseService.swift in Sources */,
 				8775B9652AA0C20100EEA6F9 /* GlobalData.swift in Sources */,
 				87EE80B22A99C93800EF4ADD /* TrainingConfigurator.swift in Sources */,
 				871815942AA76418007CD141 /* AuthTextField.swift in Sources */,
+				8718159F2AA76C0C007CD141 /* EditProfileConfigurator.swift in Sources */,
 				8758968D2AA4CAEA002027FA /* ProfileTableViewCell.swift in Sources */,
 				8705D8A62A978A51002BBDC2 /* ProfilePresenter.swift in Sources */,
 				87C46D352A9E38530094A8F0 /* RegistrationPresenter.swift in Sources */,
@@ -593,17 +629,20 @@
 				8705D8A92A978A51002BBDC2 /* ProfileInteractor.swift in Sources */,
 				875896952AA4D59A002027FA /* UIViewController+ActivityIndicator.swift in Sources */,
 				87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */,
+				8718159E2AA76C0C007CD141 /* EditProfileInteractor.swift in Sources */,
 				87C46D392A9E38530094A8F0 /* RegistrationConfigurator.swift in Sources */,
 				87C46D2B2A9E37DF0094A8F0 /* LoginRouter.swift in Sources */,
 				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,
 				878EBC192A98FB7E001219F9 /* Digest.swift in Sources */,
 				876A77FD2A9CC7B400E64269 /* AuthViewController.swift in Sources */,
 				87C46D382A9E38530094A8F0 /* RegistrationInteractor.swift in Sources */,
+				9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */,
 				87EE80A52A99C8BB00EF4ADD /* LocationManager.swift in Sources */,
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
 				878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */,
 				875896932AA4CDC1002027FA /* ProfileViewModel.swift in Sources */,
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
+				8718159C2AA76C0C007CD141 /* EditProfileRouter.swift in Sources */,
 				878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */,
 				87EE80A72A99C90B00EF4ADD /* TrainingManager.swift in Sources */,
 				87C46D2C2A9E37DF0094A8F0 /* LoginViewController.swift in Sources */,
@@ -623,6 +662,7 @@
 				8705D8A82A978A51002BBDC2 /* ProfileViewController.swift in Sources */,
 				8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */,
 				87C46D2A2A9E37DF0094A8F0 /* LoginPresenter.swift in Sources */,
+				8718159B2AA76C0C007CD141 /* EditProfilePresenter.swift in Sources */,
 				8705D87A2A978427002BBDC2 /* SceneDelegate.swift in Sources */,
 				8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */,
 				87C46D362A9E38530094A8F0 /* RegistrationRouter.swift in Sources */,

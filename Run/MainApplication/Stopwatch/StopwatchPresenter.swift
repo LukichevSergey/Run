@@ -41,7 +41,10 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
             interactor.resetTimer()
             view.resetStartButton()
             view.setTimer(with: interactor.getTimerData())
+            
         case .roundButton:
+            let circleData = interactor.roundResult()
+            view.setCircleResult(with: circleData)
             return
         }
     }

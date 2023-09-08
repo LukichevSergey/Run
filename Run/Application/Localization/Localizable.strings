@@ -28,3 +28,8 @@
 
 // MARK: - Training
 "Training.title" = "Тренировки";
+
+// MARK: - CircleTableResult
+"CircleTableResult.circle" = "Круг";
+"CircleTableResult.distance" = "Дистанция";
+"CircleTableResult.time" = "Время";
