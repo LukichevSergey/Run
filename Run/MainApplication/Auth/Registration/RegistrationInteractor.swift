@@ -40,13 +40,18 @@ extension RegistrationInteractor: RegistrationPresenterToInteractorProtocol {
         self.password = password
     }
     
+    @MainActor
     func signUp() {
-        AuthManager.shared.signUp(username: username, email: email, password: password) { [weak presenter] result in
-            switch result {
-            case .success(let user):
+        Task {
+            do {
+                let user = try await AuthManager.shared.signUp(username: username, email: email, password: password)
+                try await DatabaseService.shared.setUser(user: user)
+                try await DatabaseService.shared.setBalance(balance: Balance(userId: user.id))
+                try await DatabaseService.shared.setSneakers(sneakers: Sneakers(userId: user.id))
                 GlobalData.userModel = user
                 presenter?.userIsSingUp()
-            case .failure(let error):
+            } catch {
+                GlobalData.userModel = nil
                 presenter?.userIsSignUpWithError(error: error)
             }
         }

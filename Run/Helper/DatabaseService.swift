@@ -16,29 +16,30 @@ final class DatabaseService {
         return db.collection("users")
     }
     
-    private init() { }
-    
-    func setUser(user: AppUser, completion: @escaping (Result<AppUser, Error>) -> Void) {
-        userRef.document(user.id).setData(user.toDict) { error in
-            if let error {
-                completion(.failure(error))
-            } else {
-                completion(.success(user))
-            }
-        }
+    private var sneakersRef: CollectionReference {
+        return db.collection("sneakers")
     }
     
-    func getUser(completion: @escaping (Result<AppUser, Error>) -> Void) {
-        guard let currentUser = AuthManager.shared.currentUser else { return }
-        userRef.document(currentUser.uid).getDocument { doc, error in
-            guard let snapshot = doc else { return }
-            guard let data = snapshot.data() else { return }
-            guard let userName = data["name"] as? String else { return }
-            guard let id = data["id"] as? String else { return }
-            
-            let user = AppUser(id: id, name: userName)
-        
-            completion(.success(user))
-        }
+    private var balanceRef: CollectionReference {
+        return db.collection("balance")
+    }
+    
+    private init() { }
+    
+    func getUser(with id: String) async throws -> AppUser? {
+        let snapshot = try await userRef.document(id).getDocument()
+        return snapshot.data().flatMap({ AppUser(from: $0) })
+    }
+    
+    func setUser(user: AppUser) async throws {
+        try await userRef.document(user.id).setData(user.toDict)
+    }
+    
+    func setBalance(balance: Balance) async throws {
+        try await balanceRef.document(balance.id).setData(balance.toDict)
+    }
+    
+    func setSneakers(sneakers: Sneakers) async throws {
+        try await sneakersRef.document(sneakers.id).setData(sneakers.toDict)
     }
 }
