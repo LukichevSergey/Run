@@ -38,7 +38,7 @@ extension LoginInteractor: LoginPresenterToInteractorProtocol {
         AuthManager.shared.signIn(email: email, password: password) { [weak presenter] result in
             switch result {
             case .success(let user):
-                GlobalData.userModel = user
+                GlobalData.userModel.send(user)
                 presenter?.userIsSingIn()
             case .failure(let error):
                 presenter?.userIsSignInWithError(error: error)

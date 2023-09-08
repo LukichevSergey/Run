@@ -16,7 +16,7 @@ protocol ProfileViewToPresenterProtocol: AnyObject {
 
 // MARK: Protocol - ProfileInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol ProfileInteractorToPresenterProtocol: AnyObject {
-
+    func userIsChanged()
 }
 
 final class ProfilePresenter {
@@ -32,19 +32,21 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType) {
         switch type {
         case .editProfile:
-            return
+            router.navigateToEditProfile(with: interactor.user)
         case .exit:
             interactor.signOut()
         }
     }
     
     func viewDidLoad() {
-        view.setUsername(on: interactor.user.name)
+        interactor.subscribeOnUserChanged()
         view.setData(interactor.dataSource)
     }
 }
 
 // MARK: Extension - ProfileInteractorToPresenterProtocol
 extension ProfilePresenter: ProfileInteractorToPresenterProtocol {
-    
+    func userIsChanged() {
+        view.setUsername(on: interactor.user.getName())
+    }
 }

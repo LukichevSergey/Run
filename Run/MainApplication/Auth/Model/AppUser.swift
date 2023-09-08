@@ -7,10 +7,22 @@
 
 import Foundation
 
-class AppUser: Codable {
+final class AppUser: Codable {
 
-    let id: String
-    var name: String
+    private let id: String
+    private var name: String
+    
+    func setName(on name: String) {
+        self.name = name
+    }
+    
+    func getName() -> String {
+        return name
+    }
+    
+    func getId() -> String {
+        return id
+    }
     
     internal init(id: String, name: String) {
         self.id = id

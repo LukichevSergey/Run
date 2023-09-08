@@ -19,7 +19,7 @@ final class DatabaseService {
     private init() { }
     
     func setUser(user: AppUser, completion: @escaping (Result<AppUser, Error>) -> Void) {
-        userRef.document(user.id).setData(user.toDict) { error in
+        userRef.document(user.getId()).setData(user.toDict) { error in
             if let error {
                 completion(.failure(error))
             } else {

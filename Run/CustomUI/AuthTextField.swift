@@ -11,6 +11,10 @@ protocol AuthTextFieldDelegate: AnyObject {
     func textFieldDidChangeSelection(_ textField: UITextField)
 }
 
+protocol TextFieldInterface: AnyObject, UIView {
+    func setText(text: String)
+}
+
 final class AuthTextField: UIView {
     
     weak var delegate: AuthTextFieldDelegate?
@@ -99,5 +103,11 @@ final class AuthTextField: UIView {
 extension AuthTextField: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         delegate?.textFieldDidChangeSelection(textField)
+    }
+}
+
+extension AuthTextField: TextFieldInterface {
+    func setText(text: String) {
+        textField.text = text
     }
 }
