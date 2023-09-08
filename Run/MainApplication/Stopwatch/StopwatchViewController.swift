@@ -159,8 +159,8 @@ final class StopwatchViewController: UIViewController {
         
         view.addSubview(resultTable)
         resultTable.snp.makeConstraints { make in
-            make.centerY.equalTo(dataView.snp.bottom).offset(110)
-            make.height.equalTo(200)
+            make.top.equalTo(dataView.snp.bottom).offset(10)
+            make.bottom.equalTo(timerLabel.snp.top).inset(10)
             make.horizontalEdges.equalToSuperview().inset(30)
         }
     }
