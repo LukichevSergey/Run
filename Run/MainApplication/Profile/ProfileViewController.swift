@@ -139,7 +139,7 @@ extension ProfileViewController: ProfilePresenterToViewProtocol{
     }
     
     func setBalance(balance: Double) {
-        balanceLabel.text = "Баланс: \(balance)$"
+        balanceLabel.text = Tx.Profile.getBalance(balance: balance)
     }
 }
 
