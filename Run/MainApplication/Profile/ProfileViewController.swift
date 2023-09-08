@@ -11,7 +11,11 @@ import UIKit
 // MARK: Protocol - ProfilePresenterToViewProtocol (Presenter -> View)
 protocol ProfilePresenterToViewProtocol: AnyObject {
     func setUsername(on name: String)
+    func setBalance(balance: Double)
     func setData(_ data: ProfileViewModel)
+    
+    func showActivityIndicator()
+    func removeActivityIndicator()
 }
 
 // MARK: Protocol - ProfileRouterToViewProtocol (Router -> View)
@@ -37,6 +41,23 @@ final class ProfileViewController: UIViewController {
         label.numberOfLines = 0
         
         return label
+    }()
+    
+    private lazy var balanceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = PaletteApp.black
+        label.font = OurFonts.fontPTSansBold20
+        label.textAlignment = .right
+        label.numberOfLines = 1
+        
+        return label
+    }()
+    
+    private lazy var topHStack: UIStackView = {
+        let stack = UIStackView(arrangedSubviews: [nameLabel, balanceLabel])
+        stack.axis = .horizontal
+        
+        return stack
     }()
     
     private(set) lazy var tableView: UITableView = {
@@ -88,8 +109,8 @@ final class ProfileViewController: UIViewController {
     }
 
     private func configureUI() {
-        view.addSubview(nameLabel)
-        nameLabel.snp.makeConstraints { make in
+        view.addSubview(topHStack)
+        topHStack.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
         }
@@ -115,6 +136,10 @@ extension ProfileViewController: ProfilePresenterToViewProtocol{
     
     func setUsername(on name: String) {
         nameLabel.text = name
+    }
+    
+    func setBalance(balance: Double) {
+        balanceLabel.text = "Баланс: \(balance)$"
     }
 }
 

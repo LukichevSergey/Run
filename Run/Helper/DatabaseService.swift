@@ -35,6 +35,12 @@ final class DatabaseService {
         try await userRef.document(user.getId()).setData(user.toDict)
     }
     
+    func getBalance(for userId: String) async throws -> Balance? {
+        let snapshot = try await balanceRef.whereField("userId", isEqualTo: userId).getDocuments()
+        let data = snapshot.documents.first?.data()
+        return data.flatMap({ Balance(from: $0) })
+    }
+    
     func setBalance(balance: Balance) async throws {
         try await balanceRef.document(balance.id).setData(balance.toDict)
     }
