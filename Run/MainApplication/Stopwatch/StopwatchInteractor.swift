@@ -92,7 +92,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         circle += 1
         let timeCircles = timer.elapsedTime - circleTimeAll
         circleTimeAll += timeCircles
-        
+
         let circleDistance = distance - circleDistanceAll
         circleDistanceAll += circleDistance
         

@@ -11,7 +11,7 @@ class HeaderCircleTableView: UIView {
     
     private let circleLabel: UILabel = {
         let label = UILabel()
-        label.text = "Круг"
+        label.text = Tx.CircleTableResult.circle
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
 
@@ -20,7 +20,7 @@ class HeaderCircleTableView: UIView {
     
     private let distanceLabel: UILabel = {
         let label = UILabel()
-        label.text = "Дистанция"
+        label.text = Tx.CircleTableResult.distance
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
 
@@ -29,7 +29,7 @@ class HeaderCircleTableView: UIView {
     
     private let timeLbel: UILabel = {
         let label = UILabel()
-        label.text = "Время"
+        label.text = Tx.CircleTableResult.time
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
 

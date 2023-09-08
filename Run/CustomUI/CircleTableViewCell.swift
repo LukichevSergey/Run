@@ -12,7 +12,6 @@ final class CircleTableViewCell: UITableViewCell {
     private let circleLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
-        label.tintColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
         
         return label
@@ -21,7 +20,6 @@ final class CircleTableViewCell: UITableViewCell {
     private let distancseLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
-        label.tintColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
         
         return label
@@ -30,7 +28,6 @@ final class CircleTableViewCell: UITableViewCell {
     private let timeLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
-        label.tintColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
         
         return label
@@ -45,13 +42,13 @@ final class CircleTableViewCell: UITableViewCell {
 
         contentView.addSubview(distancseLabel)
         distancseLabel.snp.makeConstraints { make in
-            make.top.equalTo(circleLabel.snp.top)
+            make.top.equalTo(circleLabel)
             make.leading.equalTo(circleLabel.snp.trailing).offset(40) // Отступ справа от circleLabel
         }
 
         contentView.addSubview(timeLabel)
         timeLabel.snp.makeConstraints { make in
-            make.top.equalTo(distancseLabel.snp.top)
+            make.top.equalTo(distancseLabel)
             make.leading.equalTo(distancseLabel.snp.trailing).offset(40) // Отступ справа от distancseLabel
         }
     }
