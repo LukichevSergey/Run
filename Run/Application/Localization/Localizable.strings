@@ -24,6 +24,7 @@
 
 // MARK: - Profile
 "Profile.title" = "Профиль";
+"Profile.balance" = "Баланс: %.2f $";
 "Profile.exit" = "Выход";
 
 // MARK: - Training

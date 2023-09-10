@@ -38,14 +38,15 @@ extension EditProfileInteractor: EditProfilePresenterToInteractorProtocol {
         _profile.setName(on: name)
     }
     
+    @MainActor
     func saveProfile() {
-        DatabaseService.shared.setUser(user: _profile) { [weak presenter] result in
-            switch result {
-            case .success(let user):
-                GlobalData.userModel.send(user)
-                presenter?.userIsSaved()
-            case .failure(let error):
-                presenter?.userIsSavedWithError(error: error)
+        Task {
+            do {
+                try await DatabaseService.shared.setUser(user: _profile)
+                GlobalData.userModel.send(_profile)
+                presenter.userIsSaved()
+            } catch {
+                presenter.userIsSavedWithError(error: error)
             }
         }
     }

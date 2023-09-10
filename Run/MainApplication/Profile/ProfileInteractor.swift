@@ -12,8 +12,10 @@ import Combine
 // MARK: Protocol - ProfilePresenterToInteractorProtocol (Presenter -> Interactor)
 protocol ProfilePresenterToInteractorProtocol: AnyObject {
     var user: AppUser { get }
+    var balance: Balance? { get }
     var dataSource: ProfileViewModel { get }
     
+    func fetchUserBalance()
     func subscribeOnUserChanged()
     func signOut()
 }
@@ -25,6 +27,7 @@ final class ProfileInteractor {
     
     private let _dataSource: [ProfileTableViewCellViewModel.CellType]
     private var _user: AppUser
+    private var _balance: Balance?
     private var store: AnyCancellable?
 
     init() {
@@ -39,8 +42,25 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
         return _user
     }
     
+    var balance: Balance? {
+        return _balance
+    }
+    
     var dataSource: ProfileViewModel {
         return .init(cells: _dataSource.map {.init(type: $0)})
+    }
+    
+    @MainActor
+    func fetchUserBalance() {
+        Task {
+            do {
+                let balance = try await DatabaseService.shared.getBalance(for: _user.getId())
+                _balance = balance
+                presenter.userBalanceIsFetched()
+            } catch {
+                
+            }
+        }
     }
     
     func subscribeOnUserChanged() {

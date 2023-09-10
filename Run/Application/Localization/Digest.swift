@@ -30,6 +30,11 @@ enum Tx {
     enum Profile {
         static let title = NSLocalizedString("Profile.title", comment: "Профиль")
         static let exit = NSLocalizedString("Profile.exit", comment: "Выход")
+
+        static func getBalance(balance: Double) -> String {
+            let formatString = NSLocalizedString("Profile.balance", comment: "Баланс: %.2f $")
+            return String.init(format: formatString, balance)
+        }
     }
     
     enum Training {

@@ -34,13 +34,16 @@ extension LoginInteractor: LoginPresenterToInteractorProtocol {
         self.password = password
     }
     
+    @MainActor
     func fetchLoginData() {
-        AuthManager.shared.signIn(email: email, password: password) { [weak presenter] result in
-            switch result {
-            case .success(let user):
+        Task {
+            do {
+                let userResult = try await AuthManager.shared.signIn(email: email, password: password)
+                let user = try await DatabaseService.shared.getUser(with: userResult.user.uid)
                 GlobalData.userModel.send(user)
                 presenter?.userIsSingIn()
-            case .failure(let error):
+            } catch {
+                GlobalData.userModel.send(nil)
                 presenter?.userIsSignInWithError(error: error)
             }
         }
