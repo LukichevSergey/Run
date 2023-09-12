@@ -28,6 +28,41 @@
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       shouldUseLaunchSchemeArgsEnv = "YES"
       shouldAutocreateTestPlan = "YES">
+      <Testables>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9B6C53F42AAE77B600E2B266"
+               BuildableName = "RunTests.xctest"
+               BlueprintName = "RunTests"
+               ReferencedContainer = "container:Run.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9B6C54012AAE7DD900E2B266"
+               BuildableName = "firebase.xctest"
+               BlueprintName = "firebase"
+               ReferencedContainer = "container:Run.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO"
+            parallelizable = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "9B70168A2AB076C200AF0180"
+               BuildableName = "RunTestsTemp.xctest"
+               BlueprintName = "RunTestsTemp"
+               ReferencedContainer = "container:Run.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+      </Testables>
    </TestAction>
    <LaunchAction
       buildConfiguration = "Debug"
