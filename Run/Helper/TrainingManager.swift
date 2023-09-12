@@ -12,12 +12,8 @@ final class TrainingManager {
     
     private var trainings: [Training] = []
     
-    struct helperValueTemp {
-         var kmIteration = 0
-         var timeAllKM: Double = 0
-         var kmTraveled: Double = 0
-    }
-
+    var helperValueTemp = HelperValueTemp()
+    
     var currentTraining: Training?
     
     var trainingStatus: Training.TrainingStatus {
@@ -55,19 +51,20 @@ final class TrainingManager {
             return "\(formatedTime)"
         }
     
-    func getTempModel(distance: Double, time: Double, helperValue: inout helperValueTemp) -> String {
+    func getTempModel(distance: Double, time: Double) -> String {
         
-        if Int(distance / 1000) > helperValue.kmIteration {
-            helperValue.kmIteration  = Int(distance) / 1000
+        if Int(distance / 1000) > helperValueTemp.kmIteration {
+            
+            helperValueTemp.kmIteration = Int(distance) / 1000
             let kmTraveled = distance
-            helperValue.timeAllKM = time
+            helperValueTemp.timeAllKM = time
             let length = 1000 / (distance - kmTraveled)
-            let tempSec = (time - helperValue.timeAllKM) * length
+            let tempSec = (time - helperValueTemp.timeAllKM) * length
             
             return tempSec.toMinutesAndSeconds()
         } else {
-            let length = 1000 / (distance - helperValue.kmTraveled)
-            let tempSec = (time - helperValue.timeAllKM) * length
+            let length = 1000 / (distance - helperValueTemp.kmTraveled)
+            let tempSec = (time - helperValueTemp.timeAllKM) * length
             
             return tempSec.toMinutesAndSeconds()
         }

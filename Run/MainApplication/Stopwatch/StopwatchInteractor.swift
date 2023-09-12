@@ -29,9 +29,7 @@ final class StopwatchInteractor {
     private let trainingManager = TrainingManager()
     
     private var coordinates: [CLLocationCoordinate2D] = []
-    
-    var helperValues = TrainingManager.helperValueTemp()
-    
+        
     private var circle = 0
     private var circleTimeAll: Double = 0
     private var circleDistanceAll: Double = 0
@@ -76,6 +74,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         circle = 0
         circleTimeAll = 0
         circleDistanceAll = 0
+        trainingManager.helperValueTemp.resetAll()
     }
     
     func roundResult() -> CircleViewModel {
@@ -103,7 +102,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         
         let avgerageTemp = trainingManager.getAverageTempModel(dist: distance, time: timer.elapsedTime)
         
-        let tempOneKillomert = trainingManager.getTempModel(distance: distance, time: timer.elapsedTime, helperValue: &helperValues)
+        let tempOneKillomert = trainingManager.getTempModel(distance: distance, time: timer.elapsedTime)
                 
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
                               tempModel: .init(data: "\(tempOneKillomert)", description: Tx.Timer.temp),

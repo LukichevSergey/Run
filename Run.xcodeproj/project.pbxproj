@@ -87,6 +87,7 @@
 		9B6C540F2AAE7E3600E2B266 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9B6C540E2AAE7E3600E2B266 /* FirebaseAuth */; };
 		9B70168E2AB076C200AF0180 /* RunTestsTemp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B70168D2AB076C200AF0180 /* RunTestsTemp.swift */; };
 		9B7016952AB0781400AF0180 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9B7016942AB0781400AF0180 /* FirebaseAuth */; };
+		9B7016972AB08FBD00AF0180 /* HelperValueTempModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7016962AB08FBD00AF0180 /* HelperValueTempModel.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
 		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderCircleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */; };
@@ -190,6 +191,7 @@
 		9B7016802AB0716800AF0180 /* RunTestsTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTestsTemp.swift; sourceTree = "<group>"; };
 		9B70168B2AB076C200AF0180 /* RunTestsTemp.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunTestsTemp.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B70168D2AB076C200AF0180 /* RunTestsTemp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunTestsTemp.swift; sourceTree = "<group>"; };
+		9B7016962AB08FBD00AF0180 /* HelperValueTempModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTempModel.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCircleTableView.swift; sourceTree = "<group>"; };
@@ -483,6 +485,7 @@
 				878EBC132A98F212001219F9 /* TimerStatsViewModel.swift */,
 				87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */,
 				9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */,
+				9B7016962AB08FBD00AF0180 /* HelperValueTempModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -786,6 +789,7 @@
 				87C46D352A9E38530094A8F0 /* RegistrationPresenter.swift in Sources */,
 				8705D87C2A978427002BBDC2 /* ViewController.swift in Sources */,
 				8705D88D2A978716002BBDC2 /* StartViewController.swift in Sources */,
+				9B7016972AB08FBD00AF0180 /* HelperValueTempModel.swift in Sources */,
 				8705D88F2A97876F002BBDC2 /* RootMainApplicitionController.swift in Sources */,
 				878EBC162A98F24F001219F9 /* ConfigurableViewProtocol.swift in Sources */,
 				8705D8782A978427002BBDC2 /* AppDelegate.swift in Sources */,
