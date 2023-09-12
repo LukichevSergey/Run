@@ -61,7 +61,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         locationManager.startUpdatingLocation()
         trainingManager.createTraining()
         trainingManager.setTrainingStatus(on: .start)
-        
     }
     
     func resetTimer() {
