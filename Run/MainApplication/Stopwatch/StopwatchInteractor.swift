@@ -30,9 +30,7 @@ final class StopwatchInteractor {
     
     private var coordinates: [CLLocationCoordinate2D] = []
         
-    private var circle = 0
-    private var circleTimeAll: Double = 0
-    private var circleDistanceAll: Double = 0
+    private var helperAverageTemp = HelperValueAverageTempModel()
 
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
@@ -70,9 +68,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.updateTraining(with: coordinates)
         trainingManager.stopTraining()
         coordinates = []
-        circle = 0
-        circleTimeAll = 0
-        circleDistanceAll = 0
+        helperAverageTemp.resetAll()
         trainingManager.helperValueTemp.resetAll()
     }
     
@@ -82,14 +78,14 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let distance = coordinates.reduce(0) { partialResult, coordinates in
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
-        circle += 1
-        let timeCircles = timer.elapsedTime - circleTimeAll
-        circleTimeAll += timeCircles
+//        let circleResult =
+        helperAverageTemp.circle += 1
+        let timeCircles = timer.elapsedTime - helperAverageTemp.circleTimeAll
+        helperAverageTemp.circleTimeAll += timeCircles
+        let circleDistance = distance - helperAverageTemp.circleDistanceAll
+        helperAverageTemp.circleDistanceAll += circleDistance
         
-        let circleDistance = distance - circleDistanceAll
-        circleDistanceAll += circleDistance
-        
-        return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(circle)", distance: "\(String(format: "%.2f", circleDistance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
+        return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperAverageTemp.circle)", distance: "\(String(format: "%.2f", circleDistance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
     }
     
     func getTimerData() -> TimerViewModel {
@@ -98,9 +94,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let distance = coordinates.reduce(0) { partialResult, coordinates in
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
-        
         let avgerageTemp = trainingManager.getAverageTempModel(dist: distance, time: timer.elapsedTime)
-        
         let tempOneKillomert = trainingManager.getTempModel(distance: distance, time: timer.elapsedTime)
                 
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),

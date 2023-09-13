@@ -20,53 +20,5 @@
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "73FBE145-B303-4D90-AC3E-27E237CCBB68"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "RunTestsTemp/RunTestsTemp.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "29"
-            endingLineNumber = "29"
-            landmarkName = "testWithPositiveTemp1KM()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "73FBE145-B303-4D90-AC3E-27E237CCBB68 - 51136c80bb40175d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RunTestsTemp.RunTestsTemp.testWithPositiveTemp1KM() throws -&gt; ()"
-                  moduleName = "RunTestsTemp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/evgeniikutasov/Desktop/Real%20project/Run/RunTestsTemp/RunTestsTemp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "620">
-               </Location>
-               <Location
-                  uuid = "73FBE145-B303-4D90-AC3E-27E237CCBB68 - 51136c80bb40175d"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "RunTestsTemp.RunTestsTemp.testWithPositiveTemp1KM() throws -&gt; ()"
-                  moduleName = "RunTestsTemp"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/evgeniikutasov/Desktop/Real%20project/Run/RunTestsTemp/RunTestsTemp.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "29"
-                  endingLineNumber = "29"
-                  offsetFromSymbolStart = "100">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
    </Breakpoints>
 </Bucket>
