@@ -54,7 +54,6 @@ final class TrainingManager {
     func getTempModel(distance: Double, time: Double) -> String {
         
         if Int(distance / 1000) > helperValueTemp.kmIteration {
-            
             helperValueTemp.kmIteration = Int(distance) / 1000
             let kmTraveled = distance
             helperValueTemp.timeAllKM = time

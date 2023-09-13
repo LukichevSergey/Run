@@ -15,7 +15,6 @@ final class HelperValueTepms {
     var circleTimeAll: Double = 0
     var circleDistanceAll: Double = 0
    
-    
     func resetAll() {
         kmIteration = 0
         timeAllKM = 0
