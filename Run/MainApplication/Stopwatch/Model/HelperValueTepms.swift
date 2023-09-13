@@ -7,7 +7,7 @@
 
 import Foundation
 
-class HelperValueTepmsModel {
+final class HelperValueTepms {
     var kmIteration: Int = 0
     var timeAllKM: Double = 0
     var kmTraveled: Double = 0
@@ -20,5 +20,8 @@ class HelperValueTepmsModel {
         kmIteration = 0
         timeAllKM = 0
         kmTraveled = 0
+        circle = 0
+        circleTimeAll = 0
+        circleDistanceAll = 0
     }
 }

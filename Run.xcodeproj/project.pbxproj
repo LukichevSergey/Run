@@ -83,7 +83,7 @@
 		87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */; };
 		87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */; };
 		87EE80C72A99D27900EF4ADD /* coordinates.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 87EE80C62A99D27900EF4ADD /* coordinates.gpx */; };
-		9B65883D2AB1EBF2003102F7 /* HelperValueTepmsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65883C2AB1EBF2003102F7 /* HelperValueTepmsModel.swift */; };
+		9B65883D2AB1EBF2003102F7 /* HelperValueTepms.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65883C2AB1EBF2003102F7 /* HelperValueTepms.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
 		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderCircleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */; };
@@ -163,7 +163,7 @@
 		87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDataView.swift; sourceTree = "<group>"; };
 		87EE80C62A99D27900EF4ADD /* coordinates.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = coordinates.gpx; sourceTree = "<group>"; };
-		9B65883C2AB1EBF2003102F7 /* HelperValueTepmsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTepmsModel.swift; sourceTree = "<group>"; };
+		9B65883C2AB1EBF2003102F7 /* HelperValueTepms.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTepms.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCircleTableView.swift; sourceTree = "<group>"; };
@@ -433,7 +433,7 @@
 				878EBC132A98F212001219F9 /* TimerStatsViewModel.swift */,
 				87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */,
 				9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */,
-				9B65883C2AB1EBF2003102F7 /* HelperValueTepmsModel.swift */,
+				9B65883C2AB1EBF2003102F7 /* HelperValueTepms.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -633,7 +633,7 @@
 				875896952AA4D59A002027FA /* UIViewController+ActivityIndicator.swift in Sources */,
 				87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */,
 				8718159E2AA76C0C007CD141 /* EditProfileInteractor.swift in Sources */,
-				9B65883D2AB1EBF2003102F7 /* HelperValueTepmsModel.swift in Sources */,
+				9B65883D2AB1EBF2003102F7 /* HelperValueTepms.swift in Sources */,
 				87C46D392A9E38530094A8F0 /* RegistrationConfigurator.swift in Sources */,
 				87C46D2B2A9E37DF0094A8F0 /* LoginRouter.swift in Sources */,
 				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,

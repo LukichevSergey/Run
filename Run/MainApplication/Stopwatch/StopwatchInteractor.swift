@@ -30,7 +30,7 @@ final class StopwatchInteractor {
     
     private var coordinates: [CLLocationCoordinate2D] = []
         
-    private var helperTemp = HelperValueTepmsModel()
+    private var helperTemp = HelperValueTepms()
 
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
