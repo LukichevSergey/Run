@@ -30,7 +30,7 @@ final class StopwatchInteractor {
     
     private var coordinates: [CLLocationCoordinate2D] = []
         
-    private var helperAverageTemp = HelperValueAverageTempModel()
+    private var helperTemp = HelperValueTepmsModel()
 
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
@@ -68,8 +68,8 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.updateTraining(with: coordinates)
         trainingManager.stopTraining()
         coordinates = []
-        helperAverageTemp.resetAll()
-        trainingManager.helperValueTemp.resetAll()
+        helperTemp.resetAll()
+
     }
     
     func roundResult() -> CircleViewModel {
@@ -78,13 +78,13 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let distance = coordinates.reduce(0) { partialResult, coordinates in
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
-        helperAverageTemp.circle += 1
-        let timeCircles = timer.elapsedTime - helperAverageTemp.circleTimeAll
-        helperAverageTemp.circleTimeAll += timeCircles
-        let circleDistance = distance - helperAverageTemp.circleDistanceAll
-        helperAverageTemp.circleDistanceAll += circleDistance
+        helperTemp.circle += 1
+        let timeCircles = timer.elapsedTime - helperTemp.circleTimeAll
+        helperTemp.circleTimeAll += timeCircles
+        let circleDistance = distance - helperTemp.circleDistanceAll
+        helperTemp.circleDistanceAll += circleDistance
         
-        return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperAverageTemp.circle)", distance: "\(String(format: "%.2f", circleDistance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
+        return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperTemp.circle)", distance: "\(String(format: "%.2f", circleDistance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
     }
     
     func getTimerData() -> TimerViewModel {
