@@ -78,7 +78,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let distance = coordinates.reduce(0) { partialResult, coordinates in
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
-//        let circleResult =
         helperAverageTemp.circle += 1
         let timeCircles = timer.elapsedTime - helperAverageTemp.circleTimeAll
         helperAverageTemp.circleTimeAll += timeCircles
