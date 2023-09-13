@@ -12,6 +12,8 @@ final class TrainingManager {
     
     private var trainings: [Training] = []
     
+    var helperValueTemp = HelperValueTempsModel()
+    
     var currentTraining: Training?
     
     var trainingStatus: Training.TrainingStatus {
@@ -40,5 +42,31 @@ final class TrainingManager {
         guard let currentTraining else { return }
         trainings.append(currentTraining)
         self.currentTraining = nil
+    }
+    
+    func getAverageTempModel(dist: Double, time: Double ) -> String {
+            let avgtemp = (time / dist) * 1000
+            let formatedTime = avgtemp.toMinutesAndSeconds()
+            
+            return "\(formatedTime)"
+        }
+    
+    func getTempModel(distance: Double, time: Double) -> String {
+        
+        if Int(distance / 1000) > helperValueTemp.kmIteration {
+            helperValueTemp.kmIteration = Int(distance) / 1000
+            let kmTraveled = distance
+            helperValueTemp.timeAllKM = time
+            helperValueTemp.kmTraveled = distance
+            let length = 1000 / (distance - kmTraveled)
+            let tempSec = (time - helperValueTemp.timeAllKM) * length
+            
+            return tempSec.toMinutesAndSeconds()
+        } else {
+            let length = 1000 / (distance - helperValueTemp.kmTraveled)
+            let tempSec = (time - helperValueTemp.timeAllKM) * length
+            
+            return tempSec.toMinutesAndSeconds()
+        }
     }
 }
