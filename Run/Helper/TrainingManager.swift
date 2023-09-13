@@ -12,7 +12,7 @@ final class TrainingManager {
     
     private var trainings: [Training] = []
     
-    var helperValueTemp = HelperValueTemp()
+    var helperValueTemp = HelperValueTempsModel()
     
     var currentTraining: Training?
     

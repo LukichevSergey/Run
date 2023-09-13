@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HelperValueTemp {
+final class HelperValueTempsModel {
     var kmIteration: Int = 0
     var timeAllKM: Double = 0
     var kmTraveled: Double = 0
