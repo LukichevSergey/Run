@@ -58,6 +58,7 @@ final class TrainingManager {
             helperValueTemp.kmIteration = Int(distance) / 1000
             let kmTraveled = distance
             helperValueTemp.timeAllKM = time
+            helperValueTemp.kmTraveled = distance
             let length = 1000 / (distance - kmTraveled)
             let tempSec = (time - helperValueTemp.timeAllKM) * length
             
