@@ -20,13 +20,14 @@ protocol StopwatchPresenterToInteractorProtocol: AnyObject {
     func getTimerData() -> TimerViewModel
     func requestAuthorization()
     func roundResult() -> CircleViewModel
+    func saveTraining()
 }
 
 final class StopwatchInteractor {
     
-    private let timerManager = TimerManager()
-    private let locationManager = LocationManager()
-    private let trainingManager = TrainingManager()
+    private let timerManager: TimerManager
+    private let locationManager: LocationManager
+    private let trainingManager: TrainingManager
     
     private var coordinates: [CLLocationCoordinate2D] = []
         
@@ -36,6 +37,9 @@ final class StopwatchInteractor {
     weak var presenter: StopwatchInteractorToPresenterProtocol!
     
     init() {
+        timerManager = TimerManager()
+        trainingManager = TrainingManager(user: GlobalData.userModel.value ?? AppUser(id: "", name: ""))
+        locationManager = LocationManager()
         locationManager.delegate = self
     }
 }
@@ -69,7 +73,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.stopTraining()
         coordinates = []
         helperTemp.resetAll()
-
     }
     
     func roundResult() -> CircleViewModel {
@@ -103,6 +106,17 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     
     func requestAuthorization() {
         locationManager.requestAuthorization()
+    }
+    
+    func saveTraining() {
+        Task {
+            do {
+                guard let training = trainingManager.getLastTraining() else { return }
+                try await DatabaseService.shared.saveTraining(training: training)
+            } catch {
+                
+            }
+        }
     }
 }
 

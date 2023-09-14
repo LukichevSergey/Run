@@ -10,7 +10,12 @@ import CoreLocation
 
 final class TrainingManager {
     
+    private var user: AppUser
     private var trainings: [Training] = []
+    
+    init(user: AppUser) {
+        self.user = user
+    }
     
     var helperValueTemp = HelperValueTempsModel()
     
@@ -26,7 +31,7 @@ final class TrainingManager {
     
     func createTraining() {
         guard currentTraining == nil else { return }
-        currentTraining = Training()
+        currentTraining = Training(userId: user.getId())
     }
     
     func updateTraining(with coordinates: [CLLocationCoordinate2D]) {
@@ -38,13 +43,23 @@ final class TrainingManager {
     }
     
     func stopTraining() {
+        let distance = helperValueTemp.kmTraveled
+        let time = helperValueTemp.timeAllKM
         currentTraining?.finishTime = Date()
+        currentTraining?.distance = distance
+        currentTraining?.time = time
+        currentTraining?.temp = getTempModel(distance: distance, time: time)
+        currentTraining?.averageTemp = getAverageTempModel(dist: distance, time: time)
         guard let currentTraining else { return }
         trainings.append(currentTraining)
         self.currentTraining = nil
     }
     
-    func getAverageTempModel(dist: Double, time: Double ) -> String {
+    func getLastTraining() -> Training? {
+        return trainings.last
+    }
+    
+    func getAverageTempModel(dist: Double, time: Double) -> String {
             let avgtemp = (time / dist) * 1000
             let formatedTime = avgtemp.toMinutesAndSeconds()
             

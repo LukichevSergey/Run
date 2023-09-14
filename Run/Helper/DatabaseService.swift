@@ -24,6 +24,10 @@ final class DatabaseService {
         return db.collection("balance")
     }
     
+    private var trainingRef: CollectionReference {
+        return db.collection("training")
+    }
+    
     private init() { }
     
     func getUser(with id: String) async throws -> AppUser? {
@@ -47,5 +51,9 @@ final class DatabaseService {
     
     func setSneakers(sneakers: Sneakers) async throws {
         try await sneakersRef.document(sneakers.id).setData(sneakers.toDict)
+    }
+    
+    func saveTraining(training: Training) async throws {
+        try await trainingRef.document(training.id).setData(training.toDict)
     }
 }
