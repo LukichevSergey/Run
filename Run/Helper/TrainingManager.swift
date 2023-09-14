@@ -52,21 +52,25 @@ final class TrainingManager {
         }
     
     func getTempModel(distance: Double, time: Double) -> String {
-        
-        if Int(distance / 1000) > helperValueTemp.kmIteration {
-            helperValueTemp.kmIteration = Int(distance) / 1000
-            let kmTraveled = distance
-            helperValueTemp.timeAllKM = time
-            helperValueTemp.kmTraveled = distance
-            let length = 1000 / (distance - kmTraveled)
-            let tempSec = (time - helperValueTemp.timeAllKM) * length
-            
-            return tempSec.toMinutesAndSeconds()
+        if (distance - helperValueTemp.kmTraveled) > 10 {
+            if Int(distance / 1000) > helperValueTemp.kmIteration {
+                helperValueTemp.kmIteration = Int(distance) / 1000
+                let kmTraveled = distance
+                helperValueTemp.timeAllKM = time
+                helperValueTemp.kmTraveled = distance
+                let length = 1000 / (distance - kmTraveled)
+                let tempSec = (time - helperValueTemp.timeAllKM) * length
+                
+                return tempSec.toMinutesAndSeconds()
+            } else {
+                let length = 1000 / (distance - helperValueTemp.kmTraveled)
+                let tempSec = (time - helperValueTemp.timeAllKM) * length
+                
+                return tempSec.toMinutesAndSeconds()
+            }
         } else {
-            let length = 1000 / (distance - helperValueTemp.kmTraveled)
-            let tempSec = (time - helperValueTemp.timeAllKM) * length
             
-            return tempSec.toMinutesAndSeconds()
+            return "0:00"
         }
     }
 }
