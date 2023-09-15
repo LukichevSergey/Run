@@ -51,6 +51,16 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         return totalDistance
     }
     
+//    func currentDistance() -> Double {
+//        var coordinates = trainingManager.getCurrentTrainingCoordinates()
+//        coordinates.append(self.coordinates)
+//        let distance = coordinates.reduce(0) { partialResult, coordinates in
+//            partialResult + calculateDistance(routeCoordinates: coordinates)
+//        }
+//
+//        return distance
+//    }
+    
     // MARK: - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {

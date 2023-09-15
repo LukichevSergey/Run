@@ -29,9 +29,7 @@ final class StopwatchInteractor {
     private let trainingManager = TrainingManager()
     
     private var coordinates: [CLLocationCoordinate2D] = []
-        
-    private var helperTemp = HelperValueTempsModel()
-
+    
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
     
@@ -68,8 +66,8 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.updateTraining(with: coordinates)
         trainingManager.stopTraining()
         coordinates = []
-        helperTemp.resetAll()
-
+        trainingManager.helperValueTemp.resetAll()
+        
     }
     
     func roundResult() -> CircleViewModel {
@@ -77,25 +75,32 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         coordinates.append(self.coordinates)
         let distance = coordinates.reduce(0) { partialResult, coordinates in
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
+            
         }
-        helperTemp.circle += 1
-        let timeCircles = timer.elapsedTime - helperTemp.circleTimeAll
-        helperTemp.circleTimeAll += timeCircles
-        let circleDistance = distance - helperTemp.circleDistanceAll
-        helperTemp.circleDistanceAll += circleDistance
         
-        return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperTemp.circle)", distance: "\(String(format: "%.2f", circleDistance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
+        let timeCircles = timer.elapsedTime - trainingManager.helperValueTemp.circleTimeAll
+        let circleDistance = distance - trainingManager.helperValueTemp.circleDistanceAll
+        trainingManager.helperValueTemp.saveCircleHelper(circle: 1, circleDistance: circleDistance, circleTime: timeCircles)
+                
+        return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(trainingManager.helperValueTemp.circleCount)",
+                               distance: "\(String(format: "%.2f", circleDistance / 1000))",
+                               time: "\(timeCircles.toMinutesAndSeconds())")
     }
     
     func getTimerData() -> TimerViewModel {
+
         var coordinates = trainingManager.getCurrentTrainingCoordinates()
         coordinates.append(self.coordinates)
         let distance = coordinates.reduce(0) { partialResult, coordinates in
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
+            
         }
-        let avgerageTemp = trainingManager.getAverageTempModel(dist: distance, time: timer.elapsedTime)
+        
+        let avgerageTemp = trainingManager.getAverageTempModel(distance: distance, time: timer.elapsedTime)
         let tempOneKillomert = trainingManager.getTempModel(distance: distance, time: timer.elapsedTime)
-                
+        
+        trainingManager.helperValueTemp.saveCurrentDistance(distance: String(format: "%.2f", distance / 1000))
+                        
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
                               tempModel: .init(data: "\(tempOneKillomert)", description: Tx.Timer.temp),
                               averageTempModel: .init(data: "\(avgerageTemp)", description: Tx.Timer.averageTemp))
