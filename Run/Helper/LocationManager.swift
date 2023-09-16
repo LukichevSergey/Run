@@ -18,6 +18,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     private var location: CLLocation?
     weak var delegate: LocationManagerDelegate?
     
+    var coordinates: [CLLocationCoordinate2D] = []
+    private let trainingManager = TrainingManager()
+
+    
     override init() {
         super.init()
         locationManager.delegate = self
@@ -51,15 +55,15 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         return totalDistance
     }
     
-//    func currentDistance() -> Double {
-//        var coordinates = trainingManager.getCurrentTrainingCoordinates()
-//        coordinates.append(self.coordinates)
-//        let distance = coordinates.reduce(0) { partialResult, coordinates in
-//            partialResult + calculateDistance(routeCoordinates: coordinates)
-//        }
-//
-//        return distance
-//    }
+    func getDistance() -> Double {
+        var coordinates = trainingManager.getCurrentTrainingCoordinates()
+        coordinates.append(self.coordinates)
+        let distance = coordinates.reduce(0) { partialResult, coordinates in
+            partialResult + calculateDistance(routeCoordinates: coordinates)
+            
+        }
+        return distance
+    }
     
     // MARK: - CLLocationManagerDelegate
     
