@@ -62,9 +62,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.setTrainingStatus(on: .stop)
         trainingManager.updateTraining(with: locationManager.coordinates)
         trainingManager.stopTraining()
-        print(trainingManager.helperValueTemp.currentTemp)
-        print(trainingManager.helperValueTemp.currentDistance)
-        print(trainingManager.helperValueTemp.currentAverageTemp)
         locationManager.coordinates = []
         trainingManager.helperValueTemp.resetAll()
     }

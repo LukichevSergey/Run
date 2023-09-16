@@ -21,7 +21,6 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     var coordinates: [CLLocationCoordinate2D] = []
     private let trainingManager = TrainingManager()
 
-    
     override init() {
         super.init()
         locationManager.delegate = self
