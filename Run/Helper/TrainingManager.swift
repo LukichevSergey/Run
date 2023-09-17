@@ -43,30 +43,34 @@ final class TrainingManager {
         trainings.append(currentTraining)
         self.currentTraining = nil
     }
-    
-    func getAverageTempModel(dist: Double, time: Double ) -> String {
-            let avgtemp = (time / dist) * 1000
-            let formatedTime = avgtemp.toMinutesAndSeconds()
-            
-            return "\(formatedTime)"
-        }
-    
+    //MARK: - method average temp
+    func getAverageTempModel(distance: Double, time: Double ) -> String {
+        let avgtemp = (time / distance) * 1000
+        helperValueTemp.saveCurrentAverageTemp(average: avgtemp.toMinutesAndSeconds())
+        return avgtemp.toMinutesAndSeconds()
+    }
+    //MARK: - method temp
     func getTempModel(distance: Double, time: Double) -> String {
-        
-        if Int(distance / 1000) > helperValueTemp.kmIteration {
-            helperValueTemp.kmIteration = Int(distance) / 1000
-            let kmTraveled = distance
-            helperValueTemp.timeAllKM = time
-            helperValueTemp.kmTraveled = distance
-            let length = 1000 / (distance - kmTraveled)
-            let tempSec = (time - helperValueTemp.timeAllKM) * length
-            
-            return tempSec.toMinutesAndSeconds()
+        if (distance - helperValueTemp.kmTraveled) > 10 {
+            if Int(distance / 1000) > helperValueTemp.kmIteration {
+                
+                helperValueTemp.saveTempHelper(time: time, traveled: distance, iteration: Int(distance) / 1000)
+                
+                let length = 1000 / (distance - helperValueTemp.kmTraveled)
+                let tempSec = (time - helperValueTemp.timeAllKM) * length
+                helperValueTemp.saveCurrentTemp(temp: tempSec.toMinutesAndSeconds())
+                
+                return tempSec.toMinutesAndSeconds()
+            } else {
+                let length = 1000 / (distance - helperValueTemp.kmTraveled)
+                let tempSec = (time - helperValueTemp.timeAllKM) * length
+                helperValueTemp.saveCurrentTemp(temp: tempSec.toMinutesAndSeconds())
+                
+                return tempSec.toMinutesAndSeconds()
+            }
         } else {
-            let length = 1000 / (distance - helperValueTemp.kmTraveled)
-            let tempSec = (time - helperValueTemp.timeAllKM) * length
-            
-            return tempSec.toMinutesAndSeconds()
+            helperValueTemp.saveCurrentTemp(temp: "0:00")
+            return "0:00"
         }
     }
 }
