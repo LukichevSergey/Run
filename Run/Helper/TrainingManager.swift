@@ -11,8 +11,10 @@ import CoreLocation
 final class TrainingManager {
     
     private var trainings: [Training] = []
+    var coordinates: [CLLocationCoordinate2D] = []
     
     var helperValueTemp = HelperValueTempsModel()
+    var locationManager = LocationManager()
     
     var currentTraining: Training?
     
@@ -43,6 +45,18 @@ final class TrainingManager {
         trainings.append(currentTraining)
         self.currentTraining = nil
     }
+    
+    //MARK: - method distance
+    func getDistance() -> Double {
+        var coordinates = getCurrentTrainingCoordinates()
+        coordinates.append(self.coordinates)
+        let distance = coordinates.reduce(0) { partialResult, coordinates in
+            partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
+        }
+        
+        return distance
+    }
+    
     //MARK: - method average temp
     func getAverageTempModel(distance: Double, time: Double ) -> String {
         let avgtemp = (time / distance) * 1000
