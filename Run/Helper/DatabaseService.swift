@@ -7,6 +7,7 @@
 
 import Foundation
 import FirebaseFirestore
+import OrderedCollections
 
 final class DatabaseService {
     static let shared = DatabaseService()
@@ -55,5 +56,13 @@ final class DatabaseService {
     
     func saveTraining(training: Training) async throws {
         try await trainingRef.document(training.id).setData(training.toDict)
+    }
+    
+    func getTrainings(for userId: String) async throws -> OrderedSet<Training> {
+        let snapshot = try await trainingRef.whereField("userId", isEqualTo: userId).getDocuments()
+        let data = snapshot.documents.reduce(into: [[String: Any]]()) { partialResult, querySnapShot in
+            partialResult.append(querySnapShot.data())
+        }
+        return .init(data.compactMap({ Training(from: $0) }))  
     }
 }

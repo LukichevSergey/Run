@@ -15,7 +15,8 @@ protocol TrainingViewToPresenterProtocol: AnyObject {
 
 // MARK: Protocol - TrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol TrainingInteractorToPresenterProtocol: AnyObject {
-
+    func trainingsIsFetched()
+    func trainingIsFetchedWithError(error: Error)
 }
 
 class TrainingPresenter {
@@ -29,11 +30,18 @@ class TrainingPresenter {
 // MARK: Extension - TrainingViewToPresenterProtocol
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
     func viewDidLoad() {
-    
+        view.showActivityIndicator()
+        interactor.fetchTrainings()
     }
 }
 
 // MARK: Extension - TrainingInteractorToPresenterProtocol
 extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
+    func trainingsIsFetched() {
+        view.removeActivityIndicator()
+    }
     
+    func trainingIsFetchedWithError(error: Error) {
+        view.removeActivityIndicator()
+    }
 }

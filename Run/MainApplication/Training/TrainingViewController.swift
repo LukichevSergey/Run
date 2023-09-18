@@ -9,7 +9,7 @@
 import UIKit
 
 // MARK: Protocol - TrainingPresenterToViewProtocol (Presenter -> View)
-protocol TrainingPresenterToViewProtocol: AnyObject {
+protocol TrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
 
 }
 
