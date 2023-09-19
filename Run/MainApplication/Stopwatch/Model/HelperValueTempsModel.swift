@@ -18,6 +18,12 @@ final class HelperValueTempsModel {
     var currentAverageTemp = ""
     var currentDistance = ""
     
+    func saveCircleHelper(circle: Int, circleDistance: Double, circleTime: Double) {
+        circleCount += circle
+        circleTimeAll += circleTime
+        circleDistanceAll += circleDistance
+    }
+    
     func saveCurrentAverageTemp(average: String) {
         currentAverageTemp = average
     }
@@ -34,12 +40,6 @@ final class HelperValueTempsModel {
         timeAllKM = time
         kmTraveled = traveled
         kmIteration = iteration
-    }
-    
-    func saveCircleHelper(circle: Int, circleDistance: Double, circleTime: Double) {
-        circleCount += circle
-        circleTimeAll += circleTime
-        circleDistanceAll += circleDistance
     }
    
     func resetAll() {
