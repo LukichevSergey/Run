@@ -34,6 +34,7 @@ final class StopwatchInteractor {
     
     init() {
         locationManager.delegate = self
+        trainingManager.delegate = helperValueTemp
     }
 }
 
@@ -72,6 +73,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let distance = trainingManager.getDistance()
         let timeCircles = timer.elapsedTime - helperValueTemp.circleTimeAll
         let circleDistance = distance - helperValueTemp.circleDistanceAll
+        
         helperValueTemp.saveCircleHelper(circle: 1, circleDistance: circleDistance, circleTime: timeCircles)
                 
         return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperValueTemp.circleCount)",
@@ -82,10 +84,12 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     func getTimerData() -> TimerViewModel {
         let distance = trainingManager.getDistance()
         let avgerageTemp = trainingManager.getAverageTempModel(distance: distance, time: timer.elapsedTime)
-        let tempOneKillomert = trainingManager.getTempModel(distance: distance, time: timer.elapsedTime)
-        
-        helperValueTemp.saveCurrentDistance(distance: String(format: "%.2f", distance / 1000))
-                        
+        let tempOneKillomert = trainingManager.getTempModel(distance: distance,
+                                                            time: timer.elapsedTime,
+                                                            kmTraveled: helperValueTemp.kmTraveled,
+                                                            kmIteration: helperValueTemp.kmIteration,
+                                                            timeAllKM: helperValueTemp.timeAllKM)
+                                
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
                               tempModel: .init(data: "\(tempOneKillomert)", description: Tx.Timer.temp),
                               averageTempModel: .init(data: "\(avgerageTemp)", description: Tx.Timer.averageTemp))

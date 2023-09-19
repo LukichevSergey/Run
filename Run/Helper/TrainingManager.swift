@@ -8,15 +8,22 @@
 import Foundation
 import CoreLocation
 
+protocol UpdateDataTempDelegate {
+    func saveCurrentDistance(distance: String)
+    func saveCurrentAverageTemp(average: String)
+    func saveCurrentTemp(temp: String)
+    func saveTempHelper(time: Double, traveled: Double, iteration: Int)
+}
+
 final class TrainingManager {
     
     private var trainings: [Training] = []
     var coordinates: [CLLocationCoordinate2D] = []
     
-    var helperValueTemp = HelperValueTempsModel()
     var locationManager = LocationManager()
     
     var currentTraining: Training?
+    var delegate: UpdateDataTempDelegate?
     
     var trainingStatus: Training.TrainingStatus {
         return currentTraining?.trainingStatus ?? .stop
@@ -54,36 +61,41 @@ final class TrainingManager {
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
         
+        delegate?.saveCurrentDistance(distance: String(format: "%.2f", distance / 1000))
+        
         return distance
     }
     
     //MARK: - method average temp
     func getAverageTempModel(distance: Double, time: Double ) -> String {
         let avgtemp = (time / distance) * 1000
-        helperValueTemp.saveCurrentAverageTemp(average: avgtemp.toMinutesAndSeconds())
+        
+        delegate?.saveCurrentAverageTemp(average: avgtemp.toMinutesAndSeconds())
+        
         return avgtemp.toMinutesAndSeconds()
     }
     //MARK: - method temp
-    func getTempModel(distance: Double, time: Double) -> String {
-        if (distance - helperValueTemp.kmTraveled) > 10 {
-            if Int(distance / 1000) > helperValueTemp.kmIteration {
+    func getTempModel(distance: Double, time: Double, kmTraveled: Double, kmIteration: Int, timeAllKM: Double) -> String {
+        if (distance - kmTraveled) > 10 {
+            if Int(distance / 1000) > kmIteration {
                 
-                helperValueTemp.saveTempHelper(time: time, traveled: distance, iteration: Int(distance) / 1000)
+                delegate?.saveTempHelper(time: time, traveled: distance, iteration: Int(distance) / 1000)
                 
-                let length = 1000 / (distance - helperValueTemp.kmTraveled)
-                let tempSec = (time - helperValueTemp.timeAllKM) * length
-                helperValueTemp.saveCurrentTemp(temp: tempSec.toMinutesAndSeconds())
+                let length = 1000 / (distance - kmTraveled)
+                let tempSec = (time - timeAllKM) * length
+                
+                delegate?.saveCurrentTemp(temp: tempSec.toMinutesAndSeconds())
                 
                 return tempSec.toMinutesAndSeconds()
             } else {
-                let length = 1000 / (distance - helperValueTemp.kmTraveled)
-                let tempSec = (time - helperValueTemp.timeAllKM) * length
-                helperValueTemp.saveCurrentTemp(temp: tempSec.toMinutesAndSeconds())
-                
+                let length = 1000 / (distance - kmTraveled)
+                let tempSec = (time - timeAllKM) * length
+                delegate?.saveCurrentTemp(temp: tempSec.toMinutesAndSeconds())
+
                 return tempSec.toMinutesAndSeconds()
             }
         } else {
-            helperValueTemp.saveCurrentTemp(temp: "0:00")
+            delegate?.saveCurrentTemp(temp: "0:00")
             return "0:00"
         }
     }
