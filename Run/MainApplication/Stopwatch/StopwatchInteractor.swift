@@ -74,7 +74,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let timeCircles = timer.elapsedTime - helperValueTemp.circleTimeAll
         let circleDistance = distance - helperValueTemp.circleDistanceAll
         
-        helperValueTemp.saveCircleHelper(circle: 1, circleDistance: circleDistance, circleTime: timeCircles)
+        helperValueTemp.savingCircleHelper(circle: 1, circleDistance: circleDistance, circleTime: timeCircles)
                 
         return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperValueTemp.circleCount)",
                                distance: "\(String(format: "%.2f", circleDistance / 1000))",
@@ -110,19 +110,19 @@ extension StopwatchInteractor: LocationManagerDelegate {
 
 extension StopwatchInteractor: UpdateDataTempDelegate {
     
-    func сurrentDistance(distance: String) {
-        helperValueTemp.saveCurrentDistance(distance: distance)
+    func currentDistanceChanged(distance: String) {
+        helperValueTemp.savingCurrentDistance(distance: distance)
     }
     
-    func сurrentAverageTemp(average: String) {
-        helperValueTemp.saveCurrentAverageTemp(average: average)
+    func сurrentAverageTempChanged(average: String) {
+        helperValueTemp.savingCurrentAverageTemp(average: average)
     }
     
-    func сurrentTemp(temp: String) {
-        helperValueTemp.saveCurrentTemp(temp: temp)
+    func сurrentTempChanged(temp: String) {
+        helperValueTemp.savingCurrentTemp(temp: temp)
     }
 
     func tempHelper(time: Double, traveled: Double, iteration: Int) {
-        helperValueTemp.saveTempHelper(time: time, traveled: traveled, iteration: iteration)
+        helperValueTemp.savingTempHelper(time: time, traveled: traveled, iteration: iteration)
     }
 }

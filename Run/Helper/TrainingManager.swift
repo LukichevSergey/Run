@@ -9,9 +9,9 @@ import Foundation
 import CoreLocation
 
 protocol UpdateDataTempDelegate {
-    func сurrentDistance(distance: String)
-    func сurrentAverageTemp(average: String)
-    func сurrentTemp(temp: String)
+    func currentDistanceChanged(distance: String)
+    func сurrentAverageTempChanged(average: String)
+    func сurrentTempChanged(temp: String)
     func tempHelper(time: Double, traveled: Double, iteration: Int)
 }
 
@@ -61,7 +61,7 @@ final class TrainingManager {
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
         
-        delegate?.сurrentDistance(distance: String(format: "%.2f", distance / 1000))
+        delegate?.currentDistanceChanged(distance: String(format: "%.2f", distance / 1000))
         
         return distance
     }
@@ -70,7 +70,7 @@ final class TrainingManager {
     func getAverageTempModel(distance: Double, time: Double ) -> String {
         let avgtemp = (time / distance) * 1000
         
-        delegate?.сurrentAverageTemp(average: avgtemp.toMinutesAndSeconds())
+        delegate?.сurrentAverageTempChanged(average: avgtemp.toMinutesAndSeconds())
         
         return avgtemp.toMinutesAndSeconds()
     }
@@ -84,18 +84,18 @@ final class TrainingManager {
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
                 
-                delegate?.сurrentTemp(temp: tempSec.toMinutesAndSeconds())
+                delegate?.сurrentTempChanged(temp: tempSec.toMinutesAndSeconds())
                 
                 return tempSec.toMinutesAndSeconds()
             } else {
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
-                delegate?.сurrentTemp(temp: tempSec.toMinutesAndSeconds())
+                delegate?.сurrentTempChanged(temp: tempSec.toMinutesAndSeconds())
 
                 return tempSec.toMinutesAndSeconds()
             }
         } else {
-            delegate?.сurrentTemp(temp: "0:00")
+            delegate?.сurrentTempChanged(temp: "0:00")
             return "0:00"
         }
     }
