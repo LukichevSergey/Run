@@ -36,24 +36,3 @@ final class HelperValueTempsModel {
         currentDistance = ""
     }
 }
-
-extension HelperValueTempsModel: UpdateDataTempDelegate {
-    
-    func saveCurrentAverageTemp(average: String) {
-        currentAverageTemp = average
-    }
-    
-    func saveCurrentDistance(distance: String) {
-        currentDistance = distance
-    }
-    
-    func saveCurrentTemp(temp: String) {
-        currentTemp = temp
-    }
-    
-    func saveTempHelper(time: Double, traveled: Double, iteration: Int) {
-        timeAllKM = time
-        kmTraveled = traveled
-        kmIteration = iteration
-    }
-}

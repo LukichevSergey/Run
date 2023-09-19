@@ -34,7 +34,7 @@ final class StopwatchInteractor {
     
     init() {
         locationManager.delegate = self
-        trainingManager.delegate = helperValueTemp
+        trainingManager.delegate = self
     }
 }
 
@@ -105,5 +105,26 @@ extension StopwatchInteractor: LocationManagerDelegate {
         guard trainingManager.trainingStatus == .start else { return }
         trainingManager.coordinates.append(location.coordinate)
         presenter.userLocationIsUpdated()
+    }
+}
+
+extension StopwatchInteractor: UpdateDataTempDelegate {
+    
+    func saveCurrentAverageTemp(average: String) {
+        helperValueTemp.currentAverageTemp = average
+    }
+    
+    func saveCurrentDistance(distance: String) {
+        helperValueTemp.currentDistance = distance
+    }
+    
+    func saveCurrentTemp(temp: String) {
+        helperValueTemp.currentTemp = temp
+    }
+    
+    func saveTempHelper(time: Double, traveled: Double, iteration: Int) {
+        helperValueTemp.timeAllKM = time
+        helperValueTemp.kmTraveled = traveled
+        helperValueTemp.kmIteration = iteration
     }
 }
