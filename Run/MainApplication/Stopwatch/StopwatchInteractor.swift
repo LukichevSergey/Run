@@ -122,7 +122,7 @@ extension StopwatchInteractor: UpdateDataTempDelegate {
         helperValueTemp.saveCurrentTemp(temp: temp)
     }
 
-    func currentКesultsСhanged(time: Double, traveled: Double, iteration: Int) {
+    func currentResultsСhanged(time: Double, traveled: Double, iteration: Int) {
         helperValueTemp.saveTempHelper(time: time, traveled: traveled, iteration: iteration)
     }
 }

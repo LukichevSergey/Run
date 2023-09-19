@@ -12,7 +12,7 @@ protocol UpdateDataTempDelegate {
     func currentDistanceChanged(distance: String)
     func сurrentAverageTempChanged(average: String)
     func сurrentTempChanged(temp: String)
-    func currentКesultsСhanged(time: Double, traveled: Double, iteration: Int)
+    func currentResultsСhanged(time: Double, traveled: Double, iteration: Int)
 }
 
 final class TrainingManager {
@@ -79,7 +79,7 @@ final class TrainingManager {
         if (distance - kmTraveled) > 10 {
             if Int(distance / 1000) > kmIteration {
                 
-                delegate?.currentКesultsСhanged(time: time, traveled: distance, iteration: Int(distance) / 1000)
+                delegate?.currentResultsСhanged(time: time, traveled: distance, iteration: Int(distance) / 1000)
                 
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
