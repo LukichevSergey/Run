@@ -7,7 +7,7 @@
 
 import Foundation
 
-final class HelperValueTempsModel: UpdateDataTempDelegate {
+final class HelperValueTempsModel {
     var kmIteration: Int = 0
     var timeAllKM: Double = 0
     var kmTraveled: Double = 0
@@ -17,24 +17,6 @@ final class HelperValueTempsModel: UpdateDataTempDelegate {
     var currentTemp = ""
     var currentAverageTemp = ""
     var currentDistance = ""
-    
-    func saveCurrentAverageTemp(average: String) {
-        currentAverageTemp = average
-    }
-    
-    func saveCurrentDistance(distance: String) {
-        currentDistance = distance
-    }
-    
-    func saveCurrentTemp(temp: String) {
-        currentTemp = temp
-    }
-    
-    func saveTempHelper(time: Double, traveled: Double, iteration: Int) {
-        timeAllKM = time
-        kmTraveled = traveled
-        kmIteration = iteration
-    }
     
     func saveCircleHelper(circle: Int, circleDistance: Double, circleTime: Double) {
         circleCount += circle
@@ -52,5 +34,25 @@ final class HelperValueTempsModel: UpdateDataTempDelegate {
         currentTemp = ""
         currentAverageTemp = ""
         currentDistance = ""
+    }
+}
+
+extension HelperValueTempsModel: UpdateDataTempDelegate {
+    func saveCurrentAverageTemp(average: String) {
+        currentAverageTemp = average
+    }
+    
+    func saveCurrentDistance(distance: String) {
+        currentDistance = distance
+    }
+    
+    func saveCurrentTemp(temp: String) {
+        currentTemp = temp
+    }
+    
+    func saveTempHelper(time: Double, traveled: Double, iteration: Int) {
+        timeAllKM = time
+        kmTraveled = traveled
+        kmIteration = iteration
     }
 }
