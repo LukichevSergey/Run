@@ -90,12 +90,15 @@ final class TrainingManager {
             } else {
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
+                
                 delegate?.сurrentTempChanged(temp: tempSec.toMinutesAndSeconds())
 
                 return tempSec.toMinutesAndSeconds()
             }
         } else {
+            
             delegate?.сurrentTempChanged(temp: "0:00")
+            
             return "0:00"
         }
     }
