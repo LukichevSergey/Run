@@ -9,10 +9,10 @@ import Foundation
 import CoreLocation
 
 protocol UpdateDataTempDelegate {
-    func saveCurrentDistance(distance: String)
-    func saveCurrentAverageTemp(average: String)
-    func saveCurrentTemp(temp: String)
-    func saveTempHelper(time: Double, traveled: Double, iteration: Int)
+    func сurrentDistance(distance: String)
+    func сurrentAverageTemp(average: String)
+    func сurrentTemp(temp: String)
+    func tempHelper(time: Double, traveled: Double, iteration: Int)
 }
 
 final class TrainingManager {
@@ -61,7 +61,7 @@ final class TrainingManager {
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
         
-        delegate?.saveCurrentDistance(distance: String(format: "%.2f", distance / 1000))
+        delegate?.сurrentDistance(distance: String(format: "%.2f", distance / 1000))
         
         return distance
     }
@@ -70,7 +70,7 @@ final class TrainingManager {
     func getAverageTempModel(distance: Double, time: Double ) -> String {
         let avgtemp = (time / distance) * 1000
         
-        delegate?.saveCurrentAverageTemp(average: avgtemp.toMinutesAndSeconds())
+        delegate?.сurrentAverageTemp(average: avgtemp.toMinutesAndSeconds())
         
         return avgtemp.toMinutesAndSeconds()
     }
@@ -79,23 +79,23 @@ final class TrainingManager {
         if (distance - kmTraveled) > 10 {
             if Int(distance / 1000) > kmIteration {
                 
-                delegate?.saveTempHelper(time: time, traveled: distance, iteration: Int(distance) / 1000)
+                delegate?.tempHelper(time: time, traveled: distance, iteration: Int(distance) / 1000)
                 
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
                 
-                delegate?.saveCurrentTemp(temp: tempSec.toMinutesAndSeconds())
+                delegate?.сurrentTemp(temp: tempSec.toMinutesAndSeconds())
                 
                 return tempSec.toMinutesAndSeconds()
             } else {
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
-                delegate?.saveCurrentTemp(temp: tempSec.toMinutesAndSeconds())
+                delegate?.сurrentTemp(temp: tempSec.toMinutesAndSeconds())
 
                 return tempSec.toMinutesAndSeconds()
             }
         } else {
-            delegate?.saveCurrentTemp(temp: "0:00")
+            delegate?.сurrentTemp(temp: "0:00")
             return "0:00"
         }
     }

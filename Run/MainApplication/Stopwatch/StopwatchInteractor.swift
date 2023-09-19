@@ -110,21 +110,19 @@ extension StopwatchInteractor: LocationManagerDelegate {
 
 extension StopwatchInteractor: UpdateDataTempDelegate {
     
-    func saveCurrentAverageTemp(average: String) {
-        helperValueTemp.currentAverageTemp = average
+    func сurrentDistance(distance: String) {
+        helperValueTemp.saveCurrentDistance(distance: distance)
     }
     
-    func saveCurrentDistance(distance: String) {
-        helperValueTemp.currentDistance = distance
+    func сurrentAverageTemp(average: String) {
+        helperValueTemp.saveCurrentAverageTemp(average: average)
     }
     
-    func saveCurrentTemp(temp: String) {
-        helperValueTemp.currentTemp = temp
+    func сurrentTemp(temp: String) {
+        helperValueTemp.saveCurrentTemp(temp: temp)
     }
-    
-    func saveTempHelper(time: Double, traveled: Double, iteration: Int) {
-        helperValueTemp.timeAllKM = time
-        helperValueTemp.kmTraveled = traveled
-        helperValueTemp.kmIteration = iteration
+
+    func tempHelper(time: Double, traveled: Double, iteration: Int) {
+        helperValueTemp.saveTempHelper(time: time, traveled: traveled, iteration: iteration)
     }
 }
