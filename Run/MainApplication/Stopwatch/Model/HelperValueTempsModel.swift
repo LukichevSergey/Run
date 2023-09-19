@@ -18,25 +18,25 @@ final class HelperValueTempsModel {
     var currentAverageTemp = ""
     var currentDistance = ""
     
-    func savingCircleHelper(circle: Int, circleDistance: Double, circleTime: Double) {
+    func saveCircleHelper(circle: Int, circleDistance: Double, circleTime: Double) {
         circleCount += circle
         circleTimeAll += circleTime
         circleDistanceAll += circleDistance
     }
     
-    func savingCurrentAverageTemp(average: String) {
+    func saveCurrentAverageTemp(average: String) {
         currentAverageTemp = average
     }
     
-    func savingCurrentDistance(distance: String) {
+    func saveCurrentDistance(distance: String) {
         currentDistance = distance
     }
     
-    func savingCurrentTemp(temp: String) {
+    func saveCurrentTemp(temp: String) {
         currentTemp = temp
     }
     
-    func savingTempHelper(time: Double, traveled: Double, iteration: Int) {
+    func saveTempHelper(time: Double, traveled: Double, iteration: Int) {
         timeAllKM = time
         kmTraveled = traveled
         kmIteration = iteration
