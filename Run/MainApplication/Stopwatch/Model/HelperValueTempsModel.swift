@@ -38,6 +38,7 @@ final class HelperValueTempsModel {
 }
 
 extension HelperValueTempsModel: UpdateDataTempDelegate {
+    
     func saveCurrentAverageTemp(average: String) {
         currentAverageTemp = average
     }
