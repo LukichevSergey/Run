@@ -30,7 +30,7 @@ final class Training: Hashable {
     var finishTime: Date? = nil
     var trainingStatus: TrainingStatus = .start
     var coordinates: [[CLLocationCoordinate2D]] = []
-    var distance: Double = 0
+    var distance: String = ""
     var time: Double = 0
     var temp: String = ""
     var averageTemp: String = ""
@@ -43,7 +43,7 @@ final class Training: Hashable {
     init?(from dictionary: [String: Any]) {
         guard let id = dictionary["id"] as? String,
               let userId = dictionary["userId"] as? String,
-              let distance = dictionary["distance"] as? Double,
+              let distance = dictionary["distance"] as? String,
               let time = dictionary["time"] as? Double,
               let temp = dictionary["temp"] as? String,
               let averageTemp = dictionary["averageTemp"] as? String else {

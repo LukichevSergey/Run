@@ -29,10 +29,8 @@ final class StopwatchInteractor {
     private let locationManager: LocationManager
     private let trainingManager: TrainingManager
     
-    private var coordinates: [CLLocationCoordinate2D] = []
-        
-    private var helperTemp = HelperValueTempsModel()
-
+    private let helperValueTemp = HelperValueTempsModel()
+    
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
     
@@ -41,6 +39,7 @@ final class StopwatchInteractor {
         trainingManager = TrainingManager(user: GlobalData.userModel.value ?? AppUser(id: "", name: ""))
         locationManager = LocationManager()
         locationManager.delegate = self
+        trainingManager.delegate = self
     }
 }
 
@@ -54,8 +53,8 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         timerManager.stopTimer()
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .pause)
-        trainingManager.updateTraining(with: coordinates)
-        coordinates = []
+        trainingManager.updateTraining(with: trainingManager.coordinates)
+        trainingManager.coordinates = []
     }
     
     func startTimer() {
@@ -69,36 +68,42 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         timerManager.resetTimer()
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .stop)
-        trainingManager.updateTraining(with: coordinates)
+        trainingManager.updateTraining(with: trainingManager.coordinates)
         trainingManager.stopTraining()
-        coordinates = []
-        helperTemp.resetAll()
+        trainingManager.coordinates = []
+        
+        let lastDistanceTraining = helperValueTemp.currentDistance
+        let lastTempTraining = helperValueTemp.currentTemp
+        let lastAverageTraining = helperValueTemp.currentAverageTemp
+        trainingManager.saveLastDataTrainingChange(average: lastAverageTraining,
+                                                  distance: lastDistanceTraining,
+                                                  temp: lastTempTraining,
+                                                  time: timer.elapsedTime)
+        
+        helperValueTemp.resetAll()
     }
     
     func roundResult() -> CircleViewModel {
-        var coordinates = trainingManager.getCurrentTrainingCoordinates()
-        coordinates.append(self.coordinates)
-        let distance = coordinates.reduce(0) { partialResult, coordinates in
-            partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
-        }
-        helperTemp.circle += 1
-        let timeCircles = timer.elapsedTime - helperTemp.circleTimeAll
-        helperTemp.circleTimeAll += timeCircles
-        let circleDistance = distance - helperTemp.circleDistanceAll
-        helperTemp.circleDistanceAll += circleDistance
+        let distance = trainingManager.getDistance()
+        let timeCircles = timer.elapsedTime - helperValueTemp.circleTimeAll
+        let circleDistance = distance - helperValueTemp.circleDistanceAll
         
-        return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperTemp.circle)", distance: "\(String(format: "%.2f", circleDistance / 1000))", time: "\(timeCircles.toMinutesAndSeconds())")
+        helperValueTemp.saveCircleHelper(circle: 1, circleDistance: circleDistance, circleTime: timeCircles)
+                
+        return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperValueTemp.circleCount)",
+                               distance: "\(String(format: "%.2f", circleDistance / 1000))",
+                               time: "\(timeCircles.toMinutesAndSeconds())")
     }
     
     func getTimerData() -> TimerViewModel {
-        var coordinates = trainingManager.getCurrentTrainingCoordinates()
-        coordinates.append(self.coordinates)
-        let distance = coordinates.reduce(0) { partialResult, coordinates in
-            partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
-        }
-        let avgerageTemp = trainingManager.getAverageTempModel(dist: distance, time: timer.elapsedTime)
-        let tempOneKillomert = trainingManager.getTempModel(distance: distance, time: timer.elapsedTime)
-                
+        let distance = trainingManager.getDistance()
+        let avgerageTemp = trainingManager.getAverageTempModel(distance: distance, time: timer.elapsedTime)
+        let tempOneKillomert = trainingManager.getTempModel(distance: distance,
+                                                            time: timer.elapsedTime,
+                                                            kmTraveled: helperValueTemp.kmTraveled,
+                                                            kmIteration: helperValueTemp.kmIteration,
+                                                            timeAllKM: helperValueTemp.timeAllKM)
+                                
         return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
                               tempModel: .init(data: "\(tempOneKillomert)", description: Tx.Timer.temp),
                               averageTempModel: .init(data: "\(avgerageTemp)", description: Tx.Timer.averageTemp))
@@ -123,7 +128,25 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
 extension StopwatchInteractor: LocationManagerDelegate {
     func didUpdateUserLocation(_ location: CLLocation) {
         guard trainingManager.trainingStatus == .start else { return }
-        coordinates.append(location.coordinate)
+        trainingManager.coordinates.append(location.coordinate)
         presenter.userLocationIsUpdated()
+    }
+}
+
+extension StopwatchInteractor: UpdateDataTempDelegate {
+    func currentDistanceChanged(distance: String) {
+        helperValueTemp.saveCurrentDistance(distance: distance)
+    }
+    
+    func сurrentAverageTempChanged(average: String) {
+        helperValueTemp.saveCurrentAverageTemp(average: average)
+    }
+    
+    func сurrentTempChanged(temp: String) {
+        helperValueTemp.saveCurrentTemp(temp: temp)
+    }
+    
+    func currentResultsСhanged(time: Double, traveled: Double, iteration: Int) {
+        helperValueTemp.saveTempHelper(time: time, traveled: traveled, iteration: iteration)
     }
 }

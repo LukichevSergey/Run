@@ -50,7 +50,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         }
         return totalDistance
     }
-    
+        
     // MARK: - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
