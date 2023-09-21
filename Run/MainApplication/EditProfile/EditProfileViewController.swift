@@ -58,29 +58,30 @@ final class EditProfileViewController: UIViewController {
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
-
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        logger.log("\(#fileID) -> \(#function)")
         configureUI()
         presenter.viewDidLoad()
     }
     
     // MARK: - private func
     private func commonInit() {
-
+        logger.log("\(#fileID) -> \(#function)")
     }
 
     private func configureUI() {
+        logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
         
         view.addSubview(mainVStack)
@@ -99,6 +100,7 @@ final class EditProfileViewController: UIViewController {
     }
     
     @objc private func saveButtonTapped() {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.saveButtonTapped()
     }
 }
@@ -106,10 +108,12 @@ final class EditProfileViewController: UIViewController {
 // MARK: Extension - EditProfilePresenterToViewProtocol 
 extension EditProfileViewController: EditProfilePresenterToViewProtocol{
     func showErrorAlert(with text: String) {
+        logger.log("\(#fileID) -> \(#function)")
         showAlert(with: text)
     }
     
     func setTextField(with data: String) {
+        logger.log("\(#fileID) -> \(#function)")
         usernameTextField.setText(text: data)
     }
 }
@@ -117,14 +121,17 @@ extension EditProfileViewController: EditProfilePresenterToViewProtocol{
 // MARK: Extension - EditProfileRouterToViewProtocol
 extension EditProfileViewController: EditProfileRouterToViewProtocol{
     func presentView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
     }
 
     func pushView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
     
     func popView() {
+        logger.log("\(#fileID) -> \(#function)")
         navigationController?.popViewController(animated: true)
     }
 }
@@ -132,6 +139,7 @@ extension EditProfileViewController: EditProfileRouterToViewProtocol{
 // MARK: Extension - UITextFieldDelegate
 extension EditProfileViewController: AuthTextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        logger.log("\(#fileID) -> \(#function)")
         switch textField.tag {
         case 0:
             presenter.userNameTextFieldIsChanged(on: textField.text ?? "")

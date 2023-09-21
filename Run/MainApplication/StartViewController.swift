@@ -26,6 +26,8 @@ final class StartViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logger.log("\(#fileID) -> \(#function)")
+        
         view.backgroundColor = .white
 
         GlobalData.userModel
@@ -41,6 +43,7 @@ final class StartViewController: UIViewController {
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        logger.log("\(#fileID) -> \(#function)")
 
         if GlobalData.userModel.value == nil {
             let authView = AuthViewController()

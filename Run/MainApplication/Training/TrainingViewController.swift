@@ -27,18 +27,19 @@ class TrainingViewController: UIViewController {
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
-
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = .systemCyan
         configureUI()
         presenter.viewDidLoad()
@@ -62,10 +63,12 @@ extension TrainingViewController: TrainingPresenterToViewProtocol{
 // MARK: Extension - TrainingRouterToViewProtocol
 extension TrainingViewController: TrainingRouterToViewProtocol{
     func presentView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
     }
 
     func pushView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
 }

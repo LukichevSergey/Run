@@ -13,23 +13,28 @@ final class AppUser: Codable {
     private var name: String
     
     func setName(on name: String) {
+        logger.log("\(#fileID) -> \(#function)")
         self.name = name
     }
     
     func getName() -> String {
+        logger.log("\(#fileID) -> \(#function)")
         return name
     }
     
     func getId() -> String {
+        logger.log("\(#fileID) -> \(#function)")
         return id
     }
     
     internal init(id: String, name: String) {
+        logger.log("\(#fileID) -> \(#function)")
         self.id = id
         self.name = name
     }
     
     init?(from dictionary: [String: Any]) {
+        logger.log("\(#fileID) -> \(#function)")
         guard let id = dictionary["id"] as? String,
               let name = dictionary["name"] as? String else {
             return nil
@@ -40,6 +45,7 @@ final class AppUser: Codable {
     }
     
     var toDict: [String: Any] {
+        logger.log("\(#fileID) -> \(#function)")
         var dict:[String: Any] = [:]
         dict["id"] = id
         dict["name"] = name
@@ -54,12 +60,14 @@ class Balance: Codable {
     var currentAmount: Double
     
     internal init(id: String = UUID().uuidString, userId: String, currentAmount: Double = 30) {
+        logger.log("\(#fileID) -> \(#function)")
         self.id = id
         self.userId = userId
         self.currentAmount = currentAmount
     }
     
     init?(from dictionary: [String: Any]) {
+        logger.log("\(#fileID) -> \(#function)")
         guard let id = dictionary["id"] as? String,
               let userId = dictionary["userId"] as? String,
               let currentAmount = dictionary["currentAmount"] as? Double else {
@@ -72,6 +80,7 @@ class Balance: Codable {
     }
     
     var toDict: [String: Any] {
+        logger.log("\(#fileID) -> \(#function)")
         var dict:[String: Any] = [:]
         dict["id"] = id
         dict["userId"] = userId
@@ -88,12 +97,14 @@ class Sneakers: Codable {
     var mileage: Double
     
     internal init(id: String = UUID().uuidString, userId: String, mileage: Double = 0) {
+        logger.log("\(#fileID) -> \(#function)")
         self.id = id
         self.userId = userId
         self.mileage = mileage
     }
     
     init?(from dictionary: [String: Any]) {
+        logger.log("\(#fileID) -> \(#function)")
         guard let id = dictionary["id"] as? String,
               let userId = dictionary["userId"] as? String,
               let mileage = dictionary["mileage"] as? Double else {
@@ -106,6 +117,7 @@ class Sneakers: Codable {
     }
     
     var toDict: [String: Any] {
+        logger.log("\(#fileID) -> \(#function)")
         var dict:[String: Any] = [:]
         dict["id"] = id
         dict["userId"] = userId

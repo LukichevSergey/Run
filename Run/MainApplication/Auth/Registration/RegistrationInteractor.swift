@@ -29,19 +29,23 @@ final class RegistrationInteractor {
 // MARK: Extension - RegistrationPresenterToInteractorProtocol
 extension RegistrationInteractor: RegistrationPresenterToInteractorProtocol {
     func setUsername(to username: String) {
+        logger.log("\(#fileID) -> \(#function)")
         self.username = username
     }
     
     func setEmail(to email: String) {
+        logger.log("\(#fileID) -> \(#function)")
         self.email = email
     }
     
     func setPassword(to password: String) {
+        logger.log("\(#fileID) -> \(#function)")
         self.password = password
     }
     
     @MainActor
     func signUp() {
+        logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
                 let user = try await AuthManager.shared.signUp(username: username, email: email, password: password)

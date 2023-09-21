@@ -10,6 +10,7 @@ import UIKit
 
 final class StopwatchConfigurator {
     func configure() -> UIViewController {
+        logger.log("\(#fileID) -> \(#function)")
         let view = StopwatchViewController()
         let presenter = StopwatchPresenter()
         let router = StopwatchRouter()

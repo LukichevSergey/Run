@@ -10,6 +10,7 @@ import UIKit
 
 final class RegistrationConfigurator {
     func configure() -> UIViewController {
+        logger.log("\(#fileID) -> \(#function)")
         let view = RegistrationViewController()
         let presenter = RegistrationPresenter()
         let router = RegistrationRouter()

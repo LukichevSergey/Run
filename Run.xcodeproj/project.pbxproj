@@ -35,6 +35,7 @@
 		8718159D2AA76C0C007CD141 /* EditProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871815982AA76C0C007CD141 /* EditProfileViewController.swift */; };
 		8718159E2AA76C0C007CD141 /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 871815992AA76C0C007CD141 /* EditProfileInteractor.swift */; };
 		8718159F2AA76C0C007CD141 /* EditProfileConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8718159A2AA76C0C007CD141 /* EditProfileConfigurator.swift */; };
+		872F69DF2ABC6DCF00CFCBD1 /* LoggerManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 872F69DE2ABC6DCF00CFCBD1 /* LoggerManager.swift */; };
 		875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875896882AA4C2D0002027FA /* UIViewController+Alert.swift */; };
 		8758968D2AA4CAEA002027FA /* ProfileTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8758968C2AA4CAEA002027FA /* ProfileTableViewCell.swift */; };
 		875896912AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 875896902AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift */; };
@@ -119,6 +120,7 @@
 		871815982AA76C0C007CD141 /* EditProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileViewController.swift; sourceTree = "<group>"; };
 		871815992AA76C0C007CD141 /* EditProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
 		8718159A2AA76C0C007CD141 /* EditProfileConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileConfigurator.swift; sourceTree = "<group>"; };
+		872F69DE2ABC6DCF00CFCBD1 /* LoggerManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoggerManager.swift; sourceTree = "<group>"; };
 		875896882AA4C2D0002027FA /* UIViewController+Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Alert.swift"; sourceTree = "<group>"; };
 		8758968C2AA4CAEA002027FA /* ProfileTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCell.swift; sourceTree = "<group>"; };
 		875896902AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellViewModel.swift; sourceTree = "<group>"; };
@@ -284,6 +286,7 @@
 				87EE80A62A99C90B00EF4ADD /* TrainingManager.swift */,
 				8775B9662AA0D49D00EEA6F9 /* AuthManager.swift */,
 				87A8DEEA2AA3087800F49A62 /* DatabaseService.swift */,
+				872F69DE2ABC6DCF00CFCBD1 /* LoggerManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -622,6 +625,7 @@
 				8758968D2AA4CAEA002027FA /* ProfileTableViewCell.swift in Sources */,
 				8705D8A62A978A51002BBDC2 /* ProfilePresenter.swift in Sources */,
 				87C46D352A9E38530094A8F0 /* RegistrationPresenter.swift in Sources */,
+				872F69DF2ABC6DCF00CFCBD1 /* LoggerManager.swift in Sources */,
 				8705D87C2A978427002BBDC2 /* ViewController.swift in Sources */,
 				8705D88D2A978716002BBDC2 /* StartViewController.swift in Sources */,
 				8705D88F2A97876F002BBDC2 /* RootMainApplicitionController.swift in Sources */,

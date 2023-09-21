@@ -38,15 +38,18 @@ final class TimerStatsLabel: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         addSubview(mainVStack)
         mainVStack.snp.makeConstraints { make in
             make.directionalEdges.equalToSuperview()
@@ -59,6 +62,7 @@ extension TimerStatsLabel: ConfigurableViewProtocol {
     typealias ConfigurationModel = TimerStatsViewModel
 
     func configure(with model: TimerStatsViewModel) {
+        logger.log("\(#fileID) -> \(#function)")
         dataLabel.text = model.data
         descriptionLabel.text = model.description
     }

@@ -10,6 +10,7 @@ import UIKit
 
 final class LoginConfigurator {
     func configure() -> UIViewController {
+        logger.log("\(#fileID) -> \(#function)")
         let view = LoginViewController()
         let presenter = LoginPresenter()
         let router = LoginRouter()

@@ -31,6 +31,7 @@ final class ProfileInteractor {
     private var store: AnyCancellable?
 
     init() {
+        logger.log("\(#fileID) -> \(#function)")
         _user = GlobalData.userModel.value ?? .init(id: "", name: "")
         _dataSource = [.editProfile, .exit]
     }
@@ -39,19 +40,23 @@ final class ProfileInteractor {
 // MARK: Extension - ProfilePresenterToInteractorProtocol
 extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
     var user: AppUser {
+        logger.log("\(#fileID) -> \(#function)")
         return _user
     }
     
     var balance: Balance? {
+        logger.log("\(#fileID) -> \(#function)")
         return _balance
     }
     
     var dataSource: ProfileViewModel {
+        logger.log("\(#fileID) -> \(#function)")
         return .init(cells: _dataSource.map {.init(type: $0)})
     }
     
     @MainActor
     func fetchUserBalance() {
+        logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
                 let balance = try await DatabaseService.shared.getBalance(for: _user.getId())
@@ -64,6 +69,7 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
     }
     
     func subscribeOnUserChanged() {
+        logger.log("\(#fileID) -> \(#function)")
         store = GlobalData.userModel.sink { [weak self] user in
             guard let user else { return }
             self?._user = user
@@ -72,6 +78,7 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
     }
     
     func signOut() {
+        logger.log("\(#fileID) -> \(#function)")
         GlobalData.userModel.send(nil)
     }
 }

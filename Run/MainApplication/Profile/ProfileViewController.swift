@@ -86,18 +86,19 @@ final class ProfileViewController: UIViewController {
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
-
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
         configureUI()
         presenter.viewDidLoad()
@@ -109,6 +110,7 @@ final class ProfileViewController: UIViewController {
     }
 
     private func configureUI() {
+        logger.log("\(#fileID) -> \(#function)")
         view.addSubview(topHStack)
         topHStack.snp.makeConstraints { make in
             make.top.equalTo(view.safeAreaLayoutGuide)
@@ -126,6 +128,7 @@ final class ProfileViewController: UIViewController {
 // MARK: Extension - ProfilePresenterToViewProtocol 
 extension ProfileViewController: ProfilePresenterToViewProtocol{
     func setData(_ data: ProfileViewModel) {
+        logger.log("\(#fileID) -> \(#function)")
         var snapshot = NSDiffableDataSourceSnapshot<Section, ProfileTableViewCellViewModel>()
         
         snapshot.appendSections([Section.main])
@@ -135,10 +138,12 @@ extension ProfileViewController: ProfilePresenterToViewProtocol{
     }
     
     func setUsername(on name: String) {
+        logger.log("\(#fileID) -> \(#function)")
         nameLabel.text = name
     }
     
     func setBalance(balance: Double) {
+        logger.log("\(#fileID) -> \(#function)")
         balanceLabel.text = Tx.Profile.getBalance(balance: balance)
     }
 }
@@ -146,10 +151,12 @@ extension ProfileViewController: ProfilePresenterToViewProtocol{
 // MARK: Extension - ProfileRouterToViewProtocol
 extension ProfileViewController: ProfileRouterToViewProtocol{
     func presentView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
     }
 
     func pushView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
 }
@@ -157,6 +164,7 @@ extension ProfileViewController: ProfileRouterToViewProtocol{
 // MARK: Extension - ProfileTableViewCellDelegate
 extension ProfileViewController: ProfileTableViewCellDelegate {
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType) {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.tableViewCellTapped(with: type)
     }
 }

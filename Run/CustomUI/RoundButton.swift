@@ -83,24 +83,28 @@ final class RoundButton: UIView {
     }()
     
     init(with type: RoundButtonType) {
+        logger.log("\(#fileID) -> \(#function)")
         self.type = type
         super.init(frame: .zero)
         commonInit()
     }
     
     override init(frame: CGRect) {
+        logger.log("\(#fileID) -> \(#function)")
         self.type = .startButton(isStarted: false)
         super.init(frame: frame)
         commonInit()
     }
     
     required init?(coder: NSCoder) {
+        logger.log("\(#fileID) -> \(#function)")
         self.type = .startButton(isStarted: false)
         super.init(coder: coder)
         commonInit()
     }
     
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         addSubview(button)
         button.snp.makeConstraints { make in
             make.size.equalTo(type.frameSize)
@@ -122,6 +126,7 @@ final class RoundButton: UIView {
     }
     
     func resetButton() {
+        logger.log("\(#fileID) -> \(#function)")
         switch type {
         case .startButton:
             self.type = .startButton(isStarted: false)
@@ -132,12 +137,14 @@ final class RoundButton: UIView {
     }
     
     @objc private func buttonPressed() {
+        logger.log("\(#fileID) -> \(#function)")
         UIView.animate(withDuration: 0.3) {
             self.button.layer.shadowOpacity = 0.2
         }
     }
     
     @objc private func buttonReleased() {
+        logger.log("\(#fileID) -> \(#function)")
         UIView.animate(withDuration: 0.3) {
             self.button.layer.shadowOpacity = 0.5
         }

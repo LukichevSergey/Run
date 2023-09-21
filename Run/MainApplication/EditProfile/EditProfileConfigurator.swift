@@ -10,6 +10,7 @@ import UIKit
 
 final class EditProfileConfigurator {
     func configure(with profile: AppUser) -> UIViewController {
+        logger.log("\(#fileID) -> \(#function)")
         let view = EditProfileViewController()
         let presenter = EditProfilePresenter()
         let router = EditProfileRouter()
