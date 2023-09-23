@@ -27,15 +27,18 @@ final class LoginInteractor {
 // MARK: Extension - LoginPresenterToInteractorProtocol
 extension LoginInteractor: LoginPresenterToInteractorProtocol {
     func setEmail(to email: String) {
+        logger.log("\(#fileID) -> \(#function)")
         self.email = email
     }
     
     func setPassword(to password: String) {
+        logger.log("\(#fileID) -> \(#function)")
         self.password = password
     }
     
     @MainActor
     func fetchLoginData() {
+        logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
                 let userResult = try await AuthManager.shared.signIn(email: email, password: password)

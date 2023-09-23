@@ -31,6 +31,7 @@ final class ProfileTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
@@ -39,6 +40,7 @@ final class ProfileTableViewCell: UITableViewCell {
     }
     
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         contentView.backgroundColor = PaletteApp.white
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
@@ -51,6 +53,7 @@ final class ProfileTableViewCell: UITableViewCell {
 
 extension ProfileTableViewCell: ConfigurableViewProtocol {
     func configure(with model: ProfileTableViewCellViewModel) {
+        logger.log("\(#fileID) -> \(#function)")
         type = model.type
         titleLabel.text = model.type.cellTitle
     }
@@ -60,6 +63,7 @@ extension ProfileTableViewCell: ConfigurableViewProtocol {
 
 private extension ProfileTableViewCell {
     @objc private func cellTapped() {
+        logger.log("\(#fileID) -> \(#function)")
         guard let type else { return }
         delegate?.tableViewCellTapped(with: type)
     }

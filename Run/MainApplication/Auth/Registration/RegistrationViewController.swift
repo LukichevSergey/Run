@@ -68,19 +68,19 @@ final class RegistrationViewController: UIViewController {
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
-
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        logger.log("\(#fileID) -> \(#function)")
         configureUI()
         presenter.viewDidLoad()
         
@@ -90,10 +90,11 @@ final class RegistrationViewController: UIViewController {
     
     // MARK: - private func
     private func commonInit() {
-
+        logger.log("\(#fileID) -> \(#function)")
     }
 
     private func configureUI() {
+        logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
         
         view.addSubview(mainVStack)
@@ -112,10 +113,12 @@ final class RegistrationViewController: UIViewController {
     }
     
     @objc private func authButtonTapped() {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.authButtonTapped()
     }
     
     @objc private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        logger.log("\(#fileID) -> \(#function)")
         view.endEditing(false)
     }
 }
@@ -123,6 +126,7 @@ final class RegistrationViewController: UIViewController {
 // MARK: Extension - RegistrationPresenterToViewProtocol 
 extension RegistrationViewController: RegistrationPresenterToViewProtocol{
     func showErrorAlert(with text: String) {
+        logger.log("\(#fileID) -> \(#function)")
         showAlert(with: text)
     }
 }
@@ -130,10 +134,12 @@ extension RegistrationViewController: RegistrationPresenterToViewProtocol{
 // MARK: Extension - RegistrationRouterToViewProtocol
 extension RegistrationViewController: RegistrationRouterToViewProtocol{
     func presentView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
     }
 
     func pushView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
 }
@@ -141,6 +147,7 @@ extension RegistrationViewController: RegistrationRouterToViewProtocol{
 // MARK: AuthTextFieldDelegate
 extension RegistrationViewController: AuthTextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        logger.log("\(#fileID) -> \(#function)")
         switch textField.tag {
         case 0:
             presenter.usernameIsChanged(to: textField.text ?? "")

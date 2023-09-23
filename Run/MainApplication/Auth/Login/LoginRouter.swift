@@ -22,6 +22,7 @@ final class LoginRouter {
 // MARK: Extension - LoginPresenterToRouterProtocol
 extension LoginRouter: LoginPresenterToRouterProtocol {
     func navigateToMainPage() {
+        logger.log("\(#fileID) -> \(#function)")
         let mainApplication = RootMainApplicitionController()
         mainApplication.modalPresentationStyle = .fullScreen
         view.presentView(view: mainApplication)

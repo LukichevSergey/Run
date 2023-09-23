@@ -10,6 +10,7 @@ import UIKit
 
 final class ProfileConfigurator {
     func configure() -> UIViewController {
+        logger.log("\(#fileID) -> \(#function)")
         let view = ProfileViewController()
         let presenter = ProfilePresenter()
         let router = ProfileRouter()

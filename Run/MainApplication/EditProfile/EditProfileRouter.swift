@@ -22,6 +22,7 @@ final class EditProfileRouter {
 // MARK: Extension - EditProfilePresenterToRouterProtocol
 extension EditProfileRouter: EditProfilePresenterToRouterProtocol {
     func navigateToPreviouslyLevel() {
+        logger.log("\(#fileID) -> \(#function)")
         view.popView()
     }
 }

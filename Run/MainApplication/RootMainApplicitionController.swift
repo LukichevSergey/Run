@@ -12,6 +12,8 @@ final class RootMainApplicitionController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        logger.log("\(#fileID) -> \(#function)")
+        
         view.backgroundColor = .blue
         modalPresentationStyle = .fullScreen
         modalTransitionStyle = .coverVertical

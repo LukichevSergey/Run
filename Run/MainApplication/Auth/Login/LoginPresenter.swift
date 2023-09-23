@@ -33,31 +33,36 @@ final class LoginPresenter {
 // MARK: Extension - LoginViewToPresenterProtocol
 extension LoginPresenter: LoginViewToPresenterProtocol {
     func emailIsChanged(to email: String) {
+        logger.log("\(#fileID) -> \(#function)")
         interactor.setEmail(to: email)
     }
     
     func passwordIsChanged(to password: String) {
+        logger.log("\(#fileID) -> \(#function)")
         interactor.setPassword(to: password)
     }
     
     func loginButtonTapped() {
+        logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
         interactor.fetchLoginData()
     }
     
     func viewDidLoad() {
-    
+        logger.log("\(#fileID) -> \(#function)")
     }
 }
 
 // MARK: Extension - LoginInteractorToPresenterProtocol
 extension LoginPresenter: LoginInteractorToPresenterProtocol {
     func userIsSignInWithError(error: Error) {
+        logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()
         view.showErrorAlert(with: error.localizedDescription)
     }
     
     func userIsSingIn() {
+        logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()
         router.navigateToMainPage()
     }

@@ -74,21 +74,25 @@ final class AuthTextField: UIView {
     
     init(with type: TextFieldType) {
         super.init(frame: .zero)
+        logger.log("\(#fileID) -> \(#function)")
         self.type = type
         commonInit()
     }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         addSubview(textField)
         textField.snp.makeConstraints { make in
             make.directionalEdges.equalToSuperview()
@@ -96,18 +100,21 @@ final class AuthTextField: UIView {
     }
     
     @objc private func passwordHideButtonTapped() {
+        logger.log("\(#fileID) -> \(#function)")
         textField.isSecureTextEntry.toggle()
     }
 }
 
 extension AuthTextField: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        logger.log("\(#fileID) -> \(#function)")
         delegate?.textFieldDidChangeSelection(textField)
     }
 }
 
 extension AuthTextField: TextFieldInterface {
     func setText(text: String) {
+        logger.log("\(#fileID) -> \(#function)")
         textField.text = text
     }
 }

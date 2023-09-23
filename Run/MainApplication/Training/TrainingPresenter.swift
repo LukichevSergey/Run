@@ -30,6 +30,7 @@ class TrainingPresenter {
 // MARK: Extension - TrainingViewToPresenterProtocol
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
     func viewDidLoad() {
+        logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
         interactor.fetchTrainings()
     }

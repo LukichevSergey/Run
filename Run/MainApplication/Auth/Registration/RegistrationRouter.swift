@@ -22,6 +22,7 @@ final class RegistrationRouter {
 // MARK: Extension - RegistrationPresenterToRouterProtocol
 extension RegistrationRouter: RegistrationPresenterToRouterProtocol {
     func navigateToMainPage() {
+        logger.log("\(#fileID) -> \(#function)")
         let mainApplication = RootMainApplicitionController()
         mainApplication.modalPresentationStyle = .fullScreen
         view.presentView(view: mainApplication)

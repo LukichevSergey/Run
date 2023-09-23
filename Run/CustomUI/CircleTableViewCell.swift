@@ -34,6 +34,7 @@ final class CircleTableViewCell: UITableViewCell {
     }()
     
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         contentView.addSubview(circleLabel)
         circleLabel.snp.makeConstraints { make in
             make.top.equalTo(contentView).offset(10)
@@ -55,16 +56,19 @@ final class CircleTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
+        logger.log("\(#fileID) -> \(#function)")
         fatalError("init(coder:) has not been implemented")
     }
 }
 
 extension CircleTableViewCell: ConfigurableViewProtocol {
     func configure(with model: CircleViewModel) {
+        logger.log("\(#fileID) -> \(#function)")
         circleLabel.text = model.circle
         distancseLabel.text = model.distance
         timeLabel.text = model.time

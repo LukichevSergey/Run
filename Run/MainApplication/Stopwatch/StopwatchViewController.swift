@@ -118,16 +118,19 @@ final class StopwatchViewController: UIViewController {
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        logger.log("\(#fileID) -> \(#function)")
         resultTable.delegate = self
         resultTable.dataSource = self
         configureUI()
@@ -145,6 +148,7 @@ final class StopwatchViewController: UIViewController {
     private func commonInit() { }
 
     private func configureUI() {
+        logger.log("\(#fileID) -> \(#function)")
         view.layer.insertSublayer(gradientLayer, at: 0)
         view.addSubview(dataView)
         dataView.snp.makeConstraints { make in
@@ -170,6 +174,7 @@ final class StopwatchViewController: UIViewController {
 extension StopwatchViewController: StopwatchPresenterToViewProtocol{
     
     func setCircleResult(with data: CircleViewModel) {
+        logger.log("\(#fileID) -> \(#function)")
         arrayCircleResult.append(data)
         resultTable.reloadData()
         let lastIndex = IndexPath(row: arrayCircleResult.count - 1, section: 0)
@@ -177,16 +182,19 @@ extension StopwatchViewController: StopwatchPresenterToViewProtocol{
     }
     
     func resetStartButton() {
+        logger.log("\(#fileID) -> \(#function)")
         startButton.resetButton()
         arrayCircleResult.removeAll()
         resultTable.reloadData()
     }
     
     func setTimer(with data: TimerViewModel) {
+        logger.log("\(#fileID) -> \(#function)")
         dataView.configure(with: data)
     }
     
     func setTimer(with time: Double) {
+        logger.log("\(#fileID) -> \(#function)")
         timerLabel.text = time.formatTime()
     }
 }
@@ -195,10 +203,12 @@ extension StopwatchViewController: StopwatchPresenterToViewProtocol{
 extension StopwatchViewController: StopwatchRouterToViewProtocol{
     
     func presentView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
     }
 
     func pushView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
 }
@@ -206,6 +216,7 @@ extension StopwatchViewController: StopwatchRouterToViewProtocol{
 // MARK: RoundButtonDelegate
 extension StopwatchViewController: RoundButtonDelegate {
     func roundButtonTapped(with type: RoundButton.RoundButtonType) {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.roundButtonTapped(with: type)
     }
 }

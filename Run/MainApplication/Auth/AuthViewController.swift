@@ -57,6 +57,7 @@ final class AuthViewController: UIViewController {
     }()
     
     func configureUI() {
+        logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
         titleView.backgroundColor = PaletteApp.lightGreen
         
@@ -95,15 +96,18 @@ final class AuthViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        logger.log("\(#fileID) -> \(#function)")
         configureUI()
     }
     
     @objc private func loginButtonTapped() {
+        logger.log("\(#fileID) -> \(#function)")
         let loginVC = LoginConfigurator().configure()
         navigationController?.pushViewController(loginVC, animated: true)
     }
     
     @objc private func authButtonTapped() {
+        logger.log("\(#fileID) -> \(#function)")
         let regVC = RegistrationConfigurator().configure()
         navigationController?.pushViewController(regVC, animated: true)
     }

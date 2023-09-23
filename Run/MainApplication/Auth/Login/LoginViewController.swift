@@ -62,19 +62,19 @@ final class LoginViewController: UIViewController {
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
-
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        logger.log("\(#fileID) -> \(#function)")
         configureUI()
         presenter.viewDidLoad()
         
@@ -84,10 +84,11 @@ final class LoginViewController: UIViewController {
     
     // MARK: - private func
     private func commonInit() {
-
+        logger.log("\(#fileID) -> \(#function)")
     }
 
     private func configureUI() {
+        logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
         
         view.addSubview(mainVStack)
@@ -106,10 +107,12 @@ final class LoginViewController: UIViewController {
     }
     
     @objc private func loginButtonTapped() {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.loginButtonTapped()
     }
     
     @objc private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
+        logger.log("\(#fileID) -> \(#function)")
         view.endEditing(false)
     }
 }
@@ -117,6 +120,7 @@ final class LoginViewController: UIViewController {
 // MARK: Extension - LoginPresenterToViewProtocol 
 extension LoginViewController: LoginPresenterToViewProtocol{
     func showErrorAlert(with text: String) {
+        logger.log("\(#fileID) -> \(#function)")
         showAlert(with: text)
     }
 }
@@ -124,14 +128,17 @@ extension LoginViewController: LoginPresenterToViewProtocol{
 // MARK: Extension - LoginRouterToViewProtocol
 extension LoginViewController: LoginRouterToViewProtocol{
     func presentView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
     }
 
     func pushView(view: UIViewController) {
+        logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
     
     func popView() {
+        logger.log("\(#fileID) -> \(#function)")
         navigationController?.popViewController(animated: false)
     }
 }
@@ -139,6 +146,7 @@ extension LoginViewController: LoginRouterToViewProtocol{
 // MARK: UITextFieldDelegate
 extension LoginViewController: AuthTextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
+        logger.log("\(#fileID) -> \(#function)")
         switch textField.tag {
         case 1:
             presenter.emailIsChanged(to: textField.text ?? "")

@@ -34,6 +34,7 @@ final class StopwatchPresenter {
 extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
     
     func roundButtonTapped(with type: RoundButton.RoundButtonType) {
+        logger.log("\(#fileID) -> \(#function)")
         switch type {
         case .startButton(let isStarted):
             isStarted ? interactor.startTimer() : interactor.stopTimer()
@@ -51,6 +52,7 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
     }
     
     func viewDidLoad() {
+        logger.log("\(#fileID) -> \(#function)")
         interactor.requestAuthorization()
         
         view.setTimer(with: interactor.getTimerData())
@@ -64,6 +66,7 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
 // MARK: Extension - StopwatchInteractorToPresenterProtocol
 extension StopwatchPresenter: StopwatchInteractorToPresenterProtocol {
     func userLocationIsUpdated() {
+        logger.log("\(#fileID) -> \(#function)")
         view.setTimer(with: interactor.getTimerData())
     }
 }

@@ -30,6 +30,16 @@ final class Training: Hashable {
     var finishTime: Date? = nil
     var trainingStatus: TrainingStatus = .start
     var coordinates: [[CLLocationCoordinate2D]] = []
+    
+    init(startTime: Date = Date(),
+                  finishTime: Date? = nil,
+                  trainingStatus: TrainingStatus = .start,
+                  coordinates: [[CLLocationCoordinate2D]] = []) {
+        logger.log("\(#fileID) -> \(#function)")
+        self.startTime = startTime
+        self.finishTime = finishTime
+        self.trainingStatus = trainingStatus
+        self.coordinates = coordinates
     var distance: String = ""
     var time: Double = 0
     var temp: String = ""

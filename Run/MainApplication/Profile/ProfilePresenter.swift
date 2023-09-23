@@ -31,6 +31,7 @@ final class ProfilePresenter {
 // MARK: Extension - ProfileViewToPresenterProtocol
 extension ProfilePresenter: ProfileViewToPresenterProtocol {
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType) {
+        logger.log("\(#fileID) -> \(#function)")
         switch type {
         case .editProfile:
             router.navigateToEditProfile(with: interactor.user)
@@ -40,6 +41,7 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     }
     
     func viewDidLoad() {
+        logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
         interactor.subscribeOnUserChanged()
         view.setData(interactor.dataSource)
@@ -50,11 +52,13 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
 // MARK: Extension - ProfileInteractorToPresenterProtocol
 extension ProfilePresenter: ProfileInteractorToPresenterProtocol {
     func userBalanceIsFetched() {
+        logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()
         view.setBalance(balance: interactor.balance?.currentAmount ?? 0)
     }
     
     func userIsChanged() {
+        logger.log("\(#fileID) -> \(#function)")
         view.setUsername(on: interactor.user.getName())
     }
 }
