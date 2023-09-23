@@ -38,15 +38,18 @@ final class TimerDataView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         addSubview(dataHStack)
         dataHStack.snp.makeConstraints { make in
             make.directionalEdges.equalToSuperview()
@@ -56,6 +59,7 @@ final class TimerDataView: UIView {
 
 extension TimerDataView: ConfigurableViewProtocol {
     func configure(with model: TimerViewModel) {
+        logger.log("\(#fileID) -> \(#function)")
         kilometrView.configure(with: model.kilometrModel)
         tempView.configure(with: model.tempModel)
         averageTempView.configure(with: model.averageTempModel)

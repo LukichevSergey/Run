@@ -23,6 +23,7 @@ final class Training {
                   finishTime: Date? = nil,
                   trainingStatus: TrainingStatus = .start,
                   coordinates: [[CLLocationCoordinate2D]] = []) {
+        logger.log("\(#fileID) -> \(#function)")
         self.startTime = startTime
         self.finishTime = finishTime
         self.trainingStatus = trainingStatus

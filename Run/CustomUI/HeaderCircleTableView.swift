@@ -38,14 +38,17 @@ class HeaderCircleTableView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
+        logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
     
     required init?(coder: NSCoder) {
+        logger.log("\(#fileID) -> \(#function)")
         fatalError("init(coder:) has not been implemented")
     }
     
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         addSubview(circleLabel)
         circleLabel.snp.makeConstraints { make in
             make.leading.equalToSuperview().offset(16)

@@ -19,6 +19,7 @@ final class GlobalDataContainer {
     private var store: AnyCancellable?
     
     private init() {
+        logger.log("\(#fileID) -> \(#function)")
         let userDefault = UserDefaults.standard
         
         do {
@@ -35,12 +36,14 @@ final class GlobalDataContainer {
     let userModel = CurrentValueSubject<AppUser?, Never>(nil)
     
     private func subscribeOnUser() {
+        logger.log("\(#fileID) -> \(#function)")
         store = userModel.sink { [weak self] model in
             self?.saveUser()
         }
     }
     
     private func saveUser() {
+        logger.log("\(#fileID) -> \(#function)")
         if let encoded = try? JSONEncoder().encode(userModel.value) {
             userDefault.set(encoded, forKey: "userModel")
         } else {

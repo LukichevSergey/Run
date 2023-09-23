@@ -22,6 +22,7 @@ final class ProfileRouter {
 // MARK: Extension - ProfilePresenterToRouterProtocol
 extension ProfileRouter: ProfilePresenterToRouterProtocol {
     func navigateToEditProfile(with profile: AppUser) {
+        logger.log("\(#fileID) -> \(#function)")
         let editProfileViewController = EditProfileConfigurator().configure(with: profile)
         view.pushView(view: editProfileViewController)
     }

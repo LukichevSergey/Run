@@ -41,10 +41,12 @@ final class StopwatchInteractor {
 // MARK: Extension - StopwatchPresenterToInteractorProtocol
 extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     var timer: TimerManager {
+        logger.log("\(#fileID) -> \(#function)")
         return timerManager
     }
     
     func stopTimer() {
+        logger.log("\(#fileID) -> \(#function)")
         timerManager.stopTimer()
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .pause)
@@ -53,6 +55,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     }
     
     func startTimer() {
+        logger.log("\(#fileID) -> \(#function)")
         timerManager.startTimer()
         locationManager.startUpdatingLocation()
         trainingManager.createTraining()
@@ -60,6 +63,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     }
     
     func resetTimer() {
+        logger.log("\(#fileID) -> \(#function)")
         timerManager.resetTimer()
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .stop)
@@ -70,6 +74,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     }
     
     func roundResult() -> CircleViewModel {
+        logger.log("\(#fileID) -> \(#function)")
         let distance = trainingManager.getDistance()
         let timeCircles = timer.elapsedTime - helperValueTemp.circleTimeAll
         let circleDistance = distance - helperValueTemp.circleDistanceAll
@@ -82,6 +87,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     }
     
     func getTimerData() -> TimerViewModel {
+        logger.log("\(#fileID) -> \(#function)")
         let distance = trainingManager.getDistance()
         let avgerageTemp = trainingManager.getAverageTempModel(distance: distance, time: timer.elapsedTime)
         let tempOneKillomert = trainingManager.getTempModel(distance: distance,
@@ -96,12 +102,14 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     }
     
     func requestAuthorization() {
+        logger.log("\(#fileID) -> \(#function)")
         locationManager.requestAuthorization()
     }
 }
 
 extension StopwatchInteractor: LocationManagerDelegate {
     func didUpdateUserLocation(_ location: CLLocation) {
+        logger.log("\(#fileID) -> \(#function)")
         guard trainingManager.trainingStatus == .start else { return }
         trainingManager.coordinates.append(location.coordinate)
         presenter.userLocationIsUpdated()
@@ -111,18 +119,22 @@ extension StopwatchInteractor: LocationManagerDelegate {
 extension StopwatchInteractor: UpdateDataTempDelegate {
     
     func currentDistanceChanged(distance: String) {
+        logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentDistance(distance: distance)
     }
     
     func сurrentAverageTempChanged(average: String) {
+        logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentAverageTemp(average: average)
     }
     
     func сurrentTempChanged(temp: String) {
+        logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentTemp(temp: temp)
     }
 
     func currentResultsСhanged(time: Double, traveled: Double, iteration: Int) {
+        logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveTempHelper(time: time, traveled: traveled, iteration: iteration)
     }
 }

@@ -20,6 +20,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     
     override init() {
         super.init()
+        logger.log("\(#fileID) -> \(#function)")
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.allowsBackgroundLocationUpdates = true
@@ -28,18 +29,22 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func requestAuthorization() {
+        logger.log("\(#fileID) -> \(#function)")
         locationManager.requestWhenInUseAuthorization()
     }
     
     func startUpdatingLocation() {
+        logger.log("\(#fileID) -> \(#function)")
         locationManager.startUpdatingLocation()
     }
     
     func stopUpdatingLocation() {
+        logger.log("\(#fileID) -> \(#function)")
         locationManager.stopUpdatingLocation()
     }
     
     func calculateDistance(routeCoordinates: [CLLocationCoordinate2D]) -> CLLocationDistance {
+        logger.log("\(#fileID) -> \(#function)")
         var totalDistance: CLLocationDistance = 0
         if routeCoordinates.count > 1 {
             for i in 0..<routeCoordinates.count-1 {
@@ -54,12 +59,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     // MARK: - CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        logger.log("\(#fileID) -> \(#function)")
         guard let location = locations.last else { return }
         self.location = location
         delegate?.didUpdateUserLocation(location)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        logger.log("\(#fileID) -> \(#function)")
         if status == .authorizedWhenInUse {
             startUpdatingLocation()
         }

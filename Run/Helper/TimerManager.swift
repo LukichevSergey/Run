@@ -16,6 +16,7 @@ final class TimerManager {
     @Published var isRunning = false
     
     func startTimer() {
+        logger.log("\(#fileID) -> \(#function)")
         timer = Timer.scheduledTimer(withTimeInterval: 0.1, repeats: true) { _ in
             self.elapsedTime += 0.1
             
@@ -26,12 +27,14 @@ final class TimerManager {
     }
     
     func stopTimer() {
+        logger.log("\(#fileID) -> \(#function)")
         isRunning = false
         timer?.invalidate()
         timer = nil
     }
     
     func resetTimer() {
+        logger.log("\(#fileID) -> \(#function)")
         isRunning = false
         elapsedTime = 0.0
         timer?.invalidate()

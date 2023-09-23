@@ -10,6 +10,7 @@ import UIKit
 
 class TrainingConfigurator {
     func configure() -> UIViewController {
+        logger.log("\(#fileID) -> \(#function)")
         let view = TrainingViewController()
         let presenter = TrainingPresenter()
         let router = TrainingRouter()
