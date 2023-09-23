@@ -69,7 +69,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     
     func resetTimer() {
         logger.log("\(#fileID) -> \(#function)")
-        timerManager.resetTimer()
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .stop)
         trainingManager.updateTraining(with: trainingManager.coordinates)
@@ -80,10 +79,10 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let lastTempTraining = helperValueTemp.currentTemp
         let lastAverageTraining = helperValueTemp.currentAverageTemp
         trainingManager.saveLastDataTrainingChange(average: lastAverageTraining,
-                                                  distance: lastDistanceTraining,
-                                                  temp: lastTempTraining,
-                                                  time: timer.elapsedTime)
-        
+                                                   distance: lastDistanceTraining,
+                                                   temp: lastTempTraining,
+                                                   time: timer.elapsedTime)
+        timerManager.resetTimer()
         helperValueTemp.resetAll()
     }
     
@@ -142,17 +141,17 @@ extension StopwatchInteractor: LocationManagerDelegate {
 }
 
 extension StopwatchInteractor: UpdateDataTempDelegate {
-    func currentDistanceChanged(distance: String) {
+    func currentDistanceChanged(distance: Double) {
         logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentDistance(distance: distance)
     }
     
-    func сurrentAverageTempChanged(average: String) {
+    func сurrentAverageTempChanged(average: Double) {
         logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentAverageTemp(average: average)
     }
     
-    func сurrentTempChanged(temp: String) {
+    func сurrentTempChanged(temp: Double) {
         logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentTemp(temp: temp)
     }

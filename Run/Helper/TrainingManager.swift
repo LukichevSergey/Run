@@ -10,9 +10,9 @@ import CoreLocation
 
 // MARK: Protocol Training -> HelperValueTemp
 protocol UpdateDataTempDelegate {
-    func currentDistanceChanged(distance: String)
-    func сurrentAverageTempChanged(average: String)
-    func сurrentTempChanged(temp: String)
+    func currentDistanceChanged(distance: Double)
+    func сurrentAverageTempChanged(average: Double)
+    func сurrentTempChanged(temp: Double)
     func currentResultsСhanged(time: Double, traveled: Double, iteration: Int)
 }
 
@@ -21,29 +21,25 @@ final class TrainingManager {
     private var user: AppUser
     private var trainings: [Training] = []
     var coordinates: [CLLocationCoordinate2D] = []
-
+    
     private var currentTime = 0.0
-    private var currentDistance = ""
-    private var currentTemp = ""
-    private var currentAverage = ""
+    private var currentDistance = 0.0
+    private var currentTemp = 0.0
+    private var currentAverage = 0.0
     
     var locationManager = LocationManager()
     init(user: AppUser) {
         self.user = user
     }
-
+    
     var currentTraining: Training?
     var delegate: UpdateDataTempDelegate?
     
-    func saveLastDataTrainingChange(average: String, distance: String, temp: String, time: Double) {
+    func saveLastDataTrainingChange(average: Double, distance: Double, temp: Double, time: Double) {
         currentAverage = average
         currentDistance = distance
         currentTemp = temp
         currentTime = time
-    }
-    
-    func currentLastAverageTempChange(average: String) {
-        currentAverage = average
     }
     
     var trainingStatus: Training.TrainingStatus {
@@ -93,7 +89,7 @@ final class TrainingManager {
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
         
-        delegate?.currentDistanceChanged(distance: String(format: "%.2f", distance / 1000))
+        delegate?.currentDistanceChanged(distance: distance / 1000)
         
         return distance
     }
@@ -103,9 +99,11 @@ final class TrainingManager {
         logger.log("\(#fileID) -> \(#function)")
         let avgtemp = (time / distance) * 1000
         
-        delegate?.сurrentAverageTempChanged(average: avgtemp.toMinutesAndSeconds())
+        delegate?.сurrentAverageTempChanged(average: avgtemp)
         
         return avgtemp.toMinutesAndSeconds()
+    }
+    
     func getLastTraining() -> Training? {
         return trainings.last
     }
@@ -120,44 +118,22 @@ final class TrainingManager {
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
                 
-                delegate?.сurrentTempChanged(temp: tempSec.toMinutesAndSeconds())
+                delegate?.сurrentTempChanged(temp: tempSec)
                 
                 return tempSec.toMinutesAndSeconds()
-        
-        //MARK: - method average temp
-        func getAverageTempModel(distance: Double, time: Double ) -> String {
-            let avgtemp = (time / distance) * 1000
-            
-            delegate?.сurrentAverageTempChanged(average: avgtemp.toMinutesAndSeconds())
-            
-            return avgtemp.toMinutesAndSeconds()
-        }
-        //MARK: - method temp
-        func getTempModel(distance: Double, time: Double, kmTraveled: Double, kmIteration: Int, timeAllKM: Double) -> String {
-            if (distance - kmTraveled) > 10 {
-                if Int(distance / 1000) > kmIteration {
-                    
-                    delegate?.currentResultsСhanged(time: time, traveled: distance, iteration: Int(distance) / 1000)
-                    
-                    let length = 1000 / (distance - kmTraveled)
-                    let tempSec = (time - timeAllKM) * length
-                    
-                    delegate?.сurrentTempChanged(temp: tempSec.toMinutesAndSeconds())
-                    
-                    return tempSec.toMinutesAndSeconds()
-                } else {
-                    let length = 1000 / (distance - kmTraveled)
-                    let tempSec = (time - timeAllKM) * length
-                    
-                    delegate?.сurrentTempChanged(temp: tempSec.toMinutesAndSeconds())
-                    
-                    return tempSec.toMinutesAndSeconds()
-                }
             } else {
+                let length = 1000 / (distance - kmTraveled)
+                let tempSec = (time - timeAllKM) * length
                 
-                delegate?.сurrentTempChanged(temp: "0:00")
+                delegate?.сurrentTempChanged(temp: tempSec)
                 
-                return "0:00"
+                return tempSec.toMinutesAndSeconds()
             }
+        } else {
+            
+            delegate?.сurrentTempChanged(temp: 0.0)
+            
+            return "0:00"
         }
     }
+}

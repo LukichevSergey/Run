@@ -15,9 +15,9 @@ final class HelperValueTempsModel {
     var circleCount = 0
     var circleTimeAll: Double = 0
     var circleDistanceAll: Double = 0
-    var currentTemp = ""
-    var currentAverageTemp = ""
-    var currentDistance = ""
+    var currentTemp = 0.0
+    var currentAverageTemp = 0.0
+    var currentDistance = 0.0
     
     func saveCircleHelper(circle: Int, circleDistance: Double, circleTime: Double) {
         logger.log("\(#fileID) -> \(#function)")
@@ -26,17 +26,17 @@ final class HelperValueTempsModel {
         circleDistanceAll += circleDistance
     }
     
-    func saveCurrentAverageTemp(average: String) {
+    func saveCurrentAverageTemp(average: Double) {
         logger.log("\(#fileID) -> \(#function)")
         currentAverageTemp = average
     }
     
-    func saveCurrentDistance(distance: String) {
+    func saveCurrentDistance(distance: Double) {
         logger.log("\(#fileID) -> \(#function)")
         currentDistance = distance
     }
     
-    func saveCurrentTemp(temp: String) {
+    func saveCurrentTemp(temp: Double) {
         logger.log("\(#fileID) -> \(#function)")
         currentTemp = temp
     }
@@ -56,8 +56,8 @@ final class HelperValueTempsModel {
         circleCount = 0
         circleTimeAll = 0
         circleDistanceAll = 0
-        currentTemp = ""
-        currentAverageTemp = ""
-        currentDistance = ""
+        currentTemp = 0.0
+        currentAverageTemp = 0.0
+        currentDistance = 0.0
     }
 }
