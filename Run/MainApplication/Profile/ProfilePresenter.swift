@@ -17,7 +17,7 @@ protocol ProfileViewToPresenterProtocol: AnyObject {
 // MARK: Protocol - ProfileInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol ProfileInteractorToPresenterProtocol: AnyObject {
     func userIsChanged()
-    func userBalanceIsFetched()
+    func userDataIsFetched()
 }
 
 final class ProfilePresenter {
@@ -45,16 +45,18 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         view.showActivityIndicator()
         interactor.subscribeOnUserChanged()
         view.setData(interactor.dataSource)
-        interactor.fetchUserBalance()
+        interactor.fetchUserData()
     }
 }
 
 // MARK: Extension - ProfileInteractorToPresenterProtocol
 extension ProfilePresenter: ProfileInteractorToPresenterProtocol {
-    func userBalanceIsFetched() {
+    func userDataIsFetched() {
         logger.log("\(#fileID) -> \(#function)")
-        view.removeActivityIndicator()
         view.setBalance(balance: interactor.balance?.currentAmount ?? 0)
+        view.setSneakers(interactor.sneakers)
+        
+        view.removeActivityIndicator()
     }
     
     func userIsChanged() {

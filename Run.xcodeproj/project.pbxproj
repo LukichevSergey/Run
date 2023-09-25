@@ -61,6 +61,8 @@
 		87A8DEE72AA3061E00F49A62 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 87A8DEE62AA3061E00F49A62 /* FirebaseFirestore */; };
 		87A8DEE92AA3061E00F49A62 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 87A8DEE82AA3061E00F49A62 /* FirebaseStorage */; };
 		87A8DEEB2AA3087800F49A62 /* DatabaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87A8DEEA2AA3087800F49A62 /* DatabaseService.swift */; };
+		87B18ACB2AC1C1B50069CA69 /* DictionaryConvertible.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B18ACA2AC1C1B50069CA69 /* DictionaryConvertible.swift */; };
+		87B18ACE2AC1CF800069CA69 /* ProfileSneakersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B18ACD2AC1CF800069CA69 /* ProfileSneakersView.swift */; };
 		87B551782A9F8A1400726D59 /* AppUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87B551772A9F8A1400726D59 /* AppUser.swift */; };
 		87C46D232A9E37670094A8F0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 87C46D222A9E37670094A8F0 /* GoogleService-Info.plist */; };
 		87C46D2A2A9E37DF0094A8F0 /* LoginPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87C46D252A9E37DF0094A8F0 /* LoginPresenter.swift */; };
@@ -144,6 +146,8 @@
 		878EBC182A98FB7E001219F9 /* Digest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Digest.swift; sourceTree = "<group>"; };
 		878EBC1A2A98FBCF001219F9 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		87A8DEEA2AA3087800F49A62 /* DatabaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseService.swift; sourceTree = "<group>"; };
+		87B18ACA2AC1C1B50069CA69 /* DictionaryConvertible.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DictionaryConvertible.swift; sourceTree = "<group>"; };
+		87B18ACD2AC1CF800069CA69 /* ProfileSneakersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileSneakersView.swift; sourceTree = "<group>"; };
 		87B551772A9F8A1400726D59 /* AppUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppUser.swift; sourceTree = "<group>"; };
 		87C46D222A9E37670094A8F0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		87C46D252A9E37DF0094A8F0 /* LoginPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginPresenter.swift; sourceTree = "<group>"; };
@@ -329,6 +333,7 @@
 		8758968A2AA4CAD1002027FA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				87B18ACC2AC1CF5F0069CA69 /* Sneakers */,
 				8758968B2AA4CAD9002027FA /* Cell */,
 			);
 			path = View;
@@ -378,6 +383,7 @@
 				878EBC152A98F24F001219F9 /* ConfigurableViewProtocol.swift */,
 				8775B9642AA0C20100EEA6F9 /* GlobalData.swift */,
 				87DFA1DC2AB3431100B20B40 /* ActivityIndicatorProtocol.swift */,
+				87B18ACA2AC1C1B50069CA69 /* DictionaryConvertible.swift */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -453,6 +459,14 @@
 				878EBC1A2A98FBCF001219F9 /* Localizable.strings */,
 			);
 			path = Localization;
+			sourceTree = "<group>";
+		};
+		87B18ACC2AC1CF5F0069CA69 /* Sneakers */ = {
+			isa = PBXGroup;
+			children = (
+				87B18ACD2AC1CF800069CA69 /* ProfileSneakersView.swift */,
+			);
+			path = Sneakers;
 			sourceTree = "<group>";
 		};
 		87B551762A9F89FA00726D59 /* Model */ = {
@@ -660,7 +674,9 @@
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
 				8718159C2AA76C0C007CD141 /* EditProfileRouter.swift in Sources */,
 				878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */,
+				87B18ACB2AC1C1B50069CA69 /* DictionaryConvertible.swift in Sources */,
 				87EE80A72A99C90B00EF4ADD /* TrainingManager.swift in Sources */,
+				87B18ACE2AC1CF800069CA69 /* ProfileSneakersView.swift in Sources */,
 				87C46D2C2A9E37DF0094A8F0 /* LoginViewController.swift in Sources */,
 				878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */,
 				875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */,

@@ -64,10 +64,20 @@ final class DatabaseService {
     }
     
     func getTrainings(for userId: String) async throws -> OrderedSet<Training> {
-        let snapshot = try await trainingRef.whereField("userId", isEqualTo: userId).getDocuments()
+        return try await getCollection(for: userId, from: trainingRef)
+    }
+    
+    func getSneakers(for userId: String) async throws -> OrderedSet<Sneakers> {
+        return try await getCollection(for: userId, from: sneakersRef)
+    }
+}
+
+extension DatabaseService {
+    func getCollection<T: DictionaryConvertible>(for userId: String, from ref: CollectionReference) async throws -> OrderedSet<T> {
+        let snapshot = try await ref.whereField("userId", isEqualTo: userId).getDocuments()
         let data = snapshot.documents.reduce(into: [[String: Any]]()) { partialResult, querySnapShot in
             partialResult.append(querySnapShot.data())
         }
-        return .init(data.compactMap({ Training(from: $0) }))  
+        return .init(data.compactMap({ T(from: $0) }))
     }
 }
