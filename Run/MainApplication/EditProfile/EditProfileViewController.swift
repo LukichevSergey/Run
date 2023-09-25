@@ -9,11 +9,9 @@
 import UIKit
 
 // MARK: Protocol - EditProfilePresenterToViewProtocol (Presenter -> View)
-protocol EditProfilePresenterToViewProtocol: AnyObject {
+protocol EditProfilePresenterToViewProtocol: ActivityIndicatorProtocol {
     func setTextField(with data: String)
     func showErrorAlert(with text: String)
-    func showActivityIndicator()
-    func removeActivityIndicator()
 }
 
 // MARK: Protocol - EditProfileRouterToViewProtocol (Router -> View)

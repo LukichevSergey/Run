@@ -9,13 +9,10 @@
 import UIKit
 
 // MARK: Protocol - ProfilePresenterToViewProtocol (Presenter -> View)
-protocol ProfilePresenterToViewProtocol: AnyObject {
+protocol ProfilePresenterToViewProtocol: ActivityIndicatorProtocol {
     func setUsername(on name: String)
     func setBalance(balance: Double)
     func setData(_ data: ProfileViewModel)
-    
-    func showActivityIndicator()
-    func removeActivityIndicator()
 }
 
 // MARK: Protocol - ProfileRouterToViewProtocol (Router -> View)

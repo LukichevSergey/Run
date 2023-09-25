@@ -9,10 +9,8 @@
 import UIKit
 
 // MARK: Protocol - RegistrationPresenterToViewProtocol (Presenter -> View)
-protocol RegistrationPresenterToViewProtocol: AnyObject {
+protocol RegistrationPresenterToViewProtocol: ActivityIndicatorProtocol {
     func showErrorAlert(with text: String)
-    func showActivityIndicator()
-    func removeActivityIndicator()
 }
 
 // MARK: Protocol - RegistrationRouterToViewProtocol (Router -> View)

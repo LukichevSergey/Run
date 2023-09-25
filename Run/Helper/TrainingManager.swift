@@ -8,22 +8,39 @@
 import Foundation
 import CoreLocation
 
+// MARK: Protocol Training -> HelperValueTemp
 protocol UpdateDataTempDelegate {
-    func currentDistanceChanged(distance: String)
-    func сurrentAverageTempChanged(average: String)
-    func сurrentTempChanged(temp: String)
+    func currentDistanceChanged(distance: Double)
+    func сurrentAverageTempChanged(average: Double)
+    func сurrentTempChanged(temp: Double)
     func currentResultsСhanged(time: Double, traveled: Double, iteration: Int)
 }
 
 final class TrainingManager {
     
+    private var user: AppUser
     private var trainings: [Training] = []
     var coordinates: [CLLocationCoordinate2D] = []
     
+    private var currentTime = 0.0
+    private var currentDistance = 0.0
+    private var currentTemp = 0.0
+    private var currentAverage = 0.0
+    
     var locationManager = LocationManager()
+    init(user: AppUser) {
+        self.user = user
+    }
     
     var currentTraining: Training?
     var delegate: UpdateDataTempDelegate?
+    
+    func saveLastDataTrainingChange(average: Double, distance: Double, temp: Double, time: Double) {
+        currentAverage = average
+        currentDistance = distance
+        currentTemp = temp
+        currentTime = time
+    }
     
     var trainingStatus: Training.TrainingStatus {
         logger.log("\(#fileID) -> \(#function)")
@@ -38,7 +55,7 @@ final class TrainingManager {
     func createTraining() {
         logger.log("\(#fileID) -> \(#function)")
         guard currentTraining == nil else { return }
-        currentTraining = Training()
+        currentTraining = Training(userId: user.getId())
     }
     
     func updateTraining(with coordinates: [CLLocationCoordinate2D]) {
@@ -54,6 +71,10 @@ final class TrainingManager {
     func stopTraining() {
         logger.log("\(#fileID) -> \(#function)")
         currentTraining?.finishTime = Date()
+        currentTraining?.distance = currentDistance
+        currentTraining?.time = currentTime
+        currentTraining?.temp = currentTemp
+        currentTraining?.averageTemp = currentAverage
         guard let currentTraining else { return }
         trainings.append(currentTraining)
         self.currentTraining = nil
@@ -68,7 +89,7 @@ final class TrainingManager {
             partialResult + locationManager.calculateDistance(routeCoordinates: coordinates)
         }
         
-        delegate?.currentDistanceChanged(distance: String(format: "%.2f", distance / 1000))
+        delegate?.currentDistanceChanged(distance: distance / 1000)
         
         return distance
     }
@@ -78,9 +99,13 @@ final class TrainingManager {
         logger.log("\(#fileID) -> \(#function)")
         let avgtemp = (time / distance) * 1000
         
-        delegate?.сurrentAverageTempChanged(average: avgtemp.toMinutesAndSeconds())
+        delegate?.сurrentAverageTempChanged(average: avgtemp)
         
         return avgtemp.toMinutesAndSeconds()
+    }
+    
+    func getLastTraining() -> Training? {
+        return trainings.last
     }
     //MARK: - method temp
     func getTempModel(distance: Double, time: Double, kmTraveled: Double, kmIteration: Int, timeAllKM: Double) -> String {
@@ -93,20 +118,20 @@ final class TrainingManager {
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
                 
-                delegate?.сurrentTempChanged(temp: tempSec.toMinutesAndSeconds())
+                delegate?.сurrentTempChanged(temp: tempSec)
                 
                 return tempSec.toMinutesAndSeconds()
             } else {
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length
                 
-                delegate?.сurrentTempChanged(temp: tempSec.toMinutesAndSeconds())
-
+                delegate?.сurrentTempChanged(temp: tempSec)
+                
                 return tempSec.toMinutesAndSeconds()
             }
         } else {
             
-            delegate?.сurrentTempChanged(temp: "0:00")
+            delegate?.сurrentTempChanged(temp: 0.0)
             
             return "0:00"
         }
