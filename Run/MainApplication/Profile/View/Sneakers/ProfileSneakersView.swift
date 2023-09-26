@@ -8,6 +8,14 @@
 import UIKit
 import OrderedCollections
 
+private enum Constants {
+    static var arrowImageButtonWidth: CGFloat = 44
+    static var arrowImageButtonHeight: CGFloat = 88
+    static var arrowImageButtonInset: CGFloat = 4
+    static var cellCornerRadius: CGFloat = 16
+    static var sliderWidthInset: CGFloat = 32
+}
+
 protocol ProfileSneakersViewDelegate: AnyObject {
     func snakersIsSelected(with id: String)
 }
@@ -38,7 +46,7 @@ final class ProfileSneakersView: UIView {
     private lazy var previousImageButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.setImage(ListImages.Profile.chevronLeft, for: .normal)
+        button.setImage(ListImages.Profile.chevronLeft?.withTintColor(PaletteApp.black), for: .normal)
         button.addTarget(self, action: #selector(previousImageButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -46,7 +54,7 @@ final class ProfileSneakersView: UIView {
     private lazy var nextImageButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = .clear
-        button.setImage(ListImages.Profile.chevronRight, for: .normal)
+        button.setImage(ListImages.Profile.chevronRight?.withTintColor(PaletteApp.black), for: .normal)
         button.addTarget(self, action: #selector(nextImageButtonTapped), for: .touchUpInside)
         return button
     }()
@@ -92,17 +100,17 @@ final class ProfileSneakersView: UIView {
         
         addSubview(previousImageButton)
         previousImageButton.snp.makeConstraints { make in
-            make.width.equalTo(44)
-            make.height.equalTo(88)
-            make.left.equalToSuperview().inset(4)
+            make.width.equalTo(Constants.arrowImageButtonWidth)
+            make.height.equalTo(Constants.arrowImageButtonHeight)
+            make.left.equalToSuperview().inset(Constants.arrowImageButtonInset)
             make.centerY.equalTo(collection)
         }
         
         addSubview(nextImageButton)
         nextImageButton.snp.makeConstraints { make in
-            make.width.equalTo(44)
-            make.height.equalTo(88)
-            make.right.equalToSuperview().inset(4)
+            make.width.equalTo(Constants.arrowImageButtonWidth)
+            make.height.equalTo(Constants.arrowImageButtonHeight)
+            make.right.equalToSuperview().inset(Constants.arrowImageButtonInset)
             make.centerY.equalTo(collection)
         }
         
@@ -111,7 +119,7 @@ final class ProfileSneakersView: UIView {
     }
     
     private func configureScrollingBehaviour() {
-        let configuration = CollectionViewConfiguration(layoutType: .fixedSize(sizeValue: UIScreen.main.bounds.width - 32, lineSpacing: 0), scrollingDirection: .horizontal)
+        let configuration = CollectionViewConfiguration(layoutType: .fixedSize(sizeValue: UIScreen.main.bounds.width - Constants.sliderWidthInset, lineSpacing: 0), scrollingDirection: .horizontal)
         infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: collection, andData: dataSource, delegate: self, configuration: configuration)
         
         if let selectedIndex = dataSource.firstIndex(where: {$0.isActive}), selectedIndex != 0 {
@@ -154,7 +162,7 @@ extension ProfileSneakersView: InfiniteScrollingBehaviourDelegate {
         else
             { return UICollectionViewCell() }
         cell.configure(with: cellData)
-        cell.layer.cornerRadius = 16
+        cell.layer.cornerRadius = Constants.cellCornerRadius
         return cell
     }
     

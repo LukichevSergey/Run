@@ -7,13 +7,20 @@
 
 import UIKit
 
-class ProfileSneakersCollectionViewCell: UICollectionViewCell {
+private enum Constants {
+    static var imageInset: CGFloat = 16
+    static var labelsInset: CGFloat = 8
+    static var labelsTextColor: UIColor = PaletteApp.black
+    static var labelsTextFont: UIFont = OurFonts.fontPTSansBold14
+}
+
+final class ProfileSneakersCollectionViewCell: UICollectionViewCell {
     
     static let reuseIdentifier = String(describing: ProfileSneakersCollectionViewCell.self)
     
     private lazy var sneakersView: UIImageView = {
         let view = UIImageView()
-        view.image = UIImage(named: "defaultSneakers")
+        view.image = ListImages.Profile.defaultSneakers
         view.contentMode = .scaleAspectFit
         
         return view
@@ -21,11 +28,8 @@ class ProfileSneakersCollectionViewCell: UICollectionViewCell {
     
     private lazy var distanceLabel: UILabel = {
         let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.text = "\(0) км"
+        label.textColor = Constants.labelsTextColor
+        label.font = Constants.labelsTextFont
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
         return label
@@ -33,11 +37,8 @@ class ProfileSneakersCollectionViewCell: UICollectionViewCell {
     
     private lazy var trainingsCountLabel: UILabel = {
         let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.text = "\(0) трен"
+        label.textColor = Constants.labelsTextColor
+        label.font = Constants.labelsTextFont
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
         return label
@@ -47,8 +48,6 @@ class ProfileSneakersCollectionViewCell: UICollectionViewCell {
         let label = UILabel()
         label.textColor = PaletteApp.lightGreen
         label.font = OurFonts.fontPTSansBold16
-        label.textAlignment = .center
-        label.numberOfLines = 1
         label.text = "Selected"
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         
@@ -65,11 +64,8 @@ class ProfileSneakersCollectionViewCell: UICollectionViewCell {
     
     private lazy var moneyLabel: UILabel = {
         let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .left
-        label.numberOfLines = 1
-        label.text = "\(0) ₽"
+        label.textColor = Constants.labelsTextColor
+        label.font = Constants.labelsTextFont
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
         return label
@@ -77,11 +73,8 @@ class ProfileSneakersCollectionViewCell: UICollectionViewCell {
     
     private lazy var conditionLabel: UILabel = {
         let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.text = "\(100) / 100"
+        label.textColor = Constants.labelsTextColor
+        label.font = Constants.labelsTextFont
         label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
         
         return label
@@ -89,11 +82,8 @@ class ProfileSneakersCollectionViewCell: UICollectionViewCell {
     
     private lazy var levelLabel: UILabel = {
         let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .right
-        label.numberOfLines = 1
-        label.text = "Lvl \(1)"
+        label.textColor = Constants.labelsTextColor
+        label.font = Constants.labelsTextFont
         label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
         
         return label
@@ -112,17 +102,17 @@ class ProfileSneakersCollectionViewCell: UICollectionViewCell {
         
         addSubview(sneakersView)
         sneakersView.snp.makeConstraints { make in
-            make.directionalEdges.equalToSuperview()
+            make.directionalEdges.equalToSuperview().inset(Constants.imageInset)
         }
 
         addSubview(topHStack)
         topHStack.snp.makeConstraints { make in
-            make.top.directionalHorizontalEdges.equalToSuperview().inset(8)
+            make.top.directionalHorizontalEdges.equalToSuperview().inset(Constants.labelsInset)
         }
 
         addSubview(bottomHStack)
         bottomHStack.snp.makeConstraints { make in
-            make.bottom.directionalHorizontalEdges.equalToSuperview().inset(8)
+            make.bottom.directionalHorizontalEdges.equalToSuperview().inset(Constants.labelsInset)
         }
     }
     

@@ -11,5 +11,6 @@ enum ListImages {
     enum Profile {
         static let chevronRight = UIImage(systemName: "chevron.right")
         static let chevronLeft = UIImage(systemName: "chevron.left")
+        static let defaultSneakers = UIImage(named: "defaultSneakers")
     }
 }
