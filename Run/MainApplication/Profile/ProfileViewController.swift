@@ -155,7 +155,7 @@ extension ProfileViewController: ProfilePresenterToViewProtocol{
     func setSneakers(_ sneakers: OrderedSet<Sneakers>) {
         logger.log("\(#fileID) -> \(#function)")
         
-        
+        sneakersView.configure(with: sneakers)
     }
     
     func setUsername(on name: String) {

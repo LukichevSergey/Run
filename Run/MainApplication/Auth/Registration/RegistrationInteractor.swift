@@ -54,9 +54,25 @@ extension RegistrationInteractor: RegistrationPresenterToInteractorProtocol {
         Task {
             do {
                 let user = try await AuthManager.shared.signUp(username: username, email: email, password: password)
-                try await dataBase.setUser(user: user)
-                try await dataBase.setBalance(balance: Balance(userId: user.getId()))
-                try await dataBase.setSneakers(sneakers: Sneakers(userId: user.getId()))
+                
+                try await withThrowingTaskGroup(of: Void.self) { group in
+                    group.addTask {
+                        try await self.dataBase.setUser(user: user)
+                    }
+                    
+                    group.addTask {
+                        try await self.dataBase.setBalance(balance: Balance(userId: user.getId()))
+                    }
+                    
+                    group.addTask {
+                        try await self.dataBase.setSneakers(sneakers: Sneakers(userId: user.getId()))
+                        /// Временно добавляем 2 пары кроссовок для тестов - нужно удалить в будущем
+                        try await self.dataBase.setSneakers(sneakers: Sneakers(userId: user.getId(), level: 2, trainingsCount: 3, distance: 100, money: 100, condition: 90, isActive: true))
+                    }
+                    
+                    try await group.waitForAll()
+                }
+                
                 GlobalData.userModel.send(user)
                 presenter?.userIsSingUp()
             } catch {

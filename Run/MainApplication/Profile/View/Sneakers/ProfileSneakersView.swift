@@ -6,81 +6,61 @@
 //
 
 import UIKit
+import OrderedCollections
 
 final class ProfileSneakersView: UIView {
     
-    private lazy var sneakersView: UIImageView = {
-        let view = UIImageView()
-        view.image = UIImage(named: "defaultSneakers")
-        view.contentMode = .scaleToFill /// Поправить (смотрится ужасно - нужна норм дефолтная картинка)
-        
-        return view
+    enum Section: CaseIterable {
+        case images
+    }
+    
+    private var infiniteScrollingBehaviour: InfiniteScrollingBehaviour!
+    private var dataSource = Array<Sneakers>()
+    
+    private var pagesCount: Int = 0 {
+        didSet {
+            pagesCounterLabel.text = "\(currentPage + 1)/\(pagesCount + 1)"
+        }
+    }
+    
+    private var currentPage: Int = 0 {
+        didSet {
+            pagesCounterLabel.text = "\(currentPage + 1)/\(pagesCount + 1)"
+        }
+    }
+    
+    private lazy var previousImageButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.setImage(ListImages.Profile.chevronLeft, for: .normal)
+        button.addTarget(self, action: #selector(previousImageButtonTapped), for: .touchUpInside)
+        return button
     }()
     
-    private lazy var distanceLabel: UILabel = {
+    private lazy var nextImageButton: UIButton = {
+        let button = UIButton()
+        button.backgroundColor = .clear
+        button.setImage(ListImages.Profile.chevronRight, for: .normal)
+        button.addTarget(self, action: #selector(nextImageButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
+    private lazy var collection: UICollectionView = {
+        let flowLayout = UICollectionViewFlowLayout()
+        flowLayout.scrollDirection = .horizontal
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+        collection.isPagingEnabled = true
+        collection.translatesAutoresizingMaskIntoConstraints = false
+        collection.register(ProfileSneakersCollectionViewCell.self, forCellWithReuseIdentifier: ProfileSneakersCollectionViewCell.reuseIdentifier)
+        return collection
+    }()
+    
+    private lazy var pagesCounterLabel: UILabel = {
         let label = UILabel()
+        label.font = OurFonts.fontPTSansRegular14
         label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
         label.textAlignment = .center
-        label.numberOfLines = 1
-        label.text = "\(0) км"
-        
         return label
-    }()
-    
-    private lazy var trainingsCountLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.text = "\(0) трен"
-        
-        return label
-    }()
-    
-    private lazy var moneyLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .left
-        label.numberOfLines = 1
-        label.text = "\(0) ₽"
-        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        
-        return label
-    }()
-    
-    private lazy var conditionLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .center
-        label.numberOfLines = 1
-        label.text = "\(100) / 100"
-        label.setContentCompressionResistancePriority(.defaultHigh, for: .horizontal)
-        
-        return label
-    }()
-    
-    private lazy var levelLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold14
-        label.textAlignment = .right
-        label.numberOfLines = 1
-        label.text = "Lvl \(1)"
-        label.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
-        
-        return label
-    }()
-    
-    private lazy var bottomHStack: UIStackView = {
-        let stack = UIStackView(arrangedSubviews: [moneyLabel, conditionLabel, levelLabel])
-        stack.axis = .horizontal
-        stack.distribution = .equalSpacing
-
-        return stack
     }()
     
     override init(frame: CGRect) {
@@ -94,36 +74,81 @@ final class ProfileSneakersView: UIView {
     }
     
     private func commonInit() {
-        addSubview(sneakersView)
-        sneakersView.snp.makeConstraints { make in
-            make.directionalEdges.equalToSuperview()
+        backgroundColor = PaletteApp.white
+        
+        addSubview(collection)
+        collection.snp.makeConstraints { make in
+            make.top.equalToSuperview()
+            make.left.right.equalToSuperview()
+            make.bottom.equalToSuperview()
         }
         
-        addSubview(distanceLabel)
-        distanceLabel.snp.makeConstraints { make in
-            make.leading.top.equalToSuperview().inset(8)
+        addSubview(previousImageButton)
+        previousImageButton.snp.makeConstraints { make in
+            make.width.equalTo(44)
+            make.height.equalTo(88)
+            make.left.equalToSuperview().inset(4)
+            make.centerY.equalTo(collection)
         }
         
-        addSubview(trainingsCountLabel)
-        trainingsCountLabel.snp.makeConstraints { make in
-            make.trailing.top.equalToSuperview().inset(8)
+        addSubview(nextImageButton)
+        nextImageButton.snp.makeConstraints { make in
+            make.width.equalTo(44)
+            make.height.equalTo(88)
+            make.right.equalToSuperview().inset(4)
+            make.centerY.equalTo(collection)
         }
-        
-        addSubview(bottomHStack)
-        bottomHStack.snp.makeConstraints { make in
-            make.bottom.directionalHorizontalEdges.equalToSuperview().inset(8)
-        }
+    }
+    
+    private func configureScrollingBehaviour() {
+        let configuration = CollectionViewConfiguration(layoutType: .fixedSize(sizeValue: UIScreen.main.bounds.width - 32, lineSpacing: 0), scrollingDirection: .horizontal)
+        infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: collection, andData: dataSource, delegate: self, configuration: configuration)
+    }
+    
+    @objc private func previousImageButtonTapped() {
+        infiniteScrollingBehaviour.scroll(toElementAtIndex: currentPage - 1, animated: true)
+    }
+    
+    @objc private func nextImageButtonTapped() {
+        infiniteScrollingBehaviour.scroll(toElementAtIndex: currentPage + 1, animated: true)
+    }
+    
+    @objc private func tapOnImage() {
+        print(dataSource[currentPage].level)
     }
 }
 
-extension ProfileSneakersView: ConfigurableViewProtocol {
-    func configure(with model: Sneakers) {
-        distanceLabel.text = "\(model.distance) км"
-        trainingsCountLabel.text = "\(model.trainingsCount) трен"
-        moneyLabel.text = "\(model.money) ₽"
-        conditionLabel.text = "\(model.condition) / 100"
-        levelLabel.text = "Lvl \(model.level)"
+extension ProfileSneakersView: ConfigurableViewProtocol {    
+    func configure(with model: OrderedSet<Sneakers>) {
+
+        pagesCount = model.count - 1
+        dataSource = model.map({ $0 })
+        
+        nextImageButton.isHidden = model.count < 2
+        previousImageButton.isHidden = model.count < 2
+        collection.isScrollEnabled = model.count > 1
+        
+        let tapOnImage = UITapGestureRecognizer(target: self, action: #selector(tapOnImage))
+        collection.addGestureRecognizer(tapOnImage)
+        
+        configureScrollingBehaviour()
+    }
+}
+
+extension ProfileSneakersView: InfiniteScrollingBehaviourDelegate {
+    func configuredCell(forItemAtIndexPath indexPath: IndexPath, andData data: InfiniteScollingData) -> UICollectionViewCell {
+        guard let cellData = data as? Sneakers,
+            let cell = collection.dequeueReusableCell(withReuseIdentifier: ProfileSneakersCollectionViewCell.reuseIdentifier, for: indexPath) as? ProfileSneakersCollectionViewCell
+        else
+            { return UICollectionViewCell() }
+        cell.configure(with: cellData)
+        cell.layer.cornerRadius = 16
+        return cell
     }
     
-    typealias ConfigurationModel = Sneakers
+    func currentPageDidUpdated(to newPage: Int) {
+        currentPage = newPage
+    }
 }
+
+extension Sneakers: InfiniteScollingData { }

@@ -70,10 +70,10 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
         
         Task {
             do {
-                let balance = try await dataBase.getBalance(for: _user.getId())
-                _balance = balance
-                let sneakers = try await dataBase.getSneakers(for: _user.getId())
-                _sneakers = sneakers
+                async let balanceTask = dataBase.getBalance(for: _user.getId())
+                async let sneakersTask = dataBase.getSneakers(for: _user.getId())
+                _balance = try await balanceTask
+                _sneakers = try await sneakersTask
                 presenter.userDataIsFetched()
             } catch {
                 
