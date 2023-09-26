@@ -20,6 +20,7 @@ protocol ProfilePresenterToInteractorProtocol: AnyObject {
     func fetchUserData()
     func subscribeOnUserChanged()
     func signOut()
+    func selectSnakersWithId(id: String)
 }
 
 final class ProfileInteractor {
@@ -75,6 +76,23 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
                 _balance = try await balanceTask
                 _sneakers = try await sneakersTask
                 presenter.userDataIsFetched()
+            } catch {
+                
+            }
+        }
+    }
+    
+    @MainActor
+    func selectSnakersWithId(id: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        Task {
+            do {
+                try await dataBase.setActiveSnakers(for: _user.getId(), selectedId: id)
+                guard let _sneakers = self._sneakers else { return }
+                let sneakers = _sneakers.map({$0.id == id ? $0.activated : $0.deactivated})
+                self._sneakers = .init(sneakers)
+                presenter.newSnakersIsSelected()
             } catch {
                 
             }

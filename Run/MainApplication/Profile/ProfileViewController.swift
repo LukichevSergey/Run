@@ -64,6 +64,7 @@ final class ProfileViewController: UIViewController {
         view.layer.borderColor = PaletteApp.black.cgColor
         view.layer.borderWidth = 3
         view.layer.cornerRadius = 16
+        view.delegate = self
         
         return view
     }()
@@ -187,5 +188,13 @@ extension ProfileViewController: ProfileTableViewCellDelegate {
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType) {
         logger.log("\(#fileID) -> \(#function)")
         presenter.tableViewCellTapped(with: type)
+    }
+}
+
+// MARK: Extension - ProfileSneakersViewDelegate
+extension ProfileViewController: ProfileSneakersViewDelegate {
+    func snakersIsSelected(with id: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        presenter.snakersIsSelected(with: id)
     }
 }

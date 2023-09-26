@@ -8,7 +8,13 @@
 import UIKit
 import OrderedCollections
 
+protocol ProfileSneakersViewDelegate: AnyObject {
+    func snakersIsSelected(with id: String)
+}
+
 final class ProfileSneakersView: UIView {
+    
+    weak var delegate: ProfileSneakersViewDelegate?
     
     enum Section: CaseIterable {
         case images
@@ -74,6 +80,7 @@ final class ProfileSneakersView: UIView {
     }
     
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         backgroundColor = PaletteApp.white
         
         addSubview(collection)
@@ -98,11 +105,18 @@ final class ProfileSneakersView: UIView {
             make.right.equalToSuperview().inset(4)
             make.centerY.equalTo(collection)
         }
+        
+        let tapOnImage = UITapGestureRecognizer(target: self, action: #selector(tapOnImage))
+        collection.addGestureRecognizer(tapOnImage)
     }
     
     private func configureScrollingBehaviour() {
         let configuration = CollectionViewConfiguration(layoutType: .fixedSize(sizeValue: UIScreen.main.bounds.width - 32, lineSpacing: 0), scrollingDirection: .horizontal)
         infiniteScrollingBehaviour = InfiniteScrollingBehaviour(withCollectionView: collection, andData: dataSource, delegate: self, configuration: configuration)
+        
+        if let selectedIndex = dataSource.firstIndex(where: {$0.isActive}), selectedIndex != 0 {
+            infiniteScrollingBehaviour.scroll(toElementAtIndex: selectedIndex, animated: true)
+        }
     }
     
     @objc private func previousImageButtonTapped() {
@@ -114,22 +128,20 @@ final class ProfileSneakersView: UIView {
     }
     
     @objc private func tapOnImage() {
-        print(dataSource[currentPage].level)
+        logger.log("\(#fileID) -> \(#function)")
+        delegate?.snakersIsSelected(with: dataSource[currentPage].id)
     }
 }
 
 extension ProfileSneakersView: ConfigurableViewProtocol {    
     func configure(with model: OrderedSet<Sneakers>) {
-
+        logger.log("\(#fileID) -> \(#function)")
         pagesCount = model.count - 1
         dataSource = model.map({ $0 })
         
         nextImageButton.isHidden = model.count < 2
         previousImageButton.isHidden = model.count < 2
         collection.isScrollEnabled = model.count > 1
-        
-        let tapOnImage = UITapGestureRecognizer(target: self, action: #selector(tapOnImage))
-        collection.addGestureRecognizer(tapOnImage)
         
         configureScrollingBehaviour()
     }

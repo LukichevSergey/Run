@@ -12,6 +12,7 @@ import OrderedCollections
 protocol ProfileToDatabaseServiceProtocol {
     func getBalance(for userId: String) async throws -> Balance?
     func getSneakers(for userId: String) async throws -> OrderedSet<Sneakers>
+    func setActiveSnakers(for userId: String, selectedId: String) async throws
 }
 
 protocol TrainingToDatabaseServiceProtocol {
@@ -77,6 +78,27 @@ extension DatabaseService: ProfileToDatabaseServiceProtocol {
     func getSneakers(for userId: String) async throws -> OrderedSet<Sneakers> {
         logger.log("\(#fileID) -> \(#function)")
         return try await getCollection(for: userId, from: sneakersRef)
+    }
+    
+    func setActiveSnakers(for userId: String, selectedId: String) async throws {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        let querySnapshot = try await sneakersRef.whereField("userId", isEqualTo: userId).getDocuments()
+        
+        let batch = db.batch()
+        
+        for document in querySnapshot.documents {
+            let shoeRef = sneakersRef.document(document.documentID)
+            
+            // Проверяем, является ли текущая кроссовка выбранной
+            let isCurrentShoe = document.documentID == selectedId
+            
+            // Устанавливаем нужный статус для текущей кроссовки
+            let updatedData = ["isActive": isCurrentShoe]
+            batch.updateData(updatedData, forDocument: shoeRef)
+        }
+        
+        try await batch.commit()
     }
 }
 

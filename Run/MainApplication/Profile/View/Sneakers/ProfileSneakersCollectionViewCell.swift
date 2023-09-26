@@ -46,7 +46,7 @@ class ProfileSneakersCollectionViewCell: UICollectionViewCell {
     private lazy var isActiveLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.lightGreen
-        label.font = OurFonts.fontPTSansBold14
+        label.font = OurFonts.fontPTSansBold16
         label.textAlignment = .center
         label.numberOfLines = 1
         label.text = "Selected"

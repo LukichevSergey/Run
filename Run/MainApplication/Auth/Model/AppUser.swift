@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
 final class AppUser: Codable {
 
@@ -129,6 +130,10 @@ struct Sneakers: Codable, Hashable, DictionaryConvertible {
         self.isActive = isActive
     }
     
+    init?(from document: QueryDocumentSnapshot) {
+        self.init(from: document.data())
+    }
+    
     init?(from dictionary: [String: Any]) {
         logger.log("\(#fileID) -> \(#function)")
         guard let id = dictionary["id"] as? String,
@@ -167,7 +172,11 @@ struct Sneakers: Codable, Hashable, DictionaryConvertible {
         return dict
     }
     
-    var actived: Self {
+    var activated: Self {
         .init(id: id, userId: userId, level: level, trainingsCount: trainingsCount, distance: distance, money: money, condition: condition, isActive: true)
+    }
+    
+    var deactivated: Self {
+        .init(id: id, userId: userId, level: level, trainingsCount: trainingsCount, distance: distance, money: money, condition: condition, isActive: false)
     }
 }
