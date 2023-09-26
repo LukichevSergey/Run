@@ -27,6 +27,7 @@ final class ProfileInteractor {
     // MARK: Properties
     weak var presenter: ProfileInteractorToPresenterProtocol!
     
+    private let dataBase: ProfileToDatabaseServiceProtocol
     private let _dataSource: [ProfileTableViewCellViewModel.CellType]
     private var _user: AppUser
     private var _balance: Balance?
@@ -37,6 +38,7 @@ final class ProfileInteractor {
         logger.log("\(#fileID) -> \(#function)")
         _user = GlobalData.userModel.value ?? .init(id: "", name: "")
         _dataSource = [.editProfile, .exit]
+        dataBase = DatabaseService()
     }
 }
 
@@ -68,9 +70,9 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
         
         Task {
             do {
-                let balance = try await DatabaseService.shared.getBalance(for: _user.getId())
+                let balance = try await dataBase.getBalance(for: _user.getId())
                 _balance = balance
-                let sneakers = try await DatabaseService.shared.getSneakers(for: _user.getId())
+                let sneakers = try await dataBase.getSneakers(for: _user.getId())
                 _sneakers = sneakers
                 presenter.userDataIsFetched()
             } catch {

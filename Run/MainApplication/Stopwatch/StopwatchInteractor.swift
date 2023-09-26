@@ -25,6 +25,7 @@ protocol StopwatchPresenterToInteractorProtocol: AnyObject {
 
 final class StopwatchInteractor {
     
+    private let dataBase: StopwatchToDatabaseServiceProtocol
     private let timerManager: TimerManager
     private let locationManager: LocationManager
     private let trainingManager: TrainingManager
@@ -35,6 +36,7 @@ final class StopwatchInteractor {
     weak var presenter: StopwatchInteractorToPresenterProtocol!
     
     init() {
+        dataBase = DatabaseService()
         timerManager = TimerManager()
         trainingManager = TrainingManager(user: GlobalData.userModel.value ?? AppUser(id: "", name: ""))
         locationManager = LocationManager()
@@ -120,10 +122,11 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
     }
     
     func saveTraining() {
+        logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
                 guard let training = trainingManager.getLastTraining() else { return }
-                try await DatabaseService.shared.saveTraining(training: training)
+                try await dataBase.saveTraining(training: training)
             } catch {
                 
             }

@@ -21,11 +21,14 @@ final class EditProfileInteractor {
     // MARK: Properties
     weak var presenter: EditProfileInteractorToPresenterProtocol!
     
+    private let dataBase: EditProfileToDatabaseServiceProtocol
     private let _profile: AppUser
 
     init(with profile: AppUser) {
         logger.log("\(#fileID) -> \(#function)")
         _profile = profile
+        
+        dataBase = DatabaseService()
     }
 }
 
@@ -46,7 +49,7 @@ extension EditProfileInteractor: EditProfilePresenterToInteractorProtocol {
         logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
-                try await DatabaseService.shared.setUser(user: _profile)
+                try await dataBase.setUser(user: _profile)
                 GlobalData.userModel.send(_profile)
                 presenter.userIsSaved()
             } catch {

@@ -18,7 +18,12 @@ class TrainingInteractor {
 
     // MARK: Properties
     weak var presenter: TrainingInteractorToPresenterProtocol!
+    private let dataBase: TrainingToDatabaseServiceProtocol
     private var _trainings = OrderedSet<Training>()
+    
+    init() {
+        dataBase = DatabaseService()
+    }
 }
 
 // MARK: Extension - TrainingPresenterToInteractorProtocol
@@ -28,7 +33,7 @@ extension TrainingInteractor: TrainingPresenterToInteractorProtocol {
     func fetchTrainings() {
         Task {
             do {
-                let trainings = try await DatabaseService.shared.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
+                let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
                 _trainings = trainings
                 presenter.trainingsIsFetched()
             } catch {

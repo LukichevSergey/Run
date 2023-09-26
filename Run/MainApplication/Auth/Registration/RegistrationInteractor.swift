@@ -21,9 +21,14 @@ final class RegistrationInteractor {
     // MARK: Properties
     weak var presenter: RegistrationInteractorToPresenterProtocol!
     
+    private let dataBase: RegistrationToDatabaseServiceProtocol
     private var username: String = ""
     private var email: String = ""
     private var password: String = ""
+    
+    init() {
+        dataBase = DatabaseService()
+    }
 }
 
 // MARK: Extension - RegistrationPresenterToInteractorProtocol
@@ -49,9 +54,9 @@ extension RegistrationInteractor: RegistrationPresenterToInteractorProtocol {
         Task {
             do {
                 let user = try await AuthManager.shared.signUp(username: username, email: email, password: password)
-                try await DatabaseService.shared.setUser(user: user)
-                try await DatabaseService.shared.setBalance(balance: Balance(userId: user.getId()))
-                try await DatabaseService.shared.setSneakers(sneakers: Sneakers(userId: user.getId()))
+                try await dataBase.setUser(user: user)
+                try await dataBase.setBalance(balance: Balance(userId: user.getId()))
+                try await dataBase.setSneakers(sneakers: Sneakers(userId: user.getId()))
                 GlobalData.userModel.send(user)
                 presenter?.userIsSingUp()
             } catch {
