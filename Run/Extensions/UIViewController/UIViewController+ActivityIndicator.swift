@@ -8,21 +8,19 @@
 import UIKit
 
 extension UIViewController {
-    func getActivityIndicatorView() -> UIActivityIndicatorView? {
-        return view.subviews.first(where: { $0 is UIActivityIndicatorView }) as? UIActivityIndicatorView
+    func getActivityIndicatorView() -> ActivityIndicatorInterface? {
+        return view.subviews.first(where: { $0 is ActivityIndicatorInterface }) as? ActivityIndicatorInterface
     }
     
     func showActivityIndicator() {
-        let activityIndicator = UIActivityIndicatorView(style: .large)
-        activityIndicator.center = view.center
-        activityIndicator.color = PaletteApp.lightGreen
-        activityIndicator.startAnimating()
-        view.addSubview(activityIndicator)
+        let activityView: ActivityIndicatorInterface = ActivityIndicatorView(frame: view.bounds)
+        view.addSubview(activityView)
+        activityView.startAnimation()
     }
     
     func removeActivityIndicator() {
         if let view = getActivityIndicatorView() {
-            view.stopAnimating()
+            view.stopAnimation()
             view.removeFromSuperview()
         }
     }

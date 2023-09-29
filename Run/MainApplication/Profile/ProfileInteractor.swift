@@ -8,16 +8,19 @@
 
 import Foundation
 import Combine
+import OrderedCollections
 
 // MARK: Protocol - ProfilePresenterToInteractorProtocol (Presenter -> Interactor)
 protocol ProfilePresenterToInteractorProtocol: AnyObject {
     var user: AppUser { get }
     var balance: Balance? { get }
+    var sneakers: OrderedSet<Sneakers> { get }
     var dataSource: ProfileViewModel { get }
     
-    func fetchUserBalance()
+    func fetchUserData()
     func subscribeOnUserChanged()
     func signOut()
+    func selectSnakersWithId(id: String)
 }
 
 final class ProfileInteractor {
@@ -25,15 +28,18 @@ final class ProfileInteractor {
     // MARK: Properties
     weak var presenter: ProfileInteractorToPresenterProtocol!
     
+    private let dataBase: ProfileToDatabaseServiceProtocol
     private let _dataSource: [ProfileTableViewCellViewModel.CellType]
     private var _user: AppUser
     private var _balance: Balance?
+    private var _sneakers: OrderedSet<Sneakers>?
     private var store: AnyCancellable?
 
     init() {
         logger.log("\(#fileID) -> \(#function)")
         _user = GlobalData.userModel.value ?? .init(id: "", name: "")
         _dataSource = [.editProfile, .exit]
+        dataBase = DatabaseService()
     }
 }
 
@@ -54,14 +60,39 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
         return .init(cells: _dataSource.map {.init(type: $0)})
     }
     
-    @MainActor
-    func fetchUserBalance() {
+    var sneakers: OrderedSet<Sneakers> {
         logger.log("\(#fileID) -> \(#function)")
+        return _sneakers ?? []
+    }
+    
+    @MainActor
+    func fetchUserData() {
+        logger.log("\(#fileID) -> \(#function)")
+        
         Task {
             do {
-                let balance = try await DatabaseService.shared.getBalance(for: _user.getId())
-                _balance = balance
-                presenter.userBalanceIsFetched()
+                async let balanceTask = dataBase.getBalance(for: _user.getId())
+                async let sneakersTask = dataBase.getSneakers(for: _user.getId())
+                _balance = try await balanceTask
+                _sneakers = try await sneakersTask
+                presenter.userDataIsFetched()
+            } catch {
+                
+            }
+        }
+    }
+    
+    @MainActor
+    func selectSnakersWithId(id: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        Task {
+            do {
+                try await dataBase.setActiveSnakers(for: _user.getId(), selectedId: id)
+                guard let _sneakers = self._sneakers else { return }
+                let sneakers = _sneakers.map({$0.id == id ? $0.activated : $0.deactivated})
+                self._sneakers = .init(sneakers)
+                presenter.newSnakersIsSelected()
             } catch {
                 
             }

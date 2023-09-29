@@ -8,7 +8,7 @@
 import Foundation
 import CoreLocation
 
-final class Training: Hashable {
+final class Training: Hashable, DictionaryConvertible {
     
     static func == (lhs: Training, rhs: Training) -> Bool {
         return lhs.id == rhs.id && lhs.userId == rhs.userId
@@ -18,7 +18,6 @@ final class Training: Hashable {
         hasher.combine(id)
         hasher.combine(userId)
     }
-    
     
     enum TrainingStatus {
         case start, pause, stop

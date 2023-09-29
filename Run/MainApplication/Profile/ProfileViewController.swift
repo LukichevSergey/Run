@@ -7,12 +7,14 @@
 //
 
 import UIKit
+import OrderedCollections
 
 // MARK: Protocol - ProfilePresenterToViewProtocol (Presenter -> View)
 protocol ProfilePresenterToViewProtocol: ActivityIndicatorProtocol {
     func setUsername(on name: String)
     func setBalance(balance: Double)
     func setData(_ data: ProfileViewModel)
+    func setSneakers(_ sneakers: OrderedSet<Sneakers>)
 }
 
 // MARK: Protocol - ProfileRouterToViewProtocol (Router -> View)
@@ -55,6 +57,16 @@ final class ProfileViewController: UIViewController {
         stack.axis = .horizontal
         
         return stack
+    }()
+    
+    private lazy var sneakersView: ProfileSneakersView = {
+        let view = ProfileSneakersView()
+        view.layer.borderColor = PaletteApp.black.cgColor
+        view.layer.borderWidth = 3
+        view.layer.cornerRadius = 16
+        view.delegate = self
+        
+        return view
     }()
     
     private(set) lazy var tableView: UITableView = {
@@ -114,9 +126,16 @@ final class ProfileViewController: UIViewController {
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
         }
         
+        view.addSubview(sneakersView)
+        sneakersView.snp.makeConstraints { make in
+            make.top.equalTo(nameLabel.snp.bottom).offset(16)
+            make.height.equalTo(sneakersView.snp.width).multipliedBy(0.5)
+            make.directionalHorizontalEdges.equalToSuperview().inset(16)
+        }
+        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
-            make.top.equalTo(nameLabel.snp.bottom).offset(16)
+            make.top.equalTo(sneakersView.snp.bottom).offset(16)
             make.bottom.directionalHorizontalEdges.equalToSuperview()
         }
     }
@@ -132,6 +151,12 @@ extension ProfileViewController: ProfilePresenterToViewProtocol{
         snapshot.appendItems(data.cells, toSection: Section.main)
         
         dataSource.apply(snapshot, animatingDifferences: false)
+    }
+    
+    func setSneakers(_ sneakers: OrderedSet<Sneakers>) {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        sneakersView.configure(with: sneakers)
     }
     
     func setUsername(on name: String) {
@@ -163,5 +188,13 @@ extension ProfileViewController: ProfileTableViewCellDelegate {
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType) {
         logger.log("\(#fileID) -> \(#function)")
         presenter.tableViewCellTapped(with: type)
+    }
+}
+
+// MARK: Extension - ProfileSneakersViewDelegate
+extension ProfileViewController: ProfileSneakersViewDelegate {
+    func snakersIsSelected(with id: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        presenter.snakersIsSelected(with: id)
     }
 }

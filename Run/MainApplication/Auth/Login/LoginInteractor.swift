@@ -20,8 +20,13 @@ final class LoginInteractor {
     // MARK: Properties
     weak var presenter: LoginInteractorToPresenterProtocol!
     
+    private let dataBase: LoginToDatabaseServiceProtocol
     private var email: String = ""
     private var password: String = ""
+    
+    init() {
+        dataBase = DatabaseService()
+    }
 }
 
 // MARK: Extension - LoginPresenterToInteractorProtocol
@@ -42,7 +47,7 @@ extension LoginInteractor: LoginPresenterToInteractorProtocol {
         Task {
             do {
                 let userResult = try await AuthManager.shared.signIn(email: email, password: password)
-                let user = try await DatabaseService.shared.getUser(with: userResult.user.uid)
+                let user = try await dataBase.getUser(with: userResult.user.uid)
                 GlobalData.userModel.send(user)
                 presenter?.userIsSingIn()
             } catch {

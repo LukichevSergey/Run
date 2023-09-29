@@ -12,12 +12,14 @@ import Foundation
 protocol ProfileViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType)
+    func snakersIsSelected(with id: String)
 }
 
 // MARK: Protocol - ProfileInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol ProfileInteractorToPresenterProtocol: AnyObject {
     func userIsChanged()
-    func userBalanceIsFetched()
+    func userDataIsFetched()
+    func newSnakersIsSelected()
 }
 
 final class ProfilePresenter {
@@ -30,6 +32,13 @@ final class ProfilePresenter {
 
 // MARK: Extension - ProfileViewToPresenterProtocol
 extension ProfilePresenter: ProfileViewToPresenterProtocol {
+    func snakersIsSelected(with id: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        view.showActivityIndicator()
+        interactor.selectSnakersWithId(id: id)
+    }
+    
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType) {
         logger.log("\(#fileID) -> \(#function)")
         switch type {
@@ -45,20 +54,29 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         view.showActivityIndicator()
         interactor.subscribeOnUserChanged()
         view.setData(interactor.dataSource)
-        interactor.fetchUserBalance()
+        interactor.fetchUserData()
     }
 }
 
 // MARK: Extension - ProfileInteractorToPresenterProtocol
 extension ProfilePresenter: ProfileInteractorToPresenterProtocol {
-    func userBalanceIsFetched() {
+    func userDataIsFetched() {
         logger.log("\(#fileID) -> \(#function)")
-        view.removeActivityIndicator()
         view.setBalance(balance: interactor.balance?.currentAmount ?? 0)
+        view.setSneakers(interactor.sneakers)
+        
+        view.removeActivityIndicator()
     }
     
     func userIsChanged() {
         logger.log("\(#fileID) -> \(#function)")
         view.setUsername(on: interactor.user.getName())
+    }
+    
+    func newSnakersIsSelected() {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        view.setSneakers(interactor.sneakers)
+        view.removeActivityIndicator()
     }
 }
