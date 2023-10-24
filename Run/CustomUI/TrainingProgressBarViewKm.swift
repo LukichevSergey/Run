@@ -21,7 +21,6 @@ class TrainingProgressBarViewKm: UIView {
         progress.layer.cornerRadius = 15
         progress.layer.borderColor = PaletteApp.darkblue.cgColor
         progress.layer.borderWidth = 2
-        
         progress.clipsToBounds = true
 
         return progress
@@ -37,6 +36,7 @@ class TrainingProgressBarViewKm: UIView {
     }()
 
     override init(frame: CGRect) {
+        logger.log("\(#fileID) -> \(#function)")
         super.init(frame: frame)
         commonInit()
     }
@@ -48,7 +48,6 @@ class TrainingProgressBarViewKm: UIView {
     
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
-        
         addSubview(progressView)
         progressView.snp.makeConstraints { make in
             make.height.equalTo(30)

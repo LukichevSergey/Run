@@ -22,11 +22,6 @@ final class TrainingManager {
     private var trainings: [Training] = []
     var coordinates: [CLLocationCoordinate2D] = []
     
-    private var currentTime = 0.0
-    private var currentDistance = 0.0
-    private var currentTemp = 0.0
-    private var currentAverage = 0.0
-    
     var locationManager = LocationManager()
     init(user: AppUser) {
         self.user = user
@@ -36,10 +31,10 @@ final class TrainingManager {
     var delegate: UpdateDataTempDelegate?
     
     func saveLastDataTrainingChange(average: Double, distance: Double, temp: Double, time: Double) {
-        currentAverage = average
-        currentDistance = distance
-        currentTemp = temp
-        currentTime = time
+        currentTraining?.averageTemp = average
+        currentTraining?.distance = distance
+        currentTraining?.temp = temp
+        currentTraining?.time = time
     }
     
     var trainingStatus: Training.TrainingStatus {
@@ -71,10 +66,6 @@ final class TrainingManager {
     func stopTraining() {
         logger.log("\(#fileID) -> \(#function)")
         currentTraining?.finishTime = Date()
-        currentTraining?.distance = currentDistance
-        currentTraining?.time = currentTime
-        currentTraining?.temp = currentTemp
-        currentTraining?.averageTemp = currentAverage
         guard let currentTraining else { return }
         trainings.append(currentTraining)
         self.currentTraining = nil

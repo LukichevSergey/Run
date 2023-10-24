@@ -6,3 +6,7 @@
 //
 
 import Foundation
+
+enum SectionModelView {
+    case main
+}

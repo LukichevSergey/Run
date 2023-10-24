@@ -29,6 +29,16 @@
 
 // MARK: - Training
 "Training.title" = "Тренировки";
+"Training.run" = "Бег";
+"Training.allTtaining" = "Все тренировки";
+"Training.information" = "Сведения";
+"Training.activity" = "Активность";
+"Training.allActivity" = "Вся активность";
+"Training.step" = "ШАГИ";
+"Training.kilometres" = "КИЛОМЕТРЫ";
+"Training.willBeCharged" = "Будет начислено";
+
+
 
 // MARK: - CircleTableResult
 "CircleTableResult.circle" = "Круг";

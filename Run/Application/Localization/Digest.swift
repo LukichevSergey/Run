@@ -39,6 +39,14 @@ enum Tx {
     
     enum Training {
         static let title = NSLocalizedString("Training.title", comment: "Тренировки")
+        static let run = NSLocalizedString("Training.run", comment: "Бег")
+        static let allTraining = NSLocalizedString("Training.allTtaining", comment: "Все тренировки")
+        static let information = NSLocalizedString("Training.information", comment: "Сведения")
+        static let activity = NSLocalizedString("Training.activity", comment: "Активность")
+        static let allActivity = NSLocalizedString("Training.allActivity", comment: "Вся активность")
+        static let step = NSLocalizedString("Training.step", comment: "ШАГИ")
+        static let kilomertes = NSLocalizedString("Training.kilometres", comment: "КИЛОМЕТРЫ")
+        static let willBeCharged = NSLocalizedString("Training.willBeCharged", comment: "Будет начислено")
     }
     
     enum CircleTableResult {

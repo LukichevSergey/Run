@@ -19,15 +19,14 @@ final class Training: Hashable {
         hasher.combine(userId)
     }
     
-    
     enum TrainingStatus {
         case start, pause, stop
     }
     
     let id: String
     let userId: String
-    let startTime: Date = Date()
-    var finishTime: Date? = nil
+    var startTime: Date = Date()
+    var finishTime: Date = Date()
     var trainingStatus: TrainingStatus = .start
     var coordinates: [[CLLocationCoordinate2D]] = []
     var distance: Double = 0.0
@@ -42,6 +41,8 @@ final class Training: Hashable {
     
     init?(from dictionary: [String: Any]) {
         guard let id = dictionary["id"] as? String,
+              let startTime = dictionary["startTime"] as? TimeInterval,
+              let finishTime = dictionary["finishTime"] as? TimeInterval,
               let userId = dictionary["userId"] as? String,
               let distance = dictionary["distance"] as? Double,
               let time = dictionary["time"] as? Double,
@@ -51,16 +52,21 @@ final class Training: Hashable {
         }
         
         self.id = id
+        self.startTime = Date(timeIntervalSince1970: startTime)
+        self.finishTime = Date(timeIntervalSince1970: finishTime)
         self.userId = userId
         self.distance = distance
         self.time = time
         self.temp = temp
         self.averageTemp = averageTemp
+
     }
     
     var toDict: [String: Any] {
         var dict:[String: Any] = [:]
         dict["id"] = id
+        dict["startTime"] = startTime.timeIntervalSince1970
+        dict["finishTime"] = finishTime.timeIntervalSince1970
         dict["userId"] = userId
         dict["distance"] = distance
         dict["time"] = time

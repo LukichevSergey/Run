@@ -136,7 +136,6 @@ final class StopwatchViewController: UIViewController {
         configureUI()
         presenter.viewDidLoad()
         resultTable.register(CircleTableViewCell.self, forCellReuseIdentifier: "cell")
-        
     }
 
     override func viewDidLayoutSubviews() {

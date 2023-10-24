@@ -6,3 +6,12 @@
 //
 
 import Foundation
+
+extension Date {
+    func formatData() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        let formattedDateString = dateFormatter.string(from: self)
+        return formattedDateString
+    }
+}

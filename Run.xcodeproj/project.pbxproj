@@ -97,12 +97,12 @@
 		9B84A80E2ACD7A4D002731DD /* SectionModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B84A80D2ACD7A4D002731DD /* SectionModelView.swift */; };
 		9B8C62E12AE5263200DBACA7 /* ProgressTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8C62E02AE5263200DBACA7 /* ProgressTrainingManager.swift */; };
 		9B9021732AD2DC6A00281CB5 /* Data+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9021722AD2DC6A00281CB5 /* Data+Extensions.swift */; };
-		9B9BCA952AE14D0000E89131 /* TrainingProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9BCA942AE14D0000E89131 /* TrainingProgressBar.swift */; };
+		9B9BCA952AE14D0000E89131 /* TrainingProgressBarViewKm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9BCA942AE14D0000E89131 /* TrainingProgressBarViewKm.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderCircleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		8705D8742A978427002BBDC2 /* Run1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Run1.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8705D8742A978427002BBDC2 /* Run.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Run.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8705D8772A978427002BBDC2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8705D8792A978427002BBDC2 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		8705D87B2A978427002BBDC2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -188,7 +188,7 @@
 		9B84A80D2ACD7A4D002731DD /* SectionModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModelView.swift; sourceTree = "<group>"; };
 		9B8C62E02AE5263200DBACA7 /* ProgressTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrainingManager.swift; sourceTree = "<group>"; };
 		9B9021722AD2DC6A00281CB5 /* Data+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Data+Extensions.swift"; sourceTree = "<group>"; };
-		9B9BCA942AE14D0000E89131 /* TrainingProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgressBar.swift; sourceTree = "<group>"; };
+		9B9BCA942AE14D0000E89131 /* TrainingProgressBarViewKm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgressBarViewKm.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCircleTableView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -220,7 +220,7 @@
 		8705D8752A978427002BBDC2 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				8705D8742A978427002BBDC2 /* Run1.app */,
+				8705D8742A978427002BBDC2 /* Run.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -298,7 +298,7 @@
 				9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */,
 				9B3910572AC1A6D0003BC5B7 /* TrainingDataTableViewCell.swift */,
 				9B6F1C272ADFCD4100EEBAF2 /* HeaderTrainingTableView.swift */,
-				9B9BCA942AE14D0000E89131 /* TrainingProgressBar.swift */,
+				9B9BCA942AE14D0000E89131 /* TrainingProgressBarViewKm.swift */,
 				9B6FB3DE2AE669F300FE86F8 /* TrainingProgressBarStep.swift */,
 			);
 			path = CustomUI;
@@ -554,9 +554,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		8705D8732A978427002BBDC2 /* Run1 */ = {
+		8705D8732A978427002BBDC2 /* Run */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 8705D8882A978428002BBDC2 /* Build configuration list for PBXNativeTarget "Run1" */;
+			buildConfigurationList = 8705D8882A978428002BBDC2 /* Build configuration list for PBXNativeTarget "Run" */;
 			buildPhases = (
 				8705D8702A978427002BBDC2 /* Sources */,
 				8705D8712A978427002BBDC2 /* Frameworks */,
@@ -566,7 +566,7 @@
 			);
 			dependencies = (
 			);
-			name = Run1;
+			name = Run;
 			packageProductDependencies = (
 				8705D8932A9789AD002BBDC2 /* SnapKit */,
 				87A8DEE22AA3061E00F49A62 /* FirebaseAuth */,
@@ -576,7 +576,7 @@
 				87DFA1DF2AB346C900B20B40 /* OrderedCollections */,
 			);
 			productName = Run;
-			productReference = 8705D8742A978427002BBDC2 /* Run1.app */;
+			productReference = 8705D8742A978427002BBDC2 /* Run.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -594,7 +594,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 8705D86F2A978427002BBDC2 /* Build configuration list for PBXProject "Run1" */;
+			buildConfigurationList = 8705D86F2A978427002BBDC2 /* Build configuration list for PBXProject "Run" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -612,7 +612,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				8705D8732A978427002BBDC2 /* Run1 */,
+				8705D8732A978427002BBDC2 /* Run */,
 			);
 		};
 /* End PBXProject section */
@@ -681,7 +681,7 @@
 				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,
 				878EBC192A98FB7E001219F9 /* Digest.swift in Sources */,
 				876A77FD2A9CC7B400E64269 /* AuthViewController.swift in Sources */,
-				9B9BCA952AE14D0000E89131 /* TrainingProgressBar.swift in Sources */,
+				9B9BCA952AE14D0000E89131 /* TrainingProgressBarViewKm.swift in Sources */,
 				87C46D382A9E38530094A8F0 /* RegistrationInteractor.swift in Sources */,
 				9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */,
 				87EE80A52A99C8BB00EF4ADD /* LocationManager.swift in Sources */,
@@ -867,11 +867,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GX86CHN34S;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Run/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS coordinates for your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS coordinates for your location";
+				INFOPLIST_KEY_NSMotionUsageDescription = NSMotionUsageDescription;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -882,7 +883,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = LukichevSergey.Run1;
+				PRODUCT_BUNDLE_IDENTIFIER = LukichevSergey.Run;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -899,11 +900,12 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GX86CHN34S;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Run/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS coordinates for your location";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS coordinates for your location";
+				INFOPLIST_KEY_NSMotionUsageDescription = NSMotionUsageDescription;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -914,7 +916,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = LukichevSergey.Run1;
+				PRODUCT_BUNDLE_IDENTIFIER = LukichevSergey.Run;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -926,7 +928,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		8705D86F2A978427002BBDC2 /* Build configuration list for PBXProject "Run1" */ = {
+		8705D86F2A978427002BBDC2 /* Build configuration list for PBXProject "Run" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8705D8862A978428002BBDC2 /* Debug */,
@@ -935,7 +937,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		8705D8882A978428002BBDC2 /* Build configuration list for PBXNativeTarget "Run1" */ = {
+		8705D8882A978428002BBDC2 /* Build configuration list for PBXNativeTarget "Run" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				8705D8892A978428002BBDC2 /* Debug */,

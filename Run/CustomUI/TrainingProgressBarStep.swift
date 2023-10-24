@@ -5,72 +5,67 @@
 //  Created by Evgenii Kutasov on 23.10.2023.
 //
 
-//
-//  headerCircleTableView.swift
-//  Run
-//
-//  Created by Evgenii Kutasov on 08.09.2023.
-//
 
+import Foundation
 import UIKit
 
-class ProgressTrainingBarStep: UIView {
-    
-    private let circleLabel: UILabel = {
-        let label = UILabel()
-        label.text = Tx.CircleTableResult.circle
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansRegular20
+protocol ProgressBarViewStepProtocol: AnyObject {
+    func updateProgress(step: Float, stepLabel: String)
+}
 
-        return label
+final class TrainingProgressBarStep: UIView {
+    
+    private let progressView: UIProgressView = {
+        let progress = UIProgressView()
+        progress.backgroundColor = .white
+        progress.tintColor = PaletteApp.lightOrange
+        progress.layer.cornerRadius = 15
+        progress.layer.borderColor = PaletteApp.darkbOrange.cgColor
+        progress.layer.borderWidth = 2
+        progress.clipsToBounds = true
+
+        return progress
     }()
     
-    private let distanceLabel: UILabel = {
+    private let resultLabel: UILabel = {
         let label = UILabel()
-        label.text = Tx.CircleTableResult.distance
+        label.text = ""
         label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansRegular20
-
+        label.font = OurFonts.fontPTSansBold16
+        
         return label
     }()
-    
-    private let timeLbel: UILabel = {
-        let label = UILabel()
-        label.text = Tx.CircleTableResult.time
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansRegular20
 
-        return label
-    }()
-    
     override init(frame: CGRect) {
-        super.init(frame: frame)
         logger.log("\(#fileID) -> \(#function)")
+        super.init(frame: frame)
         commonInit()
     }
     
-    required init?(coder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         logger.log("\(#fileID) -> \(#function)")
         fatalError("init(coder:) has not been implemented")
     }
     
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
-        addSubview(circleLabel)
-        circleLabel.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(16)
-            make.verticalEdges.equalToSuperview()
+        addSubview(progressView)
+        progressView.snp.makeConstraints { make in
+            make.height.equalTo(30)
+            make.width.equalTo(200)
         }
         
-        addSubview(distanceLabel)
-        distanceLabel.snp.makeConstraints { make in
-            make.leading.equalTo(circleLabel.snp.trailing).offset(16)
-            make.verticalEdges.equalToSuperview()
+        progressView.addSubview(resultLabel)
+        resultLabel.snp.makeConstraints { make in
+            make.centerX.centerY.equalToSuperview()
         }
-        addSubview(timeLbel)
-        timeLbel.snp.makeConstraints { make in
-            make.leading.equalTo(distanceLabel.snp.trailing).offset(16)
-            make.verticalEdges.equalToSuperview()
-        }
+    }
+}
+
+extension TrainingProgressBarStep: ProgressBarViewStepProtocol {
+    func updateProgress(step: Float, stepLabel: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        progressView.setProgress(step, animated: false)
+        resultLabel.text = stepLabel
     }
 }
