@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "8705D8732A978427002BBDC2"
-               BuildableName = "Run.app"
-               BlueprintName = "Run"
-               ReferencedContainer = "container:Run.xcodeproj">
+               BuildableName = "Run1.app"
+               BlueprintName = "Run1"
+               ReferencedContainer = "container:Run1.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8705D8732A978427002BBDC2"
-            BuildableName = "Run.app"
-            BlueprintName = "Run"
-            ReferencedContainer = "container:Run.xcodeproj">
+            BuildableName = "Run1.app"
+            BlueprintName = "Run1"
+            ReferencedContainer = "container:Run1.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <LocationScenarioReference
@@ -65,9 +65,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "8705D8732A978427002BBDC2"
-            BuildableName = "Run.app"
-            BlueprintName = "Run"
-            ReferencedContainer = "container:Run.xcodeproj">
+            BuildableName = "Run1.app"
+            BlueprintName = "Run1"
+            ReferencedContainer = "container:Run1.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
