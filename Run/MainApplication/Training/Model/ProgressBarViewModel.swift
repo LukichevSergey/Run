@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct ProgressBarViewModel {
+    let km: Float
+    let kmLabel: String
+}

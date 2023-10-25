@@ -98,6 +98,15 @@
 		87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */; };
 		87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */; };
 		87EE80C72A99D27900EF4ADD /* coordinates.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 87EE80C62A99D27900EF4ADD /* coordinates.gpx */; };
+		9B2CCFED2AE8798B007F317A /* HeaderTrainingTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFEC2AE8798B007F317A /* HeaderTrainingTableView.swift */; };
+		9B2CCFEF2AE879BF007F317A /* TrainingDataTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFEE2AE879BF007F317A /* TrainingDataTableViewCell.swift */; };
+		9B2CCFF12AE879F6007F317A /* ProgressTrainingBarStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF02AE879F6007F317A /* ProgressTrainingBarStep.swift */; };
+		9B2CCFF32AE87A39007F317A /* TrainingProgressBarViewKm.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF22AE87A39007F317A /* TrainingProgressBarViewKm.swift */; };
+		9B2CCFF62AE87AA8007F317A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF52AE87AA8007F317A /* Date+Extensions.swift */; };
+		9B2CCFF82AE87AC7007F317A /* ProgressTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF72AE87AC7007F317A /* ProgressTrainingManager.swift */; };
+		9B2CCFFA2AE87BDF007F317A /* ProgressBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */; };
+		9B2CCFFC2AE87BF4007F317A /* SectionModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFB2AE87BF4007F317A /* SectionModelView.swift */; };
+		9B2CCFFE2AE87C4A007F317A /* TrainingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */; };
 		9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
 		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
@@ -191,6 +200,15 @@
 		87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDataView.swift; sourceTree = "<group>"; };
 		87EE80C62A99D27900EF4ADD /* coordinates.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = coordinates.gpx; sourceTree = "<group>"; };
+		9B2CCFEC2AE8798B007F317A /* HeaderTrainingTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTrainingTableView.swift; sourceTree = "<group>"; };
+		9B2CCFEE2AE879BF007F317A /* TrainingDataTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingDataTableViewCell.swift; sourceTree = "<group>"; };
+		9B2CCFF02AE879F6007F317A /* ProgressTrainingBarStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrainingBarStep.swift; sourceTree = "<group>"; };
+		9B2CCFF22AE87A39007F317A /* TrainingProgressBarViewKm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgressBarViewKm.swift; sourceTree = "<group>"; };
+		9B2CCFF52AE87AA8007F317A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		9B2CCFF72AE87AC7007F317A /* ProgressTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrainingManager.swift; sourceTree = "<group>"; };
+		9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewModel.swift; sourceTree = "<group>"; };
+		9B2CCFFB2AE87BF4007F317A /* SectionModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModelView.swift; sourceTree = "<group>"; };
+		9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCellViewModel.swift; sourceTree = "<group>"; };
 		9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTempsModel.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
@@ -304,6 +322,10 @@
 				9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */,
 				873BE84A2AC2A724006DC498 /* ActivityIndicatorView.swift */,
 				873BE84C2AC2AA5F006DC498 /* InfiniteScrollingBehaviour.swift */,
+				9B2CCFEC2AE8798B007F317A /* HeaderTrainingTableView.swift */,
+				9B2CCFEE2AE879BF007F317A /* TrainingDataTableViewCell.swift */,
+				9B2CCFF02AE879F6007F317A /* ProgressTrainingBarStep.swift */,
+				9B2CCFF22AE87A39007F317A /* TrainingProgressBarViewKm.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -317,6 +339,7 @@
 				8775B9662AA0D49D00EEA6F9 /* AuthManager.swift */,
 				87A8DEEA2AA3087800F49A62 /* DatabaseService.swift */,
 				872F69DE2ABC6DCF00CFCBD1 /* LoggerManager.swift */,
+				9B2CCFF72AE87AC7007F317A /* ProgressTrainingManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -324,6 +347,7 @@
 		8705D8B12A979A23002BBDC2 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9B2CCFF42AE87A9D007F317A /* Date */,
 				873BE8592AC2AC39006DC498 /* UIImage */,
 				873BE8532AC2ABBF006DC498 /* String */,
 				873BE84E2AC2AAC8006DC498 /* Int */,
@@ -571,6 +595,9 @@
 			isa = PBXGroup;
 			children = (
 				87EE80BE2A99C95D00EF4ADD /* Training.swift */,
+				9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */,
+				9B2CCFFB2AE87BF4007F317A /* SectionModelView.swift */,
+				9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -589,6 +616,14 @@
 				87EE80C62A99D27900EF4ADD /* coordinates.gpx */,
 			);
 			path = Coordinates;
+			sourceTree = "<group>";
+		};
+		9B2CCFF42AE87A9D007F317A /* Date */ = {
+			isa = PBXGroup;
+			children = (
+				9B2CCFF52AE87AA8007F317A /* Date+Extensions.swift */,
+			);
+			path = Date;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -687,6 +722,7 @@
 				8718159D2AA76C0C007CD141 /* EditProfileViewController.swift in Sources */,
 				87EE80B02A99C93800EF4ADD /* TrainingViewController.swift in Sources */,
 				873BE8552AC2ABC9006DC498 /* String+IsImage.swift in Sources */,
+				9B2CCFED2AE8798B007F317A /* HeaderTrainingTableView.swift in Sources */,
 				87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */,
 				87B551782A9F8A1400726D59 /* AppUser.swift in Sources */,
 				9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */,
@@ -695,6 +731,7 @@
 				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
 				878EBC142A98F212001219F9 /* TimerStatsViewModel.swift in Sources */,
 				87A8DEEB2AA3087800F49A62 /* DatabaseService.swift in Sources */,
+				9B2CCFF62AE87AA8007F317A /* Date+Extensions.swift in Sources */,
 				8775B9652AA0C20100EEA6F9 /* GlobalData.swift in Sources */,
 				87EE80B22A99C93800EF4ADD /* TrainingConfigurator.swift in Sources */,
 				871815942AA76418007CD141 /* AuthTextField.swift in Sources */,
@@ -719,8 +756,10 @@
 				8718159E2AA76C0C007CD141 /* EditProfileInteractor.swift in Sources */,
 				9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */,
 				87C46D392A9E38530094A8F0 /* RegistrationConfigurator.swift in Sources */,
+				9B2CCFF32AE87A39007F317A /* TrainingProgressBarViewKm.swift in Sources */,
 				87C46D2B2A9E37DF0094A8F0 /* LoginRouter.swift in Sources */,
 				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,
+				9B2CCFF82AE87AC7007F317A /* ProgressTrainingManager.swift in Sources */,
 				878EBC192A98FB7E001219F9 /* Digest.swift in Sources */,
 				873BE85D2AC2AC73006DC498 /* String+Format.swift in Sources */,
 				876A77FD2A9CC7B400E64269 /* AuthViewController.swift in Sources */,
@@ -736,25 +775,30 @@
 				873BE85F2AC2ACBD006DC498 /* UIImage+RoundedCorners.swift in Sources */,
 				8718159C2AA76C0C007CD141 /* EditProfileRouter.swift in Sources */,
 				878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */,
+				9B2CCFFE2AE87C4A007F317A /* TrainingCellViewModel.swift in Sources */,
 				87B18ACB2AC1C1B50069CA69 /* DictionaryConvertible.swift in Sources */,
 				87EE80A72A99C90B00EF4ADD /* TrainingManager.swift in Sources */,
 				87B18ACE2AC1CF800069CA69 /* ProfileSneakersView.swift in Sources */,
 				87C46D2C2A9E37DF0094A8F0 /* LoginViewController.swift in Sources */,
 				878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */,
 				873BE85B2AC2AC48006DC498 /* UIImageView+SetImage.swift in Sources */,
+				9B2CCFF12AE879F6007F317A /* ProgressTrainingBarStep.swift in Sources */,
 				875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */,
 				87EE80AF2A99C93800EF4ADD /* TrainingRouter.swift in Sources */,
 				87EE80BF2A99C95D00EF4ADD /* Training.swift in Sources */,
 				87C46D2D2A9E37DF0094A8F0 /* LoginInteractor.swift in Sources */,
 				8775B9672AA0D49D00EEA6F9 /* AuthManager.swift in Sources */,
 				878EBC112A98E347001219F9 /* TimerStatsLabel.swift in Sources */,
+				9B2CCFFA2AE87BDF007F317A /* ProgressBarViewModel.swift in Sources */,
 				8705D89B2A978A38002BBDC2 /* StopwatchPresenter.swift in Sources */,
 				875896912AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift in Sources */,
+				9B2CCFEF2AE879BF007F317A /* TrainingDataTableViewCell.swift in Sources */,
 				8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */,
 				87EE80AE2A99C93800EF4ADD /* TrainingPresenter.swift in Sources */,
 				8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */,
 				87EE80B12A99C93800EF4ADD /* TrainingInteractor.swift in Sources */,
 				8705D8A82A978A51002BBDC2 /* ProfileViewController.swift in Sources */,
+				9B2CCFFC2AE87BF4007F317A /* SectionModelView.swift in Sources */,
 				8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */,
 				87C46D2A2A9E37DF0094A8F0 /* LoginPresenter.swift in Sources */,
 				8718159B2AA76C0C007CD141 /* EditProfilePresenter.swift in Sources */,

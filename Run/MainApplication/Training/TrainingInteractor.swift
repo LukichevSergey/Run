@@ -20,6 +20,7 @@ class TrainingInteractor {
     weak var presenter: TrainingInteractorToPresenterProtocol!
     private let dataBase: TrainingToDatabaseServiceProtocol
     private var _trainings = OrderedSet<Training>()
+    var managerProgress = ProgressTrainingManager()
     
     init() {
         dataBase = DatabaseService()
@@ -31,11 +32,19 @@ extension TrainingInteractor: TrainingPresenterToInteractorProtocol {
     
     @MainActor
     func fetchTrainings() {
+        logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
                 let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
                 _trainings = trainings
-                presenter.trainingsIsFetched()
+                
+                let kmProgressTraining = managerProgress.getKmCountForTraining(data: trainings)
+                presenter.trainingProgressKm(data: kmProgressTraining )
+
+                let pedometrProgressTraining = managerProgress.getStepsCountForTraining(data: trainings)
+                presenter.trainingProgressStep(data: Float(pedometrProgressTraining))
+
+                presenter.trainingsIsFetched(data: _trainings)
             } catch {
                 presenter.trainingIsFetchedWithError(error: error)
             }

@@ -142,7 +142,7 @@ final class ProfileViewController: UIViewController {
 }
 
 // MARK: Extension - ProfilePresenterToViewProtocol 
-extension ProfileViewController: ProfilePresenterToViewProtocol{
+extension ProfileViewController: ProfilePresenterToViewProtocol {
     func setData(_ data: ProfileViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         var snapshot = NSDiffableDataSourceSnapshot<Section, ProfileTableViewCellViewModel>()
