@@ -22,7 +22,7 @@ final class TrainingProgressBarViewKm: UIView {
         progress.layer.borderColor = PaletteApp.darkblue.cgColor
         progress.layer.borderWidth = 2
         progress.clipsToBounds = true
-
+        
         return progress
     }()
 
