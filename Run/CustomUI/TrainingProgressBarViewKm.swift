@@ -22,7 +22,7 @@ final class TrainingProgressBarViewKm: UIView {
         progress.layer.borderColor = PaletteApp.darkblue.cgColor
         progress.layer.borderWidth = 2
         progress.clipsToBounds = true
-
+        
         return progress
     }()
 
@@ -51,7 +51,7 @@ final class TrainingProgressBarViewKm: UIView {
         progressView.snp.makeConstraints { make in
             make.height.equalTo(30)
             make.leading.equalToSuperview()
-            make.trailing.equalToSuperview().inset(200)
+            make.trailing.equalToSuperview()
         }
         progressView.addSubview(resultLabel)
         resultLabel.snp.makeConstraints { make in

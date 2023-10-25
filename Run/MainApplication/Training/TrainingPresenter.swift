@@ -47,15 +47,15 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
     
     func trainingsIsFetched(data: OrderedSet<Training>) {
         logger.log("\(#fileID) -> \(#function)")
-        var trainingCellViewModels = data.map { training in
+        let trainingCellViewModels = data.map { training in
             
             return TrainingCellViewModel(killometrs: "\(String(format: "%.2f", training.distance)) км",
                                          image: UIImage(named: "circle") ?? UIImage(),
                                          data: "\(training.startTime.formatData()) >",
                                          title: Tx.Training.run)
         }
-        trainingCellViewModels.sort { $0.data > $1.data }
-        view.setTrainingData(data: trainingCellViewModels)
+        let sortedTrainingCellViewModels = trainingCellViewModels.sorted { $0.data > $1.data }
+        view.setTrainingData(data: sortedTrainingCellViewModels)
         view.removeActivityIndicator()
     }
     

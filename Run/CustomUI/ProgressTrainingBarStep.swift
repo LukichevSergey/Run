@@ -51,7 +51,7 @@ final class TrainingProgressBarStep: UIView {
         progressView.snp.makeConstraints { make in
             make.height.equalTo(30)
             make.leading.equalToSuperview()
-            make.trailing.equalToSuperview().inset(200)
+            make.trailing.equalToSuperview()
         }
 
         progressView.addSubview(resultLabel)

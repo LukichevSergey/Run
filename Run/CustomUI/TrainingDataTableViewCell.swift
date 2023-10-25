@@ -55,14 +55,14 @@ final class TrainingDataTableViewCell: UITableViewCell {
         logger.log("\(#fileID) -> \(#function)")
         contentView.addSubview(castomView)
         castomView.snp.makeConstraints { make in
-            make.top.bottom.equalToSuperview().inset(10)
-            make.leading.trailing.equalToSuperview().inset(16)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.verticalEdges.equalToSuperview().inset(16)
             make.height.equalTo(70)
         }
 
         castomView.addSubview(imageVariantRun)
         imageVariantRun.snp.makeConstraints { make in
-            make.width.height.equalTo(50)
+            make.size.equalTo(50)
             make.left.equalToSuperview().inset(5)
             make.top.equalToSuperview().inset(10)
         }

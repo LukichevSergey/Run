@@ -257,8 +257,8 @@ final class TrainingViewController: UIViewController {
         view.addSubview(progressBarStep)
         progressBarStep.snp.makeConstraints { make in
             make.top.equalTo(stepLabel).inset(35)
-            make.width.equalToSuperview()
             make.leading.equalToSuperview().inset(50)
+            make.trailing.equalTo(lvlLabelStep).inset(100)
         }
         
         view.addSubview(willBeChargedST)
@@ -294,8 +294,8 @@ final class TrainingViewController: UIViewController {
         view.addSubview(progressBarKm)
         progressBarKm.snp.makeConstraints { make in
             make.top.equalTo(kilometresLabel).inset(35)
-            make.width.equalToSuperview()
             make.leading.equalToSuperview().inset(50)
+            make.trailing.equalTo(lvlLabelKm).inset(100)
         }
         
         view.addSubview(willBeChargedKM)
