@@ -7,6 +7,8 @@
 //
 
 import Foundation
+import OrderedCollections
+import UIKit
 
 // MARK: Protocol - TrainingViewToPresenterProtocol (View -> Presenter)
 protocol TrainingViewToPresenterProtocol: AnyObject {
@@ -15,7 +17,9 @@ protocol TrainingViewToPresenterProtocol: AnyObject {
 
 // MARK: Protocol - TrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol TrainingInteractorToPresenterProtocol: AnyObject {
-    func trainingsIsFetched()
+    func trainingsIsFetched(data: OrderedSet<Training>)
+    func trainingProgressKm(data: Float)
+    func trainingProgressStep(data: Float)
     func trainingIsFetchedWithError(error: Error)
 }
 
@@ -25,6 +29,8 @@ class TrainingPresenter {
     var router: TrainingPresenterToRouterProtocol!
     var interactor: TrainingPresenterToInteractorProtocol!
     weak var view: TrainingPresenterToViewProtocol!
+    
+    weak var progressBar: ProgressBarViewProtocol?
 }
 
 // MARK: Extension - TrainingViewToPresenterProtocol
@@ -38,11 +44,33 @@ extension TrainingPresenter: TrainingViewToPresenterProtocol {
 
 // MARK: Extension - TrainingInteractorToPresenterProtocol
 extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
-    func trainingsIsFetched() {
+    
+    func trainingsIsFetched(data: OrderedSet<Training>) {
+        logger.log("\(#fileID) -> \(#function)")
+        let trainingCellViewModels = data.map { training in
+            
+            return TrainingCellViewModel(killometrs: "\(String(format: "%.2f", training.distance)) км",
+                                         image: UIImage(named: "circle") ?? UIImage(),
+                                         data: "\(training.startTime.formatData()) >",
+                                         title: Tx.Training.run)
+        }
+        let sortedTrainingCellViewModels = trainingCellViewModels.sorted { $0.data > $1.data }
+        view.setTrainingData(data: sortedTrainingCellViewModels)
         view.removeActivityIndicator()
     }
     
+    func trainingProgressKm(data: Float) {
+        logger.log("\(#fileID) -> \(#function)")
+        view.setTrainingProgressKm(km: data, kmLabel: "\(String(format: "%.0f", data)) / ??")
+    }
+    
+    func trainingProgressStep(data: Float) {
+        logger.log("\(#fileID) -> \(#function)")
+        view.setTrainingProgressStep(step: data, stepLabel: "\(String(format: "%.0f", data)) / ??")
+    }
+    
     func trainingIsFetchedWithError(error: Error) {
+        logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()
     }
 }

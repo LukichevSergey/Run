@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HeaderCircleTableView: UIView {
+final class HeaderCircleTableView: UIView {
     
     private let circleLabel: UILabel = {
         let label = UILabel()

@@ -44,6 +44,7 @@ final class AuthTextField: UIView {
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
+        textField.clipsToBounds = true
         textField.tintColor = PaletteApp.black
         textField.textColor = PaletteApp.black
         textField.layer.borderColor = PaletteApp.lightGreen.cgColor

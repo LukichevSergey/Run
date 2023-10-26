@@ -74,7 +74,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .stop)
         trainingManager.updateTraining(with: trainingManager.coordinates)
-        trainingManager.stopTraining()
         trainingManager.coordinates = []
         
         let lastDistanceTraining = helperValueTemp.currentDistance
@@ -84,6 +83,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
                                                    distance: lastDistanceTraining,
                                                    temp: lastTempTraining,
                                                    time: timer.elapsedTime)
+        trainingManager.stopTraining()
         timerManager.resetTimer()
         helperValueTemp.resetAll()
     }
