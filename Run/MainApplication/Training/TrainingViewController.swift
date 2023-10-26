@@ -65,37 +65,6 @@ final class TrainingViewController: UIViewController {
         return label
     }()
     
-    private let willBeChargedST: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.text = Tx.Training.willBeCharged
-        label.font = OurFonts.fontPTSansBold14
-        
-        return label
-    }()
-    
-    private let kilometresLabel: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.text = Tx.Training.kilomertes
-        label.font = OurFonts.fontPTSansBold20
-        
-        return label
-    }()
-    
-    private let willBeChargedKM: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.text = Tx.Training.willBeCharged
-        label.font = OurFonts.fontPTSansBold14
-        
-        return label
-    }()
-    
-    private let progressBarKm = TrainingProgressBarViewKm()
-    
-    private let progressBarStep = TrainingProgressBarStep()
-    
     private let lvlLabelStep: UILabel = {
         let label = UILabel()
         label.text = "Lvl 1"
@@ -121,6 +90,24 @@ final class TrainingViewController: UIViewController {
         return label
     }()
     
+    private let willBeChargedST: UILabel = {
+        let label = UILabel()
+        label.textColor = PaletteApp.black
+        label.text = Tx.Training.willBeCharged
+        label.font = OurFonts.fontPTSansBold14
+        
+        return label
+    }()
+    
+    private let kilometresLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = PaletteApp.black
+        label.text = Tx.Training.kilomertes
+        label.font = OurFonts.fontPTSansBold20
+        
+        return label
+    }()
+        
     private let lvlLabelKm: UILabel = {
         let label = UILabel()
         label.text = "Lvl 100"
@@ -145,6 +132,20 @@ final class TrainingViewController: UIViewController {
         
         return label
     }()
+    
+    private let willBeChargedKM: UILabel = {
+        let label = UILabel()
+        label.textColor = PaletteApp.black
+        label.text = Tx.Training.willBeCharged
+        label.font = OurFonts.fontPTSansBold14
+        
+        return label
+    }()
+    
+    private let progressBarStep = TrainingProgressBarStep()
+
+    private let progressBarKm = TrainingProgressBarViewKm()
+
     
     private lazy var trainingDataTable: UITableView = {
         let table = UITableView()
@@ -213,7 +214,6 @@ final class TrainingViewController: UIViewController {
             make.leading.equalToSuperview().inset(10)
             make.height.equalTo(40)
             make.width.equalTo(150)
-
         }
         
         view.addSubview(activityLabel)
@@ -227,7 +227,6 @@ final class TrainingViewController: UIViewController {
         allActivityButton.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).inset(50)
             make.trailing.equalToSuperview().inset(30)
-            make.leading.equalTo(activityLabel.snp.trailing).inset(20)
             make.height.equalTo(40)
         }
         
@@ -236,29 +235,6 @@ final class TrainingViewController: UIViewController {
             make.top.equalTo(allActivityButton).inset(50)
             make.leading.equalToSuperview().inset(50)
             make.height.equalTo(30)
-        }
-        
-        view.addSubview(lvlLabelStep)
-        lvlLabelStep.snp.makeConstraints { make in
-            make.top.equalTo(stepLabel).inset(35)
-            make.trailing.equalToSuperview().inset(40)
-            make.width.equalTo(90)
-            make.height.equalTo(30)
-        }
-        
-        view.addSubview(detailLvlLabelStep)
-        detailLvlLabelStep.snp.makeConstraints { make in
-            make.top.equalTo(lvlLabelStep).inset(35)
-            make.width.equalTo(60)
-            make.height.equalTo(20)
-            make.centerX.equalTo(lvlLabelStep)
-        }
-        
-        view.addSubview(progressBarStep)
-        progressBarStep.snp.makeConstraints { make in
-            make.top.equalTo(stepLabel).inset(35)
-            make.leading.equalToSuperview().inset(50)
-            make.trailing.equalTo(lvlLabelStep).inset(100)
         }
         
         view.addSubview(willBeChargedST)
@@ -275,9 +251,47 @@ final class TrainingViewController: UIViewController {
             make.height.equalTo(30)
         }
         
+        view.addSubview(willBeChargedKM)
+        willBeChargedKM.snp.makeConstraints { make in
+            make.top.equalTo(kilometresLabel).inset(70)
+            make.leading.equalToSuperview().inset(50)
+            make.trailing.equalToSuperview()
+            make.height.equalTo(20)
+        }
+        
+        view.addSubview(progressBarStep)
+        progressBarStep.snp.makeConstraints { make in
+            make.top.equalTo(stepLabel).inset(35)
+            make.leading.equalToSuperview().inset(50)
+        }
+        
+        view.addSubview(lvlLabelStep)
+        lvlLabelStep.snp.makeConstraints { make in
+            make.top.equalTo(stepLabel).inset(35)
+            make.leading.equalTo(progressBarStep.snp.trailing).offset(10)
+            make.trailing.equalToSuperview().inset(40)
+            make.width.equalTo(90)
+            make.height.equalTo(30)
+        }
+        
+        view.addSubview(detailLvlLabelStep)
+        detailLvlLabelStep.snp.makeConstraints { make in
+            make.top.equalTo(lvlLabelStep).inset(35)
+            make.width.equalTo(60)
+            make.height.equalTo(20)
+            make.centerX.equalTo(lvlLabelStep)
+        }
+        
+        view.addSubview(progressBarKm)
+        progressBarKm.snp.makeConstraints { make in
+            make.top.equalTo(kilometresLabel).inset(35)
+            make.leading.equalToSuperview().inset(50)
+        }
+        
         view.addSubview(lvlLabelKm)
         lvlLabelKm.snp.makeConstraints { make in
             make.top.equalTo(kilometresLabel).inset(35)
+            make.leading.equalTo(progressBarKm.snp.trailing).offset(10)
             make.trailing.equalToSuperview().inset(40)
             make.width.equalTo(90)
             make.height.equalTo(30)
@@ -289,20 +303,6 @@ final class TrainingViewController: UIViewController {
             make.width.equalTo(60)
             make.height.equalTo(20)
             make.centerX.equalTo(lvlLabelKm)
-        }
-        
-        view.addSubview(progressBarKm)
-        progressBarKm.snp.makeConstraints { make in
-            make.top.equalTo(kilometresLabel).inset(35)
-            make.leading.equalToSuperview().inset(50)
-            make.trailing.equalTo(lvlLabelKm).inset(100)
-        }
-        
-        view.addSubview(willBeChargedKM)
-        willBeChargedKM.snp.makeConstraints { make in
-            make.top.equalTo(kilometresLabel).inset(70)
-            make.leading.equalToSuperview().inset(50)
-            make.height.equalTo(20)
         }
         
         view.addSubview(trainingDataTable)
