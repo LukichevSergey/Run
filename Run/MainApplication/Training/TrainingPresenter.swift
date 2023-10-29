@@ -18,8 +18,7 @@ protocol TrainingViewToPresenterProtocol: AnyObject {
 // MARK: Protocol - TrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol TrainingInteractorToPresenterProtocol: AnyObject {
     func trainingsIsFetched(data: OrderedSet<Training>)
-    func trainingProgressKm(data: Float)
-    func trainingProgressStep(data: Float)
+    func trainingProgressStepAndKm(data: Dictionary<String, Float>)
     func trainingIsFetchedWithError(error: Error)
 }
 
@@ -58,15 +57,12 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         view.setTrainingData(data: sortedTrainingCellViewModels)
         view.removeActivityIndicator()
     }
-    
-    func trainingProgressKm(data: Float) {
+
+    func trainingProgressStepAndKm(data: Dictionary<String,Float>) {
         logger.log("\(#fileID) -> \(#function)")
-        view.setTrainingProgressKm(km: data, kmLabel: "\(String(format: "%.0f", data)) / ??")
-    }
-    
-    func trainingProgressStep(data: Float) {
-        logger.log("\(#fileID) -> \(#function)")
-        view.setTrainingProgressStep(step: data, stepLabel: "\(String(format: "%.0f", data)) / ??")
+        view.setTrainingProgressStep(step: data["step"] ?? 0, stepLabel: "\(String(format: "%.0f", data["step"] ?? 0)) / ??")
+        view.setTrainingProgressKm(km: data["km"] ?? 0, kmLabel: "\(String(format: "%.0f", data["km"] ?? 0)) / ??")
+
     }
     
     func trainingIsFetchedWithError(error: Error) {

@@ -14,7 +14,7 @@ final class HeaderTrainingTableView: UIView {
         let label = UILabel()
         label.text = Tx.Training.title
         label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansRegular20
+        label.font = OurFonts.fontPTSansBold20
 
         return label
     }()
@@ -23,7 +23,7 @@ final class HeaderTrainingTableView: UIView {
         let button = UIButton()
         button.setTitle(Tx.Training.allTraining, for: .normal)
         button.setTitleColor(PaletteApp.black, for: .normal)
-        button.titleLabel?.font = OurFonts.fontPTSansRegular18
+        button.titleLabel?.font = OurFonts.fontPTSansBold16
 
         return button
     }()
