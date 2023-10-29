@@ -331,9 +331,7 @@ extension TrainingViewController: TrainingPresenterToViewProtocol {
         logger.log("\(#fileID) -> \(#function)")
         var snapshot = NSDiffableDataSourceSnapshot<SectionModelView, TrainingCellViewModel>()
         snapshot.appendSections([.main])
-        
         snapshot.appendItems(data, toSection: .main)
-        
         diffableDataSource?.apply(snapshot)
     }
 }
