@@ -954,7 +954,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GX86CHN34S;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Run/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS coordinates for your location";
@@ -984,7 +984,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = GX86CHN34S;
+				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Run/Info.plist;
 				INFOPLIST_KEY_NSLocationAlwaysUsageDescription = "This app lets you keep track of interesting places. It needs access to the GPS coordinates for your location";
