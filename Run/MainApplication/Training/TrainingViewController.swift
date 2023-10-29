@@ -145,7 +145,6 @@ final class TrainingViewController: UIViewController {
     private let progressBarStep = TrainingProgressBarStep()
 
     private let progressBarKm = TrainingProgressBarViewKm()
-
     
     private lazy var trainingDataTable: UITableView = {
         let table = UITableView()
