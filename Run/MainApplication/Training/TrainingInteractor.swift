@@ -38,7 +38,7 @@ extension TrainingInteractor: TrainingPresenterToInteractorProtocol {
                 let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
                 _trainings = trainings
                 
-                let stepAndMetrProgressTraining = managerProgress.getStepsAndMetrCountForTraining(data: trainings)
+                let stepAndMetrProgressTraining = managerProgress.getStepsAndKmCountForTraining(data: trainings)
                 presenter.trainingProgressStepAndKm(data: stepAndMetrProgressTraining)
 
                 presenter.trainingsIsFetched(data: _trainings)

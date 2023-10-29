@@ -11,7 +11,7 @@ import CoreMotion
 
 final class ProgressTrainingManager {
 
-    func getStepsAndMetrCountForTraining(data: OrderedSet<Training>) -> Dictionary<String, Float> {
+    func getStepsAndKmCountForTraining(data: OrderedSet<Training>) -> Dictionary<String, Float> {
         logger.log("\(#fileID) -> \(#function)")
         let pedometer = CMPedometer()
         var stepCurrentDay = 0
@@ -48,7 +48,7 @@ final class ProgressTrainingManager {
         
         group.wait()
         dictData["step"] = Float(stepCurrentDay)
-        dictData["metr"] = Float(metrCurrentDay)
+        dictData["metr"] = Float(metrCurrentDay / 1000)
         return dictData
     }
 }
