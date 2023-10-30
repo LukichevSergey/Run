@@ -17,7 +17,6 @@ class DetailTrainingInteractor {
     // MARK: Properties
     weak var presenter: DetailTrainingInteractorToPresenterProtocol!
 
-
 }
 
 // MARK: Extension - DetailTrainingPresenterToInteractorProtocol
