@@ -592,7 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				87EE80B32A99C93F00EF4ADD /* Model */,
-				9B5AC3642AEFDBDC009130C0 /* DetailMouthTraining */,
+				9B5AC3642AEFDBDC009130C0 /* DetailTraining */,
 				87EE80A92A99C93800EF4ADD /* TrainingPresenter.swift */,
 				87EE80AA2A99C93800EF4ADD /* TrainingRouter.swift */,
 				87EE80AB2A99C93800EF4ADD /* TrainingViewController.swift */,
@@ -637,7 +637,7 @@
 			path = Date;
 			sourceTree = "<group>";
 		};
-		9B5AC3642AEFDBDC009130C0 /* DetailMouthTraining */ = {
+		9B5AC3642AEFDBDC009130C0 /* DetailTraining */ = {
 			isa = PBXGroup;
 			children = (
 				9B5AC3672AEFDCB0009130C0 /* DetailTrainingConfigurator.swift */,
@@ -646,7 +646,7 @@
 				9B5AC36D2AEFDCFB009130C0 /* DetailTrainingRouter.swift */,
 				9B5AC36F2AEFDD0D009130C0 /* DetailTrainingViewController.swift */,
 			);
-			path = DetailMouthTraining;
+			path = DetailTraining;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
