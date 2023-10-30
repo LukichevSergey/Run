@@ -107,6 +107,11 @@
 		9B2CCFFA2AE87BDF007F317A /* ProgressBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */; };
 		9B2CCFFC2AE87BF4007F317A /* SectionModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFB2AE87BF4007F317A /* SectionModelView.swift */; };
 		9B2CCFFE2AE87C4A007F317A /* TrainingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */; };
+		9B5AC3682AEFDCB0009130C0 /* DetailTrainingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC3672AEFDCB0009130C0 /* DetailTrainingConfigurator.swift */; };
+		9B5AC36A2AEFDCC8009130C0 /* DetailTrainingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC3692AEFDCC8009130C0 /* DetailTrainingInteractor.swift */; };
+		9B5AC36C2AEFDCEE009130C0 /* DetailTrainingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36B2AEFDCEE009130C0 /* DetailTrainingPresenter.swift */; };
+		9B5AC36E2AEFDCFB009130C0 /* DetailTrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36D2AEFDCFB009130C0 /* DetailTrainingRouter.swift */; };
+		9B5AC3702AEFDD0D009130C0 /* DetailTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36F2AEFDD0D009130C0 /* DetailTrainingViewController.swift */; };
 		9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
 		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
@@ -209,6 +214,11 @@
 		9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewModel.swift; sourceTree = "<group>"; };
 		9B2CCFFB2AE87BF4007F317A /* SectionModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModelView.swift; sourceTree = "<group>"; };
 		9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCellViewModel.swift; sourceTree = "<group>"; };
+		9B5AC3672AEFDCB0009130C0 /* DetailTrainingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrainingConfigurator.swift; sourceTree = "<group>"; };
+		9B5AC3692AEFDCC8009130C0 /* DetailTrainingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrainingInteractor.swift; sourceTree = "<group>"; };
+		9B5AC36B2AEFDCEE009130C0 /* DetailTrainingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrainingPresenter.swift; sourceTree = "<group>"; };
+		9B5AC36D2AEFDCFB009130C0 /* DetailTrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrainingRouter.swift; sourceTree = "<group>"; };
+		9B5AC36F2AEFDD0D009130C0 /* DetailTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrainingViewController.swift; sourceTree = "<group>"; };
 		9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTempsModel.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
@@ -582,6 +592,7 @@
 			isa = PBXGroup;
 			children = (
 				87EE80B32A99C93F00EF4ADD /* Model */,
+				9B5AC3642AEFDBDC009130C0 /* DetailMouthTraining */,
 				87EE80A92A99C93800EF4ADD /* TrainingPresenter.swift */,
 				87EE80AA2A99C93800EF4ADD /* TrainingRouter.swift */,
 				87EE80AB2A99C93800EF4ADD /* TrainingViewController.swift */,
@@ -624,6 +635,18 @@
 				9B2CCFF52AE87AA8007F317A /* Date+Extensions.swift */,
 			);
 			path = Date;
+			sourceTree = "<group>";
+		};
+		9B5AC3642AEFDBDC009130C0 /* DetailMouthTraining */ = {
+			isa = PBXGroup;
+			children = (
+				9B5AC3672AEFDCB0009130C0 /* DetailTrainingConfigurator.swift */,
+				9B5AC3692AEFDCC8009130C0 /* DetailTrainingInteractor.swift */,
+				9B5AC36B2AEFDCEE009130C0 /* DetailTrainingPresenter.swift */,
+				9B5AC36D2AEFDCFB009130C0 /* DetailTrainingRouter.swift */,
+				9B5AC36F2AEFDD0D009130C0 /* DetailTrainingViewController.swift */,
+			);
+			path = DetailMouthTraining;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -742,6 +765,7 @@
 				87C46D352A9E38530094A8F0 /* RegistrationPresenter.swift in Sources */,
 				872F69DF2ABC6DCF00CFCBD1 /* LoggerManager.swift in Sources */,
 				8705D87C2A978427002BBDC2 /* ViewController.swift in Sources */,
+				9B5AC36C2AEFDCEE009130C0 /* DetailTrainingPresenter.swift in Sources */,
 				873BE8612AC2B010006DC498 /* ListImages.swift in Sources */,
 				8705D88D2A978716002BBDC2 /* StartViewController.swift in Sources */,
 				8705D88F2A97876F002BBDC2 /* RootMainApplicitionController.swift in Sources */,
@@ -771,6 +795,7 @@
 				873BE84B2AC2A724006DC498 /* ActivityIndicatorView.swift in Sources */,
 				873BE8502AC2AADE006DC498 /* Int+CGFloat.swift in Sources */,
 				875896932AA4CDC1002027FA /* ProfileViewModel.swift in Sources */,
+				9B5AC36E2AEFDCFB009130C0 /* DetailTrainingRouter.swift in Sources */,
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
 				873BE85F2AC2ACBD006DC498 /* UIImage+RoundedCorners.swift in Sources */,
 				8718159C2AA76C0C007CD141 /* EditProfileRouter.swift in Sources */,
@@ -782,9 +807,12 @@
 				87C46D2C2A9E37DF0094A8F0 /* LoginViewController.swift in Sources */,
 				878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */,
 				873BE85B2AC2AC48006DC498 /* UIImageView+SetImage.swift in Sources */,
+				9B5AC36A2AEFDCC8009130C0 /* DetailTrainingInteractor.swift in Sources */,
 				9B2CCFF12AE879F6007F317A /* ProgressTrainingBarStep.swift in Sources */,
+				9B5AC3702AEFDD0D009130C0 /* DetailTrainingViewController.swift in Sources */,
 				875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */,
 				87EE80AF2A99C93800EF4ADD /* TrainingRouter.swift in Sources */,
+				9B5AC3682AEFDCB0009130C0 /* DetailTrainingConfigurator.swift in Sources */,
 				87EE80BF2A99C95D00EF4ADD /* Training.swift in Sources */,
 				87C46D2D2A9E37DF0094A8F0 /* LoginInteractor.swift in Sources */,
 				8775B9672AA0D49D00EEA6F9 /* AuthManager.swift in Sources */,
