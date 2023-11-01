@@ -48,7 +48,7 @@ final class ProgressTrainingManager {
         
         group.wait()
         dictData["step"] = Float(stepCurrentDay)
-        dictData["metr"] = Float(metrCurrentDay / 1000)
+        dictData["km"] = Float(metrCurrentDay / 1000)
         return dictData
     }
 }

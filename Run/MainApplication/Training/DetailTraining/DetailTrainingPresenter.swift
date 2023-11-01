@@ -19,8 +19,8 @@ protocol DetailTrainingInteractorToPresenterProtocol: AnyObject {
     func trainingIsFetchedWithError(error: Error)
 }
 
-class DetailTrainingPresenter {
-
+final class DetailTrainingPresenter {
+    
     // MARK: Properties
     var router: DetailTrainingPresenterToRouterProtocol!
     var interactor: DetailTrainingPresenterToInteractorProtocol!

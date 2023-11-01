@@ -14,7 +14,8 @@ protocol DetailTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
 
 // MARK: Protocol - DetailTrainingRouterToViewProtocol (Router -> View)
 protocol DetailTrainingRouterToViewProtocol: AnyObject {
-
+    func presentView(view: UIViewController)
+    func pushView(view: UIViewController)
 }
 
 final class DetailTrainingViewController: UIViewController {
@@ -49,6 +50,8 @@ final class DetailTrainingViewController: UIViewController {
         view.backgroundColor = PaletteApp.white
         configureUI()
         presenter.viewDidLoad()
+        
+        
     }
     
     // MARK: - private func
@@ -58,6 +61,8 @@ final class DetailTrainingViewController: UIViewController {
     
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
+        view.backgroundColor = PaletteApp.white
+
         
     }
 }
@@ -67,8 +72,6 @@ extension DetailTrainingViewController: DetailTrainingPresenterToViewProtocol {
     
 
 }
-
-
 
 // MARK: Extension - TrainingRouterToViewProtocol
 extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol{
@@ -81,4 +84,5 @@ extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol{
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
+
 }
