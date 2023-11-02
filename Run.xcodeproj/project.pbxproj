@@ -113,6 +113,7 @@
 		9B5AC36E2AEFDCFB009130C0 /* DetailTrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36D2AEFDCFB009130C0 /* DetailTrainingRouter.swift */; };
 		9B5AC3702AEFDD0D009130C0 /* DetailTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36F2AEFDD0D009130C0 /* DetailTrainingViewController.swift */; };
 		9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */; };
+		9B74B35E2AF45B0500904A73 /* DetailTrainingCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74B35D2AF45B0500904A73 /* DetailTrainingCollectionView.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
 		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderCircleTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */; };
@@ -220,6 +221,7 @@
 		9B5AC36D2AEFDCFB009130C0 /* DetailTrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrainingRouter.swift; sourceTree = "<group>"; };
 		9B5AC36F2AEFDD0D009130C0 /* DetailTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrainingViewController.swift; sourceTree = "<group>"; };
 		9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTempsModel.swift; sourceTree = "<group>"; };
+		9B74B35D2AF45B0500904A73 /* DetailTrainingCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailTrainingCollectionView.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderCircleTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCircleTableView.swift; sourceTree = "<group>"; };
@@ -336,6 +338,7 @@
 				9B2CCFEE2AE879BF007F317A /* TrainingDataTableViewCell.swift */,
 				9B2CCFF02AE879F6007F317A /* ProgressTrainingBarStep.swift */,
 				9B2CCFF22AE87A39007F317A /* TrainingProgressBarViewKm.swift */,
+				9B74B35D2AF45B0500904A73 /* DetailTrainingCollectionView.swift */,
 			);
 			path = CustomUI;
 			sourceTree = "<group>";
@@ -777,6 +780,7 @@
 				8705D8A92A978A51002BBDC2 /* ProfileInteractor.swift in Sources */,
 				875896952AA4D59A002027FA /* UIViewController+ActivityIndicator.swift in Sources */,
 				87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */,
+				9B74B35E2AF45B0500904A73 /* DetailTrainingCollectionView.swift in Sources */,
 				8718159E2AA76C0C007CD141 /* EditProfileInteractor.swift in Sources */,
 				9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */,
 				87C46D392A9E38530094A8F0 /* RegistrationConfigurator.swift in Sources */,

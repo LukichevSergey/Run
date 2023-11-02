@@ -9,7 +9,6 @@ import UIKit
 
 // MARK: Protocol - DetailTrainingPresenterToViewProtocol (Presenter -> View)
 protocol DetailTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
-
 }
 
 // MARK: Protocol - DetailTrainingRouterToViewProtocol (Router -> View)
@@ -23,14 +22,16 @@ final class DetailTrainingViewController: UIViewController {
     // MARK: - Property
     var presenter: DetailTrainingViewToPresenterProtocol!
     
-    
+    private lazy var mainVStack: UIStackView = {
+        let stack = UIStackView()
+        stack.axis = .vertical
+        stack.spacing = 12
+        
+        return stack
+    }()
     
     // MARK: - init
-    
-    override func viewWillAppear(_ animated: Bool) {
-        logger.log("\(#fileID) -> \(#function)")
-        presenter.viewDidLoad()
-    }
+
     
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -47,7 +48,7 @@ final class DetailTrainingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logger.log("\(#fileID) -> \(#function)")
-        view.backgroundColor = PaletteApp.white
+        view.backgroundColor = PaletteApp.darkbOrange
         configureUI()
         presenter.viewDidLoad()
         
@@ -63,13 +64,17 @@ final class DetailTrainingViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
 
+        view.addSubview(mainVStack)
+        mainVStack.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+        }
         
     }
 }
 
 // MARK: Extension - DetailTrainingPresenterToViewProtocol
 extension DetailTrainingViewController: DetailTrainingPresenterToViewProtocol {
-    
 
 }
 

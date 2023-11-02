@@ -8,7 +8,13 @@
 import Foundation
 import UIKit
 
+protocol SenderDetailTrainingDelegate: AnyObject {
+    func senderTappedButton()
+}
+
 final class HeaderTrainingTableView: UIView {
+    
+    weak var delegate: SenderDetailTrainingDelegate?
     
     private let trainingLabel: UILabel = {
         let label = UILabel()
@@ -19,11 +25,13 @@ final class HeaderTrainingTableView: UIView {
         return label
     }()
 
-    private let trainingButton: UIButton = {
+    private lazy var trainingButton: UIButton = {
         let button = UIButton()
         button.setTitle(Tx.Training.allTraining, for: .normal)
         button.setTitleColor(PaletteApp.black, for: .normal)
         button.titleLabel?.font = OurFonts.fontPTSansBold16
+        button.addTarget(self, action: #selector(pushInAllTraining), for: .touchUpInside)
+
 
         return button
     }()
@@ -54,4 +62,10 @@ final class HeaderTrainingTableView: UIView {
             make.verticalEdges.equalToSuperview()
         }
     }
+    
+    @objc private func pushInAllTraining(_ sender: UIButton) {
+        logger.log("\(#fileID) -> \(#function)")
+        delegate?.senderTappedButton()
+    }
 }
+

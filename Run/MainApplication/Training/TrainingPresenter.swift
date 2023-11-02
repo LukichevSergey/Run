@@ -13,6 +13,7 @@ import UIKit
 // MARK: Protocol - TrainingViewToPresenterProtocol (View -> Presenter)
 protocol TrainingViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
+    func detailButtonTapped()
 }
 
 // MARK: Protocol - TrainingInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -20,6 +21,7 @@ protocol TrainingInteractorToPresenterProtocol: AnyObject {
     func trainingsIsFetched(data: OrderedSet<Training>)
     func trainingProgressStepAndKm(data: Dictionary<String, Float>)
     func trainingIsFetchedWithError(error: Error)
+    
 }
 
 class TrainingPresenter {
@@ -30,10 +32,15 @@ class TrainingPresenter {
     weak var view: TrainingPresenterToViewProtocol!
     
     weak var progressBar: ProgressBarViewProtocol?
+
 }
 
 // MARK: Extension - TrainingViewToPresenterProtocol
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
+    func detailButtonTapped() {
+        router.navigateToDetailViewController()
+    }
+    
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
@@ -70,3 +77,4 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         view.removeActivityIndicator()
     }
 }
+

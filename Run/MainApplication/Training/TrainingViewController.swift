@@ -20,9 +20,11 @@ protocol TrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
 protocol TrainingRouterToViewProtocol: AnyObject {
     func presentView(view: UIViewController)
     func pushView(view: UIViewController)
+    
 }
 
 final class TrainingViewController: UIViewController {
+    
     
     // MARK: - Property
     var presenter: TrainingViewToPresenterProtocol!
@@ -52,7 +54,7 @@ final class TrainingViewController: UIViewController {
         button.setTitle(Tx.Training.allActivity, for: .normal)
         button.setTitleColor(PaletteApp.black, for: .normal)
         button.titleLabel?.font = OurFonts.fontPTSansBold16
-        
+
         return button
     }()
     
@@ -352,7 +354,7 @@ extension TrainingViewController: UITableViewDelegate  {
         logger.log("\(#fileID) -> \(#function)")
         let headerView = HeaderTrainingTableView()
         headerView.backgroundColor = PaletteApp.white
-        
+        headerView.delegate = self
         return headerView
     }
 }
@@ -367,5 +369,12 @@ extension TrainingViewController: TrainingRouterToViewProtocol{
     func pushView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
+    }
+}
+
+extension TrainingViewController: SenderDetailTrainingDelegate{
+    func senderTappedButton() {
+        logger.log("\(#fileID) -> \(#function)")
+        presenter.detailButtonTapped()
     }
 }
