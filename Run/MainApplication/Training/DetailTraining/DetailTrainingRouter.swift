@@ -9,17 +9,18 @@ import Foundation
 
 // MARK: Protocol - DetailTrainingPresenterToRouterProtocol (Presenter -> Router)
 protocol DetailTrainingPresenterToRouterProtocol: AnyObject {
+
 }
 
 final class DetailTrainingRouter {
 
     // MARK: Properties
     weak var view: DetailTrainingRouterToViewProtocol!
-    
 }
 
 // MARK: Extension - DetailTrainingPresenterToRouterProtocol
 extension DetailTrainingRouter: DetailTrainingPresenterToRouterProtocol {
-    
 
 }
+
+

@@ -39,6 +39,7 @@ class TrainingPresenter {
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
     func detailButtonTapped() {
         router.navigateToDetailViewController()
+        
     }
     
     func viewDidLoad() {
@@ -63,6 +64,7 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         let sortedTrainingCellViewModels = trainingCellViewModels.sorted { $0.data > $1.data }
         view.setTrainingData(data: sortedTrainingCellViewModels)
         view.removeActivityIndicator()
+        
     }
 
     func trainingProgressStepAndKm(data: Dictionary<String,Float>) {
