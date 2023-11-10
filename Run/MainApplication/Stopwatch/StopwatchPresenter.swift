@@ -18,6 +18,7 @@ protocol StopwatchViewToPresenterProtocol: AnyObject {
 // MARK: Protocol - StopwatchInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol StopwatchInteractorToPresenterProtocol: AnyObject {
     func userLocationIsUpdated()
+    func updateTrainingDataWithError(_ error: Error)
 }
 
 final class StopwatchPresenter {
@@ -65,6 +66,12 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
 
 // MARK: Extension - StopwatchInteractorToPresenterProtocol
 extension StopwatchPresenter: StopwatchInteractorToPresenterProtocol {
+    func updateTrainingDataWithError(_ error: Error) {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        view.showErrorAlert(with: error.localizedDescription)
+    }
+    
     func userLocationIsUpdated() {
         logger.log("\(#fileID) -> \(#function)")
         view.setTimer(with: interactor.getTimerData())

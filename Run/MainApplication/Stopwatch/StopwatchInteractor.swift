@@ -125,10 +125,12 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
+                guard let user = GlobalData.userModel.value else { return }
                 guard let training = trainingManager.getLastTraining() else { return }
                 try await dataBase.saveTraining(training: training)
+                try await dataBase.updateSneakers(for: user.getId(), on: training.distance)
             } catch {
-                
+                presenter.updateTrainingDataWithError(error)
             }
         }
     }
