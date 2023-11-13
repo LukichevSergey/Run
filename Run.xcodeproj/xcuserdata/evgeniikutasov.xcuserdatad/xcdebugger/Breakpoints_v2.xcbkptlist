@@ -39,16 +39,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "AAB680C8-C7D1-4CF3-9AFE-F44620010689"
-            shouldBeEnabled = "Yes"
+            uuid = "80C8E27C-FF3B-4025-B383-3D3AA4113289"
+            shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Run/MainApplication/Training/DetailTraining/DetailTrainingInteractor.swift"
+            filePath = "Run/MainApplication/Training/DetailTraining/DetailTrainingViewController.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "43"
-            endingLineNumber = "43"
-            landmarkName = "fetchTrainings()"
+            startingLineNumber = "85"
+            endingLineNumber = "85"
+            landmarkName = "setupDiffableDataSource()"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

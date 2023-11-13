@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: Protocol - DetailTrainingPresenterToViewProtocol (Presenter -> View)
 protocol DetailTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
-    func setDetailTrainingData(data: [TrainingCellViewModel])
+    func setDetailTrainingData(data: [HeaderDetailTrainingViewModel])
 }
 
 // MARK: Protocol - DetailTrainingRouterToViewProtocol (Router -> View)
@@ -23,8 +23,8 @@ final class DetailTrainingViewController: UIViewController {
     // MARK: - Property
     var presenter: DetailTrainingViewToPresenterProtocol!
     
-    private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<SectionModelView, TrainingCellViewModel>?
-
+    private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<HeaderDetailTrainingViewModel, TrainingCellViewModel>?
+    
     
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
@@ -66,7 +66,7 @@ final class DetailTrainingViewController: UIViewController {
         presenter.viewDidLoad()
         collectionViewTraining.delegate = self
         collectionViewTraining.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-
+        collectionViewTraining.register(HeaderSectionViewCollection.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: "header")
     }
     
     
@@ -74,22 +74,39 @@ final class DetailTrainingViewController: UIViewController {
     // MARK: - private func
     private func commonInit() {
         setupDiffableDataSource()
+        setupHeaderDifData()
     }
     
-    func setupDiffableDataSource(){
+    func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
-        diffableCollectionDataSource = UICollectionViewDiffableDataSource(collectionView: collectionViewTraining) { collectionView, indexPath, item in
+        diffableCollectionDataSource = UICollectionViewDiffableDataSource<HeaderDetailTrainingViewModel, TrainingCellViewModel>(collectionView: collectionViewTraining) { collectionView, indexPath, item in
+            
+            
+            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath)
+            
             
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailCollectionViewCell
+            cell?.configure(with: item)
             
-            let viewModel = TrainingCellViewModel(killometrs: item.killometrs, image: item.image, data: item.data, title: item.title)
-            cell?.configure(with: viewModel)
             
             return cell
+            
         }
-        collectionViewTraining.dataSource = diffableCollectionDataSource
     }
     
+    
+func setupHeaderDifData() {
+    diffableCollectionDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+        
+        guard let section = self.diffableCollectionDataSource?.sectionIdentifier(for: indexPath.section) else {
+            return UICollectionViewCell()
+        }
+        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? HeaderSectionViewCollection
+        headerView?.configure(with: section)
+        
+        return headerView
+    }
+}
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
@@ -112,15 +129,19 @@ final class DetailTrainingViewController: UIViewController {
 
 // MARK: Extension - DetailTrainingPresenterToViewProtocol
 extension DetailTrainingViewController: DetailTrainingPresenterToViewProtocol {
-    func setDetailTrainingData(data: [TrainingCellViewModel]) {
+    func setDetailTrainingData(data: [HeaderDetailTrainingViewModel]) {
         logger.log("\(#fileID) -> \(#function)")
-        var snapshot = NSDiffableDataSourceSnapshot<SectionModelView, TrainingCellViewModel>()
-        snapshot.appendSections([.main])
-        snapshot.appendItems(data, toSection: .main)
+        var snapshot = NSDiffableDataSourceSnapshot<HeaderDetailTrainingViewModel, TrainingCellViewModel>()
+        
+        for section in data {
+            snapshot.appendSections([section])
+            snapshot.appendItems(section.training, toSection: section)
+        }
+        
         diffableCollectionDataSource?.apply(snapshot)
     }
+    
 }
-
 // MARK: Extension - TrainingRouterToViewProtocol
 extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol{
     func presentView(view: UIViewController) {
@@ -138,20 +159,23 @@ extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol{
 extension DetailTrainingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        cell.backgroundColor = PaletteApp.lightGreen
-        cell.layer.borderWidth = 2
-        cell.layer.borderColor = PaletteApp.darkblue.cgColor
-        cell.layer.cornerRadius = 20
+        
+
+            cell.backgroundColor = PaletteApp.lightGreen
+            cell.layer.borderWidth = 2
+            cell.layer.borderColor = PaletteApp.darkblue.cgColor
+            cell.layer.cornerRadius = 20
+        
+
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
         
         return CGSize(width: (view.frame.width) - 30, height: 70)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-
+        
     return UIEdgeInsets(top: 20, left: 12, bottom: 20, right: 12)
     }
 }

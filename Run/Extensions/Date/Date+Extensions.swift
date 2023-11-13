@@ -15,3 +15,21 @@ extension Date {
         return formattedDateString
     }
 }
+
+extension Date {
+    func formatMonthData() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let formattedDateString = dateFormatter.string(from: self)
+        return formattedDateString
+    }
+    
+}
+    extension Date {
+        func formatMonthAndYearData() -> String {
+            let dateFormatter = DateFormatter()
+            dateFormatter.dateFormat = "MMMM yyyy"
+            let formattedDateString = dateFormatter.string(from: self)
+            return formattedDateString
+        }
+}

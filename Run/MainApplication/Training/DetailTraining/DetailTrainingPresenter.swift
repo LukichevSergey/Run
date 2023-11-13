@@ -16,7 +16,7 @@ protocol DetailTrainingViewToPresenterProtocol: AnyObject {
 
 // MARK: Protocol - DetailTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol DetailTrainingInteractorToPresenterProtocol: AnyObject {
-    func trainingsDetailIsFetched(data: OrderedSet<Training>)
+    func trainingsDetailIsFetched(data: OrderedSet<HeaderDetailTrainingViewModel>)
     func trainingIsFetchedWithError(error: Error)}
 
 final class DetailTrainingPresenter {
@@ -39,16 +39,16 @@ extension DetailTrainingPresenter: DetailTrainingViewToPresenterProtocol {
 
 // MARK: Extension - DetailTrainingInteractorToPresenterProtocol
 extension DetailTrainingPresenter: DetailTrainingInteractorToPresenterProtocol {
-    func trainingsDetailIsFetched(data: OrderedCollections.OrderedSet<Training>) {
+    func trainingsDetailIsFetched(data: OrderedCollections.OrderedSet<HeaderDetailTrainingViewModel>) {
         let trainingCellViewModels = data.map { training in
             
-            return TrainingCellViewModel(killometrs: "\(String(format: "%.2f", training.distance)) км",
-                                         image: UIImage(named: "circle") ?? UIImage(),
-                                         data: "\(training.startTime.formatData()) >",
-                                         title: Tx.Training.run)
+            return HeaderDetailTrainingViewModel(month: training.month,
+                                                 countTraining: training.countTraining,
+                                                 allTime: training.allTime,
+                                                 averageTime: training.averageTime,
+                                                 training: training.training)
         }
-        let sortedTrainingCellViewModels = trainingCellViewModels.sorted { $0.data > $1.data }
-        view.setDetailTrainingData(data: sortedTrainingCellViewModels)
+        view.setDetailTrainingData(data: trainingCellViewModels)
         view.removeActivityIndicator()
     }
     

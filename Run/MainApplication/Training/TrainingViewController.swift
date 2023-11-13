@@ -29,7 +29,7 @@ final class TrainingViewController: UIViewController {
     // MARK: - Property
     var presenter: TrainingViewToPresenterProtocol!
     
-    private var diffableDataSource: UITableViewDiffableDataSource<SectionModelView, TrainingCellViewModel>?
+    private var diffableDataSource: UITableViewDiffableDataSource<SectionTraining, TrainingCellViewModel>?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -330,7 +330,7 @@ extension TrainingViewController: TrainingPresenterToViewProtocol {
     
     func setTrainingData(data: [TrainingCellViewModel]) {
         logger.log("\(#fileID) -> \(#function)")
-        var snapshot = NSDiffableDataSourceSnapshot<SectionModelView, TrainingCellViewModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<SectionTraining, TrainingCellViewModel>()
         snapshot.appendSections([.main])
         snapshot.appendItems(data, toSection: .main)
         diffableDataSource?.apply(snapshot)

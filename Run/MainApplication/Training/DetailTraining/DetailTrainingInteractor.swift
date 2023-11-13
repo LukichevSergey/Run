@@ -18,9 +18,9 @@ class DetailTrainingInteractor {
 
     // MARK: Properties
     weak var presenter: DetailTrainingInteractorToPresenterProtocol!
-
+    private let managerDetailTraining =  DetailTrainingManager()
     private let dataBase: TrainingToDatabaseServiceProtocol
-    private var _trainings = OrderedSet<Training>()
+    private var _detailTrainings = OrderedSet<HeaderDetailTrainingViewModel>()
     
     init() {
         dataBase = DatabaseService()
@@ -36,9 +36,11 @@ extension DetailTrainingInteractor: DetailTrainingPresenterToInteractorProtocol 
         Task {
             do {
                 let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
-                _trainings = trainings
                 
-                presenter.trainingsDetailIsFetched(data: _trainings)
+                let detailSectionTraining = managerDetailTraining.getDetailTrainingAndHeaderMonth(data: trainings)
+                _detailTrainings = detailSectionTraining
+                presenter.trainingsDetailIsFetched(data: _detailTrainings)
+                
             } catch {
                 presenter.trainingIsFetchedWithError(error: error)
             }
