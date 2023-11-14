@@ -25,7 +25,6 @@ final class DetailTrainingViewController: UIViewController {
     
     private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<HeaderDetailTrainingViewModel, TrainingCellViewModel>?
     
-    
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
@@ -167,6 +166,10 @@ extension DetailTrainingViewController: UICollectionViewDelegateFlowLayout {
             cell.layer.cornerRadius = 20
         
 
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        return CGSize(width: collectionView.bounds.width, height: 75)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
