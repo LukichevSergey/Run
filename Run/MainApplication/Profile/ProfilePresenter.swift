@@ -11,6 +11,7 @@ import Foundation
 // MARK: Protocol - ProfileViewToPresenterProtocol (View -> Presenter)
 protocol ProfileViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
+    func viewDidAppear()
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType)
     func snakersIsSelected(with id: String)
 }
@@ -51,9 +52,13 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
     
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
-        view.showActivityIndicator()
         interactor.subscribeOnUserChanged()
         view.setData(interactor.dataSource)
+    }
+    
+    func viewDidAppear() {
+        logger.log("\(#fileID) -> \(#function)")
+        view.showActivityIndicator()
         interactor.fetchUserData()
     }
 }

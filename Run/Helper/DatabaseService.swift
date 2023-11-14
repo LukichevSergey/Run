@@ -35,6 +35,7 @@ protocol EditProfileToDatabaseServiceProtocol {
 
 protocol StopwatchToDatabaseServiceProtocol {
     func saveTraining(training: Training) async throws
+    func updateSneakers(for userId: String, on distance: Double) async throws
 }
 
 final class DatabaseService {
@@ -138,6 +139,31 @@ extension DatabaseService: StopwatchToDatabaseServiceProtocol {
     func saveTraining(training: Training) async throws {
         logger.log("\(#fileID) -> \(#function)")
         try await trainingRef.document(training.id).setData(training.toDict)
+    }
+    
+    func updateSneakers(for userId: String, on distance: Double) async throws {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        let querySnapshot = try await sneakersRef.whereField("userId", isEqualTo: userId).whereField("isActive", isEqualTo: true).getDocuments()
+        
+        let batch = db.batch()
+        
+        for document in querySnapshot.documents {
+            let shoeRef = sneakersRef.document(document.documentID)
+            let currentDistance = document.data()["distance"] as? Double ?? 0
+            let currentTrainings = document.data()["trainingsCount"] as? Int ?? 0
+            let currentCondition = document.data()["condition"] as? Double ?? 0
+            let currentMoney = document.data()["money"] as? Double ?? 0
+            
+            let updatedData = ["distance": ((currentDistance + distance) * 100).rounded() / 100,
+                               "trainingsCount": currentTrainings + 1,
+                               "condition": ((currentCondition - distance) * 100).rounded() / 100,
+                               "money": ((currentMoney + distance * 10) * 100).rounded() / 100] as [String : Any]
+
+            batch.updateData(updatedData, forDocument: shoeRef)
+        }
+        
+        try await batch.commit()
     }
 }
 

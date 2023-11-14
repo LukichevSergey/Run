@@ -15,6 +15,7 @@ protocol StopwatchPresenterToViewProtocol: AnyObject {
     func setTimer(with data: TimerViewModel)
     func resetStartButton()
     func setCircleResult(with data: CircleViewModel)
+    func showErrorAlert(with text: String)
 }
 
 // MARK: Protocol - StopwatchRouterToViewProtocol (Router -> View)
@@ -172,6 +173,11 @@ final class StopwatchViewController: UIViewController {
 
 // MARK: Extension - StopwatchPresenterToViewProtocol 
 extension StopwatchViewController: StopwatchPresenterToViewProtocol{
+    func showErrorAlert(with text: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        
+        showAlert(with: text)
+    }
     
     func setCircleResult(with data: CircleViewModel) {
         logger.log("\(#fileID) -> \(#function)")
