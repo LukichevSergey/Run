@@ -8,7 +8,6 @@
 import Foundation
 
 enum SectionTraining {
-    case header
     case main
 }
 

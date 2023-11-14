@@ -46,5 +46,4 @@ extension DetailTrainingInteractor: DetailTrainingPresenterToInteractorProtocol 
             }
         }
     }
-    
 }

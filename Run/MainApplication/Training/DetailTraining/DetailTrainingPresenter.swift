@@ -52,7 +52,6 @@ extension DetailTrainingPresenter: DetailTrainingInteractorToPresenterProtocol {
         view.removeActivityIndicator()
     }
     
-    
     func trainingIsFetchedWithError(error: Error) {
         logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()

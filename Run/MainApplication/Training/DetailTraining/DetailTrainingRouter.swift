@@ -22,5 +22,3 @@ final class DetailTrainingRouter {
 extension DetailTrainingRouter: DetailTrainingPresenterToRouterProtocol {
 
 }
-
-

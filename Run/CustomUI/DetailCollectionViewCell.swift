@@ -10,13 +10,11 @@ import UIKit
 
 final class DetailCollectionViewCell: UICollectionViewCell {
     
-
     override init(frame: CGRect) {
         super.init(frame: frame)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     
     required init?(coder: NSCoder) {
         logger.log("\(#fileID) -> \(#function)")
@@ -92,5 +90,4 @@ extension DetailCollectionViewCell: ConfigurableViewProtocol {
         dateLabel.text = model.data
         titleCellLabel.text = model.title
     }
-    
 }

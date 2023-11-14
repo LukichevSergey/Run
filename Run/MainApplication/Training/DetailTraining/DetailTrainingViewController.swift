@@ -33,13 +33,32 @@ final class DetailTrainingViewController: UIViewController {
         return stack
     }()
     
-    private var collectionViewTraining: UICollectionView = {
+    private let collectionViewTraining: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
         collection.showsVerticalScrollIndicator = false
+
         
         return collection
+    }()
+    
+    private let titleLabel: UILabel = {
+        let label = UILabel()
+        label.text = Tx.Training.title
+        label.textColor = PaletteApp.black
+        label.font = OurFonts.fontPTSansBold32
+        
+        return label
+    }()
+    
+    private let graphicsButton: UIButton = {
+        let button = UIButton()
+        button.setTitle(Tx.Training.graphics, for: .normal)
+        button.setTitleColor(PaletteApp.black, for: .normal)
+        button.titleLabel?.font = OurFonts.fontPTSansRegular20
+
+        return button
     }()
     
     // MARK: - init
@@ -68,47 +87,52 @@ final class DetailTrainingViewController: UIViewController {
         collectionViewTraining.register(HeaderSectionViewCollection.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: "header")
     }
     
-    
-    
     // MARK: - private func
     private func commonInit() {
         setupDiffableDataSource()
-        setupHeaderDifData()
+        setupHeaderCollection()
     }
     
     func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
         diffableCollectionDataSource = UICollectionViewDiffableDataSource<HeaderDetailTrainingViewModel, TrainingCellViewModel>(collectionView: collectionViewTraining) { collectionView, indexPath, item in
-            
-            
-            let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "header", for: indexPath)
-            
-            
+
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailCollectionViewCell
             cell?.configure(with: item)
             
-            
             return cell
-            
         }
     }
-    
-    
-func setupHeaderDifData() {
+
+func setupHeaderCollection() {
     diffableCollectionDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
         
         guard let section = self.diffableCollectionDataSource?.sectionIdentifier(for: indexPath.section) else {
             return UICollectionViewCell()
         }
-        let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? HeaderSectionViewCollection
-        headerView?.configure(with: section)
         
-        return headerView
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? HeaderSectionViewCollection
+        header?.configure(with: section)
+        
+        return header
     }
 }
+    
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
+        
+        view.addSubview(titleLabel)
+        titleLabel.snp.makeConstraints { make in
+            make.top.equalToSuperview().inset(90)
+            make.left.equalToSuperview().inset(20)
+        }
+        
+        view.addSubview(graphicsButton)
+        graphicsButton.snp.makeConstraints { make in
+            make.centerY.equalTo(titleLabel)
+            make.right.equalToSuperview().inset(30)
+        }
 
         view.addSubview(mainVStack)
         mainVStack.snp.makeConstraints { make in
@@ -118,11 +142,10 @@ func setupHeaderDifData() {
         
         view.addSubview(collectionViewTraining)
         collectionViewTraining.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(200)
+            make.top.equalToSuperview().inset(150)
             make.bottom.equalToSuperview().inset(100)
             make.horizontalEdges.equalToSuperview().inset(10)
         }
-        
     }
 }
 
@@ -131,18 +154,16 @@ extension DetailTrainingViewController: DetailTrainingPresenterToViewProtocol {
     func setDetailTrainingData(data: [HeaderDetailTrainingViewModel]) {
         logger.log("\(#fileID) -> \(#function)")
         var snapshot = NSDiffableDataSourceSnapshot<HeaderDetailTrainingViewModel, TrainingCellViewModel>()
-        
         for section in data {
             snapshot.appendSections([section])
             snapshot.appendItems(section.training, toSection: section)
         }
-        
         diffableCollectionDataSource?.apply(snapshot)
     }
-    
 }
+
 // MARK: Extension - TrainingRouterToViewProtocol
-extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol{
+extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol {
     func presentView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
@@ -152,24 +173,20 @@ extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol{
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
-
 }
 
 extension DetailTrainingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        
-
             cell.backgroundColor = PaletteApp.lightGreen
             cell.layer.borderWidth = 2
             cell.layer.borderColor = PaletteApp.darkblue.cgColor
             cell.layer.cornerRadius = 20
-        
-
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return CGSize(width: collectionView.bounds.width, height: 75)
+        
+        return CGSize(width: collectionView.bounds.width, height: 95)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {

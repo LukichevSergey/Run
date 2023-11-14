@@ -48,6 +48,6 @@ final class DetailTrainingManager {
             allAverageTime = 0
         }
         
-        return OrderedSet(trainingModelArray)
+        return OrderedSet(trainingModelArray.reversed())
     }
 }
