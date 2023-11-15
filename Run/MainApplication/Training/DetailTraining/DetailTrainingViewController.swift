@@ -61,8 +61,6 @@ final class DetailTrainingViewController: UIViewController {
     }()
     
     // MARK: - init
-
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         logger.log("\(#fileID) -> \(#function)")
@@ -104,7 +102,6 @@ final class DetailTrainingViewController: UIViewController {
     }
 
     func setupHeaderCollection() {
-        
         diffableCollectionDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
             
             guard let section = self.diffableCollectionDataSource?.sectionIdentifier(for: indexPath.section) else {
@@ -176,7 +173,6 @@ extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol {
 }
 
 extension DetailTrainingViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cell.backgroundColor = PaletteApp.lightGreen
         cell.layer.borderWidth = 2

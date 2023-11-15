@@ -12,7 +12,6 @@ import UIKit
 final class DetailTrainingManager {
     
     func getDetailTrainingAndHeaderMonth(data: OrderedSet<Training>) -> OrderedSet<HeaderDetailTrainingViewModel> {
-        
         var trainingModelArray = [HeaderDetailTrainingViewModel]()
         var monthTraining = [TrainingCellViewModel]()
         var countTraining = 0

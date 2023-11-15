@@ -20,7 +20,6 @@ protocol TrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
 protocol TrainingRouterToViewProtocol: AnyObject {
     func presentView(view: UIViewController)
     func pushView(view: UIViewController)
-    
 }
 
 final class TrainingViewController: UIViewController {
@@ -203,12 +202,12 @@ final class TrainingViewController: UIViewController {
     
     // MARK: - private func
     private func commonInit() {
-        
         setupDiffableDataSource()
     }
     
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
+        
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(50)

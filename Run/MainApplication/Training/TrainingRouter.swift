@@ -13,7 +13,7 @@ protocol TrainingPresenterToRouterProtocol: AnyObject {
     func navigateToDetailViewController()
 }
 
-class TrainingRouter {
+final class TrainingRouter {
 
     // MARK: Properties
     weak var view: TrainingRouterToViewProtocol!
@@ -25,6 +25,4 @@ extension TrainingRouter: TrainingPresenterToRouterProtocol {
         let detailTrainingViewController = DetailTrainingConfigurator().configure()
         view.pushView(view: detailTrainingViewController)
     }
-    
-    
 }

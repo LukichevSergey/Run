@@ -14,7 +14,7 @@ protocol TrainingPresenterToInteractorProtocol: AnyObject {
     func fetchTrainings()
 }
 
-class TrainingInteractor {
+final class TrainingInteractor {
 
     // MARK: Properties
     weak var presenter: TrainingInteractorToPresenterProtocol!

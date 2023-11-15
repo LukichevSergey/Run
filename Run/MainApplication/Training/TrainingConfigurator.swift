@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrainingConfigurator {
+final class TrainingConfigurator {
     func configure() -> UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         let view = TrainingViewController()

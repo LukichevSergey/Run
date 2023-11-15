@@ -21,10 +21,9 @@ protocol TrainingInteractorToPresenterProtocol: AnyObject {
     func trainingsIsFetched(data: OrderedSet<Training>)
     func trainingProgressStepAndKm(data: Dictionary<String, Float>)
     func trainingIsFetchedWithError(error: Error)
-    
 }
 
-class TrainingPresenter {
+final class TrainingPresenter {
 
     // MARK: Properties
     var router: TrainingPresenterToRouterProtocol!
@@ -39,7 +38,6 @@ class TrainingPresenter {
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
     func detailButtonTapped() {
         router.navigateToDetailViewController()
-        
     }
     
     func viewDidLoad() {
@@ -51,7 +49,6 @@ extension TrainingPresenter: TrainingViewToPresenterProtocol {
 
 // MARK: Extension - TrainingInteractorToPresenterProtocol
 extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
-    
     func trainingsIsFetched(data: OrderedSet<Training>) {
         logger.log("\(#fileID) -> \(#function)")
         let trainingCellViewModels = data.map { training in
@@ -64,7 +61,6 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         let sortedTrainingCellViewModels = trainingCellViewModels.sorted { $0.data > $1.data }
         view.setTrainingData(data: sortedTrainingCellViewModels)
         view.removeActivityIndicator()
-        
     }
 
     func trainingProgressStepAndKm(data: Dictionary<String,Float>) {
@@ -79,4 +75,3 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         view.removeActivityIndicator()
     }
 }
-
