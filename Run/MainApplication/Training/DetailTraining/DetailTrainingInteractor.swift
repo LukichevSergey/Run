@@ -11,11 +11,10 @@ import OrderedCollections
 // MARK: Protocol - DetailTrainingPresenterToInteractorProtocol (Presenter -> Interactor)
 protocol DetailTrainingPresenterToInteractorProtocol: AnyObject {
     func fetchTrainings()
-
 }
 
-class DetailTrainingInteractor {
-
+final class DetailTrainingInteractor {
+    
     // MARK: Properties
     weak var presenter: DetailTrainingInteractorToPresenterProtocol!
     private let managerDetailTraining =  DetailTrainingManager()

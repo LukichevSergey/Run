@@ -13,6 +13,5 @@ struct HeaderDetailTrainingViewModel: Hashable {
     let countTraining: Int
     let allTime: String
     let averageTime: String
-    var training: [TrainingCellViewModel]
-    
+    let training: [TrainingCellViewModel]
 }

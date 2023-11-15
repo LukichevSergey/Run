@@ -38,7 +38,6 @@ final class DetailTrainingViewController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
         collection.showsVerticalScrollIndicator = false
-
         
         return collection
     }()
@@ -96,7 +95,7 @@ final class DetailTrainingViewController: UIViewController {
     func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
         diffableCollectionDataSource = UICollectionViewDiffableDataSource<HeaderDetailTrainingViewModel, TrainingCellViewModel>(collectionView: collectionViewTraining) { collectionView, indexPath, item in
-
+            
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailCollectionViewCell
             cell?.configure(with: item)
             
@@ -104,19 +103,20 @@ final class DetailTrainingViewController: UIViewController {
         }
     }
 
-func setupHeaderCollection() {
-    diffableCollectionDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+    func setupHeaderCollection() {
         
-        guard let section = self.diffableCollectionDataSource?.sectionIdentifier(for: indexPath.section) else {
-            return UICollectionViewCell()
+        diffableCollectionDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
+            
+            guard let section = self.diffableCollectionDataSource?.sectionIdentifier(for: indexPath.section) else {
+                return UICollectionViewCell()
+            }
+            
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? HeaderSectionViewCollection
+            header?.configure(with: section)
+            
+            return header
         }
-        
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? HeaderSectionViewCollection
-        header?.configure(with: section)
-        
-        return header
     }
-}
     
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
@@ -178,10 +178,10 @@ extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol {
 extension DetailTrainingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-            cell.backgroundColor = PaletteApp.lightGreen
-            cell.layer.borderWidth = 2
-            cell.layer.borderColor = PaletteApp.darkblue.cgColor
-            cell.layer.cornerRadius = 20
+        cell.backgroundColor = PaletteApp.lightGreen
+        cell.layer.borderWidth = 2
+        cell.layer.borderColor = PaletteApp.darkblue.cgColor
+        cell.layer.cornerRadius = 20
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -196,6 +196,6 @@ extension DetailTrainingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         
-    return UIEdgeInsets(top: 20, left: 12, bottom: 20, right: 12)
+        return UIEdgeInsets(top: 20, left: 12, bottom: 20, right: 12)
     }
 }

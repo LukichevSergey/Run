@@ -7,7 +7,7 @@
 
 import UIKit
 
-class DetailTrainingConfigurator {
+final class DetailTrainingConfigurator {
     func configure() -> UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         let view = DetailTrainingViewController()
