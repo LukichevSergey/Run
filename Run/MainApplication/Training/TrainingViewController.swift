@@ -201,6 +201,7 @@ final class TrainingViewController: UIViewController {
     
     // MARK: - private func
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         setupDiffableDataSource()
     }
     
