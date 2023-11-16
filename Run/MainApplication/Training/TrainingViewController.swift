@@ -24,7 +24,6 @@ protocol TrainingRouterToViewProtocol: AnyObject {
 
 final class TrainingViewController: UIViewController {
     
-    
     // MARK: - Property
     var presenter: TrainingViewToPresenterProtocol!
     
@@ -316,7 +315,6 @@ final class TrainingViewController: UIViewController {
 
 // MARK: Extension - TrainingPresenterToViewProtocol 
 extension TrainingViewController: TrainingPresenterToViewProtocol {
-    
     func setTrainingProgressStep(step: Float, stepLabel: String) {
         logger.log("\(#fileID) -> \(#function)")
         progressBarStep.updateProgress(step: step, stepLabel: stepLabel)
@@ -336,8 +334,7 @@ extension TrainingViewController: TrainingPresenterToViewProtocol {
     }
 }
 
-extension TrainingViewController: UITableViewDelegate  {
-    
+extension TrainingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         cell.backgroundColor = .clear
         tableView.sectionHeaderTopPadding = 0
@@ -359,7 +356,7 @@ extension TrainingViewController: UITableViewDelegate  {
 }
 
 // MARK: Extension - TrainingRouterToViewProtocol
-extension TrainingViewController: TrainingRouterToViewProtocol{
+extension TrainingViewController: TrainingRouterToViewProtocol {
     func presentView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
@@ -371,7 +368,7 @@ extension TrainingViewController: TrainingRouterToViewProtocol{
     }
 }
 
-extension TrainingViewController: SenderDetailTrainingDelegate{
+extension TrainingViewController: SenderDetailTrainingDelegate {
     func senderTappedButton() {
         logger.log("\(#fileID) -> \(#function)")
         presenter.detailButtonTapped()

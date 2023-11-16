@@ -86,6 +86,7 @@ final class DetailTrainingViewController: UIViewController {
     
     // MARK: - private func
     private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
         setupDiffableDataSource()
         setupHeaderCollection()
     }
@@ -102,6 +103,7 @@ final class DetailTrainingViewController: UIViewController {
     }
 
     func setupHeaderCollection() {
+        logger.log("\(#fileID) -> \(#function)")
         diffableCollectionDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
             
             guard let section = self.diffableCollectionDataSource?.sectionIdentifier(for: indexPath.section) else {

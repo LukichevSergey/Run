@@ -32,7 +32,6 @@ final class HeaderTrainingTableView: UIView {
         button.titleLabel?.font = OurFonts.fontPTSansBold16
         button.addTarget(self, action: #selector(pushInAllTraining), for: .touchUpInside)
 
-
         return button
     }()
 
@@ -68,4 +67,3 @@ final class HeaderTrainingTableView: UIView {
         delegate?.senderTappedButton()
     }
 }
-

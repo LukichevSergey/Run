@@ -10,5 +10,3 @@ import Foundation
 enum SectionTraining {
     case main
 }
-
-

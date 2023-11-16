@@ -25,7 +25,6 @@ final class DetailTrainingPresenter {
     var router: DetailTrainingPresenterToRouterProtocol!
     var interactor: DetailTrainingPresenterToInteractorProtocol!
     weak var view: DetailTrainingPresenterToViewProtocol!
-    
 }
 
 // MARK: Extension - DetailTrainingViewToPresenterProtocol
@@ -40,6 +39,7 @@ extension DetailTrainingPresenter: DetailTrainingViewToPresenterProtocol {
 // MARK: Extension - DetailTrainingInteractorToPresenterProtocol
 extension DetailTrainingPresenter: DetailTrainingInteractorToPresenterProtocol {
     func trainingsDetailIsFetched(data: OrderedCollections.OrderedSet<HeaderDetailTrainingViewModel>) {
+        logger.log("\(#fileID) -> \(#function)")
         let trainingCellViewModels = data.map { training in
             
             return HeaderDetailTrainingViewModel(month: training.month,

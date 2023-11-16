@@ -31,7 +31,6 @@ final class TrainingPresenter {
     weak var view: TrainingPresenterToViewProtocol!
     
     weak var progressBar: ProgressBarViewProtocol?
-
 }
 
 // MARK: Extension - TrainingViewToPresenterProtocol
@@ -67,7 +66,6 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         view.setTrainingProgressStep(step: data["step"] ?? 0, stepLabel: "\(String(format: "%.0f", data["step"] ?? 0)) / ??")
         view.setTrainingProgressKm(km: data["km"] ?? 0, kmLabel: "\(String(format: "%.0f", data["km"] ?? 0)) / ??")
-
     }
     
     func trainingIsFetchedWithError(error: Error) {
