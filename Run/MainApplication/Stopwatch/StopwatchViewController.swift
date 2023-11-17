@@ -136,7 +136,7 @@ final class StopwatchViewController: UIViewController {
         resultTable.dataSource = self
         configureUI()
         presenter.viewDidLoad()
-        resultTable.register(CircleTableViewCell.self, forCellReuseIdentifier: "cell")
+        resultTable.register(CellForCircleView.self, forCellReuseIdentifier: "cell")
         
     }
 
@@ -234,7 +234,7 @@ extension StopwatchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CircleTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CellForCircleView
         guard let cell = cell else { return UITableViewCell() }
         
         let circle = arrayCircleResult[indexPath.row]
@@ -246,7 +246,7 @@ extension StopwatchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = HeaderCircleTableView()
+        let headerView = HeaderForCircleView()
         headerView.backgroundColor = PaletteApp.white
 
         return headerView

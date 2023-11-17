@@ -1,5 +1,5 @@
 //
-//  CircleTableViewCell.swift
+//  CellForCircleView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 03.09.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CircleTableViewCell: UITableViewCell {
+final class CellForCircleView: UITableViewCell {
     
     private let circleLabel: UILabel = {
         let label = UILabel()
@@ -66,7 +66,7 @@ final class CircleTableViewCell: UITableViewCell {
     }
 }
 
-extension CircleTableViewCell: ConfigurableViewProtocol {
+extension CellForCircleView: ConfigurableViewProtocol {
     func configure(with model: CircleViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         circleLabel.text = model.circle

@@ -6,11 +6,9 @@
 //  
 //
 
-import Foundation
-
 // MARK: Protocol - TrainingPresenterToRouterProtocol (Presenter -> Router)
 protocol TrainingPresenterToRouterProtocol: AnyObject {
-    func navigateToDetailViewController()
+    func navigateToListViewController()
 }
 
 final class TrainingRouter {
@@ -21,8 +19,8 @@ final class TrainingRouter {
 
 // MARK: Extension - TrainingPresenterToRouterProtocol
 extension TrainingRouter: TrainingPresenterToRouterProtocol {
-    func navigateToDetailViewController() {
-        let detailTrainingViewController = DetailTrainingConfigurator().configure()
-        view.pushView(view: detailTrainingViewController)
+    func navigateToListViewController() {
+        let listTrainingViewController = ListTrainingConfigurator().configure()
+        view.pushView(view: listTrainingViewController)
     }
 }

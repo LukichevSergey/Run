@@ -1,5 +1,5 @@
 //
-//  DetailCollectionViewCell.swift
+//  CellListView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 03.11.2023.
@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-final class DetailCollectionViewCell: UICollectionViewCell {
+final class CellListView: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,7 +82,7 @@ final class DetailCollectionViewCell: UICollectionViewCell {
     }
 }
 
-extension DetailCollectionViewCell: ConfigurableViewProtocol {
+extension CellListView: ConfigurableViewProtocol {
     func configure(with model: TrainingCellViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         imageVariantRun.image = model.image

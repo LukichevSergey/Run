@@ -7,6 +7,6 @@
 
 import Foundation
 
-enum SectionTraining {
+enum SectionViewModel {
     case main
 }

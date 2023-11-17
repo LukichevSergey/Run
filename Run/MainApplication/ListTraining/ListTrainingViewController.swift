@@ -1,5 +1,5 @@
 //
-//  DetailTrainingViewController.swift
+//  ListTrainingViewController.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 30.10.2023.
@@ -7,23 +7,23 @@
 
 import UIKit
 
-// MARK: Protocol - DetailTrainingPresenterToViewProtocol (Presenter -> View)
-protocol DetailTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
-    func setDetailTrainingData(data: [HeaderDetailTrainingViewModel])
+// MARK: Protocol - ListTrainingPresenterToViewProtocol (Presenter -> View)
+protocol ListTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
+    func setListTrainingData(data: [HeaderListTrainingViewModel])
 }
 
-// MARK: Protocol - DetailTrainingRouterToViewProtocol (Router -> View)
-protocol DetailTrainingRouterToViewProtocol: AnyObject {
+// MARK: Protocol - ListTrainingRouterToViewProtocol (Router -> View)
+protocol ListTrainingRouterToViewProtocol: AnyObject {
     func presentView(view: UIViewController)
     func pushView(view: UIViewController)
 }
 
-final class DetailTrainingViewController: UIViewController {
+final class ListTrainingViewController: UIViewController {
     
     // MARK: - Property
-    var presenter: DetailTrainingViewToPresenterProtocol!
+    var presenter: ListTrainingViewToPresenterProtocol!
     
-    private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<HeaderDetailTrainingViewModel, TrainingCellViewModel>?
+    private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<HeaderListTrainingViewModel, TrainingCellViewModel>?
     
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
@@ -80,8 +80,8 @@ final class DetailTrainingViewController: UIViewController {
         configureUI()
         presenter.viewDidLoad()
         collectionViewTraining.delegate = self
-        collectionViewTraining.register(DetailCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionViewTraining.register(HeaderSectionViewCollection.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: "header")
+        collectionViewTraining.register(CellListView.self, forCellWithReuseIdentifier: "cell")
+        collectionViewTraining.register(HeaderListView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: "header")
     }
     
     // MARK: - private func
@@ -93,9 +93,9 @@ final class DetailTrainingViewController: UIViewController {
     
     func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
-        diffableCollectionDataSource = UICollectionViewDiffableDataSource<HeaderDetailTrainingViewModel, TrainingCellViewModel>(collectionView: collectionViewTraining) { collectionView, indexPath, item in
+        diffableCollectionDataSource = UICollectionViewDiffableDataSource<HeaderListTrainingViewModel, TrainingCellViewModel>(collectionView: collectionViewTraining) { collectionView, indexPath, item in
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? DetailCollectionViewCell
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CellListView
             cell?.configure(with: item)
             
             return cell
@@ -110,7 +110,7 @@ final class DetailTrainingViewController: UIViewController {
                 return UICollectionViewCell()
             }
             
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? HeaderSectionViewCollection
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? HeaderListView
             header?.configure(with: section)
             
             return header
@@ -148,11 +148,11 @@ final class DetailTrainingViewController: UIViewController {
     }
 }
 
-// MARK: Extension - DetailTrainingPresenterToViewProtocol
-extension DetailTrainingViewController: DetailTrainingPresenterToViewProtocol {
-    func setDetailTrainingData(data: [HeaderDetailTrainingViewModel]) {
+// MARK: Extension - ListTrainingPresenterToViewProtocol
+extension ListTrainingViewController: ListTrainingPresenterToViewProtocol {
+    func setListTrainingData(data: [HeaderListTrainingViewModel]) {
         logger.log("\(#fileID) -> \(#function)")
-        var snapshot = NSDiffableDataSourceSnapshot<HeaderDetailTrainingViewModel, TrainingCellViewModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<HeaderListTrainingViewModel, TrainingCellViewModel>()
         for section in data {
             snapshot.appendSections([section])
             snapshot.appendItems(section.training, toSection: section)
@@ -161,8 +161,8 @@ extension DetailTrainingViewController: DetailTrainingPresenterToViewProtocol {
     }
 }
 
-// MARK: Extension - TrainingRouterToViewProtocol
-extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol {
+// MARK: Extension - ListTrainingRouterToViewProtocol
+extension ListTrainingViewController: ListTrainingRouterToViewProtocol {
     func presentView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
@@ -174,7 +174,7 @@ extension DetailTrainingViewController: DetailTrainingRouterToViewProtocol {
     }
 }
 
-extension DetailTrainingViewController: UICollectionViewDelegateFlowLayout {
+extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cell.backgroundColor = PaletteApp.lightGreen
         cell.layer.borderWidth = 2

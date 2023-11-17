@@ -6,7 +6,6 @@
 //  
 //
 
-import Foundation
 import OrderedCollections
 
 // MARK: Protocol - TrainingPresenterToInteractorProtocol (Presenter -> Interactor)

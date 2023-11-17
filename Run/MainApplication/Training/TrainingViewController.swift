@@ -27,7 +27,7 @@ final class TrainingViewController: UIViewController {
     // MARK: - Property
     var presenter: TrainingViewToPresenterProtocol!
     
-    private var diffableDataSource: UITableViewDiffableDataSource<SectionTraining, TrainingCellViewModel>?
+    private var diffableDataSource: UITableViewDiffableDataSource<SectionViewModel, TrainingCellViewModel>?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -142,9 +142,9 @@ final class TrainingViewController: UIViewController {
         return label
     }()
     
-    private let progressBarStep = TrainingProgressBarStep()
+    private let progressBarStep = TrainingProgressStepView()
 
-    private let progressBarKm = TrainingProgressBarViewKm()
+    private let progressBarKm = TrainingProgressKmView()
     
     private lazy var trainingDataTable: UITableView = {
         let table = UITableView()
@@ -182,17 +182,15 @@ final class TrainingViewController: UIViewController {
         configureUI()
         presenter.viewDidLoad()
         trainingDataTable.delegate = self
-        trainingDataTable.register(TrainingDataTableViewCell.self, forCellReuseIdentifier: "cell")
+        trainingDataTable.register(CellTrainingView.self, forCellReuseIdentifier: "cell")
     }
     
     func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
         diffableDataSource = UITableViewDiffableDataSource(tableView: trainingDataTable) { tableView, indexPath, item in
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TrainingDataTableViewCell
-            
-            let viewModel = TrainingCellViewModel(killometrs: item.killometrs, image: item.image, data: item.data, title: item.title)
-            cell?.configure(with: viewModel)
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CellTrainingView
+            cell?.configure(with: item)
             
             return cell
         }
@@ -328,7 +326,7 @@ extension TrainingViewController: TrainingPresenterToViewProtocol {
     
     func setTrainingData(data: [TrainingCellViewModel]) {
         logger.log("\(#fileID) -> \(#function)")
-        var snapshot = NSDiffableDataSourceSnapshot<SectionTraining, TrainingCellViewModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<SectionViewModel, TrainingCellViewModel>()
         snapshot.appendSections([.main])
         snapshot.appendItems(data, toSection: .main)
         diffableDataSource?.apply(snapshot)
@@ -349,7 +347,7 @@ extension TrainingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         logger.log("\(#fileID) -> \(#function)")
-        let headerView = HeaderTrainingTableView()
+        let headerView = HeaderTrainingView()
         headerView.backgroundColor = PaletteApp.white
         headerView.delegate = self
         return headerView
@@ -369,9 +367,9 @@ extension TrainingViewController: TrainingRouterToViewProtocol {
     }
 }
 
-extension TrainingViewController: SenderDetailTrainingDelegate {
+extension TrainingViewController: SenderListTrainingDelegate {
     func senderTappedButton() {
         logger.log("\(#fileID) -> \(#function)")
-        presenter.detailButtonTapped()
+        presenter.listButtonTapped()
     }
 }

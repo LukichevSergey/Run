@@ -6,14 +6,13 @@
 //  
 //
 
-import Foundation
 import OrderedCollections
 import UIKit
 
 // MARK: Protocol - TrainingViewToPresenterProtocol (View -> Presenter)
 protocol TrainingViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
-    func detailButtonTapped()
+    func listButtonTapped()
 }
 
 // MARK: Protocol - TrainingInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -35,8 +34,8 @@ final class TrainingPresenter {
 
 // MARK: Extension - TrainingViewToPresenterProtocol
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
-    func detailButtonTapped() {
-        router.navigateToDetailViewController()
+    func listButtonTapped() {
+        router.navigateToListViewController()
     }
     
     func viewDidLoad() {

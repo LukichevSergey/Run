@@ -1,5 +1,5 @@
 //
-//  DetailTrainingManager.swift
+//  ListTrainingManager.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 08.11.2023.
@@ -9,10 +9,10 @@ import Foundation
 import OrderedCollections
 import UIKit
 
-final class DetailTrainingManager {
+final class ListTrainingManager {
     
-    func getDetailTrainingAndHeaderMonth(data: OrderedSet<Training>) -> OrderedSet<HeaderDetailTrainingViewModel> {
-        var trainingModelArray = [HeaderDetailTrainingViewModel]()
+    func getListTrainingAndHeaderMonth(data: OrderedSet<Training>) -> OrderedSet<HeaderListTrainingViewModel> {
+        var trainingModelArray = [HeaderListTrainingViewModel]()
         var monthTraining = [TrainingCellViewModel]()
         var countTraining = 0
         var alltime: Double = 0
@@ -34,7 +34,7 @@ final class DetailTrainingManager {
             }
             
             if !monthTraining.isEmpty {
-                trainingModelArray.append(HeaderDetailTrainingViewModel(month: "\(dateTraining.formatMonthAndYearData()) г.",
+                trainingModelArray.append(HeaderListTrainingViewModel(month: "\(dateTraining.formatMonthAndYearData()) г.",
                                                                         countTraining: countTraining,
                                                                         allTime: alltime.toMinutesAndSeconds(),
                                                                         averageTime: (allAverageTime / Double(countTraining)).toMinutesAndSeconds(),

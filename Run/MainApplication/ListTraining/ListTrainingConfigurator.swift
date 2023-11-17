@@ -1,5 +1,5 @@
 //
-//  DetailTrainingConfigurator.swift
+//  ListTrainingConfigurator.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 30.10.2023.
@@ -7,13 +7,13 @@
 
 import UIKit
 
-final class DetailTrainingConfigurator {
+final class ListTrainingConfigurator {
     func configure() -> UIViewController {
         logger.log("\(#fileID) -> \(#function)")
-        let view = DetailTrainingViewController()
-        let presenter = DetailTrainingPresenter()
-        let router = DetailTrainingRouter()
-        let interactor = DetailTrainingInteractor()
+        let view = ListTrainingViewController()
+        let presenter = ListTrainingPresenter()
+        let router = ListTrainingRouter()
+        let interactor = ListTrainingInteractor()
         
         view.presenter = presenter
 

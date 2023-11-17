@@ -1,20 +1,19 @@
 //
-//  HeaderTrainingTableView.swift
+//  HeaderTrainingView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 25.10.2023.
 //
 
-import Foundation
 import UIKit
 
-protocol SenderDetailTrainingDelegate: AnyObject {
+protocol SenderListTrainingDelegate: AnyObject {
     func senderTappedButton()
 }
 
-final class HeaderTrainingTableView: UIView {
+final class HeaderTrainingView: UIView {
     
-    weak var delegate: SenderDetailTrainingDelegate?
+    weak var delegate: SenderListTrainingDelegate?
     
     private let trainingLabel: UILabel = {
         let label = UILabel()

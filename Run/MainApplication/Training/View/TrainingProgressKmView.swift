@@ -1,18 +1,17 @@
 //
-//  TrainingProgressBar.swift
+//  TrainingProgressKmView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 25.10.2023.
 //
 
-import Foundation
 import UIKit
 
 protocol ProgressBarViewProtocol: AnyObject {
     func updateProgress(km: Float, kmLabel: String)
 }
 
-final class TrainingProgressBarViewKm: UIView {
+final class TrainingProgressKmView: UIView {
 
     private let progressView: UIProgressView = {
         let progress = UIProgressView()
@@ -60,7 +59,7 @@ final class TrainingProgressBarViewKm: UIView {
     }
 }
 
-extension TrainingProgressBarViewKm: ProgressBarViewProtocol {
+extension TrainingProgressKmView: ProgressBarViewProtocol {
     func updateProgress(km: Float, kmLabel: String) {
         logger.log("\(#fileID) -> \(#function)")
         progressView.setProgress(km, animated: false)

@@ -1,18 +1,17 @@
 //
-//  ProgressTrainingBarStep.swift
+//  TrainingProgressStepView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 25.10.2023.
 //
 
-import Foundation
 import UIKit
 
 protocol ProgressBarViewStepProtocol: AnyObject {
     func updateProgress(step: Float, stepLabel: String)
 }
 
-final class TrainingProgressBarStep: UIView {
+final class TrainingProgressStepView: UIView {
 
     private let progressView: UIProgressView = {
         let progress = UIProgressView()
@@ -61,7 +60,7 @@ final class TrainingProgressBarStep: UIView {
     }
 }
 
-extension TrainingProgressBarStep: ProgressBarViewStepProtocol {
+extension TrainingProgressStepView: ProgressBarViewStepProtocol {
     func updateProgress(step: Float, stepLabel: String) {
         logger.log("\(#fileID) -> \(#function)")
         progressView.setProgress(step, animated: false)
