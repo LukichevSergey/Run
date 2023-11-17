@@ -30,7 +30,7 @@ extension Date {
 extension Date {
     func formatMonthAndYearData() -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMMM yyyy"
+        dateFormatter.dateFormat = "MMM yyyy"
         dateFormatter.locale = Locale(identifier: "ru_RU")
         let formattedDateString = dateFormatter.string(from: self).capitalized
         
