@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: Protocol - ListTrainingPresenterToViewProtocol (Presenter -> View)
 protocol ListTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
-    func setListTrainingData(data: [HeaderListTrainingViewModel])
+    func setListTrainingData(data: [SectionListTrainingModel])
 }
 
 // MARK: Protocol - ListTrainingRouterToViewProtocol (Router -> View)
@@ -23,7 +23,7 @@ final class ListTrainingViewController: UIViewController {
     // MARK: - Property
     var presenter: ListTrainingViewToPresenterProtocol!
     
-    private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<HeaderListTrainingViewModel, TrainingCellViewModel>?
+    private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<SectionListTrainingModel, TrainingCellViewModel>?
     
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
@@ -80,8 +80,8 @@ final class ListTrainingViewController: UIViewController {
         configureUI()
         presenter.viewDidLoad()
         collectionViewTraining.delegate = self
-        collectionViewTraining.register(CellListView.self, forCellWithReuseIdentifier: "cell")
-        collectionViewTraining.register(HeaderListView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: "header")
+        collectionViewTraining.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionViewTraining.register(ListHeaderCollectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: "header")
     }
     
     // MARK: - private func
@@ -93,9 +93,9 @@ final class ListTrainingViewController: UIViewController {
     
     func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
-        diffableCollectionDataSource = UICollectionViewDiffableDataSource<HeaderListTrainingViewModel, TrainingCellViewModel>(collectionView: collectionViewTraining) { collectionView, indexPath, item in
+        diffableCollectionDataSource = UICollectionViewDiffableDataSource<SectionListTrainingModel, TrainingCellViewModel>(collectionView: collectionViewTraining) { collectionView, indexPath, item in
             
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? CellListView
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ListCollectionViewCell
             cell?.configure(with: item)
             
             return cell
@@ -110,7 +110,7 @@ final class ListTrainingViewController: UIViewController {
                 return UICollectionViewCell()
             }
             
-            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? HeaderListView
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? ListHeaderCollectionView
             header?.configure(with: section)
             
             return header
@@ -150,9 +150,9 @@ final class ListTrainingViewController: UIViewController {
 
 // MARK: Extension - ListTrainingPresenterToViewProtocol
 extension ListTrainingViewController: ListTrainingPresenterToViewProtocol {
-    func setListTrainingData(data: [HeaderListTrainingViewModel]) {
+    func setListTrainingData(data: [SectionListTrainingModel]) {
         logger.log("\(#fileID) -> \(#function)")
-        var snapshot = NSDiffableDataSourceSnapshot<HeaderListTrainingViewModel, TrainingCellViewModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<SectionListTrainingModel, TrainingCellViewModel>()
         for section in data {
             snapshot.appendSections([section])
             snapshot.appendItems(section.training, toSection: section)

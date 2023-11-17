@@ -15,7 +15,7 @@ protocol ListTrainingViewToPresenterProtocol: AnyObject {
 
 // MARK: Protocol - ListTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol ListTrainingInteractorToPresenterProtocol: AnyObject {
-    func trainingsListIsFetched(data: OrderedSet<HeaderListTrainingViewModel>)
+    func trainingsListIsFetched(data: OrderedSet<SectionListTrainingModel>)
     func trainingIsFetchedWithError(error: Error)}
 
 final class ListTrainingPresenter {
@@ -37,11 +37,11 @@ extension ListTrainingPresenter: ListTrainingViewToPresenterProtocol {
 
 // MARK: Extension - ListTrainingInteractorToPresenterProtocol
 extension ListTrainingPresenter: ListTrainingInteractorToPresenterProtocol {
-    func trainingsListIsFetched(data: OrderedCollections.OrderedSet<HeaderListTrainingViewModel>) {
+    func trainingsListIsFetched(data: OrderedCollections.OrderedSet<SectionListTrainingModel>) {
         logger.log("\(#fileID) -> \(#function)")
         let listTrainingsInArray = data.map { training in
             
-            return HeaderListTrainingViewModel(month: training.month,
+            return SectionListTrainingModel(month: training.month,
                                                  countTraining: training.countTraining,
                                                  allTime: training.allTime,
                                                  averageTime: training.averageTime,

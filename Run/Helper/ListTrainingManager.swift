@@ -5,14 +5,13 @@
 //  Created by Evgenii Kutasov on 08.11.2023.
 //
 
-import Foundation
 import OrderedCollections
 import UIKit
 
 final class ListTrainingManager {
     
-    func getListTrainingAndHeaderMonth(data: OrderedSet<Training>) -> OrderedSet<HeaderListTrainingViewModel> {
-        var trainingModelArray = [HeaderListTrainingViewModel]()
+    func getListTrainingAndHeaderMonth(data: OrderedSet<Training>) -> OrderedSet<SectionListTrainingModel> {
+        var trainingModelArray = [SectionListTrainingModel]()
         var monthTraining = [TrainingCellViewModel]()
         var countTraining = 0
         var alltime: Double = 0
@@ -34,7 +33,7 @@ final class ListTrainingManager {
             }
             
             if !monthTraining.isEmpty {
-                trainingModelArray.append(HeaderListTrainingViewModel(month: "\(dateTraining.formatMonthAndYearData()) г.",
+                trainingModelArray.append(SectionListTrainingModel(month: "\(dateTraining.formatMonthAndYearData()) г.",
                                                                         countTraining: countTraining,
                                                                         allTime: alltime.toMinutesAndSeconds(),
                                                                         averageTime: (allAverageTime / Double(countTraining)).toMinutesAndSeconds(),

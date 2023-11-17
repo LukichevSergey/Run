@@ -1,14 +1,13 @@
 //
-//  HeaderListView.swift
+//  ListHeaderCollectionView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 05.11.2023.
 //
 
-import Foundation
 import UIKit
 
-final class HeaderListView: UICollectionReusableView {
+final class ListHeaderCollectionView: UICollectionReusableView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -142,8 +141,8 @@ final class HeaderListView: UICollectionReusableView {
     }
 }
 
-extension HeaderListView: ConfigurableViewProtocol {
-    func configure(with model: HeaderListTrainingViewModel) {
+extension ListHeaderCollectionView: ConfigurableViewProtocol {
+    func configure(with model: SectionListTrainingModel) {
         logger.log("\(#fileID) -> \(#function)")
         trainingCountLabel.text = "\(model.countTraining)"
         allTimeLabel.text = "\(model.allTime)"

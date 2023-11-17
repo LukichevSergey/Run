@@ -18,7 +18,7 @@ final class ListTrainingInteractor {
     weak var presenter: ListTrainingInteractorToPresenterProtocol!
     private let managerListTraining =  ListTrainingManager()
     private let dataBase: TrainingToDatabaseServiceProtocol
-    private var _listTraining = OrderedSet<HeaderListTrainingViewModel>()
+    private var _listTraining = OrderedSet<SectionListTrainingModel>()
     
     init() {
         dataBase = DatabaseService()

@@ -1,5 +1,5 @@
 //
-//  CellTrainingView.swift
+//  TrainingTableViewCell.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 25.10.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class CellTrainingView: UITableViewCell {
+final class TrainingTableViewCell: UITableViewCell {
 
     private let castomView: UIView = {
         let view = UIView()
@@ -97,7 +97,7 @@ final class CellTrainingView: UITableViewCell {
     }
 }
 
-extension CellTrainingView: ConfigurableViewProtocol {
+extension TrainingTableViewCell: ConfigurableViewProtocol {
     func configure(with model: TrainingCellViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         imageVariantRun.image = model.image

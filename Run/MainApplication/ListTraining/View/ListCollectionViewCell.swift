@@ -1,14 +1,13 @@
 //
-//  CellListView.swift
+//  ListCollectionViewCell.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 03.11.2023.
 //
 
-import Foundation
 import UIKit
 
-final class CellListView: UICollectionViewCell {
+final class ListCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -82,7 +81,7 @@ final class CellListView: UICollectionViewCell {
     }
 }
 
-extension CellListView: ConfigurableViewProtocol {
+extension ListCollectionViewCell: ConfigurableViewProtocol {
     func configure(with model: TrainingCellViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         imageVariantRun.image = model.image

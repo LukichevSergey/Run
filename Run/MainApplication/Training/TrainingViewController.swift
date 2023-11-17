@@ -27,7 +27,7 @@ final class TrainingViewController: UIViewController {
     // MARK: - Property
     var presenter: TrainingViewToPresenterProtocol!
     
-    private var diffableDataSource: UITableViewDiffableDataSource<SectionViewModel, TrainingCellViewModel>?
+    private var diffableDataSource: UITableViewDiffableDataSource<SectionTrainingModel, TrainingCellViewModel>?
     
     private let titleLabel: UILabel = {
         let label = UILabel()
@@ -182,14 +182,14 @@ final class TrainingViewController: UIViewController {
         configureUI()
         presenter.viewDidLoad()
         trainingDataTable.delegate = self
-        trainingDataTable.register(CellTrainingView.self, forCellReuseIdentifier: "cell")
+        trainingDataTable.register(TrainingTableViewCell.self, forCellReuseIdentifier: "cell")
     }
     
     func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
         diffableDataSource = UITableViewDiffableDataSource(tableView: trainingDataTable) { tableView, indexPath, item in
             
-            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? CellTrainingView
+            let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TrainingTableViewCell
             cell?.configure(with: item)
             
             return cell
@@ -326,7 +326,7 @@ extension TrainingViewController: TrainingPresenterToViewProtocol {
     
     func setTrainingData(data: [TrainingCellViewModel]) {
         logger.log("\(#fileID) -> \(#function)")
-        var snapshot = NSDiffableDataSourceSnapshot<SectionViewModel, TrainingCellViewModel>()
+        var snapshot = NSDiffableDataSourceSnapshot<SectionTrainingModel, TrainingCellViewModel>()
         snapshot.appendSections([.main])
         snapshot.appendItems(data, toSection: .main)
         diffableDataSource?.apply(snapshot)
@@ -347,7 +347,7 @@ extension TrainingViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         logger.log("\(#fileID) -> \(#function)")
-        let headerView = HeaderTrainingView()
+        let headerView = TrainingHeaderView()
         headerView.backgroundColor = PaletteApp.white
         headerView.delegate = self
         return headerView

@@ -1,5 +1,5 @@
 //
-//  HeaderTrainingView.swift
+//  TrainingHeaderView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 25.10.2023.
@@ -11,7 +11,7 @@ protocol SenderListTrainingDelegate: AnyObject {
     func senderTappedButton()
 }
 
-final class HeaderTrainingView: UIView {
+final class TrainingHeaderView: UIView {
     
     weak var delegate: SenderListTrainingDelegate?
     

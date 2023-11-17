@@ -98,14 +98,14 @@
 		87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */; };
 		87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */; };
 		87EE80C72A99D27900EF4ADD /* coordinates.gpx in Resources */ = {isa = PBXBuildFile; fileRef = 87EE80C62A99D27900EF4ADD /* coordinates.gpx */; };
-		9B2CCFED2AE8798B007F317A /* HeaderTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFEC2AE8798B007F317A /* HeaderTrainingView.swift */; };
-		9B2CCFEF2AE879BF007F317A /* CellTrainingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFEE2AE879BF007F317A /* CellTrainingView.swift */; };
+		9B2CCFED2AE8798B007F317A /* TrainingHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFEC2AE8798B007F317A /* TrainingHeaderView.swift */; };
+		9B2CCFEF2AE879BF007F317A /* TrainingTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFEE2AE879BF007F317A /* TrainingTableViewCell.swift */; };
 		9B2CCFF12AE879F6007F317A /* TrainingProgressStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF02AE879F6007F317A /* TrainingProgressStepView.swift */; };
 		9B2CCFF32AE87A39007F317A /* TrainingProgressKmView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF22AE87A39007F317A /* TrainingProgressKmView.swift */; };
 		9B2CCFF62AE87AA8007F317A /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF52AE87AA8007F317A /* Date+Extensions.swift */; };
 		9B2CCFF82AE87AC7007F317A /* ProgressTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF72AE87AC7007F317A /* ProgressTrainingManager.swift */; };
 		9B2CCFFA2AE87BDF007F317A /* ProgressBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */; };
-		9B2CCFFC2AE87BF4007F317A /* SectionModelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFB2AE87BF4007F317A /* SectionModelView.swift */; };
+		9B2CCFFC2AE87BF4007F317A /* SectionTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFB2AE87BF4007F317A /* SectionTrainingModel.swift */; };
 		9B2CCFFE2AE87C4A007F317A /* TrainingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */; };
 		9B5AC3682AEFDCB0009130C0 /* ListTrainingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC3672AEFDCB0009130C0 /* ListTrainingConfigurator.swift */; };
 		9B5AC36A2AEFDCC8009130C0 /* ListTrainingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC3692AEFDCC8009130C0 /* ListTrainingInteractor.swift */; };
@@ -113,12 +113,12 @@
 		9B5AC36E2AEFDCFB009130C0 /* ListTrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36D2AEFDCFB009130C0 /* ListTrainingRouter.swift */; };
 		9B5AC3702AEFDD0D009130C0 /* ListTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36F2AEFDD0D009130C0 /* ListTrainingViewController.swift */; };
 		9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */; };
-		9B74B3602AF51D2F00904A73 /* CellListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74B35F2AF51D2F00904A73 /* CellListView.swift */; };
+		9B74B3602AF51D2F00904A73 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74B35F2AF51D2F00904A73 /* ListCollectionViewCell.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
-		9B79BDE02AA4443A00BFA5BC /* CellForCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CellForCircleView.swift */; };
+		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
 		9B7A6E0D2AFB3110001CC644 /* ListTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */; };
-		9B9AD70B2AF7BAA900464951 /* HeaderListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70A2AF7BAA900464951 /* HeaderListView.swift */; };
-		9B9AD70D2AF7BF3800464951 /* HeaderListTrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70C2AF7BF3800464951 /* HeaderListTrainingViewModel.swift */; };
+		9B9AD70B2AF7BAA900464951 /* ListHeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */; };
+		9B9AD70D2AF7BF3800464951 /* SectionListTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderForCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */; };
 /* End PBXBuildFile section */
 
@@ -209,14 +209,14 @@
 		87EE80C02A99CD8A00EF4ADD /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
 		87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerDataView.swift; sourceTree = "<group>"; };
 		87EE80C62A99D27900EF4ADD /* coordinates.gpx */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = coordinates.gpx; sourceTree = "<group>"; };
-		9B2CCFEC2AE8798B007F317A /* HeaderTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderTrainingView.swift; sourceTree = "<group>"; };
-		9B2CCFEE2AE879BF007F317A /* CellTrainingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellTrainingView.swift; sourceTree = "<group>"; };
+		9B2CCFEC2AE8798B007F317A /* TrainingHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingHeaderView.swift; sourceTree = "<group>"; };
+		9B2CCFEE2AE879BF007F317A /* TrainingTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCell.swift; sourceTree = "<group>"; };
 		9B2CCFF02AE879F6007F317A /* TrainingProgressStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgressStepView.swift; sourceTree = "<group>"; };
 		9B2CCFF22AE87A39007F317A /* TrainingProgressKmView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingProgressKmView.swift; sourceTree = "<group>"; };
 		9B2CCFF52AE87AA8007F317A /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		9B2CCFF72AE87AC7007F317A /* ProgressTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressTrainingManager.swift; sourceTree = "<group>"; };
 		9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewModel.swift; sourceTree = "<group>"; };
-		9B2CCFFB2AE87BF4007F317A /* SectionModelView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionModelView.swift; sourceTree = "<group>"; };
+		9B2CCFFB2AE87BF4007F317A /* SectionTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTrainingModel.swift; sourceTree = "<group>"; };
 		9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCellViewModel.swift; sourceTree = "<group>"; };
 		9B5AC3672AEFDCB0009130C0 /* ListTrainingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingConfigurator.swift; sourceTree = "<group>"; };
 		9B5AC3692AEFDCC8009130C0 /* ListTrainingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingInteractor.swift; sourceTree = "<group>"; };
@@ -224,12 +224,12 @@
 		9B5AC36D2AEFDCFB009130C0 /* ListTrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingRouter.swift; sourceTree = "<group>"; };
 		9B5AC36F2AEFDD0D009130C0 /* ListTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingViewController.swift; sourceTree = "<group>"; };
 		9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTempsModel.swift; sourceTree = "<group>"; };
-		9B74B35F2AF51D2F00904A73 /* CellListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellListView.swift; sourceTree = "<group>"; };
+		9B74B35F2AF51D2F00904A73 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
-		9B79BDDF2AA4443A00BFA5BC /* CellForCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellForCircleView.swift; sourceTree = "<group>"; };
+		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
 		9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingManager.swift; sourceTree = "<group>"; };
-		9B9AD70A2AF7BAA900464951 /* HeaderListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderListView.swift; sourceTree = "<group>"; };
-		9B9AD70C2AF7BF3800464951 /* HeaderListTrainingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderListTrainingViewModel.swift; sourceTree = "<group>"; };
+		9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderCollectionView.swift; sourceTree = "<group>"; };
+		9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionListTrainingModel.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForCircleView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -611,7 +611,7 @@
 			children = (
 				87EE80BE2A99C95D00EF4ADD /* Training.swift */,
 				9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */,
-				9B2CCFFB2AE87BF4007F317A /* SectionModelView.swift */,
+				9B2CCFFB2AE87BF4007F317A /* SectionTrainingModel.swift */,
 				9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */,
 			);
 			path = Model;
@@ -621,7 +621,7 @@
 			isa = PBXGroup;
 			children = (
 				87EE80C32A99CF0A00EF4ADD /* TimerDataView.swift */,
-				9B79BDDF2AA4443A00BFA5BC /* CellForCircleView.swift */,
+				9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */,
 				9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */,
 			);
 			path = View;
@@ -660,7 +660,7 @@
 		9B90D1A42B078435001688AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				9B9AD70C2AF7BF3800464951 /* HeaderListTrainingViewModel.swift */,
+				9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -668,8 +668,8 @@
 		9B90D1A52B07843C001688AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9B9AD70A2AF7BAA900464951 /* HeaderListView.swift */,
-				9B74B35F2AF51D2F00904A73 /* CellListView.swift */,
+				9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */,
+				9B74B35F2AF51D2F00904A73 /* ListCollectionViewCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -677,8 +677,8 @@
 		9B90D1A62B078D21001688AC /* View */ = {
 			isa = PBXGroup;
 			children = (
-				9B2CCFEC2AE8798B007F317A /* HeaderTrainingView.swift */,
-				9B2CCFEE2AE879BF007F317A /* CellTrainingView.swift */,
+				9B2CCFEC2AE8798B007F317A /* TrainingHeaderView.swift */,
+				9B2CCFEE2AE879BF007F317A /* TrainingTableViewCell.swift */,
 				9B2CCFF02AE879F6007F317A /* TrainingProgressStepView.swift */,
 				9B2CCFF22AE87A39007F317A /* TrainingProgressKmView.swift */,
 			);
@@ -781,11 +781,11 @@
 				8718159D2AA76C0C007CD141 /* EditProfileViewController.swift in Sources */,
 				87EE80B02A99C93800EF4ADD /* TrainingViewController.swift in Sources */,
 				873BE8552AC2ABC9006DC498 /* String+IsImage.swift in Sources */,
-				9B2CCFED2AE8798B007F317A /* HeaderTrainingView.swift in Sources */,
+				9B2CCFED2AE8798B007F317A /* TrainingHeaderView.swift in Sources */,
 				87EE80C42A99CF0A00EF4ADD /* TimerDataView.swift in Sources */,
 				87B551782A9F8A1400726D59 /* AppUser.swift in Sources */,
-				9B79BDE02AA4443A00BFA5BC /* CellForCircleView.swift in Sources */,
-				9B74B3602AF51D2F00904A73 /* CellListView.swift in Sources */,
+				9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */,
+				9B74B3602AF51D2F00904A73 /* ListCollectionViewCell.swift in Sources */,
 				8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */,
 				9BA2E2912AAA820700A947E2 /* HeaderForCircleView.swift in Sources */,
 				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
@@ -856,16 +856,16 @@
 				8775B9672AA0D49D00EEA6F9 /* AuthManager.swift in Sources */,
 				878EBC112A98E347001219F9 /* TimerStatsLabel.swift in Sources */,
 				9B2CCFFA2AE87BDF007F317A /* ProgressBarViewModel.swift in Sources */,
-				9B9AD70D2AF7BF3800464951 /* HeaderListTrainingViewModel.swift in Sources */,
+				9B9AD70D2AF7BF3800464951 /* SectionListTrainingModel.swift in Sources */,
 				8705D89B2A978A38002BBDC2 /* StopwatchPresenter.swift in Sources */,
 				875896912AA4CB5A002027FA /* ProfileTableViewCellViewModel.swift in Sources */,
-				9B2CCFEF2AE879BF007F317A /* CellTrainingView.swift in Sources */,
+				9B2CCFEF2AE879BF007F317A /* TrainingTableViewCell.swift in Sources */,
 				8705D8B32A979A38002BBDC2 /* Double+Extensions.swift in Sources */,
 				87EE80AE2A99C93800EF4ADD /* TrainingPresenter.swift in Sources */,
 				8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */,
 				87EE80B12A99C93800EF4ADD /* TrainingInteractor.swift in Sources */,
 				8705D8A82A978A51002BBDC2 /* ProfileViewController.swift in Sources */,
-				9B2CCFFC2AE87BF4007F317A /* SectionModelView.swift in Sources */,
+				9B2CCFFC2AE87BF4007F317A /* SectionTrainingModel.swift in Sources */,
 				8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */,
 				87C46D2A2A9E37DF0094A8F0 /* LoginPresenter.swift in Sources */,
 				8718159B2AA76C0C007CD141 /* EditProfilePresenter.swift in Sources */,
@@ -873,7 +873,7 @@
 				8705D87A2A978427002BBDC2 /* SceneDelegate.swift in Sources */,
 				8705D8B02A97992A002BBDC2 /* TimerManager.swift in Sources */,
 				87C46D362A9E38530094A8F0 /* RegistrationRouter.swift in Sources */,
-				9B9AD70B2AF7BAA900464951 /* HeaderListView.swift in Sources */,
+				9B9AD70B2AF7BAA900464951 /* ListHeaderCollectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
