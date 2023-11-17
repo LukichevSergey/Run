@@ -19,8 +19,8 @@ final class RootMainApplicitionController: UITabBarController {
         modalTransitionStyle = .coverVertical
 
         let stopwatchViewController = StopwatchConfigurator().configure()
-        let trainingViewController = TrainingConfigurator().configure()
-        let profileViewController = UINavigationController(rootViewController: ProfileConfigurator().configure()) 
+        let trainingViewController = UINavigationController(rootViewController: TrainingConfigurator().configure())
+        let profileViewController = UINavigationController(rootViewController: ProfileConfigurator().configure())
 
         stopwatchViewController.title = Tx.Timer.title
         trainingViewController.title = Tx.Training.title

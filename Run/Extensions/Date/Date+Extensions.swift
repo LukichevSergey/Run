@@ -12,6 +12,28 @@ extension Date {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         let formattedDateString = dateFormatter.string(from: self)
+        
+        return formattedDateString
+    }
+}
+
+extension Date {
+    func formatMonthData() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM"
+        let formattedDateString = dateFormatter.string(from: self)
+        
+        return formattedDateString
+    }
+}
+
+extension Date {
+    func formatMonthAndYearData() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MMM yyyy"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let formattedDateString = dateFormatter.string(from: self).capitalized
+        
         return formattedDateString
     }
 }

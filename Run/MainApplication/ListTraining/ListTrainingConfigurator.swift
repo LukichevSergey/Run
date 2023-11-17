@@ -1,20 +1,19 @@
 //
-//  TrainingConfigurator.swift
+//  ListTrainingConfigurator.swift
 //  Run
 //
-//  Created by Лукичев Сергей on 26.08.2023.
-//  
+//  Created by Evgenii Kutasov on 30.10.2023.
 //
 
 import UIKit
 
-final class TrainingConfigurator {
+final class ListTrainingConfigurator {
     func configure() -> UIViewController {
         logger.log("\(#fileID) -> \(#function)")
-        let view = TrainingViewController()
-        let presenter = TrainingPresenter()
-        let router = TrainingRouter()
-        let interactor = TrainingInteractor()
+        let view = ListTrainingViewController()
+        let presenter = ListTrainingPresenter()
+        let router = ListTrainingRouter()
+        let interactor = ListTrainingInteractor()
         
         view.presenter = presenter
 

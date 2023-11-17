@@ -6,13 +6,13 @@
 //  
 //
 
-import Foundation
 import OrderedCollections
 import UIKit
 
 // MARK: Protocol - TrainingViewToPresenterProtocol (View -> Presenter)
 protocol TrainingViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
+    func listButtonTapped()
 }
 
 // MARK: Protocol - TrainingInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -22,7 +22,7 @@ protocol TrainingInteractorToPresenterProtocol: AnyObject {
     func trainingIsFetchedWithError(error: Error)
 }
 
-class TrainingPresenter {
+final class TrainingPresenter {
 
     // MARK: Properties
     var router: TrainingPresenterToRouterProtocol!
@@ -34,6 +34,10 @@ class TrainingPresenter {
 
 // MARK: Extension - TrainingViewToPresenterProtocol
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
+    func listButtonTapped() {
+        router.navigateToListViewController()
+    }
+    
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
@@ -43,7 +47,6 @@ extension TrainingPresenter: TrainingViewToPresenterProtocol {
 
 // MARK: Extension - TrainingInteractorToPresenterProtocol
 extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
-    
     func trainingsIsFetched(data: OrderedSet<Training>) {
         logger.log("\(#fileID) -> \(#function)")
         let trainingCellViewModels = data.map { training in
@@ -62,7 +65,6 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         view.setTrainingProgressStep(step: data["step"] ?? 0, stepLabel: "\(String(format: "%.0f", data["step"] ?? 0)) / ??")
         view.setTrainingProgressKm(km: data["km"] ?? 0, kmLabel: "\(String(format: "%.0f", data["km"] ?? 0)) / ??")
-
     }
     
     func trainingIsFetchedWithError(error: Error) {

@@ -246,7 +246,7 @@ extension StopwatchViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let headerView = HeaderCircleTableView()
+        let headerView = HeaderForCircleView()
         headerView.backgroundColor = PaletteApp.white
 
         return headerView

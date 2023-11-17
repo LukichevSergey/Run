@@ -6,7 +6,6 @@
 //  
 //
 
-import Foundation
 import OrderedCollections
 
 // MARK: Protocol - TrainingPresenterToInteractorProtocol (Presenter -> Interactor)
@@ -14,7 +13,7 @@ protocol TrainingPresenterToInteractorProtocol: AnyObject {
     func fetchTrainings()
 }
 
-class TrainingInteractor {
+final class TrainingInteractor {
 
     // MARK: Properties
     weak var presenter: TrainingInteractorToPresenterProtocol!

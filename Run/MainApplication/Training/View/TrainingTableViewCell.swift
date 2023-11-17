@@ -1,14 +1,13 @@
 //
-//  TrainingDataTableViewCell.swift
+//  TrainingTableViewCell.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 25.10.2023.
 //
 
-import Foundation
 import UIKit
 
-final class TrainingDataTableViewCell: UITableViewCell {
+final class TrainingTableViewCell: UITableViewCell {
 
     private let castomView: UIView = {
         let view = UIView()
@@ -56,7 +55,7 @@ final class TrainingDataTableViewCell: UITableViewCell {
         contentView.addSubview(castomView)
         castomView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(10)
-            make.verticalEdges.equalToSuperview().inset(16)
+            make.verticalEdges.equalToSuperview().inset(5)
             make.height.equalTo(70)
         }
 
@@ -98,7 +97,7 @@ final class TrainingDataTableViewCell: UITableViewCell {
     }
 }
 
-extension TrainingDataTableViewCell: ConfigurableViewProtocol {
+extension TrainingTableViewCell: ConfigurableViewProtocol {
     func configure(with model: TrainingCellViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         imageVariantRun.image = model.image

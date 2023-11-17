@@ -1,5 +1,5 @@
 //
-//  headerCircleTableView.swift
+//  HeaderForCircleView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 08.09.2023.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HeaderCircleTableView: UIView {
+final class HeaderForCircleView: UIView {
     
     private let circleLabel: UILabel = {
         let label = UILabel()

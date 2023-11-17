@@ -1,14 +1,19 @@
 //
-//  HeaderTrainingTableView.swift
+//  TrainingHeaderView.swift
 //  Run
 //
 //  Created by Evgenii Kutasov on 25.10.2023.
 //
 
-import Foundation
 import UIKit
 
-final class HeaderTrainingTableView: UIView {
+protocol SenderListTrainingDelegate: AnyObject {
+    func senderTappedButton()
+}
+
+final class TrainingHeaderView: UIView {
+    
+    weak var delegate: SenderListTrainingDelegate?
     
     private let trainingLabel: UILabel = {
         let label = UILabel()
@@ -19,11 +24,12 @@ final class HeaderTrainingTableView: UIView {
         return label
     }()
 
-    private let trainingButton: UIButton = {
+    private lazy var trainingButton: UIButton = {
         let button = UIButton()
         button.setTitle(Tx.Training.allTraining, for: .normal)
         button.setTitleColor(PaletteApp.black, for: .normal)
         button.titleLabel?.font = OurFonts.fontPTSansBold16
+        button.addTarget(self, action: #selector(pushInAllTraining), for: .touchUpInside)
 
         return button
     }()
@@ -53,5 +59,10 @@ final class HeaderTrainingTableView: UIView {
             make.trailing.equalToSuperview().inset(16)
             make.verticalEdges.equalToSuperview()
         }
+    }
+    
+    @objc private func pushInAllTraining(_ sender: UIButton) {
+        logger.log("\(#fileID) -> \(#function)")
+        delegate?.senderTappedButton()
     }
 }
