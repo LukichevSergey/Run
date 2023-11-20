@@ -38,6 +38,7 @@ final class ListTrainingViewController: UIViewController {
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
         layout.scrollDirection = .vertical
         collection.showsVerticalScrollIndicator = false
+        collection.backgroundColor = .clear
         
         return collection
     }()
@@ -56,7 +57,7 @@ final class ListTrainingViewController: UIViewController {
         button.setTitle(Tx.Training.graphics, for: .normal)
         button.setTitleColor(PaletteApp.black, for: .normal)
         button.titleLabel?.font = OurFonts.fontPTSansRegular20
-
+        
         return button
     }()
     
@@ -76,7 +77,6 @@ final class ListTrainingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logger.log("\(#fileID) -> \(#function)")
-        view.backgroundColor = PaletteApp.darkbOrange
         configureUI()
         presenter.viewDidLoad()
         collectionViewTraining.delegate = self
@@ -101,7 +101,7 @@ final class ListTrainingViewController: UIViewController {
             return cell
         }
     }
-
+    
     func setupHeaderCollection() {
         logger.log("\(#fileID) -> \(#function)")
         diffableCollectionDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
@@ -132,7 +132,7 @@ final class ListTrainingViewController: UIViewController {
             make.centerY.equalTo(titleLabel)
             make.right.equalToSuperview().inset(30)
         }
-
+        
         view.addSubview(mainVStack)
         mainVStack.snp.makeConstraints { make in
             make.center.equalToSuperview()
@@ -167,7 +167,7 @@ extension ListTrainingViewController: ListTrainingRouterToViewProtocol {
         logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
     }
-
+    
     func pushView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
