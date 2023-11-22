@@ -15,7 +15,6 @@ final class ListTrainingManager {
         var monthTraining = [TrainingCellViewModel]()
         var countTraining = 0
         var alltime: Double = 0
-        var allAverageTime: Double = 0
         var dateTraining = Date()
         
         for month in 1...12 {
@@ -24,7 +23,6 @@ final class ListTrainingManager {
                     countTraining += 1
                     alltime += training.time
                     dateTraining = training.startTime
-                    allAverageTime = training.averageTemp.isNaN ? 0.0 : allAverageTime + training.averageTemp
                     monthTraining.append(TrainingCellViewModel(killometrs: "\(String(format: "%.2f", training.distance)) км",
                                                                image: UIImage(named: "circle") ?? UIImage(),
                                                                data: "\(training.startTime.formatData()) >",
@@ -36,14 +34,13 @@ final class ListTrainingManager {
                 trainingModelArray.append(SectionListTrainingModel(month: "\(dateTraining.formatMonthAndYearData()) г.",
                                                                         countTraining: countTraining,
                                                                         allTime: alltime.toMinutesAndSeconds(),
-                                                                        averageTime: (allAverageTime / Double(countTraining)).toMinutesAndSeconds(),
+                                                                        averageTime: (alltime / Double(countTraining)).toMinutesAndSeconds(),
                                                                         training: monthTraining))
             }
 
             monthTraining.removeAll()
             countTraining = 0
             alltime = 0
-            allAverageTime = 0
         }
         
         return OrderedSet(trainingModelArray.reversed())

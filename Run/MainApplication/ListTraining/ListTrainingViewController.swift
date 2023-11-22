@@ -171,10 +171,12 @@ extension ListTrainingViewController: ListTrainingRouterToViewProtocol {
     func pushView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.title, style: .plain, target: nil, action: nil)
     }
 }
 
 extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         cell.backgroundColor = PaletteApp.lightGreen
         cell.layer.borderWidth = 2
@@ -196,4 +198,10 @@ extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
         
         return UIEdgeInsets(top: 20, left: 12, bottom: 20, right: 12)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        presenter.detailedTappedCell()
+    }
 }
+
+
