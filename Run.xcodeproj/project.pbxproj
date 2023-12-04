@@ -107,16 +107,30 @@
 		9B2CCFFA2AE87BDF007F317A /* ProgressBarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */; };
 		9B2CCFFC2AE87BF4007F317A /* SectionTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFB2AE87BF4007F317A /* SectionTrainingModel.swift */; };
 		9B2CCFFE2AE87C4A007F317A /* TrainingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */; };
+		9B4105572B18B23500637F62 /* DetailedInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4105562B18B23500637F62 /* DetailedInfoViewModel.swift */; };
+		9B4105592B18B2F300637F62 /* DetailedResultViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4105582B18B2F300637F62 /* DetailedResultViewModel.swift */; };
+		9B41055B2B18B35300637F62 /* DetailedEveryKilometrViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B41055A2B18B35300637F62 /* DetailedEveryKilometrViewModel.swift */; };
+		9B41055D2B18B3EC00637F62 /* DetailedPulseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B41055C2B18B3EC00637F62 /* DetailedPulseViewModel.swift */; };
+		9B41055F2B18B46E00637F62 /* DetailedMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B41055E2B18B46E00637F62 /* DetailedMapViewModel.swift */; };
+		9B4105612B18BC5200637F62 /* DetailedResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4105602B18BC5200637F62 /* DetailedResultTableViewCell.swift */; };
+		9B4105632B18C31700637F62 /* DetailedEveryKilometrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4105622B18C31700637F62 /* DetailedEveryKilometrTableViewCell.swift */; };
 		9B5AC3682AEFDCB0009130C0 /* ListTrainingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC3672AEFDCB0009130C0 /* ListTrainingConfigurator.swift */; };
 		9B5AC36A2AEFDCC8009130C0 /* ListTrainingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC3692AEFDCC8009130C0 /* ListTrainingInteractor.swift */; };
 		9B5AC36C2AEFDCEE009130C0 /* ListTrainingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36B2AEFDCEE009130C0 /* ListTrainingPresenter.swift */; };
 		9B5AC36E2AEFDCFB009130C0 /* ListTrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36D2AEFDCFB009130C0 /* ListTrainingRouter.swift */; };
 		9B5AC3702AEFDD0D009130C0 /* ListTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36F2AEFDD0D009130C0 /* ListTrainingViewController.swift */; };
 		9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */; };
+		9B74A9842B1006B7000934FE /* DetailedInfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A9832B1006B7000934FE /* DetailedInfTableViewCell.swift */; };
 		9B74B3602AF51D2F00904A73 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74B35F2AF51D2F00904A73 /* ListCollectionViewCell.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
 		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
 		9B7A6E0D2AFB3110001CC644 /* ListTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */; };
+		9B7E10E72B0C1392000904F1 /* DetailedTrainingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10E62B0C1392000904F1 /* DetailedTrainingInteractor.swift */; };
+		9B7E10E92B0C139B000904F1 /* DetailedTrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10E82B0C139B000904F1 /* DetailedTrainingRouter.swift */; };
+		9B7E10EB2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EA2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift */; };
+		9B7E10ED2B0C1404000904F1 /* DetailedTrainingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EC2B0C1404000904F1 /* DetailedTrainingPresenter.swift */; };
+		9B7E10EF2B0C140F000904F1 /* DetailedTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */; };
+		9B8D90992B1A1D9700885630 /* DetailedtraininfManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D90982B1A1D9700885630 /* DetailedtraininfManager.swift */; };
 		9B9AD70B2AF7BAA900464951 /* ListHeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */; };
 		9B9AD70D2AF7BF3800464951 /* SectionListTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderForCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */; };
@@ -218,16 +232,30 @@
 		9B2CCFF92AE87BDF007F317A /* ProgressBarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarViewModel.swift; sourceTree = "<group>"; };
 		9B2CCFFB2AE87BF4007F317A /* SectionTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionTrainingModel.swift; sourceTree = "<group>"; };
 		9B2CCFFD2AE87C4A007F317A /* TrainingCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingCellViewModel.swift; sourceTree = "<group>"; };
+		9B4105562B18B23500637F62 /* DetailedInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfoViewModel.swift; sourceTree = "<group>"; };
+		9B4105582B18B2F300637F62 /* DetailedResultViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResultViewModel.swift; sourceTree = "<group>"; };
+		9B41055A2B18B35300637F62 /* DetailedEveryKilometrViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEveryKilometrViewModel.swift; sourceTree = "<group>"; };
+		9B41055C2B18B3EC00637F62 /* DetailedPulseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedPulseViewModel.swift; sourceTree = "<group>"; };
+		9B41055E2B18B46E00637F62 /* DetailedMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMapViewModel.swift; sourceTree = "<group>"; };
+		9B4105602B18BC5200637F62 /* DetailedResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResultTableViewCell.swift; sourceTree = "<group>"; };
+		9B4105622B18C31700637F62 /* DetailedEveryKilometrTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEveryKilometrTableViewCell.swift; sourceTree = "<group>"; };
 		9B5AC3672AEFDCB0009130C0 /* ListTrainingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingConfigurator.swift; sourceTree = "<group>"; };
 		9B5AC3692AEFDCC8009130C0 /* ListTrainingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingInteractor.swift; sourceTree = "<group>"; };
 		9B5AC36B2AEFDCEE009130C0 /* ListTrainingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingPresenter.swift; sourceTree = "<group>"; };
 		9B5AC36D2AEFDCFB009130C0 /* ListTrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingRouter.swift; sourceTree = "<group>"; };
 		9B5AC36F2AEFDD0D009130C0 /* ListTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingViewController.swift; sourceTree = "<group>"; };
 		9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTempsModel.swift; sourceTree = "<group>"; };
+		9B74A9832B1006B7000934FE /* DetailedInfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfTableViewCell.swift; sourceTree = "<group>"; };
 		9B74B35F2AF51D2F00904A73 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
 		9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingManager.swift; sourceTree = "<group>"; };
+		9B7E10E62B0C1392000904F1 /* DetailedTrainingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingInteractor.swift; sourceTree = "<group>"; };
+		9B7E10E82B0C139B000904F1 /* DetailedTrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingRouter.swift; sourceTree = "<group>"; };
+		9B7E10EA2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingConfigurator.swift; sourceTree = "<group>"; };
+		9B7E10EC2B0C1404000904F1 /* DetailedTrainingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingPresenter.swift; sourceTree = "<group>"; };
+		9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingViewController.swift; sourceTree = "<group>"; };
+		9B8D90982B1A1D9700885630 /* DetailedtraininfManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedtraininfManager.swift; sourceTree = "<group>"; };
 		9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderCollectionView.swift; sourceTree = "<group>"; };
 		9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionListTrainingModel.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForCircleView.swift; sourceTree = "<group>"; };
@@ -295,6 +323,7 @@
 				876A77FB2A9CC79000E64269 /* Auth */,
 				87EE80A82A99C92A00EF4ADD /* Training */,
 				9B5AC3642AEFDBDC009130C0 /* ListTraining */,
+				9B7E10E52B0C12E9000904F1 /* DetailedTraining */,
 				8705D8A02A978A3D002BBDC2 /* Profile */,
 				8705D8952A978A29002BBDC2 /* Stopwatch */,
 				8705D88C2A978716002BBDC2 /* StartViewController.swift */,
@@ -354,6 +383,7 @@
 				872F69DE2ABC6DCF00CFCBD1 /* LoggerManager.swift */,
 				9B2CCFF72AE87AC7007F317A /* ProgressTrainingManager.swift */,
 				9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */,
+				9B8D90982B1A1D9700885630 /* DetailedtraininfManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -657,6 +687,42 @@
 			path = ListTraining;
 			sourceTree = "<group>";
 		};
+		9B7E10E52B0C12E9000904F1 /* DetailedTraining */ = {
+			isa = PBXGroup;
+			children = (
+				9B7E10F02B0C1456000904F1 /* View */,
+				9B7E10F12B0C145D000904F1 /* Model */,
+				9B7E10EC2B0C1404000904F1 /* DetailedTrainingPresenter.swift */,
+				9B7E10E82B0C139B000904F1 /* DetailedTrainingRouter.swift */,
+				9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */,
+				9B7E10E62B0C1392000904F1 /* DetailedTrainingInteractor.swift */,
+				9B7E10EA2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift */,
+			);
+			path = DetailedTraining;
+			sourceTree = "<group>";
+		};
+		9B7E10F02B0C1456000904F1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9B74A9832B1006B7000934FE /* DetailedInfTableViewCell.swift */,
+				9B4105602B18BC5200637F62 /* DetailedResultTableViewCell.swift */,
+				9B4105622B18C31700637F62 /* DetailedEveryKilometrTableViewCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		9B7E10F12B0C145D000904F1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B4105562B18B23500637F62 /* DetailedInfoViewModel.swift */,
+				9B4105582B18B2F300637F62 /* DetailedResultViewModel.swift */,
+				9B41055A2B18B35300637F62 /* DetailedEveryKilometrViewModel.swift */,
+				9B41055C2B18B3EC00637F62 /* DetailedPulseViewModel.swift */,
+				9B41055E2B18B46E00637F62 /* DetailedMapViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		9B90D1A42B078435001688AC /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -789,6 +855,7 @@
 				8705D8AD2A979621002BBDC2 /* RoundButton.swift in Sources */,
 				9BA2E2912AAA820700A947E2 /* HeaderForCircleView.swift in Sources */,
 				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
+				9B41055F2B18B46E00637F62 /* DetailedMapViewModel.swift in Sources */,
 				878EBC142A98F212001219F9 /* TimerStatsViewModel.swift in Sources */,
 				87A8DEEB2AA3087800F49A62 /* DatabaseService.swift in Sources */,
 				9B2CCFF62AE87AA8007F317A /* Date+Extensions.swift in Sources */,
@@ -804,6 +871,7 @@
 				872F69DF2ABC6DCF00CFCBD1 /* LoggerManager.swift in Sources */,
 				8705D87C2A978427002BBDC2 /* ViewController.swift in Sources */,
 				9B5AC36C2AEFDCEE009130C0 /* ListTrainingPresenter.swift in Sources */,
+				9B4105572B18B23500637F62 /* DetailedInfoViewModel.swift in Sources */,
 				873BE8612AC2B010006DC498 /* ListImages.swift in Sources */,
 				8705D88D2A978716002BBDC2 /* StartViewController.swift in Sources */,
 				8705D88F2A97876F002BBDC2 /* RootMainApplicitionController.swift in Sources */,
@@ -813,14 +881,17 @@
 				87C46D2E2A9E37DF0094A8F0 /* LoginConfigurator.swift in Sources */,
 				87C46D372A9E38530094A8F0 /* RegistrationViewController.swift in Sources */,
 				8705D8A92A978A51002BBDC2 /* ProfileInteractor.swift in Sources */,
+				9B74A9842B1006B7000934FE /* DetailedInfTableViewCell.swift in Sources */,
 				875896952AA4D59A002027FA /* UIViewController+ActivityIndicator.swift in Sources */,
 				87EE80C12A99CD8A00EF4ADD /* TimerViewModel.swift in Sources */,
 				8718159E2AA76C0C007CD141 /* EditProfileInteractor.swift in Sources */,
+				9B7E10E72B0C1392000904F1 /* DetailedTrainingInteractor.swift in Sources */,
 				9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */,
 				87C46D392A9E38530094A8F0 /* RegistrationConfigurator.swift in Sources */,
 				9B2CCFF32AE87A39007F317A /* TrainingProgressKmView.swift in Sources */,
 				87C46D2B2A9E37DF0094A8F0 /* LoginRouter.swift in Sources */,
 				8705D8AA2A978A51002BBDC2 /* ProfileConfigurator.swift in Sources */,
+				9B4105632B18C31700637F62 /* DetailedEveryKilometrTableViewCell.swift in Sources */,
 				9B2CCFF82AE87AC7007F317A /* ProgressTrainingManager.swift in Sources */,
 				878EBC192A98FB7E001219F9 /* Digest.swift in Sources */,
 				873BE85D2AC2AC73006DC498 /* String+Format.swift in Sources */,
@@ -831,16 +902,23 @@
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
 				878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */,
 				873BE84B2AC2A724006DC498 /* ActivityIndicatorView.swift in Sources */,
+				9B7E10EB2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift in Sources */,
 				873BE8502AC2AADE006DC498 /* Int+CGFloat.swift in Sources */,
 				875896932AA4CDC1002027FA /* ProfileViewModel.swift in Sources */,
 				9B5AC36E2AEFDCFB009130C0 /* ListTrainingRouter.swift in Sources */,
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
 				873BE85F2AC2ACBD006DC498 /* UIImage+RoundedCorners.swift in Sources */,
+				9B41055B2B18B35300637F62 /* DetailedEveryKilometrViewModel.swift in Sources */,
+				9B41055D2B18B3EC00637F62 /* DetailedPulseViewModel.swift in Sources */,
 				8718159C2AA76C0C007CD141 /* EditProfileRouter.swift in Sources */,
 				878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */,
 				9B2CCFFE2AE87C4A007F317A /* TrainingCellViewModel.swift in Sources */,
 				87B18ACB2AC1C1B50069CA69 /* DictionaryConvertible.swift in Sources */,
+				9B4105592B18B2F300637F62 /* DetailedResultViewModel.swift in Sources */,
 				87EE80A72A99C90B00EF4ADD /* TrainingManager.swift in Sources */,
+				9B7E10E92B0C139B000904F1 /* DetailedTrainingRouter.swift in Sources */,
+				9B8D90992B1A1D9700885630 /* DetailedtraininfManager.swift in Sources */,
+				9B7E10ED2B0C1404000904F1 /* DetailedTrainingPresenter.swift in Sources */,
 				87B18ACE2AC1CF800069CA69 /* ProfileSneakersView.swift in Sources */,
 				87C46D2C2A9E37DF0094A8F0 /* LoginViewController.swift in Sources */,
 				878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */,
@@ -849,6 +927,7 @@
 				9B2CCFF12AE879F6007F317A /* TrainingProgressStepView.swift in Sources */,
 				9B5AC3702AEFDD0D009130C0 /* ListTrainingViewController.swift in Sources */,
 				875896892AA4C2D0002027FA /* UIViewController+Alert.swift in Sources */,
+				9B7E10EF2B0C140F000904F1 /* DetailedTrainingViewController.swift in Sources */,
 				87EE80AF2A99C93800EF4ADD /* TrainingRouter.swift in Sources */,
 				9B5AC3682AEFDCB0009130C0 /* ListTrainingConfigurator.swift in Sources */,
 				87EE80BF2A99C95D00EF4ADD /* Training.swift in Sources */,
@@ -865,6 +944,7 @@
 				8705D89E2A978A38002BBDC2 /* StopwatchInteractor.swift in Sources */,
 				87EE80B12A99C93800EF4ADD /* TrainingInteractor.swift in Sources */,
 				8705D8A82A978A51002BBDC2 /* ProfileViewController.swift in Sources */,
+				9B4105612B18BC5200637F62 /* DetailedResultTableViewCell.swift in Sources */,
 				9B2CCFFC2AE87BF4007F317A /* SectionTrainingModel.swift in Sources */,
 				8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */,
 				87C46D2A2A9E37DF0094A8F0 /* LoginPresenter.swift in Sources */,

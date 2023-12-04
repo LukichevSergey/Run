@@ -32,6 +32,8 @@ final class Training: Hashable, DictionaryConvertible {
     var time: Double = 0.0
     var temp: Double = 0.0
     var averageTemp: Double = 0.0
+    var everyTimeKilometrs = [String]()
+    
     
     init(id: String = UUID().uuidString, userId: String) {
         self.id = id
@@ -46,7 +48,8 @@ final class Training: Hashable, DictionaryConvertible {
               let distance = dictionary["distance"] as? Double,
               let time = dictionary["time"] as? Double,
               let temp = dictionary["temp"] as? Double,
-              let averageTemp = dictionary["averageTemp"] as? Double else {
+              let averageTemp = dictionary["averageTemp"] as? Double,
+              let everyTimeKilometrs = dictionary["everyTimeKilometrs"] as? [String] else {
             return nil
         }
         
@@ -58,6 +61,7 @@ final class Training: Hashable, DictionaryConvertible {
         self.time = time
         self.temp = temp
         self.averageTemp = averageTemp
+        self.everyTimeKilometrs = everyTimeKilometrs
     }
     
     var toDict: [String: Any] {
@@ -70,6 +74,7 @@ final class Training: Hashable, DictionaryConvertible {
         dict["time"] = time
         dict["temp"] = temp
         dict["averageTemp"] = averageTemp
+        dict["everyTimeKilometrs"] = everyTimeKilometrs
         
         return dict
     }

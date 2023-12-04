@@ -20,6 +20,7 @@ protocol ListTrainingRouterToViewProtocol: AnyObject {
 
 final class ListTrainingViewController: UIViewController {
     
+    
     // MARK: - Property
     var presenter: ListTrainingViewToPresenterProtocol!
     
@@ -82,6 +83,7 @@ final class ListTrainingViewController: UIViewController {
         collectionViewTraining.delegate = self
         collectionViewTraining.register(ListCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionViewTraining.register(ListHeaderCollectionView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader , withReuseIdentifier: "header")
+        
     }
     
     // MARK: - private func
@@ -200,7 +202,8 @@ extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        presenter.detailedTappedCell()
+        presenter.detailedTappedCell(indexPath)
+        print(indexPath)
     }
 }
 

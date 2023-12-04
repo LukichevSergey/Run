@@ -6,3 +6,22 @@
 //
 
 import Foundation
+import OrderedCollections
+
+// MARK: Protocol - DetailedTrainingPresenterToInteractorProtocol (Presenter -> Interactor)
+protocol DetailedTrainingPresenterToInteractorProtocol: AnyObject {
+
+}
+
+final class DetailedTrainingInteractor {
+    
+    // MARK: Properties
+    weak var presenter: DetailedTrainingInteractorToPresenterProtocol!
+
+}
+
+// MARK: Extension - DetailedTrainingPresenterToInteractorProtocol
+extension DetailedTrainingInteractor: DetailedTrainingPresenterToInteractorProtocol {
+
+    
+}

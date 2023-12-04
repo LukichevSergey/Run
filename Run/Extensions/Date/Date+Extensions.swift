@@ -37,3 +37,14 @@ extension Date {
         return formattedDateString
     }
 }
+
+extension Date {
+    func formatTime() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "hh:mm"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let formattedDateString = dateFormatter.string(from: self).capitalized
+        
+        return formattedDateString
+    }
+}

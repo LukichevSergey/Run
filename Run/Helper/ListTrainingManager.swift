@@ -23,10 +23,16 @@ final class ListTrainingManager {
                     countTraining += 1
                     alltime += training.time
                     dateTraining = training.startTime
-                    monthTraining.append(TrainingCellViewModel(killometrs: "\(String(format: "%.2f", training.distance)) км",
+                    monthTraining.append(TrainingCellViewModel(identifier: training.id,
+                                                               killometrs: "\(String(format: "%.2f", training.distance)) км",
                                                                image: UIImage(named: "circle") ?? UIImage(),
                                                                data: "\(training.startTime.formatData()) >",
-                                                               title: Tx.Training.run))
+                                                               title: Tx.Training.run,
+                                                               dateStartStop: "\(training.startTime.formatTime()) - \(training.finishTime.formatTime())" ,
+                                                               city: "Vladivostok",
+                                                               averageTemp: training.averageTemp.toMinutesAndSeconds(),
+                                                               allTime: training.time.toMinutesAndSeconds(),
+                                                               everyKilometrs: training.everyTimeKilometrs))
                 }
             }
             

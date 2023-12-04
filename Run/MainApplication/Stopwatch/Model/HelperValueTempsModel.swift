@@ -18,6 +18,12 @@ final class HelperValueTempsModel {
     var currentTemp = 0.0
     var currentAverageTemp = 0.0
     var currentDistance = 0.0
+    var everyKilometrs = [String]()
+    
+    func saveEveryTimeKilometrs(_ everyTimeKM: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        everyKilometrs.append(everyTimeKM)
+    }
     
     func saveCircleHelper(circle: Int, circleDistance: Double, circleTime: Double) {
         logger.log("\(#fileID) -> \(#function)")
@@ -59,5 +65,6 @@ final class HelperValueTempsModel {
         currentTemp = 0.0
         currentAverageTemp = 0.0
         currentDistance = 0.0
+        everyKilometrs.removeAll()
     }
 }

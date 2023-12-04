@@ -29,7 +29,6 @@ final class StopwatchInteractor {
     private let timerManager: TimerManager
     private let locationManager: LocationManager
     private let trainingManager: TrainingManager
-    
     private let helperValueTemp = HelperValueTempsModel()
     
     // MARK: Properties
@@ -79,10 +78,12 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let lastDistanceTraining = helperValueTemp.currentDistance
         let lastTempTraining = helperValueTemp.currentTemp
         let lastAverageTraining = helperValueTemp.currentAverageTemp
+        let everyTimeKilometrs = helperValueTemp.everyKilometrs
         trainingManager.saveLastDataTrainingChange(average: lastAverageTraining,
                                                    distance: lastDistanceTraining,
                                                    temp: lastTempTraining,
-                                                   time: timer.elapsedTime)
+                                                   time: timer.elapsedTime,
+                                                   everyKM: everyTimeKilometrs)
         trainingManager.stopTraining()
         timerManager.resetTimer()
         helperValueTemp.resetAll()
@@ -146,6 +147,10 @@ extension StopwatchInteractor: LocationManagerDelegate {
 }
 
 extension StopwatchInteractor: UpdateDataTempDelegate {
+    func everyTimeKilometrs(_ everyTimeKM: String) {
+        helperValueTemp.saveEveryTimeKilometrs(everyTimeKM)
+    }
+    
     func currentDistanceChanged(distance: Double) {
         logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentDistance(distance: distance)

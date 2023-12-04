@@ -8,9 +8,14 @@
 import UIKit
 
 struct TrainingCellViewModel: Hashable {
-    let identifier = UUID()
+    let identifier: String
     let killometrs: String
     let image: UIImage
     let data: String
     let title: String
+    let dateStartStop: String
+    let city: String
+    let averageTemp: String
+    let allTime: String
+    let everyKilometrs: [String]
 }

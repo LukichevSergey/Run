@@ -5,4 +5,26 @@
 //  Created by Evgenii Kutasov on 21.11.2023.
 //
 
-import Foundation
+import UIKit
+
+final class DetailedTrainingConfigurator {
+    func configure(with idTrainingItem: TrainingCellViewModel) -> UIViewController {
+        logger.log("\(#fileID) -> \(#function)")
+        let view = DetailedTrainingViewController()
+        let presenter = DetailedTrainingPresenter(with: idTrainingItem)
+        let router = DetailedTrainingRouter()
+        let interactor = DetailedTrainingInteractor()
+        
+        view.presenter = presenter
+
+        presenter.router = router
+        presenter.interactor = interactor
+        presenter.view = view
+
+        interactor.presenter = presenter
+        
+        router.view = view
+        
+        return view
+    }
+}

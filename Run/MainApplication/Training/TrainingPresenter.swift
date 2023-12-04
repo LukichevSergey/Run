@@ -51,10 +51,15 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         let trainingCellViewModels = data.map { training in
             
-            return TrainingCellViewModel(killometrs: "\(String(format: "%.2f", training.distance)) км",
+            return TrainingCellViewModel(identifier: training.id, killometrs: "\(String(format: "%.2f", training.distance)) км",
                                          image: UIImage(named: "circle") ?? UIImage(),
                                          data: "\(training.startTime.formatData()) >",
-                                         title: Tx.Training.run)
+                                         title: Tx.Training.run,
+                                         dateStartStop: training.startTime.formatMonthData(),
+                                         city: "Vladivostok",
+                                         averageTemp: training.averageTemp.toMinutesAndSeconds(),
+                                         allTime: training.time.toMinutesAndSeconds(),
+                                         everyKilometrs: training.everyTimeKilometrs)
         }
         let sortedTrainingCellViewModels = trainingCellViewModels.sorted { $0.data > $1.data }
         view.setTrainingData(data: sortedTrainingCellViewModels)
