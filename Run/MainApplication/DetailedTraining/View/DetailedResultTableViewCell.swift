@@ -5,7 +5,6 @@
 //  Created by Evgenii Kutasov on 30.11.2023.
 //
 
-
 import UIKit
 
 final class DetailedResultTableViewCell: UITableViewCell {
@@ -83,7 +82,6 @@ final class DetailedResultTableViewCell: UITableViewCell {
     
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
-
         contentView.addSubview(customView)
         customView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(10)

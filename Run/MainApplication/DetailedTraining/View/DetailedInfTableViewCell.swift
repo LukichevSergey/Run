@@ -15,14 +15,14 @@ final class DetailedInfoTableViewCell: UITableViewCell {
         
         return viewLine
     }()
-    
+
     private let viewLineSeparatorOTwo: UIView = {
         let viewLine = UIView()
         viewLine.backgroundColor = PaletteApp.black
         
         return viewLine
     }()
-        
+
     private let customView: UIView = {
         let view = UIView()
         
@@ -69,7 +69,6 @@ final class DetailedInfoTableViewCell: UITableViewCell {
     
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
-
         contentView.addSubview(customView)
         customView.snp.makeConstraints { make in
             make.horizontalEdges.equalToSuperview().inset(10)

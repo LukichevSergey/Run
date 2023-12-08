@@ -36,9 +36,25 @@ final class DetailedTrainingManager {
             if elem == 4 {
                 detailedTrainin.append(DetailedMapViewModel(map: "MAP"))
             }
-
         }
         
         return detailedTrainin
+    }
+    
+    func getDateDetailerTrainig(_ data: TrainingCellViewModel) -> String {
+        let inputString = data.data
+        let components = inputString.components(separatedBy: " ")
+        let dateString = components[0]
+
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "dd.MM.yyyy"
+        if let date = dateFormatter.date(from: dateString) {
+            dateFormatter.dateFormat = "E, d MMM"
+            dateFormatter.locale = Locale(identifier: "ru_RU")
+            let formattedDate = dateFormatter.string(from: date)
+            return formattedDate
+        } else {
+             return "Неверный формат даты"
+        }
     }
 }

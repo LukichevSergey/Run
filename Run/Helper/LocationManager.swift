@@ -16,6 +16,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private let locationManager = CLLocationManager()
     private var location: CLLocation?
+    private let geocoder = CLGeocoder()
     weak var delegate: LocationManagerDelegate?
     
     override init() {
@@ -57,11 +58,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     }
     
     func getCityFromCoordinates(_ latitude: Double, _ longitude: Double) -> String {
+        logger.log("\(#fileID) -> \(#function)")
         let semaphore = DispatchSemaphore(value: 0)
         var city: String = ""
-
         let location = CLLocation(latitude: latitude, longitude: longitude)
-        let geocoder = CLGeocoder()
 
         geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
             if let placemark = placemarks?.first {
@@ -69,10 +69,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
                     city = foundCity
                 }
             }
-            semaphore.signal() // Разблокировать поток после получения города
+            semaphore.signal()
         }
-
-        _ = semaphore.wait(timeout: .distantFuture) // Блокировать поток до получения города
+        _ = semaphore.wait(timeout: .distantFuture)
+        
         return city
     }
         

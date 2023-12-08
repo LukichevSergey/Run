@@ -10,6 +10,7 @@ import UIKit
 // MARK: Protocol - DetailedTrainingPresenterToViewProtocol (Presenter -> View)
 protocol DetailedTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
     func setDetailedTrainingData(data: Any)
+    func setDateDetailedHeaderTraining(_ data: String)
 }
 
 // MARK: Protocol - DetailedTrainingRouterToViewProtocol (Router -> View)
@@ -19,13 +20,10 @@ protocol DetailedTrainingRouterToViewProtocol: AnyObject {
 }
 
 final class DetailedTrainingViewController: UIViewController {
-
     
     // MARK: - Property
     var presenter: DetailedTrainingViewToPresenterProtocol!
-    
     private var diffableDataSourse: UITableViewDiffableDataSource<SectionTrainingModel, AnyHashable>?
-    
     private var detailedTraining = [AnyHashable]()
     
     private lazy var mainVStack: UIStackView = {
@@ -36,9 +34,8 @@ final class DetailedTrainingViewController: UIViewController {
         return stack
     }()
     
-    private let detailedTitleDateTraining: UILabel = {
+    private var detailedTitleDateTraining: UILabel = {
         let label = UILabel()
-        label.text = "Сб, 9 сент."
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansBold32
         
@@ -54,9 +51,6 @@ final class DetailedTrainingViewController: UIViewController {
         
         return table
     }()
-    
-    
-    
     
     // MARK: - init
     init() {
@@ -80,8 +74,6 @@ final class DetailedTrainingViewController: UIViewController {
         tableViewDetailed.register(DetailedInfoTableViewCell.self, forCellReuseIdentifier: "cellInfo")
         tableViewDetailed.register(DetailedResultTableViewCell.self, forCellReuseIdentifier: "cellResult")
         tableViewDetailed.register(DetailedEveryKilometrTableViewCell.self, forCellReuseIdentifier: "cellEveryKM")
-
-
     }
     
     // MARK: - private func
@@ -113,7 +105,6 @@ final class DetailedTrainingViewController: UIViewController {
                 
                 return cell
                 
-                
             default: break
                 
             }
@@ -125,17 +116,17 @@ final class DetailedTrainingViewController: UIViewController {
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
+
+        view.addSubview(mainVStack)
+        mainVStack.snp.makeConstraints { make in
+            make.center.equalToSuperview()
+            make.width.equalToSuperview().multipliedBy(0.8)
+        }
         
         view.addSubview(detailedTitleDateTraining)
         detailedTitleDateTraining.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(50)
             make.right.equalToSuperview().inset(50)
-        }
-        
-        view.addSubview(mainVStack)
-        mainVStack.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.8)
         }
         
         view.addSubview(tableViewDetailed)
@@ -148,6 +139,10 @@ final class DetailedTrainingViewController: UIViewController {
 
 // MARK: Extension - DetailedTrainingPresenterToViewProtocol
 extension DetailedTrainingViewController: DetailedTrainingPresenterToViewProtocol {
+    func setDateDetailedHeaderTraining(_ data: String) {
+        detailedTitleDateTraining.text = data
+    }
+    
     func setDetailedTrainingData(data: Any) {
         logger.log("\(#fileID) -> \(#function)")
         var snapshot = NSDiffableDataSourceSnapshot<SectionTrainingModel, AnyHashable>()
@@ -176,16 +171,17 @@ extension DetailedTrainingViewController: DetailedTrainingRouterToViewProtocol {
 }
 
 extension DetailedTrainingViewController: UITableViewDelegate {
-    
+
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
         cell.backgroundColor = .clear
         tableView.sectionHeaderTopPadding = 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
         if let cell = tableView.cellForRow(at: indexPath) {
             cell.selectionStyle = .none
         }
     }
 }
-

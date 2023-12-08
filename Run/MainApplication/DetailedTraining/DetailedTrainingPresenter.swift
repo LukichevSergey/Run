@@ -8,8 +8,6 @@
 import UIKit
 import OrderedCollections
 
-
-
 // MARK: Protocol - DetailedTrainingViewToPresenterProtocol (View -> Presenter)
 protocol DetailedTrainingViewToPresenterProtocol: AnyObject {
     func viewDidLoad()
@@ -17,8 +15,8 @@ protocol DetailedTrainingViewToPresenterProtocol: AnyObject {
 
 // MARK: Protocol - DetailedTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol DetailedTrainingInteractorToPresenterProtocol: AnyObject {
-    func trainingIsFetchedWithError(error: Error)}
-
+    func trainingIsFetchedWithError(error: Error)
+}
 
 final class DetailedTrainingPresenter {
     
@@ -40,8 +38,15 @@ extension DetailedTrainingPresenter: DetailedTrainingViewToPresenterProtocol {
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         Task {
+            let dateHeaderDetailed = managerDetailed.getDateDetailerTrainig(_detailedTraining)
+            DispatchQueue.main.async {
+                self.view.setDateDetailedHeaderTraining(dateHeaderDetailed)
+            }
+            
             let detailTrainingArrayFilter = managerDetailed.getDetailedTrainigUnprocessed(_detailedTraining)
-            view.setDetailedTrainingData(data: detailTrainingArrayFilter)
+            DispatchQueue.main.async {
+                self.view.setDetailedTrainingData(data: detailTrainingArrayFilter)
+            }
         }
     }
 }
