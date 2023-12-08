@@ -56,7 +56,7 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
                                          data: "\(training.startTime.formatData()) >",
                                          title: Tx.Training.run,
                                          dateStartStop: training.startTime.formatMonthData(),
-                                         city: "Vladivostok",
+                                         city: training.coordinatesCity,
                                          averageTemp: training.averageTemp.toMinutesAndSeconds(),
                                          allTime: training.time.toMinutesAndSeconds(),
                                          everyKilometrs: training.everyTimeKilometrs)

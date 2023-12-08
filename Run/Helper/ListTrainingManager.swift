@@ -29,7 +29,7 @@ final class ListTrainingManager {
                                                                data: "\(training.startTime.formatData()) >",
                                                                title: Tx.Training.run,
                                                                dateStartStop: "\(training.startTime.formatTime()) - \(training.finishTime.formatTime())" ,
-                                                               city: "Vladivostok",
+                                                               city: training.coordinatesCity,
                                                                averageTemp: training.averageTemp.toMinutesAndSeconds(),
                                                                allTime: training.time.toMinutesAndSeconds(),
                                                                everyKilometrs: training.everyTimeKilometrs))

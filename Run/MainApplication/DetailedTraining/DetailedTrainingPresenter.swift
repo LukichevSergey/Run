@@ -27,7 +27,7 @@ final class DetailedTrainingPresenter {
     var interactor: DetailedTrainingPresenterToInteractorProtocol!
     weak var view: DetailedTrainingPresenterToViewProtocol!
     private let _detailedTraining: TrainingCellViewModel
-    private let manageDetailed = DetailedtraininfManager()
+    private let managerDetailed = DetailedTrainingManager()
     
     init(with detailedTraining: TrainingCellViewModel) {
         logger.log("\(#fileID) -> \(#function)")
@@ -39,9 +39,10 @@ final class DetailedTrainingPresenter {
 extension DetailedTrainingPresenter: DetailedTrainingViewToPresenterProtocol {
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
-        let detailTrainingArrayFilter = manageDetailed.getDetailedTrainigUnprocessed(_detailedTraining)
-        view.setDetailedTrainingData(data: detailTrainingArrayFilter)
-//        view.showActivityIndicator()
+        Task {
+            let detailTrainingArrayFilter = managerDetailed.getDetailedTrainigUnprocessed(_detailedTraining)
+            view.setDetailedTrainingData(data: detailTrainingArrayFilter)
+        }
     }
 }
 

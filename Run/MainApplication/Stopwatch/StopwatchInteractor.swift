@@ -57,7 +57,9 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .pause)
         trainingManager.updateTraining(with: trainingManager.coordinates)
+
         trainingManager.coordinates = []
+
     }
     
     func startTimer() {
@@ -73,17 +75,14 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .stop)
         trainingManager.updateTraining(with: trainingManager.coordinates)
+        
         trainingManager.coordinates = []
         
-        let lastDistanceTraining = helperValueTemp.currentDistance
-        let lastTempTraining = helperValueTemp.currentTemp
-        let lastAverageTraining = helperValueTemp.currentAverageTemp
-        let everyTimeKilometrs = helperValueTemp.everyKilometrs
-        trainingManager.saveLastDataTrainingChange(average: lastAverageTraining,
-                                                   distance: lastDistanceTraining,
-                                                   temp: lastTempTraining,
+        trainingManager.saveLastDataTrainingChange(average: helperValueTemp.currentAverageTemp,
+                                                   distance: helperValueTemp.currentDistance,
+                                                   temp: helperValueTemp.currentTemp,
                                                    time: timer.elapsedTime,
-                                                   everyKM: everyTimeKilometrs)
+                                                   everyKM: helperValueTemp.everyKilometrs)
         trainingManager.stopTraining()
         timerManager.resetTimer()
         helperValueTemp.resetAll()
@@ -142,6 +141,7 @@ extension StopwatchInteractor: LocationManagerDelegate {
         logger.log("\(#fileID) -> \(#function)")
         guard trainingManager.trainingStatus == .start else { return }
         trainingManager.coordinates.append(location.coordinate)
+        trainingManager.saveCityForDetailedTraining(location.coordinate.latitude, location.coordinate.longitude)
         presenter.userLocationIsUpdated()
     }
 }

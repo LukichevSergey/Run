@@ -28,6 +28,7 @@ final class Training: Hashable, DictionaryConvertible {
     var finishTime: Date = Date()
     var trainingStatus: TrainingStatus = .start
     var coordinates: [[CLLocationCoordinate2D]] = []
+    var coordinatesCity = [Double]()
     var distance: Double = 0.0
     var time: Double = 0.0
     var temp: Double = 0.0
@@ -45,6 +46,7 @@ final class Training: Hashable, DictionaryConvertible {
               let startTime = dictionary["startTime"] as? TimeInterval,
               let finishTime = dictionary["finishTime"] as? TimeInterval,
               let userId = dictionary["userId"] as? String,
+              let coordinatesCity = dictionary["coordinatesCity"] as? [Double],
               let distance = dictionary["distance"] as? Double,
               let time = dictionary["time"] as? Double,
               let temp = dictionary["temp"] as? Double,
@@ -62,6 +64,7 @@ final class Training: Hashable, DictionaryConvertible {
         self.temp = temp
         self.averageTemp = averageTemp
         self.everyTimeKilometrs = everyTimeKilometrs
+        self.coordinatesCity = coordinatesCity
     }
     
     var toDict: [String: Any] {
@@ -75,6 +78,7 @@ final class Training: Hashable, DictionaryConvertible {
         dict["temp"] = temp
         dict["averageTemp"] = averageTemp
         dict["everyTimeKilometrs"] = everyTimeKilometrs
+        dict["coordinatesCity"] = coordinatesCity
         
         return dict
     }

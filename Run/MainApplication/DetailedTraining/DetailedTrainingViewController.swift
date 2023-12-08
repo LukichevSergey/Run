@@ -36,7 +36,7 @@ final class DetailedTrainingViewController: UIViewController {
         return stack
     }()
     
-    private let detailedDateTraining: UILabel = {
+    private let detailedTitleDateTraining: UILabel = {
         let label = UILabel()
         label.text = "Сб, 9 сент."
         label.textColor = PaletteApp.black
@@ -77,7 +77,7 @@ final class DetailedTrainingViewController: UIViewController {
         configureUI()
         presenter.viewDidLoad()
         tableViewDetailed.delegate = self
-        tableViewDetailed.register(DetailedInfTableViewCell.self, forCellReuseIdentifier: "cellInfo")
+        tableViewDetailed.register(DetailedInfoTableViewCell.self, forCellReuseIdentifier: "cellInfo")
         tableViewDetailed.register(DetailedResultTableViewCell.self, forCellReuseIdentifier: "cellResult")
         tableViewDetailed.register(DetailedEveryKilometrTableViewCell.self, forCellReuseIdentifier: "cellEveryKM")
 
@@ -96,7 +96,7 @@ final class DetailedTrainingViewController: UIViewController {
             
             switch item {
             case let detailInfo as DetailedInfoViewModel:
-                let cell = tableView.dequeueReusableCell(withIdentifier: "cellInfo", for: indexPath) as? DetailedInfTableViewCell
+                let cell = tableView.dequeueReusableCell(withIdentifier: "cellInfo", for: indexPath) as? DetailedInfoTableViewCell
                 cell?.configure(with: detailInfo)
                 
                 return cell
@@ -106,7 +106,7 @@ final class DetailedTrainingViewController: UIViewController {
                 cell?.configure(with: detailResult)
                 
                 return cell
-            
+                
             case let detailEveryKM as DetailedEveryKilometrViewModel:
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cellEveryKM", for: indexPath) as? DetailedEveryKilometrTableViewCell
                 cell?.configure(with: detailEveryKM)
@@ -126,8 +126,8 @@ final class DetailedTrainingViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
         
-        view.addSubview(detailedDateTraining)
-        detailedDateTraining.snp.makeConstraints { make in
+        view.addSubview(detailedTitleDateTraining)
+        detailedTitleDateTraining.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(50)
             make.right.equalToSuperview().inset(50)
         }
@@ -152,7 +152,6 @@ extension DetailedTrainingViewController: DetailedTrainingPresenterToViewProtoco
         logger.log("\(#fileID) -> \(#function)")
         var snapshot = NSDiffableDataSourceSnapshot<SectionTrainingModel, AnyHashable>()
         snapshot.appendSections([.main])
-
         if let dataArray = data as? [Any] {
             let hashableData = dataArray.compactMap { $0 as? AnyHashable }
             snapshot.appendItems(hashableData, toSection: .main)

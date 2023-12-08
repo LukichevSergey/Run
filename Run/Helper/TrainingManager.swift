@@ -40,6 +40,15 @@ final class TrainingManager {
         
     }
     
+    func saveCityForDetailedTraining(_ latitude: Double, _ longitude: Double) {
+        if let currentTraining = currentTraining, currentTraining.coordinatesCity.isEmpty {
+            currentTraining.coordinatesCity.insert(latitude, at: 0)
+            currentTraining.coordinatesCity.insert(longitude, at: 1)
+        } else {
+            // Обработка случая, когда currentTraining равен nil
+        }
+    }
+    
     var trainingStatus: Training.TrainingStatus {
         logger.log("\(#fileID) -> \(#function)")
         return currentTraining?.trainingStatus ?? .stop

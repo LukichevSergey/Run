@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class DetailedInfTableViewCell: UITableViewCell {
+final class DetailedInfoTableViewCell: UITableViewCell {
     
     private let viewLineSeparatorOne: UIView = {
         let viewLine = UIView()
@@ -135,7 +135,7 @@ final class DetailedInfTableViewCell: UITableViewCell {
     }
 }
 
-extension DetailedInfTableViewCell: ConfigurableViewProtocol {
+extension DetailedInfoTableViewCell: ConfigurableViewProtocol {
     func configure(with model: DetailedInfoViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         activityLabel.text = model.activityTraining

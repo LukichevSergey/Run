@@ -55,6 +55,26 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         }
         return totalDistance
     }
+    
+    func getCityFromCoordinates(_ latitude: Double, _ longitude: Double) -> String {
+        let semaphore = DispatchSemaphore(value: 0)
+        var city: String = ""
+
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+        let geocoder = CLGeocoder()
+
+        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+            if let placemark = placemarks?.first {
+                if let foundCity = placemark.locality {
+                    city = foundCity
+                }
+            }
+            semaphore.signal() // Разблокировать поток после получения города
+        }
+
+        _ = semaphore.wait(timeout: .distantFuture) // Блокировать поток до получения города
+        return city
+    }
         
     // MARK: - CLLocationManagerDelegate
     

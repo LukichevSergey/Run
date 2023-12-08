@@ -130,7 +130,7 @@
 		9B7E10EB2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EA2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift */; };
 		9B7E10ED2B0C1404000904F1 /* DetailedTrainingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EC2B0C1404000904F1 /* DetailedTrainingPresenter.swift */; };
 		9B7E10EF2B0C140F000904F1 /* DetailedTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */; };
-		9B8D90992B1A1D9700885630 /* DetailedtraininfManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D90982B1A1D9700885630 /* DetailedtraininfManager.swift */; };
+		9B8D90992B1A1D9700885630 /* DetailedTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */; };
 		9B9AD70B2AF7BAA900464951 /* ListHeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */; };
 		9B9AD70D2AF7BF3800464951 /* SectionListTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderForCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */; };
@@ -255,7 +255,7 @@
 		9B7E10EA2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingConfigurator.swift; sourceTree = "<group>"; };
 		9B7E10EC2B0C1404000904F1 /* DetailedTrainingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingPresenter.swift; sourceTree = "<group>"; };
 		9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingViewController.swift; sourceTree = "<group>"; };
-		9B8D90982B1A1D9700885630 /* DetailedtraininfManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedtraininfManager.swift; sourceTree = "<group>"; };
+		9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingManager.swift; sourceTree = "<group>"; };
 		9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderCollectionView.swift; sourceTree = "<group>"; };
 		9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionListTrainingModel.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForCircleView.swift; sourceTree = "<group>"; };
@@ -383,7 +383,7 @@
 				872F69DE2ABC6DCF00CFCBD1 /* LoggerManager.swift */,
 				9B2CCFF72AE87AC7007F317A /* ProgressTrainingManager.swift */,
 				9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */,
-				9B8D90982B1A1D9700885630 /* DetailedtraininfManager.swift */,
+				9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -917,7 +917,7 @@
 				9B4105592B18B2F300637F62 /* DetailedResultViewModel.swift in Sources */,
 				87EE80A72A99C90B00EF4ADD /* TrainingManager.swift in Sources */,
 				9B7E10E92B0C139B000904F1 /* DetailedTrainingRouter.swift in Sources */,
-				9B8D90992B1A1D9700885630 /* DetailedtraininfManager.swift in Sources */,
+				9B8D90992B1A1D9700885630 /* DetailedTrainingManager.swift in Sources */,
 				9B7E10ED2B0C1404000904F1 /* DetailedTrainingPresenter.swift in Sources */,
 				87B18ACE2AC1CF800069CA69 /* ProfileSneakersView.swift in Sources */,
 				87C46D2C2A9E37DF0094A8F0 /* LoginViewController.swift in Sources */,

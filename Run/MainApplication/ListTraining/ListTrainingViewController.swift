@@ -203,7 +203,6 @@ extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         presenter.detailedTappedCell(indexPath)
-        print(indexPath)
     }
 }
 
