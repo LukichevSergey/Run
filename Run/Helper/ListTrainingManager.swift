@@ -11,6 +11,7 @@ import UIKit
 final class ListTrainingManager {
     
     func getListTrainingAndHeaderMonth(data: OrderedSet<Training>) -> OrderedSet<SectionListTrainingModel> {
+        logger.log("\(#fileID) -> \(#function)")
         var trainingModelArray = [SectionListTrainingModel]()
         var monthTraining = [TrainingCellViewModel]()
         var countTraining = 0

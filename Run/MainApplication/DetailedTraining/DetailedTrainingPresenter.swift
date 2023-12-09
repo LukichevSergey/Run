@@ -37,7 +37,7 @@ final class DetailedTrainingPresenter {
 extension DetailedTrainingPresenter: DetailedTrainingViewToPresenterProtocol {
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
-        Task {
+        Task { // именно по этому я думаю что правильнее будет передать в интерактор
             let dateHeaderDetailed = managerDetailed.getDateDetailerTrainig(_detailedTraining)
             DispatchQueue.main.async {
                 self.view.setDateDetailedHeaderTraining(dateHeaderDetailed)

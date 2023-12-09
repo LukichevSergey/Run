@@ -7,7 +7,6 @@
 
 // MARK: Protocol - DetailedTrainingPresenterToRouterProtocol (Presenter -> Router)
 protocol DetailedTrainingPresenterToRouterProtocol: AnyObject {
-    
 }
 
 final class DetailedTrainingRouter {
@@ -18,5 +17,4 @@ final class DetailedTrainingRouter {
 
 // MARK: Extension - DetailedTrainingPresenterToRouterProtocol
 extension DetailedTrainingRouter: DetailedTrainingPresenterToRouterProtocol {
-
 }

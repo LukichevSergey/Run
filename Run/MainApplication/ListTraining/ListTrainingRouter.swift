@@ -23,7 +23,6 @@ final class ListTrainingRouter {
 extension ListTrainingRouter: ListTrainingPresenterToRouterProtocol {
     func navigationToDetailedViewController(itemTraining: TrainingCellViewModel) {
         let detailedTrainingViewController = DetailedTrainingConfigurator().configure(with: itemTraining)
-        
         view.pushView(view: detailedTrainingViewController)
         }
 }

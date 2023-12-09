@@ -92,8 +92,8 @@
             filePath = "Run/Helper/ListTrainingManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "21"
-            endingLineNumber = "21"
+            startingLineNumber = "22"
+            endingLineNumber = "22"
             landmarkName = "getListTrainingAndHeaderMonth(data:)"
             landmarkType = "7">
             <Locations>
@@ -170,58 +170,10 @@
             filePath = "Run/Helper/ListTrainingManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "52"
-            endingLineNumber = "52"
+            startingLineNumber = "53"
+            endingLineNumber = "53"
             landmarkName = "getListTrainingAndHeaderMonth(data:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "7CBCB125-E5D1-48EF-9F6C-E09E8B1EC7C7"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Run/MainApplication/ListTraining/ListTrainingPresenter.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "39"
-            endingLineNumber = "39"
-            landmarkName = "detailedTappedCell(_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "7CBCB125-E5D1-48EF-9F6C-E09E8B1EC7C7 - dde7c3f6ff3e1d80"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Run.ListTrainingPresenter.detailedTappedCell(Foundation.IndexPath) -&gt; ()"
-                  moduleName = "Run"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/evgeniikutasov/Desktop/Real%20project/Run/Run/MainApplication/ListTraining/ListTrainingPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "1508">
-               </Location>
-               <Location
-                  uuid = "7CBCB125-E5D1-48EF-9F6C-E09E8B1EC7C7 - dde7c3f6ff3e1d80"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Run.ListTrainingPresenter.detailedTappedCell(Foundation.IndexPath) -&gt; ()"
-                  moduleName = "Run"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/evgeniikutasov/Desktop/Real%20project/Run/Run/MainApplication/ListTraining/ListTrainingPresenter.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "38"
-                  endingLineNumber = "38"
-                  offsetFromSymbolStart = "912">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -266,8 +218,8 @@
             filePath = "Run/Helper/ListTrainingManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "31"
-            endingLineNumber = "31"
+            startingLineNumber = "32"
+            endingLineNumber = "32"
             landmarkName = "getListTrainingAndHeaderMonth(data:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -424,8 +376,8 @@
             filePath = "Run/Helper/TrainingManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "44"
-            endingLineNumber = "44"
+            startingLineNumber = "46"
+            endingLineNumber = "46"
             landmarkName = "saveCityForDetailedTraining(_:_:)"
             landmarkType = "7">
             <Locations>

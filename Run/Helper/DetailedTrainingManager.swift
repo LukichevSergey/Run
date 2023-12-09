@@ -13,6 +13,7 @@ final class DetailedTrainingManager {
     private let locationManager = LocationManager()
     
     func getDetailedTrainigUnprocessed(_ data: TrainingCellViewModel) -> Array<Any> {
+        logger.log("\(#fileID) -> \(#function)")
         var detailedTrainin = [Any]()
         for elem in 0...4 { // мы знаем что у нас в деталях только 4 ячейки поэтому жестко ставлю такие значения
             if elem == 0 {
@@ -42,6 +43,7 @@ final class DetailedTrainingManager {
     }
     
     func getDateDetailerTrainig(_ data: TrainingCellViewModel) -> String {
+        logger.log("\(#fileID) -> \(#function)")
         let inputString = data.data
         let components = inputString.components(separatedBy: " ")
         let dateString = components[0]

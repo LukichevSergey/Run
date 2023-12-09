@@ -32,6 +32,7 @@ final class TrainingManager {
     var delegate: UpdateDataTempDelegate?
     
     func saveLastDataTrainingChange(average: Double, distance: Double, temp: Double, time: Double, everyKM: [String]) {
+        logger.log("\(#fileID) -> \(#function)")
         currentTraining?.averageTemp = average
         currentTraining?.distance = distance
         currentTraining?.temp = temp
@@ -41,11 +42,10 @@ final class TrainingManager {
     }
     
     func saveCityForDetailedTraining(_ latitude: Double, _ longitude: Double) {
+        logger.log("\(#fileID) -> \(#function)")
         if let currentTraining = currentTraining, currentTraining.coordinatesCity.isEmpty {
             currentTraining.coordinatesCity.insert(latitude, at: 0)
             currentTraining.coordinatesCity.insert(longitude, at: 1)
-        } else {
-            // Обработка случая, когда currentTraining равен nil
         }
     }
     

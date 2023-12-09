@@ -21,7 +21,6 @@ final class ListTrainingInteractor {
     private let dataBase: TrainingToDatabaseServiceProtocol
     private var _listTraining = OrderedSet<SectionListTrainingModel>()
     
-    
     init() {
         dataBase = DatabaseService()
     }
@@ -33,14 +32,12 @@ extension ListTrainingInteractor: ListTrainingPresenterToInteractorProtocol {
         return _listTraining
     }
     
-    
     @MainActor
     func fetchTrainings() {
         logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
                 let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
-                
                 let listSortedTraining = managerListTraining.getListTrainingAndHeaderMonth(data: trainings)
                 _listTraining = listSortedTraining
                 presenter.trainingsListIsFetched(data: _listTraining)

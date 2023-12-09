@@ -11,7 +11,7 @@ final class DetailedTrainingConfigurator {
     func configure(with idTrainingItem: TrainingCellViewModel) -> UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         let view = DetailedTrainingViewController()
-        let presenter = DetailedTrainingPresenter(with: idTrainingItem)
+        let presenter = DetailedTrainingPresenter(with: idTrainingItem) // не уверен что это правильно, может стоило передать в интерактор?
         let router = DetailedTrainingRouter()
         let interactor = DetailedTrainingInteractor()
         
