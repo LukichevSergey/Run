@@ -125,8 +125,7 @@ final class DetailedTrainingViewController: UIViewController {
         
         view.addSubview(detailedTitleDateTraining)
         detailedTitleDateTraining.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(50)
-            make.right.equalToSuperview().inset(50)
+            make.top.right.equalToSuperview().inset(50)
         }
         
         view.addSubview(tableViewDetailed)
@@ -140,7 +139,9 @@ final class DetailedTrainingViewController: UIViewController {
 // MARK: Extension - DetailedTrainingPresenterToViewProtocol
 extension DetailedTrainingViewController: DetailedTrainingPresenterToViewProtocol {
     func setDateDetailedHeaderTraining(_ data: String) {
-        detailedTitleDateTraining.text = data
+        DispatchQueue.main.async { [weak self] in
+            self?.detailedTitleDateTraining.text = data
+        }
     }
     
     func setDetailedTrainingData(data: Any) {

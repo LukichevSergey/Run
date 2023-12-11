@@ -57,9 +57,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .pause)
         trainingManager.updateTraining(with: trainingManager.coordinates)
-
         trainingManager.coordinates = []
-
     }
     
     func startTimer() {
@@ -75,7 +73,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         locationManager.stopUpdatingLocation()
         trainingManager.setTrainingStatus(on: .stop)
         trainingManager.updateTraining(with: trainingManager.coordinates)
-        
         trainingManager.coordinates = []
         
         trainingManager.saveLastDataTrainingChange(average: helperValueTemp.currentAverageTemp,
@@ -93,7 +90,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         let distance = trainingManager.getDistance()
         let timeCircles = timer.elapsedTime - helperValueTemp.circleTimeAll
         let circleDistance = distance - helperValueTemp.circleDistanceAll
-        
         helperValueTemp.saveCircleHelper(circle: 1, circleDistance: circleDistance, circleTime: timeCircles)
                 
         return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperValueTemp.circleCount)",

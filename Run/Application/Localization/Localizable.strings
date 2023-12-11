@@ -42,6 +42,7 @@
 "Training.graphics" = "Графики";
 "Training.allTime" = "Общее время";
 "Training.kilometr" = "Километр";
+"Training.target" = "Цель";
 
 // MARK: - CircleTableResult
 "CircleTableResult.circle" = "Круг";

@@ -48,3 +48,14 @@ extension Date {
         return formattedDateString
     }
 }
+
+extension Date {
+    func formatWeekDay() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "E, d MMM"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let formattedDate = dateFormatter.string(from: self)
+        
+        return formattedDate
+    }
+}

@@ -26,7 +26,7 @@ final class ListTrainingManager {
                     dateTraining = training.startTime
                     monthTraining.append(TrainingCellViewModel(identifier: training.id,
                                                                killometrs: "\(String(format: "%.2f", training.distance)) км",
-                                                               image: UIImage(named: "circle") ?? UIImage(),
+                                                               image: ListImages.Training.circleIcon ?? UIImage(),
                                                                data: "\(training.startTime.formatData()) >",
                                                                title: Tx.Training.run,
                                                                dateStartStop: "\(training.startTime.formatTime()) - \(training.finishTime.formatTime())" ,

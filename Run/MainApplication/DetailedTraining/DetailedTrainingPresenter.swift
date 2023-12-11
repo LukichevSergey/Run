@@ -16,6 +16,8 @@ protocol DetailedTrainingViewToPresenterProtocol: AnyObject {
 // MARK: Protocol - DetailedTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol DetailedTrainingInteractorToPresenterProtocol: AnyObject {
     func trainingIsFetchedWithError(error: Error)
+    func DetailedTrainingData(data: Any)
+    func DateDetailedHeaderTraining(_ data: String)
 }
 
 final class DetailedTrainingPresenter {
@@ -24,35 +26,28 @@ final class DetailedTrainingPresenter {
     var router: DetailedTrainingPresenterToRouterProtocol!
     var interactor: DetailedTrainingPresenterToInteractorProtocol!
     weak var view: DetailedTrainingPresenterToViewProtocol!
-    private let _detailedTraining: TrainingCellViewModel
-    private let managerDetailed = DetailedTrainingManager()
-    
-    init(with detailedTraining: TrainingCellViewModel) {
-        logger.log("\(#fileID) -> \(#function)")
-        _detailedTraining = detailedTraining
-    }
 }
 
 // MARK: Extension - DetailedTrainingViewToPresenterProtocol
 extension DetailedTrainingPresenter: DetailedTrainingViewToPresenterProtocol {
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
-        Task { // именно по этому я думаю что правильнее будет передать в интерактор
-            let dateHeaderDetailed = managerDetailed.getDateDetailerTrainig(_detailedTraining)
-            DispatchQueue.main.async {
-                self.view.setDateDetailedHeaderTraining(dateHeaderDetailed)
-            }
-            
-            let detailTrainingArrayFilter = managerDetailed.getDetailedTrainigUnprocessed(_detailedTraining)
-            DispatchQueue.main.async {
-                self.view.setDetailedTrainingData(data: detailTrainingArrayFilter)
-            }
-        }
+        interactor.fetchDetailedTraining()
     }
 }
 
 // MARK: Extension - DetailedTrainingInteractorToPresenterProtocol
 extension DetailedTrainingPresenter: DetailedTrainingInteractorToPresenterProtocol {
+    func DetailedTrainingData(data: Any) {
+        logger.log("\(#fileID) -> \(#function)")
+        view.setDetailedTrainingData(data: data)
+    }
+    
+    func DateDetailedHeaderTraining(_ data: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        view.setDateDetailedHeaderTraining(data)
+    }
+    
     func trainingIsFetchedWithError(error: Error) {
         logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()

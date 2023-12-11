@@ -52,6 +52,9 @@ enum Tx {
         static let graphics = NSLocalizedString("Training.graphics", comment: "Графики")
         static let allTime = NSLocalizedString("Training.allTime", comment: "Общее время")
         static let kilometr = NSLocalizedString("Training.kilometr", comment: "Километр")
+        static let target = NSLocalizedString("Training.target", comment: "Цель")
+
+        
     }
     
     enum CircleTableResult {

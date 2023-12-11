@@ -63,7 +63,8 @@ final class DetailedEveryKilometrTableViewCell: UITableViewCell {
         contentView.addSubview(customView)
         customView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.left.right.bottom.equalToSuperview().inset(10)
+            make.horizontalEdges.equalToSuperview().inset(10)
+            make.bottom.equalToSuperview().inset(10)
             make.height.equalTo(100)
         }
         
@@ -98,7 +99,6 @@ final class DetailedEveryKilometrTableViewCell: UITableViewCell {
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
         scrollView.alwaysBounceVertical = true
-
     }
     
     required init?(coder: NSCoder) {
@@ -121,7 +121,7 @@ extension DetailedEveryKilometrTableViewCell: ConfigurableViewProtocol {
             kilometrLabel.snp.makeConstraints { make in
                 make.top.equalToSuperview().inset(5)
                 make.left.equalToSuperview().inset(5)
-                make.centerY.equalToSuperview() 
+                make.centerY.equalToSuperview()
             }
             
             let timeLabel = UILabel()
@@ -129,8 +129,7 @@ extension DetailedEveryKilometrTableViewCell: ConfigurableViewProtocol {
             containerView.addSubview(timeLabel)
             timeLabel.snp.makeConstraints { make in
                 make.top.equalToSuperview().inset(5)
-                make.centerX.equalToSuperview()
-                make.centerY.equalToSuperview()
+                make.center.equalToSuperview()
             }
             km += 1
         }

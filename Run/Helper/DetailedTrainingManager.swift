@@ -18,8 +18,8 @@ final class DetailedTrainingManager {
         for elem in 0...4 { // мы знаем что у нас в деталях только 4 ячейки поэтому жестко ставлю такие значения
             if elem == 0 {
                 detailedTrainin.append(DetailedInfoViewModel(image: UIImage(named: "circle") ?? UIImage(),
-                                                             activityTraining: "Бег",
-                                                             target: "Цель:",
+                                                             activityTraining: Tx.Training.run,
+                                                             target: "\(Tx.Training.target):",
                                                              timeStartStop: data.dateStartStop,
                                                              city: "г. \(locationManager.getCityFromCoordinates(data.city[0], data.city[1]))"))
             }
@@ -47,16 +47,9 @@ final class DetailedTrainingManager {
         let inputString = data.data
         let components = inputString.components(separatedBy: " ")
         let dateString = components[0]
+        let convertInDate = dateString.formatStringinTime()
+        let convertWeekDay = convertInDate.formatWeekDay()
 
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        if let date = dateFormatter.date(from: dateString) {
-            dateFormatter.dateFormat = "E, d MMM"
-            dateFormatter.locale = Locale(identifier: "ru_RU")
-            let formattedDate = dateFormatter.string(from: date)
-            return formattedDate
-        } else {
-             return "Неверный формат даты"
-        }
+        return convertWeekDay
     }
 }

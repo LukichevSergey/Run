@@ -38,14 +38,13 @@ final class TrainingManager {
         currentTraining?.temp = temp
         currentTraining?.time = time
         currentTraining?.everyTimeKilometrs = everyKM
-        
     }
     
     func saveCityForDetailedTraining(_ latitude: Double, _ longitude: Double) {
         logger.log("\(#fileID) -> \(#function)")
         if let currentTraining = currentTraining, currentTraining.coordinatesCity.isEmpty {
-            currentTraining.coordinatesCity.insert(latitude, at: 0)
-            currentTraining.coordinatesCity.insert(longitude, at: 1)
+            currentTraining.coordinatesCity.append(latitude)
+            currentTraining.coordinatesCity.append(longitude)
         }
     }
     
