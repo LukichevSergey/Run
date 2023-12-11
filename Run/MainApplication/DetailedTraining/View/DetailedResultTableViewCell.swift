@@ -156,7 +156,7 @@ extension DetailedResultTableViewCell: ConfigurableViewProtocol {
     func configure(with model: DetailedResultViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         alltime.text = model.allTimeTraining
-        distance.text = model.distanse
+        distance.text = model.distance
         averageTemp.text = model.averageTemp
     }
 }

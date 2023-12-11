@@ -16,7 +16,7 @@ protocol DetailedTrainingViewToPresenterProtocol: AnyObject {
 // MARK: Protocol - DetailedTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol DetailedTrainingInteractorToPresenterProtocol: AnyObject {
     func trainingIsFetchedWithError(error: Error)
-    func DetailedTrainingData(data: Any)
+    func DetailedTrainingData(data: [EnumDetailedViewCell])
     func DateDetailedHeaderTraining(_ data: String)
 }
 
@@ -38,7 +38,7 @@ extension DetailedTrainingPresenter: DetailedTrainingViewToPresenterProtocol {
 
 // MARK: Extension - DetailedTrainingInteractorToPresenterProtocol
 extension DetailedTrainingPresenter: DetailedTrainingInteractorToPresenterProtocol {
-    func DetailedTrainingData(data: Any) {
+    func DetailedTrainingData(data: [EnumDetailedViewCell]) {
         logger.log("\(#fileID) -> \(#function)")
         view.setDetailedTrainingData(data: data)
     }

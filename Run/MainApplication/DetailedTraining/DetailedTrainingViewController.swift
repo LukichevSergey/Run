@@ -9,7 +9,7 @@ import UIKit
 
 // MARK: Protocol - DetailedTrainingPresenterToViewProtocol (Presenter -> View)
 protocol DetailedTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
-    func setDetailedTrainingData(data: Any)
+    func setDetailedTrainingData(data: [EnumDetailedViewCell])
     func setDateDetailedHeaderTraining(_ data: String)
 }
 
@@ -23,8 +23,8 @@ final class DetailedTrainingViewController: UIViewController {
     
     // MARK: - Property
     var presenter: DetailedTrainingViewToPresenterProtocol!
-    private var diffableDataSourse: UITableViewDiffableDataSource<SectionTrainingModel, AnyHashable>?
-    private var detailedTraining = [AnyHashable]()
+    private var diffableDataSourse: UITableViewDiffableDataSource<SectionTrainingModel, EnumDetailedViewCell>?
+//    private var detailedTraining = [AnyHashable]()
     
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
@@ -85,29 +85,23 @@ final class DetailedTrainingViewController: UIViewController {
     func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
         diffableDataSourse = UITableViewDiffableDataSource(tableView: tableViewDetailed) { tableView, indexPath, item in
-            
             switch item {
-            case let detailInfo as DetailedInfoViewModel:
+            case .detailedInfo(let detailInfo):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cellInfo", for: indexPath) as? DetailedInfoTableViewCell
                 cell?.configure(with: detailInfo)
-                
                 return cell
-                
-            case let detailResult as DetailedResultViewModel:
+            case .detailedResult(let detailResult):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cellResult", for: indexPath) as? DetailedResultTableViewCell
                 cell?.configure(with: detailResult)
-                
                 return cell
-                
-            case let detailEveryKM as DetailedEveryKilometrViewModel:
+            case .detailedEveryKilometer(let detailEveryKM):
                 let cell = tableView.dequeueReusableCell(withIdentifier: "cellEveryKM", for: indexPath) as? DetailedEveryKilometrTableViewCell
                 cell?.configure(with: detailEveryKM)
-                
                 return cell
                 
             default: break
-                
             }
+            
             return UITableViewCell()
         }
         diffableDataSourse?.defaultRowAnimation = .fade
@@ -144,17 +138,12 @@ extension DetailedTrainingViewController: DetailedTrainingPresenterToViewProtoco
         }
     }
     
-    func setDetailedTrainingData(data: Any) {
+    func setDetailedTrainingData(data: [EnumDetailedViewCell]) {
         logger.log("\(#fileID) -> \(#function)")
-        var snapshot = NSDiffableDataSourceSnapshot<SectionTrainingModel, AnyHashable>()
+        var snapshot = NSDiffableDataSourceSnapshot<SectionTrainingModel, EnumDetailedViewCell>()
         snapshot.appendSections([.main])
-        if let dataArray = data as? [Any] {
-            let hashableData = dataArray.compactMap { $0 as? AnyHashable }
-            snapshot.appendItems(hashableData, toSection: .main)
-            diffableDataSourse?.apply(snapshot)
-        } else {
-            print("Ошибка: Невозможно преобразовать data в [Any]")
-        }
+        snapshot.appendItems(data, toSection: .main)
+        diffableDataSourse?.apply(snapshot, animatingDifferences: true)
     }
 }
 

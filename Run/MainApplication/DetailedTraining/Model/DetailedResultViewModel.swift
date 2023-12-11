@@ -7,6 +7,6 @@
 
 struct DetailedResultViewModel: Hashable {
     let allTimeTraining: String
-    let distanse: String
+    let distance: String
     let averageTemp: String
 }

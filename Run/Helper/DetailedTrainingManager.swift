@@ -12,34 +12,37 @@ final class DetailedTrainingManager {
     
     private let locationManager = LocationManager()
     
-    func getDetailedTrainigUnprocessed(_ data: TrainingCellViewModel) -> Array<Any> {
+    func getDetailedTrainingUnprocessed(_ data: TrainingCellViewModel) -> [EnumDetailedViewCell] {
         logger.log("\(#fileID) -> \(#function)")
-        var detailedTrainin = [Any]()
-        for elem in 0...4 { // мы знаем что у нас в деталях только 4 ячейки поэтому жестко ставлю такие значения
-            if elem == 0 {
-                detailedTrainin.append(DetailedInfoViewModel(image: UIImage(named: "circle") ?? UIImage(),
-                                                             activityTraining: Tx.Training.run,
-                                                             target: "\(Tx.Training.target):",
-                                                             timeStartStop: data.dateStartStop,
-                                                             city: "г. \(locationManager.getCityFromCoordinates(data.city[0], data.city[1]))"))
-            }
-            if elem == 1 {
-                detailedTrainin.append(DetailedResultViewModel(allTimeTraining: data.allTime,
-                                                               distanse: data.killometrs,
-                                                               averageTemp: data.averageTemp))
-            }
-            if elem == 2 {
-                detailedTrainin.append(DetailedEveryKilometrViewModel(time: data.everyKilometrs))
-            }
-            if elem == 3 {
-                detailedTrainin.append(DetailedPulseViewModel(graphicPulse: "PULSE"))
-            }
-            if elem == 4 {
-                detailedTrainin.append(DetailedMapViewModel(map: "MAP"))
-            }
-        }
+        var detailedTraining = [EnumDetailedViewCell]()
         
-        return detailedTrainin
+        detailedTraining.append(.detailedInfo(
+            DetailedInfoViewModel(image: UIImage(named: "circle") ?? UIImage(),
+                                  activityTraining: Tx.Training.run,
+                                  target: "\(Tx.Training.target):",
+                                  timeStartStop: data.dateStartStop,
+                                  city: "г. \(locationManager.getCityFromCoordinates(data.city[0], data.city[1]))")
+        ))
+        
+        detailedTraining.append(.detailedResult(
+            DetailedResultViewModel(allTimeTraining: data.allTime,
+                                    distance: data.killometrs,
+                                    averageTemp: data.averageTemp)
+        ))
+        
+        detailedTraining.append(.detailedEveryKilometer(
+            DetailedEveryKilometrViewModel(time: data.everyKilometrs)
+        ))
+        
+        detailedTraining.append(.detailedPulse(
+            DetailedPulseViewModel(graphicPulse: "PULSE")
+        ))
+        
+        detailedTraining.append(.detailedMap(
+            DetailedMapViewModel(map: "MAP")
+        ))
+        
+        return detailedTraining
     }
     
     func getDateDetailerTrainig(_ data: TrainingCellViewModel) -> String {

@@ -32,7 +32,7 @@ extension DetailedTrainingInteractor: DetailedTrainingPresenterToInteractorProto
             let dateHeaderDetailed = managerDetailed.getDateDetailerTrainig(_detailedTraining)
             presenter.DateDetailedHeaderTraining(dateHeaderDetailed)
             
-            let detailTrainingArrayFilter = managerDetailed.getDetailedTrainigUnprocessed(_detailedTraining)
+            let detailTrainingArrayFilter = managerDetailed.getDetailedTrainingUnprocessed(_detailedTraining)
             presenter.DetailedTrainingData(data: detailTrainingArrayFilter)
         }
     }
