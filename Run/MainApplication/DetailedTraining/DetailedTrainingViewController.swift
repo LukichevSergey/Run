@@ -24,7 +24,6 @@ final class DetailedTrainingViewController: UIViewController {
     // MARK: - Property
     var presenter: DetailedTrainingViewToPresenterProtocol!
     private var diffableDataSourse: UITableViewDiffableDataSource<SectionTrainingModel, EnumDetailedViewCell>?
-//    private var detailedTraining = [AnyHashable]()
     
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
