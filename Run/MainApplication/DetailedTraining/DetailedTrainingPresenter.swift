@@ -32,6 +32,7 @@ final class DetailedTrainingPresenter {
 extension DetailedTrainingPresenter: DetailedTrainingViewToPresenterProtocol {
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
+        view.showActivityIndicator()
         interactor.fetchDetailedTraining()
     }
 }
@@ -41,11 +42,13 @@ extension DetailedTrainingPresenter: DetailedTrainingInteractorToPresenterProtoc
     func DetailedTrainingData(data: [EnumDetailedViewCell]) {
         logger.log("\(#fileID) -> \(#function)")
         view.setDetailedTrainingData(data: data)
+        view.removeActivityIndicator()
     }
     
     func DateDetailedHeaderTraining(_ data: String) {
         logger.log("\(#fileID) -> \(#function)")
         view.setDateDetailedHeaderTraining(data)
+        view.removeActivityIndicator()
     }
     
     func trainingIsFetchedWithError(error: Error) {

@@ -80,6 +80,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
                                                    temp: helperValueTemp.currentTemp,
                                                    time: timer.elapsedTime,
                                                    everyKM: helperValueTemp.everyKilometrs)
+        trainingManager.coordinateCityIsEmpty(0, 0)
         trainingManager.stopTraining()
         timerManager.resetTimer()
         helperValueTemp.resetAll()

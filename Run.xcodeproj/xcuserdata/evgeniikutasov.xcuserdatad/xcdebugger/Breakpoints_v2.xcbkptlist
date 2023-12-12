@@ -179,22 +179,6 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "2B914E08-A3A9-437B-B1D0-A729A3EE6F95"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Run/Helper/TrainingManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "119"
-            endingLineNumber = "119"
-            landmarkName = "getTempModel(distance:time:kmTraveled:kmIteration:timeAllKM:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             uuid = "7B5E059D-2568-407D-BD4E-2B340DF8D77F"
             shouldBeEnabled = "No"
             ignoreCount = "0"
@@ -332,54 +316,6 @@
             endingLineNumber = "83"
             landmarkName = "toDict"
             landmarkType = "24">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            uuid = "6EA42826-4F95-4ACA-981C-2B23CF3E881E"
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Run/Helper/TrainingManager.swift"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "saveCityForDetailedTraining(_:_:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  uuid = "6EA42826-4F95-4ACA-981C-2B23CF3E881E - 69dcc89a1f86faaf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Run.TrainingManager.saveCityForDetailedTraining(Swift.Double, Swift.Double) -&gt; ()"
-                  moduleName = "Run"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/evgeniikutasov/Desktop/Real%20project/Run/Run/Helper/TrainingManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "232">
-               </Location>
-               <Location
-                  uuid = "6EA42826-4F95-4ACA-981C-2B23CF3E881E - 69dcc89a1f86faaf"
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "Run.TrainingManager.saveCityForDetailedTraining(Swift.Double, Swift.Double) -&gt; ()"
-                  moduleName = "Run"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/evgeniikutasov/Desktop/Real%20project/Run/Run/Helper/TrainingManager.swift"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "44"
-                  endingLineNumber = "44"
-                  offsetFromSymbolStart = "524">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

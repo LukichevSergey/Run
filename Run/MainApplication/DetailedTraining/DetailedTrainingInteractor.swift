@@ -28,12 +28,11 @@ extension DetailedTrainingInteractor: DetailedTrainingPresenterToInteractorProto
     func fetchDetailedTraining(){
         logger.log("\(#fileID) -> \(#function)")
         
-        Task {
-            let dateHeaderDetailed = managerDetailed.getDateDetailerTrainig(_detailedTraining)
-            presenter.DateDetailedHeaderTraining(dateHeaderDetailed)
-            
-            let detailTrainingArrayFilter = managerDetailed.getDetailedTrainingUnprocessed(_detailedTraining)
-            presenter.DetailedTrainingData(data: detailTrainingArrayFilter)
+        let dateHeaderDetailed = managerDetailed.getDateDetailerTrainig(_detailedTraining)
+        presenter.DateDetailedHeaderTraining(dateHeaderDetailed)
+        
+        managerDetailed.getDetailedTrainingUnprocessed(_detailedTraining) { detailedTrainingArray in
+            self.presenter.DetailedTrainingData(data: detailedTrainingArray)
         }
     }
 }

@@ -43,6 +43,7 @@
 "Training.allTime" = "Общее время";
 "Training.kilometr" = "Километр";
 "Training.target" = "Цель";
+"Training.cityNotFound" = "Город не найден";
 
 // MARK: - CircleTableResult
 "CircleTableResult.circle" = "Круг";

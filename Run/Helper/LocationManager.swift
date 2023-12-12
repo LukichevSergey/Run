@@ -57,9 +57,8 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         return totalDistance
     }
     
-    func getCityFromCoordinates(_ latitude: Double, _ longitude: Double) -> String {
+    func getCityFromCoordinates(_ latitude: Double, _ longitude: Double, completion: @escaping (String) -> Void) {
         logger.log("\(#fileID) -> \(#function)")
-        let semaphore = DispatchSemaphore(value: 0)
         var city: String = ""
         let location = CLLocation(latitude: latitude, longitude: longitude)
 
@@ -67,13 +66,14 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
             if let placemark = placemarks?.first {
                 if let foundCity = placemark.locality {
                     city = foundCity
+                    completion(city)
+                } else {
+                    completion(Tx.Training.cityNotFound)
                 }
+            } else {
+                completion(Tx.Training.cityNotFound)
             }
-            semaphore.signal()
         }
-        _ = semaphore.wait(timeout: .distantFuture)
-        
-        return city
     }
         
     // MARK: - CLLocationManagerDelegate

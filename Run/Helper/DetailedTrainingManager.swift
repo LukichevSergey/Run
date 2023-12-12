@@ -9,40 +9,41 @@ import UIKit
 import CoreLocation
 
 final class DetailedTrainingManager {
-    
     private let locationManager = LocationManager()
-    
-    func getDetailedTrainingUnprocessed(_ data: TrainingCellViewModel) -> [EnumDetailedViewCell] {
+
+    func getDetailedTrainingUnprocessed(_ data: TrainingCellViewModel, completion: @escaping ([EnumDetailedViewCell]) -> Void) {
         logger.log("\(#fileID) -> \(#function)")
         var detailedTraining = [EnumDetailedViewCell]()
         
-        detailedTraining.append(.detailedInfo(
-            DetailedInfoViewModel(image: UIImage(named: "circle") ?? UIImage(),
-                                  activityTraining: Tx.Training.run,
-                                  target: "\(Tx.Training.target):",
-                                  timeStartStop: data.dateStartStop,
-                                  city: "г. \(locationManager.getCityFromCoordinates(data.city[0], data.city[1]))")
-        ))
-        
-        detailedTraining.append(.detailedResult(
-            DetailedResultViewModel(allTimeTraining: data.allTime,
-                                    distance: data.killometrs,
-                                    averageTemp: data.averageTemp)
-        ))
-        
-        detailedTraining.append(.detailedEveryKilometer(
-            DetailedEveryKilometrViewModel(time: data.everyKilometrs)
-        ))
-        
-        detailedTraining.append(.detailedPulse(
-            DetailedPulseViewModel(graphicPulse: "PULSE")
-        ))
-        
-        detailedTraining.append(.detailedMap(
-            DetailedMapViewModel(map: "MAP")
-        ))
-        
-        return detailedTraining
+        locationManager.getCityFromCoordinates(data.city[0], data.city[1]) { city in
+            detailedTraining.append(.detailedInfo(
+                DetailedInfoViewModel(image: ListImages.Training.circleIcon ?? UIImage(),
+                                      activityTraining: Tx.Training.run,
+                                      target: "\(Tx.Training.target):",
+                                      timeStartStop: data.dateStartStop,
+                                      city: "г. \(city)")
+            ))
+            
+            detailedTraining.append(.detailedResult(
+                DetailedResultViewModel(allTimeTraining: data.allTime,
+                                        distance: data.killometrs,
+                                        averageTemp: data.averageTemp)
+            ))
+            
+            detailedTraining.append(.detailedEveryKilometer(
+                DetailedEveryKilometrViewModel(time: data.everyKilometrs)
+            ))
+            
+            detailedTraining.append(.detailedPulse(
+                DetailedPulseViewModel(graphicPulse: "PULSE")
+            ))
+            
+            detailedTraining.append(.detailedMap(
+                DetailedMapViewModel(map: "MAP")
+            ))
+            
+            completion(detailedTraining)
+        }
     }
     
     func getDateDetailerTrainig(_ data: TrainingCellViewModel) -> String {
