@@ -62,20 +62,20 @@ final class TrainingTableViewCell: UITableViewCell {
         castomView.addSubview(imageVariantRun)
         imageVariantRun.snp.makeConstraints { make in
             make.size.equalTo(50)
-            make.left.equalToSuperview().inset(5)
+            make.leading.equalToSuperview().inset(5)
             make.top.equalToSuperview().inset(10)
         }
 
         castomView.addSubview(titleCellLabel)
         titleCellLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(15)
-            make.left.equalToSuperview().inset(60)
+            make.leading.equalToSuperview().inset(60)
         }
 
         castomView.addSubview(kilomertLabel)
         kilomertLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(30)
-            make.left.equalToSuperview().inset(60)
+            make.leading.equalToSuperview().inset(60)
         }
 
         castomView.addSubview(dateLabel)

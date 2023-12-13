@@ -78,7 +78,7 @@ final class DetailedInfoTableViewCell: UITableViewCell {
         customView.addSubview(imageActivity)
         imageActivity.snp.makeConstraints { make in
             make.size.equalTo(70)
-            make.left.equalToSuperview().inset(5)
+            make.leading.equalToSuperview().inset(5)
             make.top.equalToSuperview().inset(10)
         }
         
@@ -91,19 +91,19 @@ final class DetailedInfoTableViewCell: UITableViewCell {
         customView.addSubview(targetLabel)
         targetLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(30)
-            make.left.equalTo(activityLabel.snp.left)
+            make.leading.equalTo(activityLabel.snp.leading)
         }
         
         customView.addSubview(timeStartStopLabel)
         timeStartStopLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(50)
-            make.left.equalTo(targetLabel.snp.left)
+            make.leading.equalTo(targetLabel.snp.leading)
         }
         
         customView.addSubview(cityLabel)
         cityLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(70)
-            make.left.equalTo(timeStartStopLabel.snp.left)
+            make.leading.equalTo(timeStartStopLabel.snp.leading)
         }
         
         contentView.addSubview(viewLineSeparatorOne)

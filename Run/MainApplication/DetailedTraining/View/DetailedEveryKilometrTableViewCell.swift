@@ -57,7 +57,7 @@ final class DetailedEveryKilometrTableViewCell: UITableViewCell {
         contentView.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
-            make.left.equalToSuperview().inset(5)
+            make.leading.equalToSuperview().inset(5)
         }
 
         contentView.addSubview(customView)
@@ -117,7 +117,7 @@ extension DetailedEveryKilometrTableViewCell: ConfigurableViewProtocol {
             kilometrLabel.text = "\(Tx.Training.kilometr) \(km)"
             containerView.addSubview(kilometrLabel)
             kilometrLabel.snp.makeConstraints { make in
-                make.top.left.equalToSuperview().inset(5)
+                make.top.leading.equalToSuperview().inset(5)
                 make.centerY.equalToSuperview()
             }
             

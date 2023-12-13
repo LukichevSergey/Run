@@ -14,7 +14,7 @@ protocol ListTrainingPresenterToRouterProtocol: AnyObject {
 }
 
 final class ListTrainingRouter {
-
+    
     // MARK: Properties
     weak var view: ListTrainingRouterToViewProtocol!
 }
@@ -24,5 +24,5 @@ extension ListTrainingRouter: ListTrainingPresenterToRouterProtocol {
     func navigationToDetailedViewController(itemTraining: TrainingCellViewModel) {
         let detailedTrainingViewController = DetailedTrainingConfigurator().configure(with: itemTraining)
         view.pushView(view: detailedTrainingViewController)
-        }
+    }
 }

@@ -62,7 +62,10 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
         var city: String = ""
         let location = CLLocation(latitude: latitude, longitude: longitude)
 
-        geocoder.reverseGeocodeLocation(location) { (placemarks, error) in
+        geocoder.reverseGeocodeLocation(location) { [weak self] (placemarks, error) in
+            guard self != nil else {
+                return
+            }
             if let placemark = placemarks?.first {
                 if let foundCity = placemark.locality {
                     city = foundCity

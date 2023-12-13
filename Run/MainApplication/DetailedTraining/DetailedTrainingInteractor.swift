@@ -31,8 +31,8 @@ extension DetailedTrainingInteractor: DetailedTrainingPresenterToInteractorProto
         let dateHeaderDetailed = managerDetailed.getDateDetailerTrainig(_detailedTraining)
         presenter.DateDetailedHeaderTraining(dateHeaderDetailed)
         
-        managerDetailed.getDetailedTrainingUnprocessed(_detailedTraining) { detailedTrainingArray in
-            self.presenter.DetailedTrainingData(data: detailedTrainingArray)
+        managerDetailed.getDetailedTrainingUnprocessed(_detailedTraining) { [weak self] detailedTrainingArray in
+            self?.presenter.DetailedTrainingData(data: detailedTrainingArray)
         }
     }
 }

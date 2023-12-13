@@ -79,7 +79,6 @@ final class Training: Hashable, DictionaryConvertible {
         dict["averageTemp"] = averageTemp
         dict["everyTimeKilometrs"] = everyTimeKilometrs
         dict["coordinatesCity"] = coordinatesCity
-        
         return dict
     }
 }

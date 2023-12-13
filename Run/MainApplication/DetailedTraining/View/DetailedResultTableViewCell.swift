@@ -91,7 +91,7 @@ final class DetailedResultTableViewCell: UITableViewCell {
         customView.addSubview(alltimeLabel)
         alltimeLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
-            make.left.equalToSuperview()
+            make.leading.equalToSuperview()
         }
         
         customView.addSubview(alltime)
@@ -115,7 +115,7 @@ final class DetailedResultTableViewCell: UITableViewCell {
         customView.addSubview(averageTempLabel)
         averageTempLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(10)
-            make.right.equalToSuperview().inset(5)
+            make.trailing.equalToSuperview().inset(5)
         }
         
         customView.addSubview(averageTemp)

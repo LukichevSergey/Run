@@ -118,7 +118,7 @@ final class DetailedTrainingViewController: UIViewController {
         
         view.addSubview(detailedTitleDateTraining)
         detailedTitleDateTraining.snp.makeConstraints { make in
-            make.top.right.equalToSuperview().inset(50)
+            make.top.trailing.equalToSuperview().inset(50)
         }
         
         view.addSubview(tableViewDetailed)

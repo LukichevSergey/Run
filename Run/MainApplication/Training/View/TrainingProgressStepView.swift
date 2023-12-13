@@ -49,7 +49,7 @@ final class TrainingProgressStepView: UIView {
         addSubview(progressView)
         progressView.snp.makeConstraints { make in
             make.height.equalTo(30)
-            make.leading.trailing.equalToSuperview()
+            make.directionalHorizontalEdges.equalToSuperview()
         }
 
         progressView.addSubview(resultLabel)

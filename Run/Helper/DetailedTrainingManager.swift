@@ -53,7 +53,7 @@ final class DetailedTrainingManager {
             let components = inputString.components(separatedBy: " ")
             let dateString = components[0]
             let convertInDate = dateString.formatStringinTime()
-            let convertWeekDay = convertInDate.formatDate(convertInDate, "E, d MMM")
+            let convertWeekDay = convertInDate.formatDate("E, d MMM")
             
             return convertWeekDay
         }

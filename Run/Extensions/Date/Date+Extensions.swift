@@ -8,7 +8,7 @@
 import Foundation
 
 extension Date {
-    func formatDate(_ date: Date, _ dateFormat: String) -> String {
+    func formatDate(_ dateFormat: String) -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = dateFormat
         dateFormatter.locale = Locale(identifier: "ru_RU")

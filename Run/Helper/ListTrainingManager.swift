@@ -20,16 +20,16 @@ final class ListTrainingManager {
         
         for month in 1...12 {
             data.forEach { training in
-                if training.startTime.formatDate(training.startTime, "MM") == "\(month)" {
+                if training.startTime.formatDate("MM") == "\(month)" {
                     countTraining += 1
                     alltime += training.time
                     dateTraining = training.startTime
                     monthTraining.append(TrainingCellViewModel(identifier: training.id,
                                                                killometrs: "\(String(format: "%.2f", training.distance)) км",
                                                                image: ListImages.Training.circleIcon ?? UIImage(),
-                                                               data: "\(training.startTime.formatDate(training.startTime, "dd.MM.yyyy")) >",
+                                                               data: "\(training.startTime.formatDate("dd.MM.yyyy")) >",
                                                                title: Tx.Training.run,
-                                                               dateStartStop: "\(training.startTime.formatDate(training.startTime, "HH:mm")) - \(training.finishTime.formatDate(training.finishTime, "HH:mm"))",
+                                                               dateStartStop: "\(training.startTime.formatDate("HH:mm")) - \(training.finishTime.formatDate("HH:mm"))",
                                                                city: training.coordinatesCity,
                                                                averageTemp: training.averageTemp.toMinutesAndSeconds(),
                                                                allTime: training.time.toMinutesAndSeconds(),
@@ -38,7 +38,7 @@ final class ListTrainingManager {
             }
             
             if !monthTraining.isEmpty {
-                trainingModelArray.append(SectionListTrainingModel(month: "\(dateTraining.formatDate(dateTraining, "MMM yyyy").capitalized) г.",
+                trainingModelArray.append(SectionListTrainingModel(month: "\(dateTraining.formatDate("MMM yyyy").capitalized) г.",
                                                                         countTraining: countTraining,
                                                                         allTime: alltime.toMinutesAndSeconds(),
                                                                         averageTime: (alltime / Double(countTraining)).toMinutesAndSeconds(),
