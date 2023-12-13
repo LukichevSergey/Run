@@ -8,54 +8,12 @@
 import Foundation
 
 extension Date {
-    func formatData() -> String {
+    func formatDate(_ date: Date, _ dateFormat: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
+        dateFormatter.dateFormat = dateFormat
+        dateFormatter.locale = Locale(identifier: "ru_RU")
         let formattedDateString = dateFormatter.string(from: self)
         
         return formattedDateString
-    }
-}
-
-extension Date {
-    func formatMonthData() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM"
-        let formattedDateString = dateFormatter.string(from: self)
-        
-        return formattedDateString
-    }
-}
-
-extension Date {
-    func formatMonthAndYearData() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM yyyy"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        let formattedDateString = dateFormatter.string(from: self).capitalized
-        
-        return formattedDateString
-    }
-}
-
-extension Date {
-    func formatTime() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "HH:mm"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        let formattedDateString = dateFormatter.string(from: self).capitalized
-        
-        return formattedDateString
-    }
-}
-
-extension Date {
-    func formatWeekDay() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "E, d MMM"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
-        let formattedDate = dateFormatter.string(from: self)
-        
-        return formattedDate
     }
 }

@@ -71,8 +71,7 @@ final class DetailedInfoTableViewCell: UITableViewCell {
         logger.log("\(#fileID) -> \(#function)")
         contentView.addSubview(customView)
         customView.snp.makeConstraints { make in
-            make.horizontalEdges.equalToSuperview().inset(10)
-            make.verticalEdges.equalToSuperview().inset(10)
+            make.directionalEdges.equalToSuperview().inset(10)
             make.height.equalTo(100)
         }
         
@@ -116,9 +115,8 @@ final class DetailedInfoTableViewCell: UITableViewCell {
         
         contentView.addSubview(viewLineSeparatorOTwo)
         viewLineSeparatorOTwo.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
+            make.bottom.width.equalToSuperview()
             make.height.equalTo(2)
-            make.width.equalToSuperview()
         }
     }
     

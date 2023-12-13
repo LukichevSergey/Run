@@ -48,12 +48,16 @@ final class DetailedTrainingManager {
     
     func getDateDetailerTrainig(_ data: TrainingCellViewModel) -> String {
         logger.log("\(#fileID) -> \(#function)")
-        let inputString = data.data
-        let components = inputString.components(separatedBy: " ")
-        let dateString = components[0]
-        let convertInDate = dateString.formatStringinTime()
-        let convertWeekDay = convertInDate.formatWeekDay()
-
-        return convertWeekDay
+        if !data.data.isEmpty {
+            let inputString = data.data
+            let components = inputString.components(separatedBy: " ")
+            let dateString = components[0]
+            let convertInDate = dateString.formatStringinTime()
+            let convertWeekDay = convertInDate.formatDate(convertInDate, "E, d MMM")
+            
+            return convertWeekDay
+        }
+        
+        return Tx.Training.dateNotAvailable
     }
 }

@@ -49,8 +49,7 @@ final class TrainingProgressKmView: UIView {
         addSubview(progressView)
         progressView.snp.makeConstraints { make in
             make.height.equalTo(30)
-            make.leading.equalToSuperview()
-            make.trailing.equalToSuperview()
+            make.leading.trailing.equalToSuperview()
         }
         progressView.addSubview(resultLabel)
         resultLabel.snp.makeConstraints { make in

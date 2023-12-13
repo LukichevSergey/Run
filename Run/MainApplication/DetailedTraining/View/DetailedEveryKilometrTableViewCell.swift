@@ -46,7 +46,7 @@ final class DetailedEveryKilometrTableViewCell: UITableViewCell {
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.font = OurFonts.fontPTSansRegular24
-        label.text = "Раскладка"
+        label.text = Tx.Training.kilometerLayout
         
         return label
     }()
@@ -63,8 +63,7 @@ final class DetailedEveryKilometrTableViewCell: UITableViewCell {
         contentView.addSubview(customView)
         customView.snp.makeConstraints { make in
             make.top.equalTo(titleLabel.snp.bottom).offset(10)
-            make.horizontalEdges.equalToSuperview().inset(10)
-            make.bottom.equalToSuperview().inset(10)
+            make.horizontalEdges.bottom.equalToSuperview().inset(10)
             make.height.equalTo(100)
         }
         
@@ -81,16 +80,15 @@ final class DetailedEveryKilometrTableViewCell: UITableViewCell {
         
         contentView.addSubview(viewLineSeparatorOne)
         viewLineSeparatorOne.snp.makeConstraints { make in
-            make.top.equalTo(customView.snp.bottom).inset(0)
+            make.top.equalTo(customView.snp.bottom)
             make.height.equalTo(2)
             make.width.equalToSuperview()
         }
         
         contentView.addSubview(viewLineSeparatorOTwo)
         viewLineSeparatorOTwo.snp.makeConstraints { make in
-            make.bottom.equalToSuperview()
+            make.bottom.width.equalToSuperview()
             make.height.equalTo(2)
-            make.width.equalToSuperview()
         }
     }
     
@@ -119,8 +117,7 @@ extension DetailedEveryKilometrTableViewCell: ConfigurableViewProtocol {
             kilometrLabel.text = "\(Tx.Training.kilometr) \(km)"
             containerView.addSubview(kilometrLabel)
             kilometrLabel.snp.makeConstraints { make in
-                make.top.equalToSuperview().inset(5)
-                make.left.equalToSuperview().inset(5)
+                make.top.left.equalToSuperview().inset(5)
                 make.centerY.equalToSuperview()
             }
             

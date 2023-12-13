@@ -105,8 +105,7 @@ final class ListHeaderCollectionView: UICollectionReusableView {
         
         addSubview(textAverageLabel)
         textAverageLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(30)
-            make.right.equalToSuperview().inset(30)
+            make.top.right.equalToSuperview().inset(30)
         }
         
         addSubview(textTrainingLabel)

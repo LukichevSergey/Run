@@ -53,9 +53,9 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
             
             return TrainingCellViewModel(identifier: training.id, killometrs: "\(String(format: "%.2f", training.distance)) км",
                                          image: ListImages.Training.circleIcon ?? UIImage(),
-                                         data: "\(training.startTime.formatData()) >",
+                                         data: "\(training.startTime.formatDate(training.startTime, "dd.MM.yyyy")) >",
                                          title: Tx.Training.run,
-                                         dateStartStop: training.startTime.formatMonthData(),
+                                         dateStartStop: training.startTime.formatDate(training.startTime, "MM"),
                                          city: training.coordinatesCity,
                                          averageTemp: training.averageTemp.toMinutesAndSeconds(),
                                          allTime: training.time.toMinutesAndSeconds(),
