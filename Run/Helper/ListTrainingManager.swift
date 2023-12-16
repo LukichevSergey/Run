@@ -30,7 +30,7 @@ final class ListTrainingManager {
                                                                data: "\(training.startTime.formatDate("dd.MM.yyyy")) >",
                                                                title: Tx.Training.run,
                                                                dateStartStop: "\(training.startTime.formatDate("HH:mm")) - \(training.finishTime.formatDate("HH:mm"))",
-                                                               city: training.coordinatesCity,
+                                                               city: CityCoordinates(latitude: training.coordinatesCity.latitude, longitude: training.coordinatesCity.longitude),
                                                                averageTemp: training.averageTemp.toMinutesAndSeconds(),
                                                                allTime: training.time.toMinutesAndSeconds(),
                                                                everyKilometrs: training.everyTimeKilometrs))

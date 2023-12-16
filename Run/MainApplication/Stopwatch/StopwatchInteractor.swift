@@ -74,13 +74,11 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.setTrainingStatus(on: .stop)
         trainingManager.updateTraining(with: trainingManager.coordinates)
         trainingManager.coordinates = []
-        
         trainingManager.saveLastDataTrainingChange(average: helperValueTemp.currentAverageTemp,
                                                    distance: helperValueTemp.currentDistance,
                                                    temp: helperValueTemp.currentTemp,
                                                    time: timer.elapsedTime,
                                                    everyKM: helperValueTemp.everyKilometrs)
-        trainingManager.coordinateCityIsEmpty(0, 0)
         trainingManager.stopTraining()
         timerManager.resetTimer()
         helperValueTemp.resetAll()

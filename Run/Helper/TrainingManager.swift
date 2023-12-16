@@ -15,7 +15,6 @@ protocol UpdateDataTempDelegate {
     func сurrentTempChanged(temp: Double)
     func currentResultsСhanged(time: Double, traveled: Double, iteration: Int)
     func everyTimeKilometrs(_ everyTimeKM: String)
-
 }
 
 final class TrainingManager {
@@ -43,17 +42,9 @@ final class TrainingManager {
     
     func saveCityForDetailedTraining(_ latitude: Double, _ longitude: Double) {
         logger.log("\(#fileID) -> \(#function)")
-        if let currentTraining = currentTraining, currentTraining.coordinatesCity.isEmpty {
-            currentTraining.coordinatesCity.append(latitude)
-            currentTraining.coordinatesCity.append(longitude)
-        }
-    }
-    
-    func coordinateCityIsEmpty(_ latitude: Double, _ longitude: Double) {
-        logger.log("\(#fileID) -> \(#function)")
-        if let currentTraining = currentTraining, currentTraining.coordinatesCity.isEmpty {
-            currentTraining.coordinatesCity.append(latitude)
-            currentTraining.coordinatesCity.append(longitude)
+        if let currentTraining = currentTraining, currentTraining.coordinatesCity.latitude == 0.0 && currentTraining.coordinatesCity.longitude == 0.0 {
+            currentTraining.coordinatesCity.latitude = latitude
+            currentTraining.coordinatesCity.longitude = longitude
         }
     }
     

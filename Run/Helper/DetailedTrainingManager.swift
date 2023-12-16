@@ -15,7 +15,7 @@ final class DetailedTrainingManager {
         logger.log("\(#fileID) -> \(#function)")
         var detailedTraining = [EnumDetailedViewCell]()
         
-        locationManager.getCityFromCoordinates(data.city[0], data.city[1]) { city in
+        locationManager.getCityFromCoordinates(data.city.latitude, data.city.longitude) { city in
             detailedTraining.append(.detailedInfo(
                 DetailedInfoViewModel(image: ListImages.Training.circleIcon ?? UIImage(),
                                       activityTraining: Tx.Training.run,

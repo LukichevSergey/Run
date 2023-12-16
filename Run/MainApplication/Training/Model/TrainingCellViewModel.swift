@@ -14,8 +14,13 @@ struct TrainingCellViewModel: Hashable {
     let data: String
     let title: String
     let dateStartStop: String
-    let city: [Double]
+    let city: CityCoordinates
     let averageTemp: String
     let allTime: String
     let everyKilometrs: [String]
+}
+
+struct CityCoordinates: Hashable {
+    var latitude: Double
+    var longitude: Double
 }

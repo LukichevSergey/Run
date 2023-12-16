@@ -28,13 +28,12 @@ final class Training: Hashable, DictionaryConvertible {
     var finishTime: Date = Date()
     var trainingStatus: TrainingStatus = .start
     var coordinates: [[CLLocationCoordinate2D]] = []
-    var coordinatesCity = [Double]()
+    var coordinatesCity = CityCoordinates(latitude: 0.0, longitude: 0.0)
     var distance: Double = 0.0
     var time: Double = 0.0
     var temp: Double = 0.0
     var averageTemp: Double = 0.0
     var everyTimeKilometrs = [String]()
-    
     
     init(id: String = UUID().uuidString, userId: String) {
         self.id = id
@@ -46,12 +45,14 @@ final class Training: Hashable, DictionaryConvertible {
               let startTime = dictionary["startTime"] as? TimeInterval,
               let finishTime = dictionary["finishTime"] as? TimeInterval,
               let userId = dictionary["userId"] as? String,
-              let coordinatesCity = dictionary["coordinatesCity"] as? [Double],
               let distance = dictionary["distance"] as? Double,
               let time = dictionary["time"] as? Double,
               let temp = dictionary["temp"] as? Double,
               let averageTemp = dictionary["averageTemp"] as? Double,
-              let everyTimeKilometrs = dictionary["everyTimeKilometrs"] as? [String] else {
+              let everyTimeKilometrs = dictionary["everyTimeKilometrs"] as? [String],
+              let coordinatesCity = dictionary["coordinatesCity"] as? [String: Double],
+              let latitude = coordinatesCity["latitude"],
+              let longitude = coordinatesCity["longitude"] else {
             return nil
         }
         
@@ -64,7 +65,7 @@ final class Training: Hashable, DictionaryConvertible {
         self.temp = temp
         self.averageTemp = averageTemp
         self.everyTimeKilometrs = everyTimeKilometrs
-        self.coordinatesCity = coordinatesCity
+        self.coordinatesCity = CityCoordinates(latitude: latitude, longitude: longitude)
     }
     
     var toDict: [String: Any] {
@@ -78,7 +79,7 @@ final class Training: Hashable, DictionaryConvertible {
         dict["temp"] = temp
         dict["averageTemp"] = averageTemp
         dict["everyTimeKilometrs"] = everyTimeKilometrs
-        dict["coordinatesCity"] = coordinatesCity
+        dict["coordinatesCity"] = ["latitude": coordinatesCity.latitude, "longitude": coordinatesCity.longitude]
         return dict
     }
 }
