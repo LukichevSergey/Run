@@ -40,6 +40,12 @@
 "Training.totalTime" = "Всего";
 "Training.allAverageTime" = "В cреднем";
 "Training.graphics" = "Графики";
+"Training.allTime" = "Общее время";
+"Training.kilometr" = "Километр";
+"Training.target" = "Цель";
+"Training.cityNotFound" = "Город не найден";
+"Training.kilometerLayout" = "Раскладка";
+"Training.dateNotAvailable" = "Дата отсутствует";
 
 // MARK: - CircleTableResult
 "CircleTableResult.circle" = "Круг";

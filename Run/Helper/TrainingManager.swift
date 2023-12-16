@@ -14,6 +14,7 @@ protocol UpdateDataTempDelegate {
     func сurrentAverageTempChanged(average: Double)
     func сurrentTempChanged(temp: Double)
     func currentResultsСhanged(time: Double, traveled: Double, iteration: Int)
+    func everyTimeKilometrs(_ everyTimeKM: String)
 }
 
 final class TrainingManager {
@@ -30,11 +31,21 @@ final class TrainingManager {
     var currentTraining: Training?
     var delegate: UpdateDataTempDelegate?
     
-    func saveLastDataTrainingChange(average: Double, distance: Double, temp: Double, time: Double) {
+    func saveLastDataTrainingChange(average: Double, distance: Double, temp: Double, time: Double, everyKM: [String]) {
+        logger.log("\(#fileID) -> \(#function)")
         currentTraining?.averageTemp = average
         currentTraining?.distance = distance
         currentTraining?.temp = temp
         currentTraining?.time = time
+        currentTraining?.everyTimeKilometrs = everyKM
+    }
+    
+    func saveCityForDetailedTraining(_ latitude: Double, _ longitude: Double) {
+        logger.log("\(#fileID) -> \(#function)")
+        if let currentTraining = currentTraining, currentTraining.coordinatesCity.latitude == 0.0 && currentTraining.coordinatesCity.longitude == 0.0 {
+            currentTraining.coordinatesCity.latitude = latitude
+            currentTraining.coordinatesCity.longitude = longitude
+        }
     }
     
     var trainingStatus: Training.TrainingStatus {
@@ -101,10 +112,11 @@ final class TrainingManager {
     //MARK: - method temp
     func getTempModel(distance: Double, time: Double, kmTraveled: Double, kmIteration: Int, timeAllKM: Double) -> String {
         logger.log("\(#fileID) -> \(#function)")
-        if (distance - kmTraveled) > 10 {
+        if (distance - kmTraveled) > 1 {
             if Int(distance / 1000) > kmIteration {
                 
                 delegate?.currentResultsСhanged(time: time, traveled: distance, iteration: Int(distance) / 1000)
+                delegate?.everyTimeKilometrs((time - timeAllKM).toMinutesAndSeconds())
                 
                 let length = 1000 / (distance - kmTraveled)
                 let tempSec = (time - timeAllKM) * length

@@ -50,6 +50,12 @@ enum Tx {
         static let totalTime = NSLocalizedString("Training.totalTime", comment: "Всего")
         static let allAverageTime = NSLocalizedString("Training.allAverageTime", comment: "В cреднем")
         static let graphics = NSLocalizedString("Training.graphics", comment: "Графики")
+        static let allTime = NSLocalizedString("Training.allTime", comment: "Общее время")
+        static let kilometr = NSLocalizedString("Training.kilometr", comment: "Километр")
+        static let target = NSLocalizedString("Training.target", comment: "Цель")
+        static let cityNotFound = NSLocalizedString("Training.cityNotFound", comment: "Город не найден")
+        static let kilometerLayout = NSLocalizedString("Training.kilometerLayout", comment: "Раскладка")
+        static let dateNotAvailable = NSLocalizedString("Training.dateNotAvailable", comment: "Дата отсутствует")
     }
     
     enum CircleTableResult {

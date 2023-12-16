@@ -11,6 +11,7 @@ import OrderedCollections
 // MARK: Protocol - ListTrainingViewToPresenterProtocol (View -> Presenter)
 protocol ListTrainingViewToPresenterProtocol: AnyObject {
     func viewDidLoad()
+    func detailedTappedCell(_ indexPath: IndexPath)
 }
 
 // MARK: Protocol - ListTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -28,6 +29,12 @@ final class ListTrainingPresenter {
 
 // MARK: Extension - ListTrainingViewToPresenterProtocol
 extension ListTrainingPresenter: ListTrainingViewToPresenterProtocol {
+    func detailedTappedCell(_ indexPath: IndexPath) {
+        let trainingSection = interactor.listTraining[indexPath.section]
+        let idTrainingItem = trainingSection.training[indexPath.item]
+        router.navigationToDetailedViewController(itemTraining: idTrainingItem)
+    }
+    
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()

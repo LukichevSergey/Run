@@ -44,7 +44,6 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
             interactor.saveTraining()
             view.resetStartButton()
             view.setTimer(with: interactor.getTimerData())
-            
         case .roundButton:
             let circleData = interactor.roundResult()
             view.setCircleResult(with: circleData)
@@ -55,9 +54,7 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         interactor.requestAuthorization()
-        
         view.setTimer(with: interactor.getTimerData())
-        
         interactor.timer.$elapsedTime.sink { [weak self] time in
             self?.view.setTimer(with: time)
         }.store(in: &subscriptions)
@@ -68,7 +65,6 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
 extension StopwatchPresenter: StopwatchInteractorToPresenterProtocol {
     func updateTrainingDataWithError(_ error: Error) {
         logger.log("\(#fileID) -> \(#function)")
-        
         view.showErrorAlert(with: error.localizedDescription)
     }
     

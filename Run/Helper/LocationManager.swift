@@ -16,6 +16,7 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
     
     private let locationManager = CLLocationManager()
     private var location: CLLocation?
+    private let geocoder = CLGeocoder()
     weak var delegate: LocationManagerDelegate?
     
     override init() {
@@ -54,6 +55,28 @@ final class LocationManager: NSObject, CLLocationManagerDelegate {
             }
         }
         return totalDistance
+    }
+    
+    func getCityFromCoordinates(_ latitude: Double, _ longitude: Double, completion: @escaping (String) -> Void) {
+        logger.log("\(#fileID) -> \(#function)")
+        var city: String = ""
+        let location = CLLocation(latitude: latitude, longitude: longitude)
+
+        geocoder.reverseGeocodeLocation(location) { [weak self] (placemarks, error) in
+            guard self != nil else {
+                return
+            }
+            if let placemark = placemarks?.first {
+                if let foundCity = placemark.locality {
+                    city = foundCity
+                    completion(city)
+                } else {
+                    completion(Tx.Training.cityNotFound)
+                }
+            } else {
+                completion(Tx.Training.cityNotFound)
+            }
+        }
     }
         
     // MARK: - CLLocationManagerDelegate

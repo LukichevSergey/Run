@@ -93,26 +93,25 @@ final class ListHeaderCollectionView: UICollectionReusableView {
         
         addSubview(monthLabel)
         monthLabel.snp.makeConstraints { make in
-            make.left.equalToSuperview().inset(5)
+            make.leading.equalToSuperview().inset(5)
             make.top.equalToSuperview().inset(0)
         }
         
         addSubview(textTotalLabel)
         textTotalLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(30)
-            make.left.equalTo(monthLabel.snp.right).inset(10)
+            make.leading.equalTo(monthLabel.snp.trailing).inset(10)
         }
         
         addSubview(textAverageLabel)
         textAverageLabel.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(30)
-            make.right.equalToSuperview().inset(30)
+            make.top.trailing.equalToSuperview().inset(30)
         }
         
         addSubview(textTrainingLabel)
         textTrainingLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(60)
-            make.left.equalToSuperview().inset(5)
+            make.leading.equalToSuperview().inset(5)
         }
         
         addSubview(trainingCountLabel)
@@ -124,7 +123,7 @@ final class ListHeaderCollectionView: UICollectionReusableView {
         addSubview(textTimeLabel)
         textTimeLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(85)
-            make.left.equalToSuperview().inset(5)
+            make.leading.equalToSuperview().inset(5)
         }
         
         addSubview(allTimeLabel)

@@ -7,16 +7,16 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            uuid = "5AB91D2F-DB45-4CFC-8EE5-800BB49E5304"
+            uuid = "FF2A18D8-CC69-4A2E-81E8-E11E2A0A5854"
             shouldBeEnabled = "No"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Run/MainApplication/Stopwatch/StopwatchPresenter.swift"
+            filePath = "Run/Helper/TrainingManager.swift"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "53"
-            endingLineNumber = "53"
-            landmarkName = "roundButtonTapped(with:)"
+            startingLineNumber = "45"
+            endingLineNumber = "45"
+            landmarkName = "saveCityForDetailedTraining(_:_:)"
             landmarkType = "7">
          </BreakpointContent>
       </BreakpointProxy>

@@ -8,31 +8,11 @@
 import Foundation
 
 extension Date {
-    func formatData() -> String {
+    func formatDate(_ dateFormat: String) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "dd.MM.yyyy"
-        let formattedDateString = dateFormatter.string(from: self)
-        
-        return formattedDateString
-    }
-}
-
-extension Date {
-    func formatMonthData() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MM"
-        let formattedDateString = dateFormatter.string(from: self)
-        
-        return formattedDateString
-    }
-}
-
-extension Date {
-    func formatMonthAndYearData() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "MMM yyyy"
+        dateFormatter.dateFormat = dateFormat
         dateFormatter.locale = Locale(identifier: "ru_RU")
-        let formattedDateString = dateFormatter.string(from: self).capitalized
+        let formattedDateString = dateFormatter.string(from: self)
         
         return formattedDateString
     }

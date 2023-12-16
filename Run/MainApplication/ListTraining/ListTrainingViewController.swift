@@ -109,7 +109,6 @@ final class ListTrainingViewController: UIViewController {
             guard let section = self.diffableCollectionDataSource?.sectionIdentifier(for: indexPath.section) else {
                 return UICollectionViewCell()
             }
-            
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "header", for: indexPath) as? ListHeaderCollectionView
             header?.configure(with: section)
             
@@ -171,11 +170,14 @@ extension ListTrainingViewController: ListTrainingRouterToViewProtocol {
     func pushView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.title, style: .plain, target: nil, action: nil)
     }
 }
 
 extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
         cell.backgroundColor = PaletteApp.lightGreen
         cell.layer.borderWidth = 2
         cell.layer.borderColor = PaletteApp.darkblue.cgColor
@@ -183,17 +185,26 @@ extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+        logger.log("\(#fileID) -> \(#function)")
         
         return CGSize(width: collectionView.bounds.width, height: 95)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        logger.log("\(#fileID) -> \(#function)")
         
         return CGSize(width: (view.frame.width) - 30, height: 70)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        
+        logger.log("\(#fileID) -> \(#function)")
+
         return UIEdgeInsets(top: 20, left: 12, bottom: 20, right: 12)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
+
+        presenter.detailedTappedCell(indexPath)
     }
 }

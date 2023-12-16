@@ -10,6 +10,7 @@ import OrderedCollections
 // MARK: Protocol - ListTrainingPresenterToInteractorProtocol (Presenter -> Interactor)
 protocol ListTrainingPresenterToInteractorProtocol: AnyObject {
     func fetchTrainings()
+    var listTraining: OrderedSet<SectionListTrainingModel> { get }
 }
 
 final class ListTrainingInteractor {
@@ -27,6 +28,9 @@ final class ListTrainingInteractor {
 
 // MARK: Extension - ListTrainingPresenterToInteractorProtocol
 extension ListTrainingInteractor: ListTrainingPresenterToInteractorProtocol {
+    var listTraining: OrderedCollections.OrderedSet<SectionListTrainingModel> {
+        return _listTraining
+    }
     
     @MainActor
     func fetchTrainings() {
@@ -34,7 +38,6 @@ extension ListTrainingInteractor: ListTrainingPresenterToInteractorProtocol {
         Task {
             do {
                 let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
-                
                 let listSortedTraining = managerListTraining.getListTrainingAndHeaderMonth(data: trainings)
                 _listTraining = listSortedTraining
                 presenter.trainingsListIsFetched(data: _listTraining)

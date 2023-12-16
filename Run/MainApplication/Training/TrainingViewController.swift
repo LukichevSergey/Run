@@ -364,6 +364,7 @@ extension TrainingViewController: TrainingRouterToViewProtocol {
     func pushView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.information, style: .plain, target: nil, action: nil)
     }
 }
 
