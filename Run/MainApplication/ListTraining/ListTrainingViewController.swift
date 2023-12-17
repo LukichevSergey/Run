@@ -175,7 +175,6 @@ extension ListTrainingViewController: ListTrainingRouterToViewProtocol {
 }
 
 extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
-    
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         logger.log("\(#fileID) -> \(#function)")
         cell.backgroundColor = PaletteApp.lightGreen
@@ -204,7 +203,6 @@ extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         logger.log("\(#fileID) -> \(#function)")
-
         presenter.detailedTappedCell(indexPath)
     }
 }

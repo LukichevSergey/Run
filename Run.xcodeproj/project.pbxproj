@@ -114,6 +114,7 @@
 		9B41055F2B18B46E00637F62 /* DetailedMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B41055E2B18B46E00637F62 /* DetailedMapViewModel.swift */; };
 		9B4105612B18BC5200637F62 /* DetailedResultTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4105602B18BC5200637F62 /* DetailedResultTableViewCell.swift */; };
 		9B4105632B18C31700637F62 /* DetailedEveryKilometrTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B4105622B18C31700637F62 /* DetailedEveryKilometrTableViewCell.swift */; };
+		9B56AE9B2B2F262300536CF2 /* InformationTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B56AE9A2B2F262300536CF2 /* InformationTrainingManager.swift */; };
 		9B5AC3682AEFDCB0009130C0 /* ListTrainingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC3672AEFDCB0009130C0 /* ListTrainingConfigurator.swift */; };
 		9B5AC36A2AEFDCC8009130C0 /* ListTrainingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC3692AEFDCC8009130C0 /* ListTrainingInteractor.swift */; };
 		9B5AC36C2AEFDCEE009130C0 /* ListTrainingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B5AC36B2AEFDCEE009130C0 /* ListTrainingPresenter.swift */; };
@@ -241,6 +242,7 @@
 		9B41055E2B18B46E00637F62 /* DetailedMapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedMapViewModel.swift; sourceTree = "<group>"; };
 		9B4105602B18BC5200637F62 /* DetailedResultTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedResultTableViewCell.swift; sourceTree = "<group>"; };
 		9B4105622B18C31700637F62 /* DetailedEveryKilometrTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedEveryKilometrTableViewCell.swift; sourceTree = "<group>"; };
+		9B56AE9A2B2F262300536CF2 /* InformationTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTrainingManager.swift; sourceTree = "<group>"; };
 		9B5AC3672AEFDCB0009130C0 /* ListTrainingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingConfigurator.swift; sourceTree = "<group>"; };
 		9B5AC3692AEFDCC8009130C0 /* ListTrainingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingInteractor.swift; sourceTree = "<group>"; };
 		9B5AC36B2AEFDCEE009130C0 /* ListTrainingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingPresenter.swift; sourceTree = "<group>"; };
@@ -388,6 +390,7 @@
 				9B2CCFF72AE87AC7007F317A /* ProgressTrainingManager.swift */,
 				9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */,
 				9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */,
+				9B56AE9A2B2F262300536CF2 /* InformationTrainingManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -927,6 +930,7 @@
 				9B7E10E92B0C139B000904F1 /* DetailedTrainingRouter.swift in Sources */,
 				9B8D90992B1A1D9700885630 /* DetailedTrainingManager.swift in Sources */,
 				9B7E10ED2B0C1404000904F1 /* DetailedTrainingPresenter.swift in Sources */,
+				9B56AE9B2B2F262300536CF2 /* InformationTrainingManager.swift in Sources */,
 				87B18ACE2AC1CF800069CA69 /* ProfileSneakersView.swift in Sources */,
 				87C46D2C2A9E37DF0094A8F0 /* LoginViewController.swift in Sources */,
 				878EBBFE2A98D4E8001219F9 /* PaletteApp.swift in Sources */,

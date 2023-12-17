@@ -13,11 +13,12 @@ import UIKit
 protocol TrainingViewToPresenterProtocol: AnyObject {
 	func viewDidLoad()
     func listButtonTapped()
+    func detailedTappedCell(_ indexPath: IndexPath)
 }
 
 // MARK: Protocol - TrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol TrainingInteractorToPresenterProtocol: AnyObject {
-    func trainingsIsFetched(data: OrderedSet<Training>)
+    func trainingsIsFetched(data: OrderedSet<TrainingCellViewModel>)
     func trainingProgressStepAndKm(data: Dictionary<String, Float>)
     func trainingIsFetchedWithError(error: Error)
 }
@@ -28,7 +29,6 @@ final class TrainingPresenter {
     var router: TrainingPresenterToRouterProtocol!
     var interactor: TrainingPresenterToInteractorProtocol!
     weak var view: TrainingPresenterToViewProtocol!
-    
     weak var progressBar: ProgressBarViewProtocol?
 }
 
@@ -36,6 +36,11 @@ final class TrainingPresenter {
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
     func listButtonTapped() {
         router.navigateToListViewController()
+    }
+    
+    func detailedTappedCell(_ indexPath: IndexPath) {
+        let trainingItem = interactor.training[indexPath.item]
+        router.navigationToDetailedViewController(itemTraining: trainingItem)
     }
     
     func viewDidLoad() {
@@ -47,22 +52,10 @@ extension TrainingPresenter: TrainingViewToPresenterProtocol {
 
 // MARK: Extension - TrainingInteractorToPresenterProtocol
 extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
-    func trainingsIsFetched(data: OrderedSet<Training>) {
+    func trainingsIsFetched(data: OrderedSet<TrainingCellViewModel>) {
         logger.log("\(#fileID) -> \(#function)")
-        let trainingCellViewModels = data.map { training in
-            
-            return TrainingCellViewModel(identifier: training.id, killometrs: "\(String(format: "%.2f", training.distance)) км",
-                                         image: ListImages.Training.circleIcon ?? UIImage(),
-                                         data: "\(training.startTime.formatDate("dd.MM.yyyy")) >",
-                                         title: Tx.Training.run,
-                                         dateStartStop: training.startTime.formatDate("MM"),
-                                         city: CityCoordinates(latitude: training.coordinatesCity.latitude, longitude: training.coordinatesCity.longitude),
-                                         averageTemp: training.averageTemp.toMinutesAndSeconds(),
-                                         allTime: training.time.toMinutesAndSeconds(),
-                                         everyKilometrs: training.everyTimeKilometrs)
-        }
-        let sortedTrainingCellViewModels = trainingCellViewModels.sorted { $0.data > $1.data }
-        view.setTrainingData(data: sortedTrainingCellViewModels)
+
+        view.setTrainingData(data: Array(data))
         view.removeActivityIndicator()
     }
 

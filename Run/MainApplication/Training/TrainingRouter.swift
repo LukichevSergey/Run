@@ -9,6 +9,7 @@
 // MARK: Protocol - TrainingPresenterToRouterProtocol (Presenter -> Router)
 protocol TrainingPresenterToRouterProtocol: AnyObject {
     func navigateToListViewController()
+    func navigationToDetailedViewController(itemTraining: TrainingCellViewModel)
 }
 
 final class TrainingRouter {
@@ -22,5 +23,10 @@ extension TrainingRouter: TrainingPresenterToRouterProtocol {
     func navigateToListViewController() {
         let listTrainingViewController = ListTrainingConfigurator().configure()
         view.pushView(view: listTrainingViewController)
+    }
+    
+    func navigationToDetailedViewController(itemTraining: TrainingCellViewModel) {
+        let detailedTrainingViewController = DetailedTrainingConfigurator().configure(with: itemTraining)
+        view.pushView(view: detailedTrainingViewController)
     }
 }
