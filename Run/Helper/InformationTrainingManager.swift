@@ -8,13 +8,14 @@
 import OrderedCollections
 import UIKit
 
-class InformationTrainingManager {
-    func getTrainingForDetailed(data: OrderedSet<Training>) -> OrderedSet<TrainingCellViewModel> { // это модельь нужна для детальной информации
+final class InformationTrainingManager {
+    /// Метод использует массив всех тренировок и подгоняет его под модель для использования в детальном экране
+    /// - Parameter data: Массив всех записанных тренировок с моделью Training
+    /// - Returns: Возвращает модель тренировок для использования в детальном экране тренировок
+    func getTrainingForDetailed(data: OrderedSet<Training>) -> OrderedSet<TrainingCellViewModel> {
         logger.log("\(#fileID) -> \(#function)")
         var trainingModelArray = [TrainingCellViewModel]()
-        var alltime: Double = 0
         data.forEach { training in
-            alltime += training.time
             trainingModelArray.append(TrainingCellViewModel(identifier: training.id,
                                                             killometrs: "\(String(format: "%.2f", training.distance)) км",
                                                             image: ListImages.Training.circleIcon ?? UIImage(),
@@ -31,7 +32,10 @@ class InformationTrainingManager {
         return OrderedSet(sortedTraining)
     }
     
-    func getinformationAllTraining(data: OrderedSet<Training>) -> OrderedSet<TrainingCellViewModel> { // это можель для отображения текущего  экрана
+    /// Метод используется для отображения всех тренировок на общем экране тренировок
+    /// - Parameter data: Массив всех записанных тренировок с моделью Training
+    /// - Returns: Возвращает модель тренировок для использования в общем экране
+    func getinformationAllTraining(data: OrderedSet<Training>) -> OrderedSet<TrainingCellViewModel> {
         logger.log("\(#fileID) -> \(#function)")
         let trainingCellViewModels = data.map { training in
             

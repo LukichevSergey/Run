@@ -26,6 +26,7 @@ extension TrainingRouter: TrainingPresenterToRouterProtocol {
     }
     
     func navigationToDetailedViewController(itemTraining: TrainingCellViewModel) {
+        logger.log("\(#fileID) -> \(#function)")
         let detailedTrainingViewController = DetailedTrainingConfigurator().configure(with: itemTraining)
         view.pushView(view: detailedTrainingViewController)
     }

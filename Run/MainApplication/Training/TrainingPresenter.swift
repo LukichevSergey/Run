@@ -39,6 +39,7 @@ extension TrainingPresenter: TrainingViewToPresenterProtocol {
     }
     
     func detailedTappedCell(_ indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
         let trainingItem = interactor.training[indexPath.item]
         router.navigationToDetailedViewController(itemTraining: trainingItem)
     }
