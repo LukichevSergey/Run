@@ -48,7 +48,7 @@ extension ListTrainingPresenter: ListTrainingInteractorToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         let listTrainingsInArray = data.map { training in
             
-            return SectionListTrainingModel(month: training.month,
+            return SectionListTrainingModel(identifier: training.identifier, month: training.month,
                                                  countTraining: training.countTraining,
                                                  allTime: training.allTime,
                                                  averageTime: training.averageTime,

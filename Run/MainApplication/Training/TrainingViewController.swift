@@ -335,12 +335,15 @@ extension TrainingViewController: TrainingPresenterToViewProtocol {
 
 extension TrainingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
         cell.backgroundColor = .clear
         tableView.sectionHeaderTopPadding = 0
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
         if let cell = tableView.cellForRow(at: indexPath) {
+            presenter.detailedTappedCell(indexPath)
             cell.selectionStyle = .none
         }
     }

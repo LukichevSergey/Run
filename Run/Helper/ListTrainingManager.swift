@@ -38,13 +38,13 @@ final class ListTrainingManager {
             }
             
             if !monthTraining.isEmpty {
-                trainingModelArray.append(SectionListTrainingModel(month: "\(dateTraining.formatDate("MMM yyyy").capitalized) г.",
-                                                                        countTraining: countTraining,
-                                                                        allTime: alltime.toMinutesAndSeconds(),
-                                                                        averageTime: (alltime / Double(countTraining)).toMinutesAndSeconds(),
-                                                                        training: monthTraining))
+                trainingModelArray.append(SectionListTrainingModel(identifier: "dateTraining.identifier",
+                                                                   month: "\(dateTraining.formatDate("MMM yyyy").capitalized) г.",
+                                                                   countTraining: countTraining,
+                                                                   allTime: alltime.toMinutesAndSeconds(),
+                                                                   averageTime: (alltime / Double(countTraining)).toMinutesAndSeconds(),
+                                                                   training: monthTraining))
             }
-
             monthTraining.removeAll()
             countTraining = 0
             alltime = 0

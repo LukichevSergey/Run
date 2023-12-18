@@ -41,7 +41,6 @@ extension ListTrainingInteractor: ListTrainingPresenterToInteractorProtocol {
                 let listSortedTraining = managerListTraining.getListTrainingAndHeaderMonth(data: trainings)
                 _listTraining = listSortedTraining
                 presenter.trainingsListIsFetched(data: _listTraining)
-                
             } catch {
                 presenter.trainingIsFetchedWithError(error: error)
             }

@@ -8,7 +8,7 @@
 import Foundation
 
 struct SectionListTrainingModel: Hashable {
-    let identifier = UUID()
+    let identifier: String
     let month: String
     let countTraining: Int
     let allTime: String
