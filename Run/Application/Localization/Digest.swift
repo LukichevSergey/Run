@@ -63,4 +63,19 @@ enum Tx {
         static let distance = NSLocalizedString("CircleTableResult.distance", comment: "Дистанция")
         static let time = NSLocalizedString("CircleTableResult.time", comment: "Время")
     }
+    
+    enum Charts {
+        static let statistics = NSLocalizedString("Charts.statistics", comment: "Статистика")
+        static let week = NSLocalizedString("Charts.week", comment: "Неделя")
+        static let month = NSLocalizedString("Charts.month", comment: "Месяц")
+        static let year = NSLocalizedString("Charts.year", comment: "Год")
+        static let distance = NSLocalizedString("Charts.distance", comment: "Расстояние")
+        static let Kkal = NSLocalizedString("Charts.Kkal", comment: "Ккал")
+    }
+    
+    enum TimePeriods {
+        static let hour = NSLocalizedString("TimePeriods.hour", comment: "ч")
+        static let minute = NSLocalizedString("TimePeriods.minute", comment: "мин")
+        static let year = NSLocalizedString("TimePeriods.year", comment: "г.")
+    }
 }

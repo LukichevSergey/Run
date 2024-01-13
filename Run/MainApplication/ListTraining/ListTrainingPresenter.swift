@@ -12,6 +12,7 @@ import OrderedCollections
 protocol ListTrainingViewToPresenterProtocol: AnyObject {
     func viewDidLoad()
     func detailedTappedCell(_ indexPath: IndexPath)
+    func chartsTappedButton()
 }
 
 // MARK: Protocol - ListTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -29,6 +30,10 @@ final class ListTrainingPresenter {
 
 // MARK: Extension - ListTrainingViewToPresenterProtocol
 extension ListTrainingPresenter: ListTrainingViewToPresenterProtocol {
+    func chartsTappedButton() {
+        router.navigateToChartsViewController()
+    }
+    
     func detailedTappedCell(_ indexPath: IndexPath) {
         let trainingSection = interactor.listTraining[indexPath.section]
         let idTrainingItem = trainingSection.training[indexPath.item]

@@ -22,6 +22,7 @@ struct PaletteApp {
     static var darkbOrange:                UIColor { return UIColor(hex: "#A35209") }  // Темно - оранжевый
     static var red:                        UIColor { return UIColor(hex: "#fb000e") }  // Красный
     static var yellow:                     UIColor { return UIColor(hex: "#ffff28") }  // Желтый
+    static var grey:                       UIColor { return UIColor(hex: "#D9D9D9") }  // Серый
 
     //MARK: - Gradients
     

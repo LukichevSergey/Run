@@ -25,14 +25,6 @@ final class ListTrainingViewController: UIViewController {
     
     private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<SectionListTrainingModel, TrainingCellViewModel>?
     
-    private lazy var mainVStack: UIStackView = {
-        let stack = UIStackView()
-        stack.axis = .vertical
-        stack.spacing = 12
-        
-        return stack
-    }()
-    
     private let collectionViewTraining: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -52,11 +44,12 @@ final class ListTrainingViewController: UIViewController {
         return label
     }()
     
-    private let graphicsButton: UIButton = {
+    private lazy var graphicsButton: UIButton = {
         let button = UIButton()
         button.setTitle(Tx.Training.graphics, for: .normal)
         button.setTitleColor(PaletteApp.black, for: .normal)
         button.titleLabel?.font = OurFonts.fontPTSansRegular20
+        button.addTarget(self, action: #selector(senderTappedButton), for: .touchUpInside)
         
         return button
     }()
@@ -89,6 +82,10 @@ final class ListTrainingViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         setupDiffableDataSource()
         setupHeaderCollection()
+    }
+    
+    @objc private func senderTappedButton() {
+        presenter.chartsTappedButton()
     }
     
     func setupDiffableDataSource() {
@@ -130,12 +127,6 @@ final class ListTrainingViewController: UIViewController {
         graphicsButton.snp.makeConstraints { make in
             make.centerY.equalTo(titleLabel)
             make.right.equalToSuperview().inset(30)
-        }
-        
-        view.addSubview(mainVStack)
-        mainVStack.snp.makeConstraints { make in
-            make.center.equalToSuperview()
-            make.width.equalToSuperview().multipliedBy(0.8)
         }
         
         view.addSubview(collectionViewTraining)

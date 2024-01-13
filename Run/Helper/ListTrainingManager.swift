@@ -17,15 +17,17 @@ final class ListTrainingManager {
         var countTraining = 0
         var alltime: Double = 0
         var dateTraining = Date()
+        var identifierMonth = ""
         
         for month in 1...12 {
             data.forEach { training in
-                if training.startTime.formatDate("MM") == "\(month)" {
+                if training.startTime.formatDate("M") == "\(month)" {
                     countTraining += 1
                     alltime += training.time
                     dateTraining = training.startTime
-                    monthTraining.append(TrainingCellViewModel(identifier: training.id,
-                                                               killometrs: "\(String(format: "%.2f", training.distance)) км",
+                    identifierMonth = training.id
+                    monthTraining.append(TrainingCellViewModel(identifier: identifierMonth,
+                                                               killometrs: "\(String(format: "%.2f", training.distance)) \(Tx.Timer.kilometr)",
                                                                image: ListImages.Training.circleIcon ?? UIImage(),
                                                                data: "\(training.startTime.formatDate("dd.MM.yyyy")) >",
                                                                title: Tx.Training.run,
@@ -38,8 +40,8 @@ final class ListTrainingManager {
             }
             
             if !monthTraining.isEmpty {
-                trainingModelArray.append(SectionListTrainingModel(identifier: "dateTraining.identifier",
-                                                                   month: "\(dateTraining.formatDate("MMM yyyy").capitalized) г.",
+                trainingModelArray.append(SectionListTrainingModel(identifier: identifierMonth,
+                                                                   month: "\(dateTraining.formatDate("MMM yyyy").capitalized) \(Tx.TimePeriods.year)",
                                                                    countTraining: countTraining,
                                                                    allTime: alltime.toMinutesAndSeconds(),
                                                                    averageTime: (alltime / Double(countTraining)).toMinutesAndSeconds(),
@@ -48,8 +50,9 @@ final class ListTrainingManager {
             monthTraining.removeAll()
             countTraining = 0
             alltime = 0
+            identifierMonth = ""
         }
         
-        return OrderedSet(trainingModelArray.reversed())
+        return OrderedSet(trainingModelArray)
     }
 }
