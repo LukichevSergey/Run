@@ -62,8 +62,8 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
 
     func trainingProgressStepAndKm(data: Dictionary<String,Float>) {
         logger.log("\(#fileID) -> \(#function)")
-        view.setTrainingProgressStep(step: data["step"] ?? 0, stepLabel: "\(String(format: "%.0f", data["step"] ?? 0)) / ??")
-        view.setTrainingProgressKm(km: data["km"] ?? 0, kmLabel: "\(String(format: "%.0f", data["km"] ?? 0)) / ??")
+        view.setTrainingProgressStep(step: data["step"] ?? 0, stepLabel: "\(String(format: "%.0f", data["step"] ?? 0))")
+        view.setTrainingProgressKm(km: data["km"] ?? 0, kmLabel: "\(String(format: "%.0f", data["km"] ?? 0))")
     }
     
     func trainingIsFetchedWithError(error: Error) {
