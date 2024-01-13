@@ -79,7 +79,7 @@ final class ChartsManager {
         let endDay = date.lastDayOfMonth()
         let currentMonth = date.formatDate("M")
         
-        while firstDay < endDay {
+        while firstDay <= endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("d")) ?? 0, y: 0))
             dataForTotalWeek.append(ChartsDataPeriodViewModel.DataPeriod(date: Double(firstDay.formatDate("d")) ?? 0, distance: 0,
                                                  time: 0,
@@ -119,7 +119,7 @@ final class ChartsManager {
         let endDay = date.lastOfWeek()
         let currentMonth = date.formatDate("M")
         
-        while firstDay < endDay {
+        while firstDay <= endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("d")) ?? 0, y: 0))
             dataForTotalWeek.append(ChartsDataPeriodViewModel.DataPeriod(date: Double(firstDay.formatDate("d")) ?? 0, distance: 0,
                                                  time: 0,
