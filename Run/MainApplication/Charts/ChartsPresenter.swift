@@ -32,10 +32,12 @@ final class ChartsPresenter {
 // MARK: Extension - ChartsViewToPresenterProtocol
 extension ChartsPresenter: ChartsViewToPresenterProtocol {
     func tappedXAxis(xAxis: Double) {
+        logger.log("\(#fileID) -> \(#function)")
         interactor.getXAxisFromChatrs(xAxis: xAxis)
     }
     
     func tappedButtonMoverment(segmentIndex: Int, moverment: String) {
+        logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
         interactor.fetchTraining(segmentIndex: segmentIndex, movermentButton: moverment)
     }
@@ -50,17 +52,17 @@ extension ChartsPresenter: ChartsViewToPresenterProtocol {
 // MARK: Extension - ChartsInteractorToPresenterProtocol
 extension ChartsPresenter: ChartsInteractorToPresenterProtocol {
     func dataSingleColumn(data: [ChartsDataPeriodViewModel.DataPeriod]) {
+        logger.log("\(#fileID) -> \(#function)")
         guard let distance = data.first?.distance,
-              let time = data.first?.time,
-              let kkal = data.first?.calories else {
+              let time = data.first?.time else {
             return
         }
         view.setDataInChartsSingleColumn(distance: "\(String(format: "%.2f", distance)) \(Tx.Timer.kilometr)",
-                                         time: time.toHourAndMin(),
-                                         kkal: kkal)
+                                         time: time.toHourAndMin())
     }
     
     func dataChartsIsFetched(data: [ChartsDataPeriodViewModel], hiddenButton: Int) {
+        logger.log("\(#fileID) -> \(#function)")
         guard let dataCharts = data.first?.dataCharts,
               let date = data.first?.date else {
             return
@@ -71,15 +73,11 @@ extension ChartsPresenter: ChartsInteractorToPresenterProtocol {
         guard let dataTime = data.first?.dataTotal.reduce(0, { partialResult, time in
             return partialResult + time.time
         }) else { return }
-        guard let dataKkal = data.first?.dataTotal.reduce(0, { partialResult, kkal in
-            return partialResult + kkal.calories
-        }) else { return }
                 
         view.setDataInCharts(dateWeek: "\(String(describing: date))",
                              dataCharts: dataCharts,
                              distance: "\(String(format: "%.2f", dataDistance)) \(Tx.Timer.kilometr)",
-                             time: dataTime.toHourAndMin(),
-                             kkal: dataKkal, hiddenButton: hiddenButton)
+                             time: dataTime.toHourAndMin(), hiddenButton: hiddenButton)
         
         view.removeActivityIndicator()
     }

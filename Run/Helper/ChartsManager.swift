@@ -16,10 +16,11 @@ final class ChartsManager {
     var agoYear = 0
     
     func searchIndexXAxis(data: [ChartsDataPeriodViewModel.DataPeriod], xAxis: Double) -> [ChartsDataPeriodViewModel.DataPeriod]  {
+        logger.log("\(#fileID) -> \(#function)")
         var dataXAxis = [ChartsDataPeriodViewModel.DataPeriod]()
         data.forEach { index in
             if index.date == xAxis {
-                dataXAxis.append(ChartsDataPeriodViewModel.DataPeriod(date: index.date, distance: index.distance, time: index.time, calories: index.calories))
+                dataXAxis.append(ChartsDataPeriodViewModel.DataPeriod(date: index.date, distance: index.distance, time: index.time))
             }
         }
         
@@ -33,6 +34,7 @@ final class ChartsManager {
     ///   - date: Дата с которой все будет высчитываться
     /// - Returns: Возвращает массив с моделью ChartsDataPeriodViewModel
     func getDataForChartsInYear(data: OrderedSet<Training>, indexPeriod: Int, date: Date) -> [ChartsDataPeriodViewModel] {
+        logger.log("\(#fileID) -> \(#function)")
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
@@ -43,8 +45,7 @@ final class ChartsManager {
         while firstDay < endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("M")) ?? 0 , y: 0))
             dataForTotalWeek.append(ChartsDataPeriodViewModel.DataPeriod(date: Double(firstDay.formatDate("M")) ?? 0, distance: 0,
-                                                 time: 0,
-                                                 calories: 0))
+                                                 time: 0))
             data.forEach { training in
                 if training.startTime.formatDate("M") == "\(firstDay.formatDate("M"))" && training.startTime.formatDate("Y") == "\(currentYear)" {
                     if let existingValue = dataForCharts.firstIndex(where: { $0.x == Double(firstDay.formatDate("M")) }) {
@@ -72,6 +73,7 @@ final class ChartsManager {
     ///   - date: Дата с которой все будет высчитываться
     /// - Returns: Возвращает массив с моделью ChartsDataPeriodViewModel
     func getDataForChartsInMonth(data: OrderedSet<Training>, indexPeriod: Int, date: Date) -> [ChartsDataPeriodViewModel] {
+        logger.log("\(#fileID) -> \(#function)")
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
@@ -82,8 +84,7 @@ final class ChartsManager {
         while firstDay <= endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("d")) ?? 0, y: 0))
             dataForTotalWeek.append(ChartsDataPeriodViewModel.DataPeriod(date: Double(firstDay.formatDate("d")) ?? 0, distance: 0,
-                                                 time: 0,
-                                                 calories: 0))
+                                                 time: 0))
             data.forEach { training in
                 if training.startTime.formatDate("d") == "\(firstDay.formatDate("d"))" && training.startTime.formatDate("M") == "\(currentMonth)" {
    
@@ -112,6 +113,7 @@ final class ChartsManager {
     ///   - date: Дата с которой все будет рассчитываться
     /// - Returns: Возвращает массив с моделью ChartsDataPeriodViewModel
     func getDataForChartsInWeek(data: OrderedSet<Training>, indexPeriod: Int, date: Date) -> [ChartsDataPeriodViewModel] {
+        logger.log("\(#fileID) -> \(#function)")
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
@@ -122,8 +124,7 @@ final class ChartsManager {
         while firstDay <= endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("d")) ?? 0, y: 0))
             dataForTotalWeek.append(ChartsDataPeriodViewModel.DataPeriod(date: Double(firstDay.formatDate("d")) ?? 0, distance: 0,
-                                                 time: 0,
-                                                 calories: 10000))
+                                                 time: 0))
             data.forEach { training in
                 if training.startTime.formatDate("d") == "\(firstDay.formatDate("d"))" && training.startTime.formatDate("M") == "\(currentMonth)" {
                     
@@ -153,6 +154,7 @@ final class ChartsManager {
     ///   - buttonMovement: Кнопка движения на которую кликнули врепед или назад
     /// - Returns: Возвразает дату с которой начнется весь рассчет
     func getPedionAgo(indexPerion: Int, buttonMovement: String) -> Date? {
+        logger.log("\(#fileID) -> \(#function)")
         switch indexPerion {
         case 0:
             if buttonMovement == "back" {
@@ -194,6 +196,7 @@ final class ChartsManager {
     ///   - date: Дата с которой все будет рассчитываться
     /// - Returns: Возвращает цифру для того чтобы понять нужно скрывать кнопку или нет
     func isHiddenButton(data: OrderedSet<Training>, indexPediod: Int, date: Date) -> Int {
+        logger.log("\(#fileID) -> \(#function)")
         let sortDate = data.sorted { $0.startTime < $1.startTime }
         let firstDate = sortDate.first?.startTime
         let lastDate = sortDate.last?.startTime

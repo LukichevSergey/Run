@@ -31,10 +31,12 @@ final class ListTrainingPresenter {
 // MARK: Extension - ListTrainingViewToPresenterProtocol
 extension ListTrainingPresenter: ListTrainingViewToPresenterProtocol {
     func chartsTappedButton() {
+        logger.log("\(#fileID) -> \(#function)")
         router.navigateToChartsViewController()
     }
     
     func detailedTappedCell(_ indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
         let trainingSection = interactor.listTraining[indexPath.section]
         let idTrainingItem = trainingSection.training[indexPath.item]
         router.navigationToDetailedViewController(itemTraining: idTrainingItem)

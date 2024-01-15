@@ -10,8 +10,8 @@ import DGCharts
 
 // MARK: Protocol - ChartsPresenterToViewProtocol (Presenter -> View)
 protocol ChartsPresenterToViewProtocol: ActivityIndicatorProtocol {
-    func setDataInCharts(dateWeek: String, dataCharts: [BarChartDataEntry], distance: String, time: String, kkal: Int, hiddenButton: Int)
-    func setDataInChartsSingleColumn(distance: String, time: String, kkal: Int)
+    func setDataInCharts(dateWeek: String, dataCharts: [BarChartDataEntry], distance: String, time: String, hiddenButton: Int)
+    func setDataInChartsSingleColumn(distance: String, time: String)
 }
 
 // MARK: Protocol - ChartsRouterToViewProtocol (Router -> View)
@@ -159,23 +159,6 @@ final class ChartsViewController: UIViewController {
         return label
     }()
     
-    private let titleAllCalories = {
-        let label = UILabel()
-        label.text = Tx.Charts.Kkal
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansRegular16
-        
-        return label
-    }()
-    
-    private let countAllCalories = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.font = OurFonts.fontPTSansBold24
-        
-        return label
-    }()
-    
     // MARK: - init
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -283,43 +266,35 @@ final class ChartsViewController: UIViewController {
             make.top.equalTo(titleAllTime.snp.bottom).offset(10)
             make.centerX.equalToSuperview().offset(20)
         }
-        
-        view.addSubview(titleAllCalories)
-        titleAllCalories.snp.makeConstraints { make in
-            make.top.equalTo(barChartView.snp.bottom).offset(20)
-            make.trailing.equalToSuperview().inset(20)
-        }
-        
-        view.addSubview(countAllCalories)
-        countAllCalories.snp.makeConstraints { make in
-            make.top.equalTo(titleAllCalories.snp.bottom).offset(10)
-            make.trailing.equalToSuperview().inset(20)
-        }
     }
     
     @objc private func tappedButtonDown() {
+        logger.log("\(#fileID) -> \(#function)")
         forwardPeriodButton.isHidden = false
         presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: "back")
     }
     
     @objc private func tappedButtonUp() {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: "forward")
     }
     
     @objc private func reloadSegmentPeriod() {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: "")
     }
 }
 
 // MARK: Extension - ChartsPresenterToViewProtocol
 extension ChartsViewController: ChartsPresenterToViewProtocol {
-    func setDataInChartsSingleColumn(distance: String, time: String, kkal: Int) {
+    func setDataInChartsSingleColumn(distance: String, time: String) {
+        logger.log("\(#fileID) -> \(#function)")
         countAllDistance.text = distance
         countAllTime.text = time
-        countAllCalories.text = "\(kkal)"
     }
     
-    func setDataInCharts(dateWeek: String, dataCharts: [BarChartDataEntry], distance: String, time: String, kkal: Int, hiddenButton: Int) {
+    func setDataInCharts(dateWeek: String, dataCharts: [BarChartDataEntry], distance: String, time: String, hiddenButton: Int) {
+        logger.log("\(#fileID) -> \(#function)")
         let chartDataSet = BarChartDataSet(entries: dataCharts, label: "")
         chartDataSet.colors = [UIColor.blue]
         chartDataSet.drawValuesEnabled = false
@@ -328,7 +303,6 @@ extension ChartsViewController: ChartsPresenterToViewProtocol {
         
         countAllDistance.text = distance
         countAllTime.text = time
-        countAllCalories.text = "\(kkal)"
         titlePeriod.text = dateWeek
         
         switch hiddenButton {
@@ -362,6 +336,7 @@ extension ChartsViewController: ChartsRouterToViewProtocol {
 
 extension ChartsViewController: ChartViewDelegate {
     func chartValueSelected(_ chartView: ChartViewBase, entry: ChartDataEntry, highlight: Highlight) {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.tappedXAxis(xAxis: entry.x)
     }
 }

@@ -18,6 +18,5 @@ extension ChartsDataPeriodViewModel {
         var date: Double
         var distance: Double
         var time: Double
-        var calories: Int
     }
 }

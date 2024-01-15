@@ -85,6 +85,7 @@ final class ListTrainingViewController: UIViewController {
     }
     
     @objc private func senderTappedButton() {
+        logger.log("\(#fileID) -> \(#function)")
         presenter.chartsTappedButton()
     }
     
