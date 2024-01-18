@@ -21,15 +21,22 @@ extension Double {
         if self.isInfinite || self.isNaN {
             return "0:00"
         }
-        
         let minutes = Int(self / 60)
         let seconds = Int(self.truncatingRemainder(dividingBy: 60))
-        
         if minutes < 0 && seconds < 0 {
             return "0:00"
         } else {
             return String(format: "%d:%02d", minutes, seconds)
         }
+    }
+}
+
+extension Double {
+    func toHourAndMin(format: String = "%d \(Tx.TimePeriods.hour) %02d \(Tx.TimePeriods.minute)") -> String {
+        let hours = Int(self / 3600)
+        let minutes = Int(self / 60)
+        
+        return String(format: format, hours, minutes)
     }
 }
 

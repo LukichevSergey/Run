@@ -35,7 +35,6 @@ final class ProfilePresenter {
 extension ProfilePresenter: ProfileViewToPresenterProtocol {
     func snakersIsSelected(with id: String) {
         logger.log("\(#fileID) -> \(#function)")
-        
         view.showActivityIndicator()
         interactor.selectSnakersWithId(id: id)
     }
@@ -69,7 +68,6 @@ extension ProfilePresenter: ProfileInteractorToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         view.setBalance(balance: interactor.balance?.currentAmount ?? 0)
         view.setSneakers(interactor.sneakers)
-        
         view.removeActivityIndicator()
     }
     
@@ -80,7 +78,6 @@ extension ProfilePresenter: ProfileInteractorToPresenterProtocol {
     
     func newSnakersIsSelected() {
         logger.log("\(#fileID) -> \(#function)")
-        
         view.setSneakers(interactor.sneakers)
         view.removeActivityIndicator()
     }

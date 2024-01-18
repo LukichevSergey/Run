@@ -65,79 +65,11 @@ final class TrainingViewController: UIViewController {
         return label
     }()
     
-    private let lvlLabelStep: UILabel = {
-        let label = UILabel()
-        label.text = "Lvl 1"
-        label.textColor = PaletteApp.black
-        label.layer.borderWidth = 2
-        label.layer.borderColor = PaletteApp.black.cgColor
-        label.layer.cornerRadius = 15
-        label.backgroundColor = PaletteApp.white
-        label.textAlignment = .center
-        label.font = OurFonts.fontPTSansBold16
-        
-        return label
-    }()
-    
-    private let detailLvlLabelStep: UILabel = {
-        let label = UILabel()
-        label.text = "80 Run"
-        label.textColor = PaletteApp.black
-        label.backgroundColor = PaletteApp.white
-        label.textAlignment = .center
-        label.font = OurFonts.fontPTSansBold14
-        
-        return label
-    }()
-    
-    private let willBeChargedST: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.text = Tx.Training.willBeCharged
-        label.font = OurFonts.fontPTSansBold14
-        
-        return label
-    }()
-    
     private let kilometresLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.text = Tx.Training.kilomertes
         label.font = OurFonts.fontPTSansBold20
-        
-        return label
-    }()
-        
-    private let lvlLabelKm: UILabel = {
-        let label = UILabel()
-        label.text = "Lvl 100"
-        label.textColor = PaletteApp.black
-        label.layer.borderWidth = 2
-        label.layer.borderColor = PaletteApp.black.cgColor
-        label.layer.cornerRadius = 15
-        label.backgroundColor = PaletteApp.white
-        label.textAlignment = .center
-        label.font = OurFonts.fontPTSansBold16
-        
-        return label
-    }()
-    
-    private let detailLvlLabelKm: UILabel = {
-        let label = UILabel()
-        label.text = "400 Run"
-        label.textColor = PaletteApp.black
-        label.backgroundColor = PaletteApp.white
-        label.textAlignment = .center
-        label.font = OurFonts.fontPTSansBold14
-        
-        return label
-    }()
-    
-    private let willBeChargedKM: UILabel = {
-        let label = UILabel()
-        label.textColor = PaletteApp.black
-        label.text = Tx.Training.willBeCharged
-        label.font = OurFonts.fontPTSansBold14
         
         return label
     }()
@@ -235,13 +167,6 @@ final class TrainingViewController: UIViewController {
             make.height.equalTo(30)
         }
         
-        view.addSubview(willBeChargedST)
-        willBeChargedST.snp.makeConstraints { make in
-            make.top.equalTo(stepLabel).inset(70)
-            make.leading.equalToSuperview().inset(50)
-            make.height.equalTo(20)
-        }
-        
         view.addSubview(kilometresLabel)
         kilometresLabel.snp.makeConstraints { make in
             make.top.equalTo(allActivityButton).inset(160)
@@ -249,63 +174,25 @@ final class TrainingViewController: UIViewController {
             make.height.equalTo(30)
         }
         
-        view.addSubview(willBeChargedKM)
-        willBeChargedKM.snp.makeConstraints { make in
-            make.top.equalTo(kilometresLabel).inset(70)
-            make.leading.equalToSuperview().inset(50)
-            make.trailing.equalToSuperview()
-            make.height.equalTo(20)
-        }
-        
         view.addSubview(progressBarStep)
         progressBarStep.snp.makeConstraints { make in
-            make.top.equalTo(stepLabel).inset(35)
-            make.leading.equalToSuperview().inset(50)
-        }
-        
-        view.addSubview(lvlLabelStep)
-        lvlLabelStep.snp.makeConstraints { make in
-            make.top.equalTo(stepLabel).inset(35)
-            make.leading.equalTo(progressBarStep.snp.trailing).offset(10)
-            make.trailing.equalToSuperview().inset(40)
-            make.width.equalTo(90)
+            make.top.equalTo(stepLabel).offset(35)
+            make.leading.equalToSuperview().offset(50)
+            make.trailing.equalToSuperview().inset(50)
             make.height.equalTo(30)
-        }
-        
-        view.addSubview(detailLvlLabelStep)
-        detailLvlLabelStep.snp.makeConstraints { make in
-            make.top.equalTo(lvlLabelStep).inset(35)
-            make.width.equalTo(60)
-            make.height.equalTo(20)
-            make.centerX.equalTo(lvlLabelStep)
         }
         
         view.addSubview(progressBarKm)
         progressBarKm.snp.makeConstraints { make in
-            make.top.equalTo(kilometresLabel).inset(35)
-            make.leading.equalToSuperview().inset(50)
-        }
-        
-        view.addSubview(lvlLabelKm)
-        lvlLabelKm.snp.makeConstraints { make in
-            make.top.equalTo(kilometresLabel).inset(35)
-            make.leading.equalTo(progressBarKm.snp.trailing).offset(10)
-            make.trailing.equalToSuperview().inset(40)
-            make.width.equalTo(90)
+            make.top.equalTo(kilometresLabel).offset(35)
+            make.leading.equalToSuperview().offset(50)
+            make.trailing.equalToSuperview().inset(50)
             make.height.equalTo(30)
-        }
-        
-        view.addSubview(detailLvlLabelKm)
-        detailLvlLabelKm.snp.makeConstraints { make in
-            make.top.equalTo(lvlLabelKm).inset(35)
-            make.width.equalTo(60)
-            make.height.equalTo(20)
-            make.centerX.equalTo(lvlLabelKm)
         }
         
         view.addSubview(trainingDataTable)
         trainingDataTable.snp.makeConstraints { make in
-            make.top.equalToSuperview().inset(400)
+            make.top.equalTo(progressBarKm.snp.bottom).offset(30)
             make.bottom.equalToSuperview().inset(100)
             make.horizontalEdges.equalToSuperview().inset(10)
         }

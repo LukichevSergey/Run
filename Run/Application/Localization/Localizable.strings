@@ -51,3 +51,16 @@
 "CircleTableResult.circle" = "Круг";
 "CircleTableResult.distance" = "Дистанция";
 "CircleTableResult.time" = "Время";
+
+// MARK: - Chat
+"Charts.statistics" = "Статистика";
+"Charts.week" = "Неделя";
+"Charts.month" = "Месяц";
+"Charts.year" = "Год";
+"Charts.distance" = "Расстояние";
+"Charts.Kkal" = "Ккал";
+
+// MARK: - TimePeriods
+"TimePeriods.hour" = "ч";
+"TimePeriods.minute" = "мин";
+"TimePeriods.year" = "г.";

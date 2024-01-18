@@ -123,17 +123,26 @@
 		9B65883D2AB1EBF2003102F7 /* HelperValueTempsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */; };
 		9B74A9842B1006B7000934FE /* DetailedInfTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74A9832B1006B7000934FE /* DetailedInfTableViewCell.swift */; };
 		9B74B3602AF51D2F00904A73 /* ListCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B74B35F2AF51D2F00904A73 /* ListCollectionViewCell.swift */; };
+		9B783E452B444AC400E29536 /* ChartsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B783E442B444AC400E29536 /* ChartsPresenter.swift */; };
+		9B783E472B444AD600E29536 /* ChartsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B783E462B444AD600E29536 /* ChartsViewController.swift */; };
+		9B783E492B444AE200E29536 /* ChartsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B783E482B444AE200E29536 /* ChartsInteractor.swift */; };
+		9B783E4B2B444AEB00E29536 /* ChartsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B783E4A2B444AEB00E29536 /* ChartsRouter.swift */; };
+		9B783E4D2B444AFB00E29536 /* ChartsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B783E4C2B444AFB00E29536 /* ChartsConfigurator.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
 		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
+		9B7A519E2B56C01300D77B19 /* ChartDirectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A519D2B56C01300D77B19 /* ChartDirectionEnum.swift */; };
 		9B7A6E0D2AFB3110001CC644 /* ListTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */; };
 		9B7E10E72B0C1392000904F1 /* DetailedTrainingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10E62B0C1392000904F1 /* DetailedTrainingInteractor.swift */; };
 		9B7E10E92B0C139B000904F1 /* DetailedTrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10E82B0C139B000904F1 /* DetailedTrainingRouter.swift */; };
 		9B7E10EB2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EA2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift */; };
 		9B7E10ED2B0C1404000904F1 /* DetailedTrainingPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EC2B0C1404000904F1 /* DetailedTrainingPresenter.swift */; };
 		9B7E10EF2B0C140F000904F1 /* DetailedTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */; };
+		9B8605B92B4AA00C00CF5148 /* ChartsDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8605B82B4AA00C00CF5148 /* ChartsDataViewModel.swift */; };
+		9B8605BB2B4AA43500CF5148 /* ChartsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8605BA2B4AA43500CF5148 /* ChartsManager.swift */; };
 		9B8D90992B1A1D9700885630 /* DetailedTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */; };
 		9B8EFD172B271B8F00AC9DBE /* DetailedTrainingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8EFD162B271B8F00AC9DBE /* DetailedTrainingEnum.swift */; };
 		9B9424E62B25B8AE005A28E3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9424E52B25B8AE005A28E3 /* String+Extension.swift */; };
+		9B94D4A42B44F92A006CDA0B /* DGCharts in Frameworks */ = {isa = PBXBuildFile; productRef = 9B94D4A32B44F92A006CDA0B /* DGCharts */; };
 		9B9AD70B2AF7BAA900464951 /* ListHeaderCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */; };
 		9B9AD70D2AF7BF3800464951 /* SectionListTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderForCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */; };
@@ -251,14 +260,22 @@
 		9B65883C2AB1EBF2003102F7 /* HelperValueTempsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HelperValueTempsModel.swift; sourceTree = "<group>"; };
 		9B74A9832B1006B7000934FE /* DetailedInfTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedInfTableViewCell.swift; sourceTree = "<group>"; };
 		9B74B35F2AF51D2F00904A73 /* ListCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListCollectionViewCell.swift; sourceTree = "<group>"; };
+		9B783E442B444AC400E29536 /* ChartsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsPresenter.swift; sourceTree = "<group>"; };
+		9B783E462B444AD600E29536 /* ChartsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsViewController.swift; sourceTree = "<group>"; };
+		9B783E482B444AE200E29536 /* ChartsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsInteractor.swift; sourceTree = "<group>"; };
+		9B783E4A2B444AEB00E29536 /* ChartsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsRouter.swift; sourceTree = "<group>"; };
+		9B783E4C2B444AFB00E29536 /* ChartsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsConfigurator.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
+		9B7A519D2B56C01300D77B19 /* ChartDirectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDirectionEnum.swift; sourceTree = "<group>"; };
 		9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingManager.swift; sourceTree = "<group>"; };
 		9B7E10E62B0C1392000904F1 /* DetailedTrainingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingInteractor.swift; sourceTree = "<group>"; };
 		9B7E10E82B0C139B000904F1 /* DetailedTrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingRouter.swift; sourceTree = "<group>"; };
 		9B7E10EA2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingConfigurator.swift; sourceTree = "<group>"; };
 		9B7E10EC2B0C1404000904F1 /* DetailedTrainingPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingPresenter.swift; sourceTree = "<group>"; };
 		9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingViewController.swift; sourceTree = "<group>"; };
+		9B8605B82B4AA00C00CF5148 /* ChartsDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsDataViewModel.swift; sourceTree = "<group>"; };
+		9B8605BA2B4AA43500CF5148 /* ChartsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsManager.swift; sourceTree = "<group>"; };
 		9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingManager.swift; sourceTree = "<group>"; };
 		9B8EFD162B271B8F00AC9DBE /* DetailedTrainingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingEnum.swift; sourceTree = "<group>"; };
 		9B9424E52B25B8AE005A28E3 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
@@ -272,6 +289,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9B94D4A42B44F92A006CDA0B /* DGCharts in Frameworks */,
 				87A8DEE52AA3061E00F49A62 /* FirebaseDatabase in Frameworks */,
 				87A8DEE72AA3061E00F49A62 /* FirebaseFirestore in Frameworks */,
 				873BE8582AC2AC24006DC498 /* Kingfisher in Frameworks */,
@@ -325,6 +343,7 @@
 		8705D88B2A9786B7002BBDC2 /* MainApplication */ = {
 			isa = PBXGroup;
 			children = (
+				9B783E432B444A3400E29536 /* Charts */,
 				871815952AA76BEC007CD141 /* EditProfile */,
 				876A77FB2A9CC79000E64269 /* Auth */,
 				87EE80A82A99C92A00EF4ADD /* Training */,
@@ -391,6 +410,7 @@
 				9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */,
 				9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */,
 				9B56AE9A2B2F262300536CF2 /* InformationTrainingManager.swift */,
+				9B8605BA2B4AA43500CF5148 /* ChartsManager.swift */,
 			);
 			path = Helper;
 			sourceTree = "<group>";
@@ -695,6 +715,19 @@
 			path = ListTraining;
 			sourceTree = "<group>";
 		};
+		9B783E432B444A3400E29536 /* Charts */ = {
+			isa = PBXGroup;
+			children = (
+				9B8605B72B4A9F6F00CF5148 /* Model */,
+				9B783E442B444AC400E29536 /* ChartsPresenter.swift */,
+				9B783E4A2B444AEB00E29536 /* ChartsRouter.swift */,
+				9B783E462B444AD600E29536 /* ChartsViewController.swift */,
+				9B783E482B444AE200E29536 /* ChartsInteractor.swift */,
+				9B783E4C2B444AFB00E29536 /* ChartsConfigurator.swift */,
+			);
+			path = Charts;
+			sourceTree = "<group>";
+		};
 		9B7E10E52B0C12E9000904F1 /* DetailedTraining */ = {
 			isa = PBXGroup;
 			children = (
@@ -728,6 +761,15 @@
 				9B41055C2B18B3EC00637F62 /* DetailedPulseViewModel.swift */,
 				9B41055E2B18B46E00637F62 /* DetailedMapViewModel.swift */,
 				9B8EFD162B271B8F00AC9DBE /* DetailedTrainingEnum.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		9B8605B72B4A9F6F00CF5148 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9B8605B82B4AA00C00CF5148 /* ChartsDataViewModel.swift */,
+				9B7A519D2B56C01300D77B19 /* ChartDirectionEnum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -784,6 +826,7 @@
 				87A8DEE82AA3061E00F49A62 /* FirebaseStorage */,
 				87DFA1DF2AB346C900B20B40 /* OrderedCollections */,
 				873BE8572AC2AC24006DC498 /* Kingfisher */,
+				9B94D4A32B44F92A006CDA0B /* DGCharts */,
 			);
 			productName = Run;
 			productReference = 8705D8742A978427002BBDC2 /* Run.app */;
@@ -797,7 +840,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1430;
-				LastUpgradeCheck = 1500;
+				LastUpgradeCheck = 1510;
 				TargetAttributes = {
 					8705D8732A978427002BBDC2 = {
 						CreatedOnToolsVersion = 14.3.1;
@@ -818,6 +861,7 @@
 				87A8DEE12AA3061E00F49A62 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				87DFA1DE2AB346C900B20B40 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				873BE8562AC2AC24006DC498 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+				9B94D4A22B44F92A006CDA0B /* XCRemoteSwiftPackageReference "Charts" */,
 			);
 			productRefGroup = 8705D8752A978427002BBDC2 /* Products */;
 			projectDirPath = "";
@@ -866,9 +910,11 @@
 				8705D8A72A978A51002BBDC2 /* ProfileRouter.swift in Sources */,
 				9B41055F2B18B46E00637F62 /* DetailedMapViewModel.swift in Sources */,
 				878EBC142A98F212001219F9 /* TimerStatsViewModel.swift in Sources */,
+				9B783E4D2B444AFB00E29536 /* ChartsConfigurator.swift in Sources */,
 				87A8DEEB2AA3087800F49A62 /* DatabaseService.swift in Sources */,
 				9B2CCFF62AE87AA8007F317A /* Date+Extensions.swift in Sources */,
 				8775B9652AA0C20100EEA6F9 /* GlobalData.swift in Sources */,
+				9B783E472B444AD600E29536 /* ChartsViewController.swift in Sources */,
 				9B7A6E0D2AFB3110001CC644 /* ListTrainingManager.swift in Sources */,
 				87EE80B22A99C93800EF4ADD /* TrainingConfigurator.swift in Sources */,
 				871815942AA76418007CD141 /* AuthTextField.swift in Sources */,
@@ -887,6 +933,7 @@
 				87DFA1DD2AB3431100B20B40 /* ActivityIndicatorProtocol.swift in Sources */,
 				878EBC162A98F24F001219F9 /* ConfigurableViewProtocol.swift in Sources */,
 				8705D8782A978427002BBDC2 /* AppDelegate.swift in Sources */,
+				9B783E4B2B444AEB00E29536 /* ChartsRouter.swift in Sources */,
 				9B9424E62B25B8AE005A28E3 /* String+Extension.swift in Sources */,
 				87C46D2E2A9E37DF0094A8F0 /* LoginConfigurator.swift in Sources */,
 				87C46D372A9E38530094A8F0 /* RegistrationViewController.swift in Sources */,
@@ -912,18 +959,22 @@
 				8705D89F2A978A38002BBDC2 /* StopwatchConfigurator.swift in Sources */,
 				878EBC012A98D538001219F9 /*  UIColor+HEX.swift in Sources */,
 				873BE84B2AC2A724006DC498 /* ActivityIndicatorView.swift in Sources */,
+				9B8605BB2B4AA43500CF5148 /* ChartsManager.swift in Sources */,
 				9B8EFD172B271B8F00AC9DBE /* DetailedTrainingEnum.swift in Sources */,
+				9B783E492B444AE200E29536 /* ChartsInteractor.swift in Sources */,
 				9B7E10EB2B0C13BB000904F1 /* DetailedTrainingConfigurator.swift in Sources */,
 				873BE8502AC2AADE006DC498 /* Int+CGFloat.swift in Sources */,
 				875896932AA4CDC1002027FA /* ProfileViewModel.swift in Sources */,
 				9B5AC36E2AEFDCFB009130C0 /* ListTrainingRouter.swift in Sources */,
 				8705D89D2A978A38002BBDC2 /* StopwatchViewController.swift in Sources */,
+				9B8605B92B4AA00C00CF5148 /* ChartsDataViewModel.swift in Sources */,
 				873BE85F2AC2ACBD006DC498 /* UIImage+RoundedCorners.swift in Sources */,
 				9B41055B2B18B35300637F62 /* DetailedEveryKilometrViewModel.swift in Sources */,
 				9B41055D2B18B3EC00637F62 /* DetailedPulseViewModel.swift in Sources */,
 				8718159C2AA76C0C007CD141 /* EditProfileRouter.swift in Sources */,
 				878EBC042A98D7D2001219F9 /* OurFonts.swift in Sources */,
 				9B2CCFFE2AE87C4A007F317A /* TrainingCellViewModel.swift in Sources */,
+				9B783E452B444AC400E29536 /* ChartsPresenter.swift in Sources */,
 				87B18ACB2AC1C1B50069CA69 /* DictionaryConvertible.swift in Sources */,
 				9B4105592B18B2F300637F62 /* DetailedResultViewModel.swift in Sources */,
 				87EE80A72A99C90B00EF4ADD /* TrainingManager.swift in Sources */,
@@ -959,6 +1010,7 @@
 				9B4105612B18BC5200637F62 /* DetailedResultTableViewCell.swift in Sources */,
 				9B2CCFFC2AE87BF4007F317A /* SectionTrainingModel.swift in Sources */,
 				8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */,
+				9B7A519E2B56C01300D77B19 /* ChartDirectionEnum.swift in Sources */,
 				87C46D2A2A9E37DF0094A8F0 /* LoginPresenter.swift in Sources */,
 				8718159B2AA76C0C007CD141 /* EditProfilePresenter.swift in Sources */,
 				873BE84D2AC2AA5F006DC498 /* InfiniteScrollingBehaviour.swift in Sources */,
@@ -995,6 +1047,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1056,6 +1109,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -1227,6 +1281,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9B94D4A22B44F92A006CDA0B /* XCRemoteSwiftPackageReference "Charts" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielgindi/Charts.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -1264,6 +1326,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 87DFA1DE2AB346C900B20B40 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		9B94D4A32B44F92A006CDA0B /* DGCharts */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B94D4A22B44F92A006CDA0B /* XCRemoteSwiftPackageReference "Charts" */;
+			productName = DGCharts;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

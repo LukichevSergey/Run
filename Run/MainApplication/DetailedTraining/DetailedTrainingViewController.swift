@@ -160,7 +160,6 @@ extension DetailedTrainingViewController: DetailedTrainingRouterToViewProtocol {
 }
 
 extension DetailedTrainingViewController: UITableViewDelegate {
-
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
         logger.log("\(#fileID) -> \(#function)")
         cell.backgroundColor = .clear
