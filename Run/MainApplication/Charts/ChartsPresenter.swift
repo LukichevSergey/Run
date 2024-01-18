@@ -11,12 +11,12 @@ import OrderedCollections
 // MARK: Protocol - ChartsViewToPresenterProtocol (View -> Presenter)
 protocol ChartsViewToPresenterProtocol: AnyObject {
     func viewDidLoad()
-    func tappedButtonMoverment(segmentIndex: Int, moverment: String)
+    func tappedButtonMoverment(segmentIndex: Int, moverment: MovementDirection)
     func tappedXAxis(xAxis: Double)}
 
 // MARK: Protocol - ChartsInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol ChartsInteractorToPresenterProtocol: AnyObject {
-    func dataChartsIsFetched(data: [ChartsDataPeriodViewModel], hiddenButton: Int)
+    func dataChartsIsFetched(data: [ChartsDataPeriodViewModel], hiddenButton: IsHiddenButton)
     func dataSingleColumn(data: [ChartsDataPeriodViewModel.DataPeriod])
     func trainingIsFetchedWithError(error: Error)
 }
@@ -36,7 +36,7 @@ extension ChartsPresenter: ChartsViewToPresenterProtocol {
         interactor.getXAxisFromChatrs(xAxis: xAxis)
     }
     
-    func tappedButtonMoverment(segmentIndex: Int, moverment: String) {
+    func tappedButtonMoverment(segmentIndex: Int, moverment: MovementDirection) {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
         interactor.fetchTraining(segmentIndex: segmentIndex, movermentButton: moverment)
@@ -45,7 +45,7 @@ extension ChartsPresenter: ChartsViewToPresenterProtocol {
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
-        interactor.fetchTraining(segmentIndex: 0, movermentButton: "")
+        interactor.fetchTraining(segmentIndex: 0, movermentButton: .empty)
     }
 }
 
@@ -61,7 +61,7 @@ extension ChartsPresenter: ChartsInteractorToPresenterProtocol {
                                          time: time.toHourAndMin())
     }
     
-    func dataChartsIsFetched(data: [ChartsDataPeriodViewModel], hiddenButton: Int) {
+    func dataChartsIsFetched(data: [ChartsDataPeriodViewModel], hiddenButton: IsHiddenButton) {
         logger.log("\(#fileID) -> \(#function)")
         guard let dataCharts = data.first?.dataCharts,
               let date = data.first?.date else {

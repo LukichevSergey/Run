@@ -10,7 +10,7 @@ import DGCharts
 
 // MARK: Protocol - ChartsPresenterToViewProtocol (Presenter -> View)
 protocol ChartsPresenterToViewProtocol: ActivityIndicatorProtocol {
-    func setDataInCharts(dateWeek: String, dataCharts: [BarChartDataEntry], distance: String, time: String, hiddenButton: Int)
+    func setDataInCharts(dateWeek: String, dataCharts: [BarChartDataEntry], distance: String, time: String, hiddenButton: IsHiddenButton)
     func setDataInChartsSingleColumn(distance: String, time: String)
 }
 
@@ -206,7 +206,7 @@ final class ChartsViewController: UIViewController {
         backPeriodButton.snp.makeConstraints { make in
             make.top.equalTo(selectPeriod.snp.bottom).offset(20)
             make.leading.equalToSuperview().offset(10)
-            make.width.height.equalTo(50)
+            make.size.equalTo(50)
         }
         
         view.addSubview(titlePeriod)
@@ -220,7 +220,7 @@ final class ChartsViewController: UIViewController {
         forwardPeriodButton.snp.makeConstraints { make in
             make.top.equalTo(selectPeriod.snp.bottom).offset(20)
             make.trailing.equalToSuperview().inset(10)
-            make.width.height.equalTo(50)
+            make.size.equalTo(50)
         }
         
         view.addSubview(titleStep)
@@ -271,17 +271,17 @@ final class ChartsViewController: UIViewController {
     @objc private func tappedButtonDown() {
         logger.log("\(#fileID) -> \(#function)")
         forwardPeriodButton.isHidden = false
-        presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: "back")
+        presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: .back)
     }
     
     @objc private func tappedButtonUp() {
         logger.log("\(#fileID) -> \(#function)")
-        presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: "forward")
+        presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: .forward)
     }
     
     @objc private func reloadSegmentPeriod() {
         logger.log("\(#fileID) -> \(#function)")
-        presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: "")
+        presenter.tappedButtonMoverment(segmentIndex: selectPeriod.selectedSegmentIndex, moverment: .empty)
     }
 }
 
@@ -293,7 +293,7 @@ extension ChartsViewController: ChartsPresenterToViewProtocol {
         countAllTime.text = time
     }
     
-    func setDataInCharts(dateWeek: String, dataCharts: [BarChartDataEntry], distance: String, time: String, hiddenButton: Int) {
+    func setDataInCharts(dateWeek: String, dataCharts: [BarChartDataEntry], distance: String, time: String, hiddenButton: IsHiddenButton) {
         logger.log("\(#fileID) -> \(#function)")
         let chartDataSet = BarChartDataSet(entries: dataCharts, label: "")
         chartDataSet.colors = [UIColor.blue]
@@ -306,17 +306,15 @@ extension ChartsViewController: ChartsPresenterToViewProtocol {
         titlePeriod.text = dateWeek
         
         switch hiddenButton {
-        case 0:
+        case .isHiddenButtonBack:
             forwardPeriodButton.isHidden = false
             backPeriodButton.isHidden = true
-        case 1:
+        case .isHiddenButtonForward:
             forwardPeriodButton.isHidden = true
             backPeriodButton.isHidden = false
-        case 2:
+        default:
             forwardPeriodButton.isHidden = false
             backPeriodButton.isHidden = false
-        default:
-            break
         }
     }
 }

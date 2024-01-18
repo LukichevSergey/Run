@@ -130,6 +130,7 @@
 		9B783E4D2B444AFB00E29536 /* ChartsConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B783E4C2B444AFB00E29536 /* ChartsConfigurator.swift */; };
 		9B79BDDE2AA4397100BFA5BC /* CircleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */; };
 		9B79BDE02AA4443A00BFA5BC /* CircleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */; };
+		9B7A519E2B56C01300D77B19 /* ChartDirectionEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A519D2B56C01300D77B19 /* ChartDirectionEnum.swift */; };
 		9B7A6E0D2AFB3110001CC644 /* ListTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */; };
 		9B7E10E72B0C1392000904F1 /* DetailedTrainingInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10E62B0C1392000904F1 /* DetailedTrainingInteractor.swift */; };
 		9B7E10E92B0C139B000904F1 /* DetailedTrainingRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10E82B0C139B000904F1 /* DetailedTrainingRouter.swift */; };
@@ -266,6 +267,7 @@
 		9B783E4C2B444AFB00E29536 /* ChartsConfigurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsConfigurator.swift; sourceTree = "<group>"; };
 		9B79BDDD2AA4397100BFA5BC /* CircleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleViewModel.swift; sourceTree = "<group>"; };
 		9B79BDDF2AA4443A00BFA5BC /* CircleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CircleTableViewCell.swift; sourceTree = "<group>"; };
+		9B7A519D2B56C01300D77B19 /* ChartDirectionEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartDirectionEnum.swift; sourceTree = "<group>"; };
 		9B7A6E0C2AFB3110001CC644 /* ListTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListTrainingManager.swift; sourceTree = "<group>"; };
 		9B7E10E62B0C1392000904F1 /* DetailedTrainingInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingInteractor.swift; sourceTree = "<group>"; };
 		9B7E10E82B0C139B000904F1 /* DetailedTrainingRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingRouter.swift; sourceTree = "<group>"; };
@@ -767,6 +769,7 @@
 			isa = PBXGroup;
 			children = (
 				9B8605B82B4AA00C00CF5148 /* ChartsDataViewModel.swift */,
+				9B7A519D2B56C01300D77B19 /* ChartDirectionEnum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1007,6 +1010,7 @@
 				9B4105612B18BC5200637F62 /* DetailedResultTableViewCell.swift in Sources */,
 				9B2CCFFC2AE87BF4007F317A /* SectionTrainingModel.swift in Sources */,
 				8705D89C2A978A38002BBDC2 /* StopwatchRouter.swift in Sources */,
+				9B7A519E2B56C01300D77B19 /* ChartDirectionEnum.swift in Sources */,
 				87C46D2A2A9E37DF0094A8F0 /* LoginPresenter.swift in Sources */,
 				8718159B2AA76C0C007CD141 /* EditProfilePresenter.swift in Sources */,
 				873BE84D2AC2AA5F006DC498 /* InfiniteScrollingBehaviour.swift in Sources */,

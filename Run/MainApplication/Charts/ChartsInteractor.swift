@@ -10,7 +10,7 @@ import DGCharts
 
 // MARK: Protocol - ChartsPresenterToInteractorProtocol (Presenter -> Interactor)
 protocol ChartsPresenterToInteractorProtocol: AnyObject {
-    func fetchTraining(segmentIndex: Int, movermentButton: String)
+    func fetchTraining(segmentIndex: Int, movermentButton: MovementDirection)
     func getXAxisFromChatrs(xAxis: Double)
 }
 
@@ -31,12 +31,13 @@ final class ChartsInteractor {
 // MARK: Extension - ChartsPresenterToInteractorProtocol
 extension ChartsInteractor: ChartsPresenterToInteractorProtocol {
     func getXAxisFromChatrs(xAxis: Double) {
+        logger.log("\(#fileID) -> \(#function)")
         let searchxAxis = chartManager.searchIndexXAxis(data: _dataChartTotal, xAxis: xAxis)
         presenter.dataSingleColumn(data: searchxAxis)
     }
     
     @MainActor
-    func fetchTraining(segmentIndex: Int, movermentButton: String) {
+    func fetchTraining(segmentIndex: Int, movermentButton: MovementDirection) {
         logger.log("\(#fileID) -> \(#function)")
         Task {
             do {
@@ -45,23 +46,22 @@ extension ChartsInteractor: ChartsPresenterToInteractorProtocol {
                 _dataChartTotal.removeAll()
                 guard let saveDateAndClick = chartManager.getPedionAgo(indexPerion: segmentIndex, buttonMovement: movermentButton) else { return }
                 let isHiddenMovermentForwardAndBack = chartManager.isHiddenButton(data: trainings, indexPediod: segmentIndex, date: saveDateAndClick)
+                var dataChartsInPeriod: [ChartsDataPeriodViewModel]?
+                
                 switch segmentIndex {
                 case 0:
-                    let dataChartsInPeriod = chartManager.getDataForChartsInWeek(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
-                    _dataChartTotal = dataChartsInPeriod.first?.dataTotal ?? []
-                    presenter.dataChartsIsFetched(data: dataChartsInPeriod, hiddenButton: isHiddenMovermentForwardAndBack)
+                    dataChartsInPeriod = chartManager.getDataForChartsInWeek(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
                 case 1:
-                    let dataChartsInPeriod = chartManager.getDataForChartsInMonth(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
-                    _dataChartTotal = dataChartsInPeriod.first?.dataTotal ?? []
-                    presenter.dataChartsIsFetched(data: dataChartsInPeriod, hiddenButton: isHiddenMovermentForwardAndBack)
+                    dataChartsInPeriod = chartManager.getDataForChartsInMonth(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
                 case 2:
-                    let dataChartsInPeriod = chartManager.getDataForChartsInYear(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
-                    _dataChartTotal = dataChartsInPeriod.first?.dataTotal ?? []
-                    presenter.dataChartsIsFetched(data: dataChartsInPeriod, hiddenButton: isHiddenMovermentForwardAndBack)
+                    dataChartsInPeriod = chartManager.getDataForChartsInYear(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
                 default:
                     break
                 }
-                
+                if let dataChartsInPeriod = dataChartsInPeriod {
+                    presenter.dataChartsIsFetched(data: dataChartsInPeriod, hiddenButton: isHiddenMovermentForwardAndBack)
+                    _dataChartTotal = dataChartsInPeriod.first?.dataTotal ?? []
+                }
             } catch {
                 presenter.trainingIsFetchedWithError(error: error)
             }
