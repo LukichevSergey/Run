@@ -153,72 +153,72 @@ final class ChartsManager {
     ///   - indexPerion: индекс периода в сегмент контроле
     ///   - buttonMovement: Кнопка движения на которую кликнули врепед или назад
     /// - Returns: Возвразает дату с которой начнется весь рассчет
-    func getPedionAgo(indexPerion: Int, buttonMovement: MovementDirection) -> Date? {
+    func getPeriodAgo(indexPeriod: Int, buttonMovement: MovementDirection) -> Date? {
         logger.log("\(#fileID) -> \(#function)")
-        switch indexPerion {
-        case 0:
-            agoWeek += buttonMovement == .back ? 7 : 0
-            agoWeek += buttonMovement == .forward ? -7 : 0
-            let targetedWeekDate = Calendar.current.date(byAdding: .day, value: -agoWeek, to: Date())
-
-            return targetedWeekDate
-        case 1:
-            agoMonth += buttonMovement == .back ? 1 : 0
-            agoMonth += buttonMovement == .forward ? -1 : 0
-            let targetedMonth = Calendar.current.date(byAdding: .month, value: -agoMonth, to: Date())
-
-            return targetedMonth
-        case 2:
-            agoYear += buttonMovement == .back ? 1 : 0
-            agoYear += buttonMovement == .forward ? -1 : 0
-            let targetedYear = Calendar.current.date(byAdding: .year, value: -agoYear, to: Date())
-
-            return targetedYear
-        default:
-            
-            return Date()
+        if let period = PeriodofTime(rawValue: indexPeriod) {
+            switch period {
+            case .week:
+                agoWeek += buttonMovement == .back ? 7 : 0
+                agoWeek += buttonMovement == .forward ? -7 : 0
+                let targetedWeekDate = Calendar.current.date(byAdding: .day, value: -agoWeek, to: Date())
+                
+                return targetedWeekDate
+            case .month:
+                agoMonth += buttonMovement == .back ? 1 : 0
+                agoMonth += buttonMovement == .forward ? -1 : 0
+                let targetedMonth = Calendar.current.date(byAdding: .month, value: -agoMonth, to: Date())
+                
+                return targetedMonth
+            case .year:
+                agoYear += buttonMovement == .back ? 1 : 0
+                agoYear += buttonMovement == .forward ? -1 : 0
+                let targetedYear = Calendar.current.date(byAdding: .year, value: -agoYear, to: Date())
+                
+                return targetedYear
+            }
         }
+        
+        return Date()
     }
     
     /// Метод определяет когда было достигнуто начало или конец даты чтобы скрыть кнопки
     /// - Parameters:
     ///   - data: Данные с тренировками
-    ///   - indexPediod:  индекс периода в сегмент контроле
+    ///   - indexPeriod:  индекс периода в сегмент контроле
     ///   - date: Дата с которой все будет рассчитываться
     /// - Returns: Возвращает цифру для того чтобы понять нужно скрывать кнопку или нет
-    func isHiddenButton(data: OrderedSet<Training>, indexPediod: Int, date: Date) -> IsHiddenButton {
+    func isHiddenButton(data: OrderedSet<Training>, indexPeriod: Int, date: Date) -> IsHiddenButton {
         logger.log("\(#fileID) -> \(#function)")
         let sortDate = data.sorted { $0.startTime < $1.startTime }
         let firstDate = sortDate.first?.startTime
         let lastDate = sortDate.last?.startTime
-        
-        switch indexPediod {
-        case 0:
-            if firstDate?.firstOfWeek() == date.firstOfWeek() {
-                
-                return .isHiddenButtonBack
-            } else if lastDate?.firstOfWeek() == date.firstOfWeek() {
-                
-                return .isHiddenButtonForward
+        if let period = PeriodofTime(rawValue: indexPeriod) {
+            switch period {
+            case .week:
+                if firstDate?.firstOfWeek() == date.firstOfWeek() {
+                    
+                    return .isHiddenButtonBack
+                } else if lastDate?.firstOfWeek() == date.firstOfWeek() {
+                    
+                    return .isHiddenButtonForward
+                }
+            case .month:
+                if firstDate?.firstDayOfMonth() == date.firstDayOfMonth() {
+                    
+                    return .isHiddenButtonBack
+                } else if lastDate?.firstDayOfMonth() == date.firstDayOfMonth() {
+                    
+                    return .isHiddenButtonForward
+                }
+            case .year:
+                if firstDate?.firstMonthOfYear() == date.firstMonthOfYear() {
+                    
+                    return .isHiddenButtonBack
+                } else if lastDate?.firstMonthOfYear() == date.firstMonthOfYear() {
+                    
+                    return .isHiddenButtonForward
+                }
             }
-        case 1:
-            if firstDate?.firstDayOfMonth() == date.firstDayOfMonth() {
-                
-                return .isHiddenButtonBack
-            } else if lastDate?.firstDayOfMonth() == date.firstDayOfMonth() {
-                
-                return .isHiddenButtonForward
-            }
-        case 2:
-            if firstDate?.firstMonthOfYear() == date.firstMonthOfYear() {
-
-                return .isHiddenButtonBack
-            } else if lastDate?.firstMonthOfYear() == date.firstMonthOfYear() {
-
-                return .isHiddenButtonForward
-            }
-        default:
-            break
         }
         
         return .notHiddenButton

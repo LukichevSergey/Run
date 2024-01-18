@@ -14,7 +14,13 @@ enum MovementDirection {
 }
 
 enum IsHiddenButton: String {
-    case isHiddenButtonBack = "isHiddenButtonBack"
-    case isHiddenButtonForward = "isHiddenButtonForward"
-    case notHiddenButton = "notHiddenButton"
+    case isHiddenButtonBack
+    case isHiddenButtonForward
+    case notHiddenButton
+}
+
+enum PeriodofTime: Int {
+    case week
+    case month
+    case year
 }

@@ -44,8 +44,8 @@ extension ChartsInteractor: ChartsPresenterToInteractorProtocol {
                 let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
                 _trainings = trainings
                 _dataChartTotal.removeAll()
-                guard let saveDateAndClick = chartManager.getPedionAgo(indexPerion: segmentIndex, buttonMovement: movermentButton) else { return }
-                let isHiddenMovermentForwardAndBack = chartManager.isHiddenButton(data: trainings, indexPediod: segmentIndex, date: saveDateAndClick)
+                guard let saveDateAndClick = chartManager.getPeriodAgo(indexPeriod: segmentIndex, buttonMovement: movermentButton) else { return }
+                let isHiddenMovermentForwardAndBack = chartManager.isHiddenButton(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
                 var dataChartsInPeriod: [ChartsDataPeriodViewModel]?
                 
                 switch segmentIndex {
