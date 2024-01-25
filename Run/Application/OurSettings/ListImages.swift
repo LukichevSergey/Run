@@ -13,7 +13,6 @@ enum ListImages {
         static let chevronLeft = UIImage(systemName: "chevron.left")
         static let defaultSneakers = UIImage(named: "defaultSneakers")
     }
-    
     enum Training {
         static let circleIcon = UIImage(named: "circle")
     }

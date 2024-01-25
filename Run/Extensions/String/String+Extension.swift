@@ -12,7 +12,6 @@ extension String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd.MM.yyyy"
         guard let date = dateFormatter.date(from: self) else { return Date() }
-        
         return date
     }
 }

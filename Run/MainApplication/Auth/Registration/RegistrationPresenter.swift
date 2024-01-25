@@ -37,23 +37,19 @@ extension RegistrationPresenter: RegistrationViewToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         interactor.setUsername(to: username)
     }
-    
     func emailIsChanged(to email: String) {
         logger.log("\(#fileID) -> \(#function)")
         interactor.setEmail(to: email)
     }
-    
     func passwordIsChanged(to password: String) {
         logger.log("\(#fileID) -> \(#function)")
         interactor.setPassword(to: password)
     }
-    
     func authButtonTapped() {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
         interactor.signUp()
     }
-    
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
     }
@@ -66,7 +62,6 @@ extension RegistrationPresenter: RegistrationInteractorToPresenterProtocol {
         view.removeActivityIndicator()
         view.showErrorAlert(with: error.localizedDescription)
     }
-    
     func userIsSingUp() {
         logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()

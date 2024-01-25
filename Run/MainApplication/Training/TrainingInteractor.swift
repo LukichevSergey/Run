@@ -22,7 +22,6 @@ final class TrainingInteractor {
     private var _trainings = OrderedSet<Training>()
     var managerProgress = ProgressTrainingManager()
     private let trainingInformationManager = InformationTrainingManager()
-    
     init() {
         dataBase = DatabaseService()
     }
@@ -35,7 +34,6 @@ extension TrainingInteractor: TrainingPresenterToInteractorProtocol {
 
         return listSortedTraining
     }
-    
     @MainActor
     func fetchTrainings() {
         logger.log("\(#fileID) -> \(#function)")

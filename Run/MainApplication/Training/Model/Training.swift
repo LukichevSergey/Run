@@ -8,20 +8,16 @@
 import CoreLocation
 
 final class Training: Hashable, DictionaryConvertible {
-    
     static func == (lhs: Training, rhs: Training) -> Bool {
         return lhs.id == rhs.id && lhs.userId == rhs.userId
     }
-    
     func hash(into hasher: inout Hasher) {
         hasher.combine(id)
         hasher.combine(userId)
     }
-    
     enum TrainingStatus {
         case start, pause, stop
     }
-    
     let id: String
     let userId: String
     var startTime: Date = Date()
@@ -34,12 +30,10 @@ final class Training: Hashable, DictionaryConvertible {
     var temp: Double = 0.0
     var averageTemp: Double = 0.0
     var everyTimeKilometrs = [String]()
-    
     init(id: String = UUID().uuidString, userId: String) {
         self.id = id
         self.userId = userId
     }
-    
     init?(from dictionary: [String: Any]) {
         guard let id = dictionary["id"] as? String,
               let startTime = dictionary["startTime"] as? TimeInterval,
@@ -55,7 +49,6 @@ final class Training: Hashable, DictionaryConvertible {
               let longitude = coordinatesCity["longitude"] else {
             return nil
         }
-        
         self.id = id
         self.startTime = Date(timeIntervalSince1970: startTime)
         self.finishTime = Date(timeIntervalSince1970: finishTime)
@@ -67,9 +60,8 @@ final class Training: Hashable, DictionaryConvertible {
         self.everyTimeKilometrs = everyTimeKilometrs
         self.coordinatesCity = CityCoordinates(latitude: latitude, longitude: longitude)
     }
-    
     var toDict: [String: Any] {
-        var dict:[String: Any] = [:]
+        var dict: [String: Any] = [:]
         dict["id"] = id
         dict["startTime"] = startTime.timeIntervalSince1970
         dict["finishTime"] = finishTime.timeIntervalSince1970

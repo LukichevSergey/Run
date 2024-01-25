@@ -14,7 +14,6 @@ final class ChartsConfigurator {
         let presenter = ChartsPresenter()
         let router = ChartsRouter()
         let interactor = ChartsInteractor()
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -22,9 +21,7 @@ final class ChartsConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }

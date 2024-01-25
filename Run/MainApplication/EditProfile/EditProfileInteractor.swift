@@ -11,7 +11,6 @@ import Foundation
 // MARK: Protocol - EditProfilePresenterToInteractorProtocol (Presenter -> Interactor)
 protocol EditProfilePresenterToInteractorProtocol: AnyObject {
     var profile: AppUser { get }
-    
     func setUserName(on name: String)
     func saveProfile()
 }
@@ -20,14 +19,12 @@ final class EditProfileInteractor {
 
     // MARK: Properties
     weak var presenter: EditProfileInteractorToPresenterProtocol!
-    
     private let dataBase: EditProfileToDatabaseServiceProtocol
     private let _profile: AppUser
 
     init(with profile: AppUser) {
         logger.log("\(#fileID) -> \(#function)")
         _profile = profile
-        
         dataBase = DatabaseService()
     }
 }
@@ -38,12 +35,10 @@ extension EditProfileInteractor: EditProfilePresenterToInteractorProtocol {
         logger.log("\(#fileID) -> \(#function)")
         return _profile
     }
-    
     func setUserName(on name: String) {
         logger.log("\(#fileID) -> \(#function)")
         _profile.setName(on: name)
     }
-    
     @MainActor
     func saveProfile() {
         logger.log("\(#fileID) -> \(#function)")

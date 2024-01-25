@@ -16,7 +16,6 @@ protocol ProfilePresenterToInteractorProtocol: AnyObject {
     var balance: Balance? { get }
     var sneakers: OrderedSet<Sneakers> { get }
     var dataSource: ProfileViewModel { get }
-    
     func fetchUserData()
     func subscribeOnUserChanged()
     func signOut()
@@ -24,10 +23,8 @@ protocol ProfilePresenterToInteractorProtocol: AnyObject {
 }
 
 final class ProfileInteractor {
-    
     // MARK: Properties
     weak var presenter: ProfileInteractorToPresenterProtocol!
-    
     private let dataBase: ProfileToDatabaseServiceProtocol
     private let _dataSource: [ProfileTableViewCellViewModel.CellType]
     private var _user: AppUser
@@ -49,26 +46,21 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
         logger.log("\(#fileID) -> \(#function)")
         return _user
     }
-    
     var balance: Balance? {
         logger.log("\(#fileID) -> \(#function)")
         return _balance
     }
-    
     var dataSource: ProfileViewModel {
         logger.log("\(#fileID) -> \(#function)")
         return .init(cells: _dataSource.map {.init(type: $0)})
     }
-    
     var sneakers: OrderedSet<Sneakers> {
         logger.log("\(#fileID) -> \(#function)")
         return _sneakers ?? []
     }
-    
     @MainActor
     func fetchUserData() {
         logger.log("\(#fileID) -> \(#function)")
-        
         Task {
             do {
                 async let balanceTask = dataBase.getBalance(for: _user.getId())
@@ -77,15 +69,12 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
                 _sneakers = try await sneakersTask
                 presenter.userDataIsFetched()
             } catch {
-                
             }
         }
     }
-    
     @MainActor
     func selectSnakersWithId(id: String) {
         logger.log("\(#fileID) -> \(#function)")
-        
         Task {
             do {
                 try await dataBase.setActiveSnakers(for: _user.getId(), selectedId: id)
@@ -94,11 +83,9 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
                 self._sneakers = .init(sneakers)
                 presenter.newSnakersIsSelected()
             } catch {
-                
             }
         }
     }
-    
     func subscribeOnUserChanged() {
         logger.log("\(#fileID) -> \(#function)")
         store = GlobalData.userModel.sink { [weak self] user in
@@ -107,7 +94,6 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
             self?.presenter.userIsChanged()
         }
     }
-    
     func signOut() {
         logger.log("\(#fileID) -> \(#function)")
         GlobalData.userModel.send(nil)

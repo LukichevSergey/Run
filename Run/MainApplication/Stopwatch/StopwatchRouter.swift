@@ -21,5 +21,4 @@ final class StopwatchRouter {
 
 // MARK: Extension - StopwatchPresenterToRouterProtocol
 extension StopwatchRouter: StopwatchPresenterToRouterProtocol {
-    
 }

@@ -279,6 +279,7 @@
 		9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingManager.swift; sourceTree = "<group>"; };
 		9B8EFD162B271B8F00AC9DBE /* DetailedTrainingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingEnum.swift; sourceTree = "<group>"; };
 		9B9424E52B25B8AE005A28E3 /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
+		9B9948012B61263B00F41A1D /* .swiftlint.yml */ = {isa = PBXFileReference; lastKnownFileType = text.yaml; path = .swiftlint.yml; sourceTree = "<group>"; };
 		9B9AD70A2AF7BAA900464951 /* ListHeaderCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListHeaderCollectionView.swift; sourceTree = "<group>"; };
 		9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionListTrainingModel.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForCircleView.swift; sourceTree = "<group>"; };
@@ -306,6 +307,7 @@
 		8705D86B2A978427002BBDC2 = {
 			isa = PBXGroup;
 			children = (
+				9B9948012B61263B00F41A1D /* .swiftlint.yml */,
 				8705D8762A978427002BBDC2 /* Run */,
 				8705D8752A978427002BBDC2 /* Products */,
 			);
@@ -812,6 +814,7 @@
 				8705D8702A978427002BBDC2 /* Sources */,
 				8705D8712A978427002BBDC2 /* Frameworks */,
 				8705D8722A978427002BBDC2 /* Resources */,
+				9B9948022B61265F00F41A1D /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -891,6 +894,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		9B9948022B61265F00F41A1D /* SwiftLint */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = SwiftLint;
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8705D8702A978427002BBDC2 /* Sources */ = {
@@ -1080,7 +1105,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -1142,7 +1167,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;

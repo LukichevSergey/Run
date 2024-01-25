@@ -14,7 +14,6 @@ final class DetailedTrainingConfigurator {
         let presenter = DetailedTrainingPresenter()
         let router = DetailedTrainingRouter()
         let interactor = DetailedTrainingInteractor(with: idTrainingItem)
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -22,9 +21,7 @@ final class DetailedTrainingConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }

@@ -12,9 +12,7 @@ protocol SenderListTrainingDelegate: AnyObject {
 }
 
 final class TrainingHeaderView: UIView {
-    
     weak var delegate: SenderListTrainingDelegate?
-    
     private let trainingLabel: UILabel = {
         let label = UILabel()
         label.text = Tx.Training.title
@@ -60,7 +58,6 @@ final class TrainingHeaderView: UIView {
             make.verticalEdges.equalToSuperview()
         }
     }
-    
     @objc private func pushInAllTraining(_ sender: UIButton) {
         logger.log("\(#fileID) -> \(#function)")
         delegate?.senderTappedButton()

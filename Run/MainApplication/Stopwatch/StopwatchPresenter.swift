@@ -27,18 +27,20 @@ final class StopwatchPresenter {
     var router: StopwatchPresenterToRouterProtocol!
     var interactor: StopwatchPresenterToInteractorProtocol!
     weak var view: StopwatchPresenterToViewProtocol!
-    
     private var subscriptions = Set<AnyCancellable>()
 }
 
 // MARK: Extension - StopwatchViewToPresenterProtocol
 extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
-    
     func roundButtonTapped(with type: RoundButton.RoundButtonType) {
         logger.log("\(#fileID) -> \(#function)")
         switch type {
         case .startButton(let isStarted):
-            isStarted ? interactor.startTimer() : interactor.stopTimer()
+            if isStarted {
+                interactor.startTimer()
+            } else {
+                interactor.stopTimer()
+            }
         case .endButton:
             interactor.resetTimer()
             interactor.saveTraining()
@@ -50,7 +52,6 @@ extension StopwatchPresenter: StopwatchViewToPresenterProtocol {
             return
         }
     }
-    
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         interactor.requestAuthorization()
@@ -67,7 +68,6 @@ extension StopwatchPresenter: StopwatchInteractorToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         view.showErrorAlert(with: error.localizedDescription)
     }
-    
     func userLocationIsUpdated() {
         logger.log("\(#fileID) -> \(#function)")
         view.setTimer(with: interactor.getTimerData())

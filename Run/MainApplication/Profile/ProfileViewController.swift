@@ -24,51 +24,40 @@ protocol ProfileRouterToViewProtocol: AnyObject {
 }
 
 final class ProfileViewController: UIViewController {
-    
     private enum Section {
         case main
     }
-    
     // MARK: - Property
     var presenter: ProfileViewToPresenterProtocol!
-    
     private lazy var nameLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansBold32
         label.textAlignment = .left
         label.numberOfLines = 0
-        
         return label
     }()
-    
     private lazy var balanceLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansBold20
         label.textAlignment = .right
         label.numberOfLines = 1
-        
         return label
     }()
-    
     private lazy var topHStack: UIStackView = {
         let stack = UIStackView(arrangedSubviews: [nameLabel, balanceLabel])
         stack.axis = .horizontal
-        
         return stack
     }()
-    
     private lazy var sneakersView: ProfileSneakersView = {
         let view = ProfileSneakersView()
         view.layer.borderColor = PaletteApp.black.cgColor
         view.layer.borderWidth = 3
         view.layer.cornerRadius = 16
         view.delegate = self
-        
         return view
     }()
-    
     private(set) lazy var tableView: UITableView = {
         let tableView = UITableView()
         tableView.register(ProfileTableViewCell.self, forCellReuseIdentifier: ProfileTableViewCell.reuseIdentifier)
@@ -78,15 +67,12 @@ final class ProfileViewController: UIViewController {
 
         return tableView
     }()
-    
-    private lazy var dataSource = UITableViewDiffableDataSource<Section, ProfileTableViewCellViewModel>(tableView: tableView) { [weak self] tableView, indexPath, item in
-        
+    private lazy var dataSource = UITableViewDiffableDataSource<Section,
+            ProfileTableViewCellViewModel>(tableView: tableView) { [weak self] tableView, indexPath, item in
         guard let self,
-              let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier, for: indexPath) as? ProfileTableViewCell
-        else {
-            return UITableViewCell(style: .default, reuseIdentifier: nil)
-        }
-        
+              let cell = tableView.dequeueReusableCell(withIdentifier: ProfileTableViewCell.reuseIdentifier,
+                                                       for: indexPath) as? ProfileTableViewCell
+        else { return UITableViewCell(style: .default, reuseIdentifier: nil) }
         cell.configure(with: item)
         cell.delegate = self
         return cell
@@ -98,13 +84,11 @@ final class ProfileViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         logger.log("\(#fileID) -> \(#function)")
@@ -112,13 +96,10 @@ final class ProfileViewController: UIViewController {
         configureUI()
         presenter.viewDidLoad()
     }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         presenter.viewDidAppear()
     }
-    
     // MARK: - private func
     private func commonInit() {
 
@@ -131,14 +112,12 @@ final class ProfileViewController: UIViewController {
             make.top.equalTo(view.safeAreaLayoutGuide)
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
         }
-        
         view.addSubview(sneakersView)
         sneakersView.snp.makeConstraints { make in
             make.top.equalTo(nameLabel.snp.bottom).offset(16)
             make.height.equalTo(sneakersView.snp.width).multipliedBy(0.5)
             make.directionalHorizontalEdges.equalToSuperview().inset(16)
         }
-        
         view.addSubview(tableView)
         tableView.snp.makeConstraints { make in
             make.top.equalTo(sneakersView.snp.bottom).offset(16)
@@ -152,24 +131,18 @@ extension ProfileViewController: ProfilePresenterToViewProtocol {
     func setData(_ data: ProfileViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         var snapshot = NSDiffableDataSourceSnapshot<Section, ProfileTableViewCellViewModel>()
-        
         snapshot.appendSections([Section.main])
         snapshot.appendItems(data.cells, toSection: Section.main)
-        
         dataSource.apply(snapshot, animatingDifferences: false)
     }
-    
     func setSneakers(_ sneakers: OrderedSet<Sneakers>) {
         logger.log("\(#fileID) -> \(#function)")
-        
         sneakersView.configure(with: sneakers)
     }
-    
     func setUsername(on name: String) {
         logger.log("\(#fileID) -> \(#function)")
         nameLabel.text = name
     }
-    
     func setBalance(balance: Double) {
         logger.log("\(#fileID) -> \(#function)")
         balanceLabel.text = Tx.Profile.getBalance(balance: balance)
@@ -177,7 +150,7 @@ extension ProfileViewController: ProfilePresenterToViewProtocol {
 }
 
 // MARK: Extension - ProfileRouterToViewProtocol
-extension ProfileViewController: ProfileRouterToViewProtocol{
+extension ProfileViewController: ProfileRouterToViewProtocol {
     func presentView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)

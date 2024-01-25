@@ -17,7 +17,8 @@ extension Double {
 }
 
 extension Double {
-    func toMinutesAndSeconds() -> String { // возвращает строку с минутой и секундой.если не число или бесконечность или 0< выдает default "0:00"
+    // возвращает строку с минутой и секундой.если не число или бесконечность или 0< выдает default "0:00"
+    func toMinutesAndSeconds() -> String {
         if self.isInfinite || self.isNaN {
             return "0:00"
         }
@@ -35,15 +36,12 @@ extension Double {
     func toHourAndMin(format: String = "%d \(Tx.TimePeriods.hour) %02d \(Tx.TimePeriods.minute)") -> String {
         let hours = Int(self / 3600)
         let minutes = Int(self / 60)
-        
         return String(format: format, hours, minutes)
     }
 }
 
 extension Double {
     var cgFloat: CGFloat {
-        get {
-            return CGFloat(self)
-        }
+        return CGFloat(self)
     }
 }

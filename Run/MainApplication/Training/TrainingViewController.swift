@@ -23,30 +23,23 @@ protocol TrainingRouterToViewProtocol: AnyObject {
 }
 
 final class TrainingViewController: UIViewController {
-    
     // MARK: - Property
     var presenter: TrainingViewToPresenterProtocol!
-    
     private var diffableDataSource: UITableViewDiffableDataSource<SectionTrainingModel, TrainingCellViewModel>?
-    
     private let titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.text = Tx.Training.information
         label.font = OurFonts.fontPTSansBold32
-        
         return label
     }()
-    
     private let activityLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.text = Tx.Training.activity
         label.font = OurFonts.fontPTSansBold20
-        
         return label
     }()
-    
     private let allActivityButton: UIButton = {
         let button = UIButton()
         button.setTitle(Tx.Training.allActivity, for: .normal)
@@ -55,58 +48,46 @@ final class TrainingViewController: UIViewController {
 
         return button
     }()
-    
     private let stepLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.text = Tx.Training.step
         label.font = OurFonts.fontPTSansBold20
-        
         return label
     }()
-    
     private let kilometresLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.text = Tx.Training.kilomertes
         label.font = OurFonts.fontPTSansBold20
-        
         return label
     }()
-    
     private let progressBarStep = TrainingProgressStepView()
 
     private let progressBarKm = TrainingProgressKmView()
-    
     private lazy var trainingDataTable: UITableView = {
         let table = UITableView()
         table.tintColor = PaletteApp.black
         table.backgroundColor = .clear
         table.showsVerticalScrollIndicator = false
         table.separatorStyle = .none
-        
         return table
     }()
-    
     // MARK: - init
-    
     override func viewWillAppear(_ animated: Bool) {
         logger.log("\(#fileID) -> \(#function)")
         presenter.viewDidLoad()
     }
-    
     init() {
         super.init(nibName: nil, bundle: nil)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         logger.log("\(#fileID) -> \(#function)")
@@ -116,28 +97,22 @@ final class TrainingViewController: UIViewController {
         trainingDataTable.delegate = self
         trainingDataTable.register(TrainingTableViewCell.self, forCellReuseIdentifier: "cell")
     }
-    
     func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
         diffableDataSource = UITableViewDiffableDataSource(tableView: trainingDataTable) { tableView, indexPath, item in
-            
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TrainingTableViewCell
             cell?.configure(with: item)
-            
             return cell
         }
         diffableDataSource?.defaultRowAnimation = .fade
     }
-    
     // MARK: - private func
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
         setupDiffableDataSource()
     }
-    
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
-        
         view.addSubview(titleLabel)
         titleLabel.snp.makeConstraints { make in
             make.top.equalToSuperview().inset(50)
@@ -145,35 +120,30 @@ final class TrainingViewController: UIViewController {
             make.height.equalTo(40)
             make.width.equalTo(150)
         }
-        
         view.addSubview(activityLabel)
         activityLabel.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).inset(50)
             make.leading.equalToSuperview().inset(30)
             make.height.equalTo(40)
         }
-        
         view.addSubview(allActivityButton)
         allActivityButton.snp.makeConstraints { make in
             make.top.equalTo(titleLabel).inset(50)
             make.trailing.equalToSuperview().inset(30)
             make.height.equalTo(40)
         }
-        
         view.addSubview(stepLabel)
         stepLabel.snp.makeConstraints { make in
             make.top.equalTo(allActivityButton).inset(50)
             make.leading.equalToSuperview().inset(50)
             make.height.equalTo(30)
         }
-        
         view.addSubview(kilometresLabel)
         kilometresLabel.snp.makeConstraints { make in
             make.top.equalTo(allActivityButton).inset(160)
             make.leading.equalToSuperview().inset(50)
             make.height.equalTo(30)
         }
-        
         view.addSubview(progressBarStep)
         progressBarStep.snp.makeConstraints { make in
             make.top.equalTo(stepLabel).offset(35)
@@ -181,7 +151,6 @@ final class TrainingViewController: UIViewController {
             make.trailing.equalToSuperview().inset(50)
             make.height.equalTo(30)
         }
-        
         view.addSubview(progressBarKm)
         progressBarKm.snp.makeConstraints { make in
             make.top.equalTo(kilometresLabel).offset(35)
@@ -189,7 +158,6 @@ final class TrainingViewController: UIViewController {
             make.trailing.equalToSuperview().inset(50)
             make.height.equalTo(30)
         }
-        
         view.addSubview(trainingDataTable)
         trainingDataTable.snp.makeConstraints { make in
             make.top.equalTo(progressBarKm.snp.bottom).offset(30)
@@ -205,12 +173,10 @@ extension TrainingViewController: TrainingPresenterToViewProtocol {
         logger.log("\(#fileID) -> \(#function)")
         progressBarStep.updateProgress(step: step, stepLabel: stepLabel)
     }
-    
     func setTrainingProgressKm(km: Float, kmLabel: String) {
         logger.log("\(#fileID) -> \(#function)")
         progressBarKm.updateProgress(km: km, kmLabel: kmLabel)
     }
-    
     func setTrainingData(data: [TrainingCellViewModel]) {
         logger.log("\(#fileID) -> \(#function)")
         var snapshot = NSDiffableDataSourceSnapshot<SectionTrainingModel, TrainingCellViewModel>()
@@ -226,7 +192,6 @@ extension TrainingViewController: UITableViewDelegate {
         cell.backgroundColor = .clear
         tableView.sectionHeaderTopPadding = 0
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         logger.log("\(#fileID) -> \(#function)")
         if let cell = tableView.cellForRow(at: indexPath) {
@@ -234,7 +199,6 @@ extension TrainingViewController: UITableViewDelegate {
             cell.selectionStyle = .none
         }
     }
-    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         logger.log("\(#fileID) -> \(#function)")
         let headerView = TrainingHeaderView()
@@ -254,7 +218,10 @@ extension TrainingViewController: TrainingRouterToViewProtocol {
     func pushView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.information, style: .plain, target: nil, action: nil)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.information,
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
     }
 }
 

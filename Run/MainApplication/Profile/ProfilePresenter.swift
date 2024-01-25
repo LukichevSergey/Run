@@ -38,7 +38,6 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
         view.showActivityIndicator()
         interactor.selectSnakersWithId(id: id)
     }
-    
     func tableViewCellTapped(with type: ProfileTableViewCellViewModel.CellType) {
         logger.log("\(#fileID) -> \(#function)")
         switch type {
@@ -48,13 +47,11 @@ extension ProfilePresenter: ProfileViewToPresenterProtocol {
             interactor.signOut()
         }
     }
-    
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         interactor.subscribeOnUserChanged()
         view.setData(interactor.dataSource)
     }
-    
     func viewDidAppear() {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
@@ -70,12 +67,10 @@ extension ProfilePresenter: ProfileInteractorToPresenterProtocol {
         view.setSneakers(interactor.sneakers)
         view.removeActivityIndicator()
     }
-    
     func userIsChanged() {
         logger.log("\(#fileID) -> \(#function)")
         view.setUsername(on: interactor.user.getName())
     }
-    
     func newSnakersIsSelected() {
         logger.log("\(#fileID) -> \(#function)")
         view.setSneakers(interactor.sneakers)

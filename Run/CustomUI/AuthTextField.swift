@@ -16,12 +16,9 @@ protocol TextFieldInterface: AnyObject, UIView {
 }
 
 final class AuthTextField: UIView {
-    
     weak var delegate: AuthTextFieldDelegate?
-    
     enum TextFieldType {
         case name, email, password
-        
         var placeholderText: String {
             switch self {
             case .name: return Tx.Auth.name
@@ -29,7 +26,6 @@ final class AuthTextField: UIView {
             case .password: return "Password"
             }
         }
-        
         var tag: Int {
             switch self {
             case .name: return 0
@@ -38,9 +34,7 @@ final class AuthTextField: UIView {
             }
         }
     }
-    
     private var type: TextFieldType = .email
-    
     private lazy var textField: UITextField = {
         let textField = UITextField()
         textField.borderStyle = .roundedRect
@@ -53,45 +47,40 @@ final class AuthTextField: UIView {
         textField.autocapitalizationType = .none
         textField.tag = type.tag
         textField.backgroundColor = PaletteApp.white
-        textField.attributedPlaceholder = NSAttributedString(string: type.placeholderText, attributes: [NSAttributedString.Key.foregroundColor : UIColor.lightGray])
-        
+        textField.attributedPlaceholder = NSAttributedString(string: type.placeholderText,
+                                        attributes: [NSAttributedString.Key.foregroundColor: UIColor.lightGray])
         if type == .password {
             var configuration = UIButton.Configuration.bordered()
             configuration.baseBackgroundColor = .clear
             let rightButton  = UIButton(configuration: configuration)
             rightButton.setImage(UIImage(systemName: "eye"), for: .normal)
             rightButton.tintColor = PaletteApp.lightGreen
-            rightButton.frame = CGRect(x:0, y:0, width:30, height:30)
+            rightButton.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
             rightButton.addTarget(self, action: #selector(passwordHideButtonTapped), for: .touchUpInside)
             textField.rightViewMode = .always
             textField.rightView = rightButton
             textField.isSecureTextEntry = true
         }
-        
         textField.delegate = self
 
         return textField
     }()
-    
     init(with type: TextFieldType) {
         super.init(frame: .zero)
         logger.log("\(#fileID) -> \(#function)")
         self.type = type
         commonInit()
     }
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
         addSubview(textField)
@@ -99,7 +88,6 @@ final class AuthTextField: UIView {
             make.directionalEdges.equalToSuperview()
         }
     }
-    
     @objc private func passwordHideButtonTapped() {
         logger.log("\(#fileID) -> \(#function)")
         textField.isSecureTextEntry.toggle()

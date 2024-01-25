@@ -22,7 +22,6 @@ protocol ChartsInteractorToPresenterProtocol: AnyObject {
 }
 
 final class ChartsPresenter {
-    
     // MARK: Properties
     var router: ChartsPresenterToRouterProtocol!
     var interactor: ChartsPresenterToInteractorProtocol!
@@ -35,13 +34,11 @@ extension ChartsPresenter: ChartsViewToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         interactor.getXAxisFromChatrs(xAxis: xAxis)
     }
-    
     func tappedButtonMoverment(segmentIndex: Int, moverment: MovementDirection) {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
         interactor.fetchTraining(segmentIndex: segmentIndex, movermentButton: moverment)
     }
-    
     func viewDidLoad() {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
@@ -60,7 +57,6 @@ extension ChartsPresenter: ChartsInteractorToPresenterProtocol {
         view.setDataInChartsSingleColumn(distance: "\(String(format: "%.2f", distance)) \(Tx.Timer.kilometr)",
                                          time: time.toHourAndMin())
     }
-    
     func dataChartsIsFetched(data: [ChartsDataPeriodViewModel], hiddenButton: IsHiddenButton) {
         logger.log("\(#fileID) -> \(#function)")
         guard let dataCharts = data.first?.dataCharts,
@@ -73,15 +69,12 @@ extension ChartsPresenter: ChartsInteractorToPresenterProtocol {
         guard let dataTime = data.first?.dataTotal.reduce(0, { partialResult, time in
             return partialResult + time.time
         }) else { return }
-                
         view.setDataInCharts(dateWeek: "\(String(describing: date))",
                              dataCharts: dataCharts,
                              distance: "\(String(format: "%.2f", dataDistance)) \(Tx.Timer.kilometr)",
                              time: dataTime.toHourAndMin(), hiddenButton: hiddenButton)
-        
         view.removeActivityIndicator()
     }
-    
     func trainingIsFetchedWithError(error: Error) {
         logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()

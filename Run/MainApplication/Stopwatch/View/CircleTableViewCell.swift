@@ -8,31 +8,24 @@
 import UIKit
 
 final class CircleTableViewCell: UITableViewCell {
-    
     private let circleLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
-        
         return label
     }()
-    
     private let distancseLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
-        
         return label
     }()
-    
     private let timeLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular20
-        
         return label
     }()
-    
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
         contentView.addSubview(circleLabel)
@@ -53,13 +46,11 @@ final class CircleTableViewCell: UITableViewCell {
             make.leading.equalTo(distancseLabel.snp.trailing).offset(40) // Отступ справа от distancseLabel
         }
     }
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     required init?(coder: NSCoder) {
         logger.log("\(#fileID) -> \(#function)")
         fatalError("init(coder:) has not been implemented")

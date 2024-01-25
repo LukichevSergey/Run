@@ -12,33 +12,25 @@ protocol ProfileTableViewCellDelegate: AnyObject {
 }
 
 final class ProfileTableViewCell: UITableViewCell {
-    
     weak var delegate: ProfileTableViewCellDelegate?
-    
     static let reuseIdentifier = String(describing: ProfileTableViewCell.self)
-    
     private var type: ProfileTableViewCellViewModel.CellType?
-    
     private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular16
         label.textAlignment = .left
         label.numberOfLines = 0
-        
         return label
     }()
-    
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
         contentView.backgroundColor = PaletteApp.white
@@ -46,7 +38,6 @@ final class ProfileTableViewCell: UITableViewCell {
         titleLabel.snp.makeConstraints { make in
             make.directionalEdges.equalToSuperview().inset(16)
         }
-        
         addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(cellTapped)))
     }
 }
@@ -57,7 +48,6 @@ extension ProfileTableViewCell: ConfigurableViewProtocol {
         type = model.type
         titleLabel.text = model.type.cellTitle
     }
-    
     typealias ConfigurationModel = ProfileTableViewCellViewModel
 }
 

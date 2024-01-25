@@ -15,7 +15,6 @@ final class EditProfileConfigurator {
         let presenter = EditProfilePresenter()
         let router = EditProfileRouter()
         let interactor = EditProfileInteractor(with: profile)
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -23,9 +22,7 @@ final class EditProfileConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }
