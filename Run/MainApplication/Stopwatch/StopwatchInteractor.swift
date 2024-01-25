@@ -11,9 +11,7 @@ import CoreLocation
 
 // MARK: Protocol - StopwatchPresenterToInteractorProtocol (Presenter -> Interactor)
 protocol StopwatchPresenterToInteractorProtocol: AnyObject {
-    
     var timer: TimerManager { get }
-    
     func startTimer()
     func stopTimer()
     func resetTimer()
@@ -24,16 +22,13 @@ protocol StopwatchPresenterToInteractorProtocol: AnyObject {
 }
 
 final class StopwatchInteractor {
-    
     private let dataBase: StopwatchToDatabaseServiceProtocol
     private let timerManager: TimerManager
     private let locationManager: LocationManager
     private let trainingManager: TrainingManager
     private let helperValueTemp = HelperValueTempsModel()
-    
     // MARK: Properties
     weak var presenter: StopwatchInteractorToPresenterProtocol!
-    
     init() {
         dataBase = DatabaseService()
         timerManager = TimerManager()
@@ -50,7 +45,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         logger.log("\(#fileID) -> \(#function)")
         return timerManager
     }
-    
     func stopTimer() {
         logger.log("\(#fileID) -> \(#function)")
         timerManager.stopTimer()
@@ -59,7 +53,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.updateTraining(with: trainingManager.coordinates)
         trainingManager.coordinates = []
     }
-    
     func startTimer() {
         logger.log("\(#fileID) -> \(#function)")
         timerManager.startTimer()
@@ -67,7 +60,6 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         trainingManager.createTraining()
         trainingManager.setTrainingStatus(on: .start)
     }
-    
     func resetTimer() {
         logger.log("\(#fileID) -> \(#function)")
         locationManager.stopUpdatingLocation()
@@ -83,19 +75,16 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
         timerManager.resetTimer()
         helperValueTemp.resetAll()
     }
-    
     func roundResult() -> CircleViewModel {
         logger.log("\(#fileID) -> \(#function)")
         let distance = trainingManager.getDistance()
         let timeCircles = timer.elapsedTime - helperValueTemp.circleTimeAll
         let circleDistance = distance - helperValueTemp.circleDistanceAll
         helperValueTemp.saveCircleHelper(circle: 1, circleDistance: circleDistance, circleTime: timeCircles)
-                
         return CircleViewModel(circle: "\(Tx.CircleTableResult.circle) \(helperValueTemp.circleCount)",
                                distance: "\(String(format: "%.2f", circleDistance / 1000))",
                                time: "\(timeCircles.toMinutesAndSeconds())")
     }
-    
     func getTimerData() -> TimerViewModel {
         logger.log("\(#fileID) -> \(#function)")
         let distance = trainingManager.getDistance()
@@ -105,17 +94,15 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
                                                             kmTraveled: helperValueTemp.kmTraveled,
                                                             kmIteration: helperValueTemp.kmIteration,
                                                             timeAllKM: helperValueTemp.timeAllKM)
-                                
-        return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))", description: Tx.Timer.kilometr),
+        return TimerViewModel(kilometrModel: .init(data: "\(String(format: "%.2f", distance / 1000))",
+                                                   description: Tx.Timer.kilometr),
                               tempModel: .init(data: "\(tempOneKillomert)", description: Tx.Timer.temp),
                               averageTempModel: .init(data: "\(avgerageTemp)", description: Tx.Timer.averageTemp))
     }
-    
     func requestAuthorization() {
         logger.log("\(#fileID) -> \(#function)")
         locationManager.requestAuthorization()
     }
-    
     func saveTraining() {
         logger.log("\(#fileID) -> \(#function)")
         Task {
@@ -145,22 +132,18 @@ extension StopwatchInteractor: UpdateDataTempDelegate {
     func everyTimeKilometrs(_ everyTimeKM: String) {
         helperValueTemp.saveEveryTimeKilometrs(everyTimeKM)
     }
-    
     func currentDistanceChanged(distance: Double) {
         logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentDistance(distance: distance)
     }
-    
     func сurrentAverageTempChanged(average: Double) {
         logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentAverageTemp(average: average)
     }
-    
     func сurrentTempChanged(temp: Double) {
         logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveCurrentTemp(temp: temp)
     }
-    
     func currentResultsСhanged(time: Double, traveled: Double, iteration: Int) {
         logger.log("\(#fileID) -> \(#function)")
         helperValueTemp.saveTempHelper(time: time, traveled: traveled, iteration: iteration)

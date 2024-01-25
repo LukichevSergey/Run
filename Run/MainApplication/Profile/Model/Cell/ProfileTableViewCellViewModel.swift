@@ -16,7 +16,6 @@ extension ProfileTableViewCellViewModel {
     enum CellType {
         case editProfile
         case exit
-        
         var cellTitle: String {
             switch self {
             case .editProfile: return "Редактировать профиль"

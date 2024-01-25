@@ -21,24 +21,20 @@ protocol LoginRouterToViewProtocol: AnyObject {
 }
 
 final class LoginViewController: UIViewController {
-    
     // MARK: - Property
     var presenter: LoginViewToPresenterProtocol!
-    
     private lazy var emailTextField: AuthTextField = {
         let textField = AuthTextField(with: .email)
         textField.delegate = self
 
         return textField
     }()
-    
     private lazy var passwordTextField: AuthTextField = {
         let textField = AuthTextField(with: .password)
         textField.delegate = self
 
         return textField
     }()
-    
     private lazy var loginButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle(Tx.Auth.signIn, for: .normal)
@@ -50,12 +46,10 @@ final class LoginViewController: UIViewController {
 
         return button
     }()
-    
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 12
-        
         return stack
     }()
 
@@ -65,23 +59,19 @@ final class LoginViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         logger.log("\(#fileID) -> \(#function)")
         configureUI()
         presenter.viewDidLoad()
-        
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard(_:)))
         view.addGestureRecognizer(tapGesture)
     }
-    
     // MARK: - private func
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
@@ -90,27 +80,22 @@ final class LoginViewController: UIViewController {
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
-        
         view.addSubview(mainVStack)
         mainVStack.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.8)
         }
-        
         [emailTextField, passwordTextField, loginButton].forEach { item in
             item.snp.makeConstraints { make in
                 make.height.equalTo(50)
             }
-            
             mainVStack.addArrangedSubview(item)
         }
     }
-    
     @objc private func loginButtonTapped() {
         logger.log("\(#fileID) -> \(#function)")
         presenter.loginButtonTapped()
     }
-    
     @objc private func dismissKeyboard(_ sender: UITapGestureRecognizer) {
         logger.log("\(#fileID) -> \(#function)")
         view.endEditing(false)
@@ -118,7 +103,7 @@ final class LoginViewController: UIViewController {
 }
 
 // MARK: Extension - LoginPresenterToViewProtocol 
-extension LoginViewController: LoginPresenterToViewProtocol{
+extension LoginViewController: LoginPresenterToViewProtocol {
     func showErrorAlert(with text: String) {
         logger.log("\(#fileID) -> \(#function)")
         showAlert(with: text)
@@ -126,7 +111,7 @@ extension LoginViewController: LoginPresenterToViewProtocol{
 }
 
 // MARK: Extension - LoginRouterToViewProtocol
-extension LoginViewController: LoginRouterToViewProtocol{
+extension LoginViewController: LoginRouterToViewProtocol {
     func presentView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
@@ -136,7 +121,6 @@ extension LoginViewController: LoginRouterToViewProtocol{
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
-    
     func popView() {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.popViewController(animated: false)

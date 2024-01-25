@@ -8,7 +8,6 @@
 import Foundation
 
 final class HelperValueTempsModel {
-    
     var kmIteration: Int = 0
     var timeAllKM: Double = 0
     var kmTraveled: Double = 0
@@ -19,41 +18,34 @@ final class HelperValueTempsModel {
     var currentAverageTemp = 0.0
     var currentDistance = 0.0
     var everyKilometrs = [String]()
-    
     func saveEveryTimeKilometrs(_ everyTimeKM: String) {
         logger.log("\(#fileID) -> \(#function)")
         everyKilometrs.append(everyTimeKM)
     }
-    
     func saveCircleHelper(circle: Int, circleDistance: Double, circleTime: Double) {
         logger.log("\(#fileID) -> \(#function)")
         circleCount += circle
         circleTimeAll += circleTime
         circleDistanceAll += circleDistance
     }
-    
     func saveCurrentAverageTemp(average: Double) {
         logger.log("\(#fileID) -> \(#function)")
         currentAverageTemp = average
     }
-    
     func saveCurrentDistance(distance: Double) {
         logger.log("\(#fileID) -> \(#function)")
         currentDistance = distance
     }
-    
     func saveCurrentTemp(temp: Double) {
         logger.log("\(#fileID) -> \(#function)")
         currentTemp = temp
     }
-    
     func saveTempHelper(time: Double, traveled: Double, iteration: Int) {
         logger.log("\(#fileID) -> \(#function)")
         timeAllKM = time
         kmTraveled = traveled
         kmIteration = iteration
     }
-   
     func resetAll() {
         logger.log("\(#fileID) -> \(#function)")
         kmIteration = 0

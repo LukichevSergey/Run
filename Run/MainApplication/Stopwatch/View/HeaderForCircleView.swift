@@ -8,7 +8,6 @@
 import UIKit
 
 final class HeaderForCircleView: UIView {
-    
     private let circleLabel: UILabel = {
         let label = UILabel()
         label.text = Tx.CircleTableResult.circle
@@ -17,7 +16,6 @@ final class HeaderForCircleView: UIView {
 
         return label
     }()
-    
     private let distanceLabel: UILabel = {
         let label = UILabel()
         label.text = Tx.CircleTableResult.distance
@@ -26,7 +24,6 @@ final class HeaderForCircleView: UIView {
 
         return label
     }()
-    
     private let timeLbel: UILabel = {
         let label = UILabel()
         label.text = Tx.CircleTableResult.time
@@ -35,18 +32,15 @@ final class HeaderForCircleView: UIView {
 
         return label
     }()
-    
     override init(frame: CGRect) {
         super.init(frame: frame)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     required init?(coder: NSCoder) {
         logger.log("\(#fileID) -> \(#function)")
         fatalError("init(coder:) has not been implemented")
     }
-    
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
         addSubview(circleLabel)
@@ -54,7 +48,6 @@ final class HeaderForCircleView: UIView {
             make.leading.equalToSuperview().offset(16)
             make.verticalEdges.equalToSuperview()
         }
-        
         addSubview(distanceLabel)
         distanceLabel.snp.makeConstraints { make in
             make.leading.equalTo(circleLabel.snp.trailing).offset(16)

@@ -19,11 +19,9 @@ final class LoginInteractor {
 
     // MARK: Properties
     weak var presenter: LoginInteractorToPresenterProtocol!
-    
     private let dataBase: LoginToDatabaseServiceProtocol
     private var email: String = ""
     private var password: String = ""
-    
     init() {
         dataBase = DatabaseService()
     }
@@ -35,12 +33,10 @@ extension LoginInteractor: LoginPresenterToInteractorProtocol {
         logger.log("\(#fileID) -> \(#function)")
         self.email = email
     }
-    
     func setPassword(to password: String) {
         logger.log("\(#fileID) -> \(#function)")
         self.password = password
     }
-    
     @MainActor
     func fetchLoginData() {
         logger.log("\(#fileID) -> \(#function)")

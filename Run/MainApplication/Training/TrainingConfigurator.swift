@@ -15,7 +15,6 @@ final class TrainingConfigurator {
         let presenter = TrainingPresenter()
         let router = TrainingRouter()
         let interactor = TrainingInteractor()
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -23,9 +22,7 @@ final class TrainingConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }

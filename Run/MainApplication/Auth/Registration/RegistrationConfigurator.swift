@@ -15,7 +15,6 @@ final class RegistrationConfigurator {
         let presenter = RegistrationPresenter()
         let router = RegistrationRouter()
         let interactor = RegistrationInteractor()
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -23,9 +22,7 @@ final class RegistrationConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }

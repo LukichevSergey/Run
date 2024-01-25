@@ -13,7 +13,6 @@ final class RootMainApplicitionController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         logger.log("\(#fileID) -> \(#function)")
-        
         view.backgroundColor = .blue
         modalPresentationStyle = .fullScreen
         modalTransitionStyle = .coverVertical
@@ -43,7 +42,6 @@ final class RootMainApplicitionController: UITabBarController {
         customTabBar.items = items
         customTabBar.tintColor = .black
         customTabBar.selectedItem = customTabBar.items?.first
-        
         selectedIndex = 0
 
         view.addSubview(customTabBar)

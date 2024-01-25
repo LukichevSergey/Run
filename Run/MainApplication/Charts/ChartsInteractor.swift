@@ -15,14 +15,12 @@ protocol ChartsPresenterToInteractorProtocol: AnyObject {
 }
 
 final class ChartsInteractor {
-    
     // MARK: Properties
     weak var presenter: ChartsInteractorToPresenterProtocol!
     private let dataBase: TrainingToDatabaseServiceProtocol
     private let chartManager = ChartsManager()
     private var _trainings = OrderedSet<Training>()
     private var _dataChartTotal = [ChartsDataPeriodViewModel.DataPeriod]()
-    
     init() {
         dataBase = DatabaseService()
     }
@@ -35,7 +33,6 @@ extension ChartsInteractor: ChartsPresenterToInteractorProtocol {
         let searchxAxis = chartManager.searchIndexXAxis(data: _dataChartTotal, xAxis: xAxis)
         presenter.dataSingleColumn(data: searchxAxis)
     }
-    
     @MainActor
     func fetchTraining(segmentIndex: Int, movermentButton: MovementDirection) {
         logger.log("\(#fileID) -> \(#function)")
@@ -44,22 +41,31 @@ extension ChartsInteractor: ChartsPresenterToInteractorProtocol {
                 let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
                 _trainings = trainings
                 _dataChartTotal.removeAll()
-                guard let saveDateAndClick = chartManager.getPeriodAgo(indexPeriod: segmentIndex, buttonMovement: movermentButton) else { return }
-                let isHiddenMovermentForwardAndBack = chartManager.isHiddenButton(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
+                guard let saveDateAndClick = chartManager.getPeriodAgo(indexPeriod: segmentIndex,
+                                                                       buttonMovement: movermentButton) else { return }
+                let isHiddenMovermentForwardAndBack = chartManager.isHiddenButton(data: trainings,
+                                                                                  indexPeriod: segmentIndex,
+                                                                                  date: saveDateAndClick)
                 var dataChartsInPeriod: [ChartsDataPeriodViewModel]?
-                
                 switch segmentIndex {
                 case 0:
-                    dataChartsInPeriod = chartManager.getDataForChartsInWeek(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
+                    dataChartsInPeriod = chartManager.getDataForChartsInWeek(data: trainings,
+                                                                             indexPeriod: segmentIndex,
+                                                                             date: saveDateAndClick)
                 case 1:
-                    dataChartsInPeriod = chartManager.getDataForChartsInMonth(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
+                    dataChartsInPeriod = chartManager.getDataForChartsInMonth(data: trainings,
+                                                                              indexPeriod: segmentIndex,
+                                                                              date: saveDateAndClick)
                 case 2:
-                    dataChartsInPeriod = chartManager.getDataForChartsInYear(data: trainings, indexPeriod: segmentIndex, date: saveDateAndClick)
+                    dataChartsInPeriod = chartManager.getDataForChartsInYear(data: trainings,
+                                                                             indexPeriod: segmentIndex,
+                                                                             date: saveDateAndClick)
                 default:
                     break
                 }
                 if let dataChartsInPeriod = dataChartsInPeriod {
-                    presenter.dataChartsIsFetched(data: dataChartsInPeriod, hiddenButton: isHiddenMovermentForwardAndBack)
+                    presenter.dataChartsIsFetched(data: dataChartsInPeriod,
+                                                  hiddenButton: isHiddenMovermentForwardAndBack)
                     _dataChartTotal = dataChartsInPeriod.first?.dataTotal ?? []
                 }
             } catch {

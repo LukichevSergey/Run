@@ -14,7 +14,6 @@ final class ListTrainingConfigurator {
         let presenter = ListTrainingPresenter()
         let router = ListTrainingRouter()
         let interactor = ListTrainingInteractor()
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -22,9 +21,7 @@ final class ListTrainingConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }

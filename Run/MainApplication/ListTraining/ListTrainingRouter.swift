@@ -15,7 +15,6 @@ protocol ListTrainingPresenterToRouterProtocol: AnyObject {
 }
 
 final class ListTrainingRouter {
-    
     // MARK: Properties
     weak var view: ListTrainingRouterToViewProtocol!
 }
@@ -27,7 +26,6 @@ extension ListTrainingRouter: ListTrainingPresenterToRouterProtocol {
         let chartsViewController = ChartsConfigurator().configure()
         view.pushView(view: chartsViewController)
     }
-    
     func navigationToDetailedViewController(itemTraining: TrainingCellViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         let detailedTrainingViewController = DetailedTrainingConfigurator().configure(with: itemTraining)

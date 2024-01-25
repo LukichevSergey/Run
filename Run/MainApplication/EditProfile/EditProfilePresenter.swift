@@ -35,12 +35,10 @@ extension EditProfilePresenter: EditProfileViewToPresenterProtocol {
         logger.log("\(#fileID) -> \(#function)")
         view.setTextField(with: interactor.profile.getName())
     }
-    
     func userNameTextFieldIsChanged(on text: String) {
         logger.log("\(#fileID) -> \(#function)")
         interactor.setUserName(on: text)
     }
-    
     func saveButtonTapped() {
         logger.log("\(#fileID) -> \(#function)")
         view.showActivityIndicator()
@@ -55,7 +53,6 @@ extension EditProfilePresenter: EditProfileInteractorToPresenterProtocol {
         view.removeActivityIndicator()
         router.navigateToPreviouslyLevel()
     }
-    
     func userIsSavedWithError(error: Error) {
         logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()

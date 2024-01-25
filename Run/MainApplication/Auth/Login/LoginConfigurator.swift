@@ -15,7 +15,6 @@ final class LoginConfigurator {
         let presenter = LoginPresenter()
         let router = LoginRouter()
         let interactor = LoginInteractor()
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -23,9 +22,7 @@ final class LoginConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }

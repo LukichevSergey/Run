@@ -15,7 +15,6 @@ final class ProfileConfigurator {
         let presenter = ProfilePresenter()
         let router = ProfileRouter()
         let interactor = ProfileInteractor()
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -23,9 +22,7 @@ final class ProfileConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }

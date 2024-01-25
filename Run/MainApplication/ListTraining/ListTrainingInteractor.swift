@@ -14,13 +14,11 @@ protocol ListTrainingPresenterToInteractorProtocol: AnyObject {
 }
 
 final class ListTrainingInteractor {
-    
     // MARK: Properties
     weak var presenter: ListTrainingInteractorToPresenterProtocol!
     private let managerListTraining =  ListTrainingManager()
     private let dataBase: TrainingToDatabaseServiceProtocol
     private var _listTraining = OrderedSet<SectionListTrainingModel>()
-    
     init() {
         dataBase = DatabaseService()
     }
@@ -31,7 +29,6 @@ extension ListTrainingInteractor: ListTrainingPresenterToInteractorProtocol {
     var listTraining: OrderedCollections.OrderedSet<SectionListTrainingModel> {
         return _listTraining
     }
-    
     @MainActor
     func fetchTrainings() {
         logger.log("\(#fileID) -> \(#function)")

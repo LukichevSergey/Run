@@ -9,7 +9,8 @@ import UIKit
 
 enum OurFonts {
     static var fontCofficient: CGFloat {
-        let coefficient = UIFontMetrics(forTextStyle: .body).scaledFont(for: UIFont(name: "PTSans-Bold", size: 32)!).pointSize / 32
+        let coefficient = UIFontMetrics(forTextStyle: .body).scaledFont(for:
+                        UIFont(name: "PTSans-Bold", size: 32)!).pointSize / 32
         if coefficient >= 1.5 {
             return 1.5
         } else {

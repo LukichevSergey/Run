@@ -16,12 +16,11 @@ protocol DetailedTrainingViewToPresenterProtocol: AnyObject {
 // MARK: Protocol - DetailedTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
 protocol DetailedTrainingInteractorToPresenterProtocol: AnyObject {
     func trainingIsFetchedWithError(error: Error)
-    func DetailedTrainingData(data: [EnumDetailedViewCell])
-    func DateDetailedHeaderTraining(_ data: String)
+    func detailedTrainingData(data: [EnumDetailedViewCell])
+    func dateDetailedHeaderTraining(_ data: String)
 }
 
 final class DetailedTrainingPresenter {
-    
     // MARK: Properties
     var router: DetailedTrainingPresenterToRouterProtocol!
     var interactor: DetailedTrainingPresenterToInteractorProtocol!
@@ -39,18 +38,16 @@ extension DetailedTrainingPresenter: DetailedTrainingViewToPresenterProtocol {
 
 // MARK: Extension - DetailedTrainingInteractorToPresenterProtocol
 extension DetailedTrainingPresenter: DetailedTrainingInteractorToPresenterProtocol {
-    func DetailedTrainingData(data: [EnumDetailedViewCell]) {
+    func detailedTrainingData(data: [EnumDetailedViewCell]) {
         logger.log("\(#fileID) -> \(#function)")
         view.setDetailedTrainingData(data: data)
         view.removeActivityIndicator()
     }
-    
-    func DateDetailedHeaderTraining(_ data: String) {
+    func dateDetailedHeaderTraining(_ data: String) {
         logger.log("\(#fileID) -> \(#function)")
         view.setDateDetailedHeaderTraining(data)
         view.removeActivityIndicator()
     }
-    
     func trainingIsFetchedWithError(error: Error) {
         logger.log("\(#fileID) -> \(#function)")
         view.removeActivityIndicator()

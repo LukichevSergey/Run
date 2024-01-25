@@ -12,7 +12,6 @@ enum Tx {
         static let error = NSLocalizedString("System.error", comment: "Ошибка")
         static let close  = NSLocalizedString("System.close", comment: "Закрыть")
     }
-    
     enum Timer {
         static let title = NSLocalizedString("Timer.title", comment: "Секундомер")
         static let subtitle = NSLocalizedString("Timer.subtitle", comment: "Время")
@@ -20,13 +19,11 @@ enum Tx {
         static let temp = NSLocalizedString("Timer.temp", comment: "Темп")
         static let averageTemp = NSLocalizedString("Timer.averageTemp", comment: "Сред.Темп")
     }
-    
     enum Auth {
         static let signIn = NSLocalizedString("Auth.signIn", comment: "Войти")
         static let signUp = NSLocalizedString("Auth.signUp", comment: "Зарегистрироваться")
         static let name = NSLocalizedString("Auth.name", comment: "Имя")
     }
-    
     enum Profile {
         static let title = NSLocalizedString("Profile.title", comment: "Профиль")
         static let exit = NSLocalizedString("Profile.exit", comment: "Выход")
@@ -36,7 +33,6 @@ enum Tx {
             return String.init(format: formatString, balance)
         }
     }
-    
     enum Training {
         static let title = NSLocalizedString("Training.title", comment: "Тренировки")
         static let run = NSLocalizedString("Training.run", comment: "Бег")
@@ -57,13 +53,11 @@ enum Tx {
         static let kilometerLayout = NSLocalizedString("Training.kilometerLayout", comment: "Раскладка")
         static let dateNotAvailable = NSLocalizedString("Training.dateNotAvailable", comment: "Дата отсутствует")
     }
-    
     enum CircleTableResult {
         static let circle = NSLocalizedString("CircleTableResult.circle", comment: "Круг")
         static let distance = NSLocalizedString("CircleTableResult.distance", comment: "Дистанция")
         static let time = NSLocalizedString("CircleTableResult.time", comment: "Время")
     }
-    
     enum Charts {
         static let statistics = NSLocalizedString("Charts.statistics", comment: "Статистика")
         static let week = NSLocalizedString("Charts.week", comment: "Неделя")
@@ -72,7 +66,6 @@ enum Tx {
         static let distance = NSLocalizedString("Charts.distance", comment: "Расстояние")
         static let Kkal = NSLocalizedString("Charts.Kkal", comment: "Ккал")
     }
-    
     enum TimePeriods {
         static let hour = NSLocalizedString("TimePeriods.hour", comment: "ч")
         static let minute = NSLocalizedString("TimePeriods.minute", comment: "мин")

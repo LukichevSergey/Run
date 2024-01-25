@@ -11,12 +11,10 @@ protocol DetailedTrainingPresenterToInteractorProtocol: AnyObject {
 }
 
 final class DetailedTrainingInteractor {
-    
     // MARK: Properties
     weak var presenter: DetailedTrainingInteractorToPresenterProtocol!
     private let _detailedTraining: TrainingCellViewModel
     private let managerDetailed = DetailedTrainingManager()
-    
     init(with detailedTraining: TrainingCellViewModel) {
         logger.log("\(#fileID) -> \(#function)")
         _detailedTraining = detailedTraining
@@ -25,14 +23,12 @@ final class DetailedTrainingInteractor {
 
 // MARK: Extension - DetailedTrainingPresenterToInteractorProtocol
 extension DetailedTrainingInteractor: DetailedTrainingPresenterToInteractorProtocol {
-    func fetchDetailedTraining(){
+    func fetchDetailedTraining() {
         logger.log("\(#fileID) -> \(#function)")
-        
         let dateHeaderDetailed = managerDetailed.getDateDetailerTrainig(_detailedTraining)
-        presenter.DateDetailedHeaderTraining(dateHeaderDetailed)
-        
+        presenter.dateDetailedHeaderTraining(dateHeaderDetailed)
         managerDetailed.getDetailedTrainingUnprocessed(_detailedTraining) { [weak self] detailedTrainingArray in
-            self?.presenter.DetailedTrainingData(data: detailedTrainingArray)
+            self?.presenter.detailedTrainingData(data: detailedTrainingArray)
         }
     }
 }

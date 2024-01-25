@@ -21,7 +21,6 @@ final class TrainingProgressKmView: UIView {
         progress.layer.borderColor = PaletteApp.darkblue.cgColor
         progress.layer.borderWidth = 2
         progress.clipsToBounds = true
-        
         return progress
     }()
 
@@ -51,7 +50,6 @@ final class TrainingProgressKmView: UIView {
             make.height.equalTo(30)
             make.directionalHorizontalEdges.equalToSuperview()
         }
-        
         progressView.addSubview(resultLabel)
         resultLabel.snp.makeConstraints { make in
             make.center.equalToSuperview()

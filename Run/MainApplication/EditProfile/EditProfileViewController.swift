@@ -22,17 +22,14 @@ protocol EditProfileRouterToViewProtocol: AnyObject {
 }
 
 final class EditProfileViewController: UIViewController {
-    
     // MARK: - Property
     var presenter: EditProfileViewToPresenterProtocol!
-    
     private lazy var usernameTextField: TextFieldInterface = {
         let textField = AuthTextField(with: .name)
         textField.delegate = self
 
         return textField
     }()
-    
     private lazy var saveButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Save", for: .normal)
@@ -44,12 +41,10 @@ final class EditProfileViewController: UIViewController {
 
         return button
     }()
-    
     private lazy var mainVStack: UIStackView = {
         let stack = UIStackView()
         stack.axis = .vertical
         stack.spacing = 12
-        
         return stack
     }()
 
@@ -59,20 +54,17 @@ final class EditProfileViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
     }
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         logger.log("\(#fileID) -> \(#function)")
         configureUI()
         presenter.viewDidLoad()
     }
-    
     // MARK: - private func
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
@@ -81,22 +73,18 @@ final class EditProfileViewController: UIViewController {
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
         view.backgroundColor = PaletteApp.white
-        
         view.addSubview(mainVStack)
         mainVStack.snp.makeConstraints { make in
             make.center.equalToSuperview()
             make.width.equalToSuperview().multipliedBy(0.8)
         }
-        
         [usernameTextField, saveButton].forEach { item in
             item.snp.makeConstraints { make in
                 make.height.equalTo(50)
             }
-            
             mainVStack.addArrangedSubview(item)
         }
     }
-    
     @objc private func saveButtonTapped() {
         logger.log("\(#fileID) -> \(#function)")
         presenter.saveButtonTapped()
@@ -104,12 +92,11 @@ final class EditProfileViewController: UIViewController {
 }
 
 // MARK: Extension - EditProfilePresenterToViewProtocol 
-extension EditProfileViewController: EditProfilePresenterToViewProtocol{
+extension EditProfileViewController: EditProfilePresenterToViewProtocol {
     func showErrorAlert(with text: String) {
         logger.log("\(#fileID) -> \(#function)")
         showAlert(with: text)
     }
-    
     func setTextField(with data: String) {
         logger.log("\(#fileID) -> \(#function)")
         usernameTextField.setText(text: data)
@@ -117,7 +104,7 @@ extension EditProfileViewController: EditProfilePresenterToViewProtocol{
 }
 
 // MARK: Extension - EditProfileRouterToViewProtocol
-extension EditProfileViewController: EditProfileRouterToViewProtocol{
+extension EditProfileViewController: EditProfileRouterToViewProtocol {
     func presentView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         present(view, animated: true, completion: nil)
@@ -127,7 +114,6 @@ extension EditProfileViewController: EditProfileRouterToViewProtocol{
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
     }
-    
     func popView() {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.popViewController(animated: true)

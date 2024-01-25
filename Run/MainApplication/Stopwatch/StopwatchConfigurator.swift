@@ -15,7 +15,6 @@ final class StopwatchConfigurator {
         let presenter = StopwatchPresenter()
         let router = StopwatchRouter()
         let interactor = StopwatchInteractor()
-        
         view.presenter = presenter
 
         presenter.router = router
@@ -23,9 +22,7 @@ final class StopwatchConfigurator {
         presenter.view = view
 
         interactor.presenter = presenter
-        
         router.view = view
-        
         return view
     }
 }
