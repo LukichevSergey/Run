@@ -17,6 +17,7 @@ protocol ProfileToDatabaseServiceProtocol {
 
 protocol TrainingToDatabaseServiceProtocol {
     func getTrainings(for userId: String) async throws -> OrderedSet<Training>
+    func deleteCellTraining(id: String) async throws
 }
 
 protocol RegistrationToDatabaseServiceProtocol {
@@ -93,6 +94,11 @@ extension DatabaseService: ProfileToDatabaseServiceProtocol {
 }
 
 extension DatabaseService: TrainingToDatabaseServiceProtocol {
+    func deleteCellTraining(id: String) async throws {
+        logger.log("\(#fileID) -> \(#function)")
+        let trainingCellDelete = trainingRef.document(id)
+        try await trainingCellDelete.delete()
+    }
     func getTrainings(for userId: String) async throws -> OrderedSet<Training> {
         logger.log("\(#fileID) -> \(#function)")
         return try await getCollection(for: userId, from: trainingRef)

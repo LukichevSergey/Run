@@ -3,7 +3,7 @@
 //  Run
 //
 //  Created by Лукичев Сергей on 26.08.2023.
-//  
+//
 //
 
 import UIKit
@@ -97,7 +97,12 @@ final class TrainingViewController: UIViewController {
         trainingDataTable.delegate = self
         trainingDataTable.register(TrainingTableViewCell.self, forCellReuseIdentifier: "cell")
     }
-    func setupDiffableDataSource() {
+    // MARK: - private func
+    private func commonInit() {
+        logger.log("\(#fileID) -> \(#function)")
+        setupDiffableDataSource()
+    }
+    private func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
         diffableDataSource = UITableViewDiffableDataSource(tableView: trainingDataTable) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TrainingTableViewCell
@@ -105,11 +110,6 @@ final class TrainingViewController: UIViewController {
             return cell
         }
         diffableDataSource?.defaultRowAnimation = .fade
-    }
-    // MARK: - private func
-    private func commonInit() {
-        logger.log("\(#fileID) -> \(#function)")
-        setupDiffableDataSource()
     }
     private func configureUI() {
         logger.log("\(#fileID) -> \(#function)")
@@ -167,7 +167,7 @@ final class TrainingViewController: UIViewController {
     }
 }
 
-// MARK: Extension - TrainingPresenterToViewProtocol 
+// MARK: Extension - TrainingPresenterToViewProtocol
 extension TrainingViewController: TrainingPresenterToViewProtocol {
     func setTrainingProgressStep(step: Float, stepLabel: String) {
         logger.log("\(#fileID) -> \(#function)")
@@ -205,6 +205,16 @@ extension TrainingViewController: UITableViewDelegate {
         headerView.backgroundColor = PaletteApp.white
         headerView.delegate = self
         return headerView
+    }
+    func tableView(_ tableView: UITableView,
+                   trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        logger.log("\(#fileID) -> \(#function)")
+        let deleteAction = UIContextualAction(style: .destructive,
+                                              title: "Удалить") { [weak presenter] (_, _, _) in
+            presenter?.indexCell(indexPath)
+        }
+        let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])
+        return swipeConfiguration
     }
 }
 

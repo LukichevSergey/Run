@@ -3,7 +3,7 @@
 //  Run
 //
 //  Created by Лукичев Сергей on 26.08.2023.
-//  
+//
 //
 
 import OrderedCollections
@@ -11,7 +11,9 @@ import OrderedCollections
 // MARK: Protocol - TrainingPresenterToInteractorProtocol (Presenter -> Interactor)
 protocol TrainingPresenterToInteractorProtocol: AnyObject {
     func fetchTrainings()
-    var training: OrderedSet<TrainingCellViewModel> { get }
+    func deleteCellTraining(iD: String)
+    var trainingForList: OrderedSet<TrainingCellViewModel> { get }
+    var trainingAll: OrderedSet<TrainingCellViewModel> { get }
 }
 
 final class TrainingInteractor {
@@ -29,7 +31,22 @@ final class TrainingInteractor {
 
 // MARK: Extension - TrainingPresenterToInteractorProtocol
 extension TrainingInteractor: TrainingPresenterToInteractorProtocol {
-    var training: OrderedCollections.OrderedSet<TrainingCellViewModel> {
+    var trainingAll: OrderedCollections.OrderedSet<TrainingCellViewModel> {
+        let trainingAll = trainingInformationManager.getinformationAllTraining(data: _trainings)
+
+        return trainingAll
+    }
+    func deleteCellTraining(iD: String) {
+        logger.log("\(#fileID) -> \(#function)")
+        Task {
+            do {
+                try await dataBase.deleteCellTraining(id: iD)
+            } catch {
+                throw error
+            }
+        }
+    }
+    var trainingForList: OrderedCollections.OrderedSet<TrainingCellViewModel> {
         let listSortedTraining = trainingInformationManager.getTrainingForDetailed(data: _trainings)
 
         return listSortedTraining
