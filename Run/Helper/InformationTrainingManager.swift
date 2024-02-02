@@ -50,6 +50,6 @@ final class InformationTrainingManager {
                                          everyKilometrs: training.everyTimeKilometrs)
         }
         let sortedTraining = trainingCellViewModels.sorted { $0.data > $1.data }
-        return OrderedSet(sortedTraining)
+        return OrderedSet(sortedTraining.reversed())
     }
 }

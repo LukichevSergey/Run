@@ -35,8 +35,8 @@ extension ListTrainingInteractor: ListTrainingPresenterToInteractorProtocol {
         Task {
             do {
                 let trainings = try await dataBase.getTrainings(for: GlobalData.userModel.value?.getId() ?? "")
-                let listSortedTraining = managerListTraining.getListTrainingAndHeaderMonth(data: trainings)
-                _listTraining = listSortedTraining
+                async let listSortedTraining = managerListTraining.getListTrainingAndHeaderMonth(data: trainings)
+                _listTraining = await listSortedTraining
                 presenter.trainingsListIsFetched(data: _listTraining)
             } catch {
                 presenter.trainingIsFetchedWithError(error: error)

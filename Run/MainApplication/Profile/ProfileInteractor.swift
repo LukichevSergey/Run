@@ -79,8 +79,8 @@ extension ProfileInteractor: ProfilePresenterToInteractorProtocol {
             do {
                 try await dataBase.setActiveSnakers(for: _user.getId(), selectedId: id)
                 guard let _sneakers = self._sneakers else { return }
-                let sneakers = _sneakers.map({$0.id == id ? $0.activated : $0.deactivated})
-                self._sneakers = .init(sneakers)
+                async let sneakers = _sneakers.map({$0.id == id ? $0.activated : $0.deactivated})
+                self._sneakers = await .init(sneakers)
                 presenter.newSnakersIsSelected()
             } catch {
             }

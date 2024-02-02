@@ -112,7 +112,7 @@ extension StopwatchInteractor: StopwatchPresenterToInteractorProtocol {
                 try await dataBase.saveTraining(training: training)
                 try await dataBase.updateSneakers(for: user.getId(), on: training.distance)
             } catch {
-                presenter.updateTrainingDataWithError(error)
+                self.presenter.updateTrainingDataWithError(error)
             }
         }
     }

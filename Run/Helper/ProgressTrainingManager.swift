@@ -10,7 +10,7 @@ import CoreMotion
 
 final class ProgressTrainingManager {
 
-    func getStepsAndKmCountForTraining(data: OrderedSet<Training>) -> [String: Float] {
+    func getStepsAndKmCountForTraining() -> [String: Float] {
         logger.log("\(#fileID) -> \(#function)")
         let pedometer = CMPedometer()
         var stepCurrentDay = 0

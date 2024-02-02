@@ -43,7 +43,7 @@ extension ChartsInteractor: ChartsPresenterToInteractorProtocol {
                 _dataChartTotal.removeAll()
                 guard let saveDateAndClick = chartManager.getPeriodAgo(indexPeriod: segmentIndex,
                                                                        buttonMovement: movermentButton) else { return }
-                let isHiddenMovermentForwardAndBack = chartManager.isHiddenButton(data: trainings,
+                async let isHiddenMovermentForwardAndBack = chartManager.isHiddenButton(data: trainings,
                                                                                   indexPeriod: segmentIndex,
                                                                                   date: saveDateAndClick)
                 var dataChartsInPeriod: [ChartsDataPeriodViewModel]?
@@ -64,7 +64,7 @@ extension ChartsInteractor: ChartsPresenterToInteractorProtocol {
                     break
                 }
                 if let dataChartsInPeriod = dataChartsInPeriod {
-                    presenter.dataChartsIsFetched(data: dataChartsInPeriod,
+                    await presenter.dataChartsIsFetched(data: dataChartsInPeriod,
                                                   hiddenButton: isHiddenMovermentForwardAndBack)
                     _dataChartTotal = dataChartsInPeriod.first?.dataTotal ?? []
                 }
