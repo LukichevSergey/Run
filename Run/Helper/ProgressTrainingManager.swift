@@ -10,7 +10,7 @@ import CoreMotion
 
 final class ProgressTrainingManager {
 
-    func getStepsAndKmCountForTraining(data: OrderedSet<Training>) -> [String: Float] {
+    func getStepsAndKmCountForTraining() -> [String: Float] {
         logger.log("\(#fileID) -> \(#function)")
         let pedometer = CMPedometer()
         var stepCurrentDay = 0
@@ -24,7 +24,7 @@ final class ProgressTrainingManager {
                     let endDate = Date()
                     pedometer.queryPedometerData(from: startDate, to: endDate) { (pedometerData, error) in
                         if let error = error {
-                            print("Ошибка при получении данных о шагах: \(error.localizedDescription)")
+                            print("Error when receiving step data: \(error.localizedDescription)")
                             group.leave()
                             return
                         }
@@ -37,7 +37,7 @@ final class ProgressTrainingManager {
                         group.leave()
                     }
                 } else {
-                    print("Счетчик шагов недоступен на данном устройстве.")
+                    print("The step counter is not available on this device.")
                 }
         group.wait()
         dictData["step"] = Float(stepCurrentDay)

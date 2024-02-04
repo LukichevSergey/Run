@@ -4,6 +4,7 @@
 //
 //  Created by Лукичев Сергей on 25.08.2023.
 //
+// swiftlint: disable localized_string
 
 import Foundation
 
@@ -27,7 +28,8 @@ enum Tx {
     enum Profile {
         static let title = NSLocalizedString("Profile.title", comment: "Профиль")
         static let exit = NSLocalizedString("Profile.exit", comment: "Выход")
-
+        static let editProfile = NSLocalizedString("Profile.editProfile", comment: "Редактировать профиль")
+        static let currency = NSLocalizedString("Profile.currency", comment: "трен")
         static func getBalance(balance: Double) -> String {
             let formatString = NSLocalizedString("Profile.balance", comment: "Баланс: %.2f $")
             return String.init(format: formatString, balance)
@@ -52,11 +54,13 @@ enum Tx {
         static let cityNotFound = NSLocalizedString("Training.cityNotFound", comment: "Город не найден")
         static let kilometerLayout = NSLocalizedString("Training.kilometerLayout", comment: "Раскладка")
         static let dateNotAvailable = NSLocalizedString("Training.dateNotAvailable", comment: "Дата отсутствует")
+        static let delete = NSLocalizedString("Training.delete", comment: "Удалить")
     }
     enum CircleTableResult {
         static let circle = NSLocalizedString("CircleTableResult.circle", comment: "Круг")
         static let distance = NSLocalizedString("CircleTableResult.distance", comment: "Дистанция")
         static let time = NSLocalizedString("CircleTableResult.time", comment: "Время")
+        static let end = NSLocalizedString("CircleTableResult.end", comment: "Конец")
     }
     enum Charts {
         static let statistics = NSLocalizedString("Charts.statistics", comment: "Статистика")
@@ -72,3 +76,4 @@ enum Tx {
         static let year = NSLocalizedString("TimePeriods.year", comment: "г.")
     }
 }
+// swiftlint: enable localized_string

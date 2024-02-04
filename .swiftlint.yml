@@ -2,4 +2,10 @@ disabled_rules:
   - identifier_name
   - type_name
   - function_body_length
-
+custom_rules:
+  localized_string:
+    name: "Localized Russin string"
+    regex: "[а-яА-Я]"
+    message: "Capture calls to `Strings` functions using"
+    severity: error
+    match_kinds: string

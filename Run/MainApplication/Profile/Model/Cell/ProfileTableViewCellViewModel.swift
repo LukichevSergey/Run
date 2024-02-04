@@ -18,8 +18,8 @@ extension ProfileTableViewCellViewModel {
         case exit
         var cellTitle: String {
             switch self {
-            case .editProfile: return "Редактировать профиль"
-            case .exit: return "Выход"
+            case .editProfile: return Tx.Profile.editProfile
+            case .exit: return Tx.Profile.exit
             }
         }
     }

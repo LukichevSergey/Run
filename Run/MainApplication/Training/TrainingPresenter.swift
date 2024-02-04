@@ -3,7 +3,7 @@
 //  Run
 //
 //  Created by Лукичев Сергей on 26.08.2023.
-//  
+//
 //
 
 import OrderedCollections
@@ -11,9 +11,10 @@ import UIKit
 
 // MARK: Protocol - TrainingViewToPresenterProtocol (View -> Presenter)
 protocol TrainingViewToPresenterProtocol: AnyObject {
-	func viewDidLoad()
+    func viewDidLoad()
     func listButtonTapped()
     func detailedTappedCell(_ indexPath: IndexPath)
+    func indexCell(_ indexPath: IndexPath)
 }
 
 // MARK: Protocol - TrainingInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -34,12 +35,18 @@ final class TrainingPresenter {
 
 // MARK: Extension - TrainingViewToPresenterProtocol
 extension TrainingPresenter: TrainingViewToPresenterProtocol {
+    func indexCell(_ indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
+        let itemID = interactor.trainingAll[indexPath.item].identifier
+        interactor.deleteCellTraining(iD: itemID )
+        interactor.fetchTrainings()
+    }
     func listButtonTapped() {
         router.navigateToListViewController()
     }
     func detailedTappedCell(_ indexPath: IndexPath) {
         logger.log("\(#fileID) -> \(#function)")
-        let trainingItem = interactor.training[indexPath.item]
+        let trainingItem = interactor.trainingForList[indexPath.item]
         router.navigationToDetailedViewController(itemTraining: trainingItem)
     }
     func viewDidLoad() {

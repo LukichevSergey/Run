@@ -21,7 +21,7 @@ final class DetailedTrainingManager {
                                       activityTraining: Tx.Training.run,
                                       target: "\(Tx.Training.target):",
                                       timeStartStop: data.dateStartStop,
-                                      city: "г. \(city)")
+                                      city: "\(Tx.TimePeriods.year) \(city)")
             ))
             detailedTraining.append(.detailedResult(
                 DetailedResultViewModel(allTimeTraining: data.allTime,
@@ -30,12 +30,6 @@ final class DetailedTrainingManager {
             ))
             detailedTraining.append(.detailedEveryKilometer(
                 DetailedEveryKilometrViewModel(time: data.everyKilometrs)
-            ))
-            detailedTraining.append(.detailedPulse(
-                DetailedPulseViewModel(graphicPulse: "PULSE")
-            ))
-            detailedTraining.append(.detailedMap(
-                DetailedMapViewModel(map: "MAP")
             ))
             completion(detailedTraining)
         }

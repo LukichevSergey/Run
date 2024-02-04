@@ -108,8 +108,8 @@ final class ProfileSneakersCollectionViewCell: UICollectionViewCell {
 
 extension ProfileSneakersCollectionViewCell: ConfigurableViewProtocol {
     func configure(with model: Sneakers) {
-        distanceLabel.text = "\(model.distance) км"
-        trainingsCountLabel.text = "\(model.trainingsCount) трен"
+        distanceLabel.text = "\(model.distance) \(Tx.Timer.kilometr)"
+        trainingsCountLabel.text = "\(model.trainingsCount) \(Tx.Profile.currency)"
         moneyLabel.text = "\(model.money) ₽"
         conditionLabel.text = "\(model.condition) / 100"
         levelLabel.text = "Lvl \(model.level)"

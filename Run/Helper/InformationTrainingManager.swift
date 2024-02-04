@@ -17,7 +17,7 @@ final class InformationTrainingManager {
         var trainingModelArray = [TrainingCellViewModel]()
         data.forEach { training in
             trainingModelArray.append(TrainingCellViewModel(identifier: training.id,
-                killometrs: "\(String(format: "%.2f", training.distance)) км",
+                killometrs: "\(String(format: "%.2f", training.distance)) \(Tx.Timer.kilometr)",
                 image: ListImages.Training.circleIcon ?? UIImage(),
                 data: "\(training.startTime.formatDate("dd.MM.yyyy")) >",
                 title: Tx.Training.run,
@@ -38,18 +38,18 @@ final class InformationTrainingManager {
         logger.log("\(#fileID) -> \(#function)")
         let trainingCellViewModels = data.map { training in
             return TrainingCellViewModel(identifier: training.id,
-                                         killometrs: "\(String(format: "%.2f", training.distance)) км",
-                                         image: ListImages.Training.circleIcon ?? UIImage(),
-                                         data: "\(training.startTime.formatDate("dd.MM.yyyy")) >",
-                                         title: Tx.Training.run,
-                                         dateStartStop: training.startTime.formatDate("MM"),
-                                         city: CityCoordinates(latitude: training.coordinatesCity.latitude,
-                                                               longitude: training.coordinatesCity.longitude),
-                                         averageTemp: training.averageTemp.toMinutesAndSeconds(),
-                                         allTime: training.time.toMinutesAndSeconds(),
-                                         everyKilometrs: training.everyTimeKilometrs)
+                                killometrs: "\(String(format: "%.2f", training.distance)) \(Tx.Timer.kilometr)",
+                                image: ListImages.Training.circleIcon ?? UIImage(),
+                                data: "\(training.startTime.formatDate("dd.MM.yyyy")) >",
+                                title: Tx.Training.run,
+                                dateStartStop: training.startTime.formatDate("MM"),
+                                city: CityCoordinates(latitude: training.coordinatesCity.latitude,
+                                                      longitude: training.coordinatesCity.longitude),
+                                averageTemp: training.averageTemp.toMinutesAndSeconds(),
+                                allTime: training.time.toMinutesAndSeconds(),
+                                everyKilometrs: training.everyTimeKilometrs)
         }
         let sortedTraining = trainingCellViewModels.sorted { $0.data > $1.data }
-        return OrderedSet(sortedTraining)
+        return OrderedSet(sortedTraining.reversed())
     }
 }

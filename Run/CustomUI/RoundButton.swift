@@ -65,10 +65,10 @@ final class RoundButton: UIView {
                                                                                weight: .bold),
                                                    forImageIn: .normal)
         case .endButton:
-            button.setTitle("Конец", for: .normal)
+            button.setTitle(Tx.CircleTableResult.end, for: .normal)
             button.setTitleColor(type.tintColor, for: .normal)
         case .roundButton:
-            button.setTitle("Круг", for: .normal)
+            button.setTitle(Tx.CircleTableResult.circle, for: .normal)
             button.setTitleColor(type.tintColor, for: .normal)
         }
         return button
