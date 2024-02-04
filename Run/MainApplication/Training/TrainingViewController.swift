@@ -210,7 +210,7 @@ extension TrainingViewController: UITableViewDelegate {
                    trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         logger.log("\(#fileID) -> \(#function)")
         let deleteAction = UIContextualAction(style: .destructive,
-                                              title: "Удалить") { [weak presenter] (_, _, _) in
+                                              title: Tx.Training.delete) { [weak presenter] _, _, _ in
             presenter?.indexCell(indexPath)
         }
         let swipeConfiguration = UISwipeActionsConfiguration(actions: [deleteAction])

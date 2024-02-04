@@ -26,6 +26,8 @@
 "Profile.title" = "Профиль";
 "Profile.balance" = "Баланс: %.2f $";
 "Profile.exit" = "Выход";
+"Profile.currency" = "трен";
+"Profile.editProfile" = "Редактировать профиль";
 
 // MARK: - Training
 "Training.title" = "Тренировки";
@@ -46,11 +48,13 @@
 "Training.cityNotFound" = "Город не найден";
 "Training.kilometerLayout" = "Раскладка";
 "Training.dateNotAvailable" = "Дата отсутствует";
+"Training.delete" = "Удалить";
 
 // MARK: - CircleTableResult
 "CircleTableResult.circle" = "Круг";
 "CircleTableResult.distance" = "Дистанция";
 "CircleTableResult.time" = "Время";
+"CircleTableResult.end" = "Конец";
 
 // MARK: - Chat
 "Charts.statistics" = "Статистика";
