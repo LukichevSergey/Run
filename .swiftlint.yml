@@ -9,3 +9,6 @@ custom_rules:
     message: "Capture calls to `Strings` functions using"
     severity: error
     match_kinds: string
+cyclomatic_complexity:
+  warning: 13
+  error: 15

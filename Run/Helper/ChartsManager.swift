@@ -197,17 +197,23 @@ final class ChartsManager {
                     return .isHiddenButtonBack
                 } else if lastDate?.firstOfWeek() == date.firstOfWeek() {
                     return .isHiddenButtonForward
+                } else if date.firstOfWeek() == Date().firstOfWeek() {
+                    return .isHiddenButtonForward
                 }
             case .month:
                 if firstDate?.firstDayOfMonth() == date.firstDayOfMonth() {
                     return .isHiddenButtonBack
                 } else if lastDate?.firstDayOfMonth() == date.firstDayOfMonth() {
                     return .isHiddenButtonForward
+                } else if date.firstDayOfMonth() == Date().firstDayOfMonth() {
+                    return .isHiddenButtonForward
                 }
             case .year:
                 if firstDate?.firstMonthOfYear() == date.firstMonthOfYear() {
                     return .isHiddenButtonBack
                 } else if lastDate?.firstMonthOfYear() == date.firstMonthOfYear() {
+                    return .isHiddenButtonForward
+                } else if date.firstMonthOfYear() == Date().firstMonthOfYear() {
                     return .isHiddenButtonForward
                 }
             }
