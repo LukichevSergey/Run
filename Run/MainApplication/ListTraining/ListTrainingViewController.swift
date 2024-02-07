@@ -73,6 +73,10 @@ final class ListTrainingViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         setupDiffableDataSource()
         setupHeaderCollection()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.title,
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
     }
     @objc private func senderTappedButton() {
         logger.log("\(#fileID) -> \(#function)")
@@ -145,10 +149,6 @@ extension ListTrainingViewController: ListTrainingRouterToViewProtocol {
     func pushView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.title,
-                                                           style: .plain,
-                                                           target: nil,
-                                                           action: nil)
     }
 }
 
