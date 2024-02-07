@@ -101,6 +101,10 @@ final class TrainingViewController: UIViewController {
     private func commonInit() {
         logger.log("\(#fileID) -> \(#function)")
         setupDiffableDataSource()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.information,
+                                                           style: .plain,
+                                                           target: nil,
+                                                           action: nil)
     }
     private func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
@@ -228,10 +232,6 @@ extension TrainingViewController: TrainingRouterToViewProtocol {
     func pushView(view: UIViewController) {
         logger.log("\(#fileID) -> \(#function)")
         navigationController?.pushViewController(view, animated: true)
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: Tx.Training.information,
-                                                           style: .plain,
-                                                           target: nil,
-                                                           action: nil)
     }
 }
 

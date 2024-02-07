@@ -26,28 +26,15 @@ final class RootMainApplicitionController: UITabBarController {
         profileViewController.title = Tx.Profile.title
 
         viewControllers = [stopwatchViewController, trainingViewController, profileViewController]
-
         guard let items = self.tabBar.items else { return }
 
-        let imageStopwatch = UIImage(systemName: "clock.arrow.circlepath")
-        let imageTraining = UIImage(systemName: "figure.walk.circle")
-        let imageProfile = UIImage(systemName: "person.crop.circle")
-        let views = [imageStopwatch, imageTraining, imageProfile]
+        items[0].image = UIImage(systemName: "clock.arrow.circlepath")
+        items[1].image = UIImage(systemName: "figure.walk.circle")
+        items[2].image = UIImage(systemName: "person.crop.circle")
 
-        for item in 0..<items.count {
-            items[item].image = views[item]
-        }
-
-        let customTabBar = UITabBar()
-        customTabBar.items = items
-        customTabBar.tintColor = .black
-        customTabBar.selectedItem = customTabBar.items?.first
+        tabBar.tintColor = .black
+        tabBar.backgroundColor = .white
+        tabBar.frame.size.height = 90
         selectedIndex = 0
-
-        view.addSubview(customTabBar)
-        customTabBar.snp.makeConstraints { make in
-            make.bottom.right.left.equalToSuperview()
-            make.height.equalTo(90)
-        }
     }
 }
