@@ -139,7 +139,7 @@ extension ListTrainingViewController: ListTrainingPresenterToViewProtocol {
             snapshot.appendSections([section])
             snapshot.appendItems(section.training, toSection: section)
         }
-        diffableCollectionDataSource?.apply(snapshot)
+        diffableCollectionDataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
 
