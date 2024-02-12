@@ -64,7 +64,6 @@ extension TrainingPresenter: TrainingInteractorToPresenterProtocol {
         view.setTrainingData(data: Array(data))
         view.removeActivityIndicator()
     }
-
     func trainingProgressStepAndKm(data: [String: Float]) {
         logger.log("\(#fileID) -> \(#function)")
         view.setTrainingProgressStep(step: data["step"] ?? 0, stepLabel: "\(String(format: "%.0f", data["step"] ?? 0))")

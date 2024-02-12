@@ -189,12 +189,14 @@ extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
 extension ListTrainingViewController {
     func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath,
                         for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        logger.log("\(#fileID) -> \(#function)")
         var options = SwipeOptions()
         options.expansionStyle = .destructive(automaticallyDelete: false)
         return options
     }
     func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath,
                         for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        logger.log("\(#fileID) -> \(#function)")
         guard orientation == .right else { return nil }
 
         let deleteAction = SwipeAction(style: .default, title: .none) { [weak presenter] _, indexPath in
