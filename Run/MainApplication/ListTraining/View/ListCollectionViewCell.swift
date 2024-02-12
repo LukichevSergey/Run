@@ -6,12 +6,17 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-final class ListCollectionViewCell: UICollectionViewCell {
+final class ListCollectionViewCell: SwipeCollectionViewCell {
     override init(frame: CGRect) {
         super.init(frame: frame)
         logger.log("\(#fileID) -> \(#function)")
         commonInit()
+        contentView.backgroundColor = PaletteApp.lightGreen
+        contentView.layer.borderWidth = 2
+        contentView.layer.borderColor = PaletteApp.darkblue.cgColor
+        contentView.layer.cornerRadius = 20
     }
     required init?(coder: NSCoder) {
         logger.log("\(#fileID) -> \(#function)")

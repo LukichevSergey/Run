@@ -15,5 +15,6 @@ enum ListImages {
     }
     enum Training {
         static let circleIcon = UIImage(named: "circle")
+        static let trashCircle = UIImage(named: "trash.red")
     }
 }

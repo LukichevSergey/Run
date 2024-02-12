@@ -139,6 +139,7 @@
 		9B7E10EF2B0C140F000904F1 /* DetailedTrainingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */; };
 		9B8605B92B4AA00C00CF5148 /* ChartsDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8605B82B4AA00C00CF5148 /* ChartsDataViewModel.swift */; };
 		9B8605BB2B4AA43500CF5148 /* ChartsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8605BA2B4AA43500CF5148 /* ChartsManager.swift */; };
+		9B86E98A2B77A9F100634D00 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9B86E9892B77A9F100634D00 /* SwipeCellKit */; };
 		9B8D90992B1A1D9700885630 /* DetailedTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */; };
 		9B8EFD172B271B8F00AC9DBE /* DetailedTrainingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8EFD162B271B8F00AC9DBE /* DetailedTrainingEnum.swift */; };
 		9B9424E62B25B8AE005A28E3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9424E52B25B8AE005A28E3 /* String+Extension.swift */; };
@@ -297,6 +298,7 @@
 				87DFA1E02AB346C900B20B40 /* OrderedCollections in Frameworks */,
 				8705D8942A9789AD002BBDC2 /* SnapKit in Frameworks */,
 				87A8DEE92AA3061E00F49A62 /* FirebaseStorage in Frameworks */,
+				9B86E98A2B77A9F100634D00 /* SwipeCellKit in Frameworks */,
 				87A8DEE32AA3061E00F49A62 /* FirebaseAuth in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -830,6 +832,7 @@
 				87DFA1DF2AB346C900B20B40 /* OrderedCollections */,
 				873BE8572AC2AC24006DC498 /* Kingfisher */,
 				9B94D4A32B44F92A006CDA0B /* DGCharts */,
+				9B86E9892B77A9F100634D00 /* SwipeCellKit */,
 			);
 			productName = Run;
 			productReference = 8705D8742A978427002BBDC2 /* Run.app */;
@@ -865,6 +868,7 @@
 				87DFA1DE2AB346C900B20B40 /* XCRemoteSwiftPackageReference "swift-collections" */,
 				873BE8562AC2AC24006DC498 /* XCRemoteSwiftPackageReference "Kingfisher" */,
 				9B94D4A22B44F92A006CDA0B /* XCRemoteSwiftPackageReference "Charts" */,
+				9B86E9882B77A9F100634D00 /* XCRemoteSwiftPackageReference "SwipeCellKit" */,
 			);
 			productRefGroup = 8705D8752A978427002BBDC2 /* Products */;
 			projectDirPath = "";
@@ -1306,6 +1310,14 @@
 				minimumVersion = 1.0.0;
 			};
 		};
+		9B86E9882B77A9F100634D00 /* XCRemoteSwiftPackageReference "SwipeCellKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SwipeCellKit/SwipeCellKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.7.1;
+			};
+		};
 		9B94D4A22B44F92A006CDA0B /* XCRemoteSwiftPackageReference "Charts" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielgindi/Charts.git";
@@ -1351,6 +1363,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 87DFA1DE2AB346C900B20B40 /* XCRemoteSwiftPackageReference "swift-collections" */;
 			productName = OrderedCollections;
+		};
+		9B86E9892B77A9F100634D00 /* SwipeCellKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9B86E9882B77A9F100634D00 /* XCRemoteSwiftPackageReference "SwipeCellKit" */;
+			productName = SwipeCellKit;
 		};
 		9B94D4A32B44F92A006CDA0B /* DGCharts */ = {
 			isa = XCSwiftPackageProductDependency;
