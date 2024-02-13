@@ -29,9 +29,7 @@ final class ListTrainingInteractor {
 // MARK: Extension - ListTrainingPresenterToInteractorProtocol
 extension ListTrainingInteractor: ListTrainingPresenterToInteractorProtocol {
     var trainingAll: OrderedCollections.OrderedSet<SectionListTrainingModel> {
-        let trainingAll = _listTraining
-
-        return trainingAll
+        return _listTraining
     }
     func deleteCellTraining(iD: String) {
         logger.log("\(#fileID) -> \(#function)")

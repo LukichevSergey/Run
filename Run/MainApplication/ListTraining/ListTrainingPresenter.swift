@@ -32,7 +32,6 @@ final class ListTrainingPresenter {
 extension ListTrainingPresenter: ListTrainingViewToPresenterProtocol {
     func indexCell(_ indexPath: IndexPath) {
         logger.log("\(#fileID) -> \(#function)")
-        print(indexPath.count)
         let itemID = interactor.trainingAll[indexPath.section].training[indexPath.item].identifier
         interactor.deleteCellTraining(iD: itemID )
         interactor.fetchTrainings()
