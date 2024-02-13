@@ -8,6 +8,7 @@
 
 import UIKit
 import OrderedCollections
+import SwipeCellKit
 
 // MARK: Protocol - TrainingPresenterToViewProtocol (Presenter -> View)
 protocol TrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
@@ -22,7 +23,7 @@ protocol TrainingRouterToViewProtocol: AnyObject {
     func pushView(view: UIViewController)
 }
 
-final class TrainingViewController: UIViewController {
+final class TrainingViewController: UIViewController, SwipeTableViewCellDelegate {
     // MARK: - Property
     var presenter: TrainingViewToPresenterProtocol!
     private var diffableDataSource: UITableViewDiffableDataSource<SectionTrainingModel, TrainingCellViewModel>?
@@ -110,6 +111,7 @@ final class TrainingViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         diffableDataSource = UITableViewDiffableDataSource(tableView: trainingDataTable) { tableView, indexPath, item in
             let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath) as? TrainingTableViewCell
+            cell?.delegate = self
             cell?.configure(with: item)
             return cell
         }
@@ -239,5 +241,28 @@ extension TrainingViewController: SenderListTrainingDelegate {
     func senderTappedButton() {
         logger.log("\(#fileID) -> \(#function)")
         presenter.listButtonTapped()
+    }
+}
+
+extension TrainingViewController {
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath,
+                   for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        logger.log("\(#fileID) -> \(#function)")
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive(automaticallyDelete: false)
+        return options
+    }
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath,
+                   for orientation: SwipeCellKit.SwipeActionsOrientation) -> [SwipeCellKit.SwipeAction]? {
+        logger.log("\(#fileID) -> \(#function)")
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .default, title: .none) { [weak presenter] _, indexPath in
+            presenter?.indexCell(indexPath)
+        }
+        deleteAction.backgroundColor = PaletteApp.white
+        deleteAction.transitionDelegate = ScaleTransition.default
+        deleteAction.image = ListImages.Training.trashCircle
+        return [deleteAction]
     }
 }

@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import SwipeCellKit
 
-final class TrainingTableViewCell: UITableViewCell {
+final class TrainingTableViewCell: SwipeTableViewCell {
 
     private let castomView: UIView = {
         let view = UIView()

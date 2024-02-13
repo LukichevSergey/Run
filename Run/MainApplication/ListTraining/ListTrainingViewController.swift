@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SwipeCellKit
 
 // MARK: Protocol - ListTrainingPresenterToViewProtocol (Presenter -> View)
 protocol ListTrainingPresenterToViewProtocol: ActivityIndicatorProtocol {
@@ -18,7 +19,7 @@ protocol ListTrainingRouterToViewProtocol: AnyObject {
     func pushView(view: UIViewController)
 }
 
-final class ListTrainingViewController: UIViewController {
+final class ListTrainingViewController: UIViewController, SwipeCollectionViewCellDelegate {
     // MARK: - Property
     var presenter: ListTrainingViewToPresenterProtocol!
     private var diffableCollectionDataSource: UICollectionViewDiffableDataSource<SectionListTrainingModel,
@@ -67,6 +68,7 @@ final class ListTrainingViewController: UIViewController {
         collectionViewTraining.register(ListHeaderCollectionView.self,
                                         forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                         withReuseIdentifier: "header")
+
     }
     // MARK: - private func
     private func commonInit() {
@@ -82,17 +84,18 @@ final class ListTrainingViewController: UIViewController {
         logger.log("\(#fileID) -> \(#function)")
         presenter.chartsTappedButton()
     }
-    func setupDiffableDataSource() {
+    private func setupDiffableDataSource() {
         logger.log("\(#fileID) -> \(#function)")
         diffableCollectionDataSource = UICollectionViewDiffableDataSource<SectionListTrainingModel,
             TrainingCellViewModel>(collectionView: collectionViewTraining) { collectionView, indexPath, item in
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell",
                                                           for: indexPath) as? ListCollectionViewCell
+            cell?.delegate = self
             cell?.configure(with: item)
             return cell
         }
     }
-    func setupHeaderCollection() {
+    private func setupHeaderCollection() {
         logger.log("\(#fileID) -> \(#function)")
         diffableCollectionDataSource?.supplementaryViewProvider = { collectionView, kind, indexPath in
             guard let section = self.diffableCollectionDataSource?.sectionIdentifier(for: indexPath.section) else {
@@ -136,7 +139,7 @@ extension ListTrainingViewController: ListTrainingPresenterToViewProtocol {
             snapshot.appendSections([section])
             snapshot.appendItems(section.training, toSection: section)
         }
-        diffableCollectionDataSource?.apply(snapshot)
+        diffableCollectionDataSource?.apply(snapshot, animatingDifferences: true)
     }
 }
 
@@ -157,10 +160,6 @@ extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
                         willDisplay cell: UICollectionViewCell,
                         forItemAt indexPath: IndexPath) {
         logger.log("\(#fileID) -> \(#function)")
-        cell.backgroundColor = PaletteApp.lightGreen
-        cell.layer.borderWidth = 2
-        cell.layer.borderColor = PaletteApp.darkblue.cgColor
-        cell.layer.cornerRadius = 20
     }
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
@@ -184,5 +183,28 @@ extension ListTrainingViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         logger.log("\(#fileID) -> \(#function)")
         presenter.detailedTappedCell(indexPath)
+    }
+}
+
+extension ListTrainingViewController {
+    func collectionView(_ collectionView: UICollectionView, editActionsOptionsForItemAt indexPath: IndexPath,
+                        for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        logger.log("\(#fileID) -> \(#function)")
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive(automaticallyDelete: false)
+        return options
+    }
+    func collectionView(_ collectionView: UICollectionView, editActionsForItemAt indexPath: IndexPath,
+                        for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        logger.log("\(#fileID) -> \(#function)")
+        guard orientation == .right else { return nil }
+
+        let deleteAction = SwipeAction(style: .default, title: .none) { [weak presenter] _, indexPath in
+                        presenter?.indexCell(indexPath)
+        }
+        deleteAction.backgroundColor = PaletteApp.white
+        deleteAction.transitionDelegate = ScaleTransition.default
+        deleteAction.image = ListImages.Training.trashCircle
+        return [deleteAction]
     }
 }

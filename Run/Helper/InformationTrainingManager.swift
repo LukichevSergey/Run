@@ -14,9 +14,8 @@ final class InformationTrainingManager {
     /// - Returns: Возвращает модель тренировок для использования в детальном экране тренировок
     func getTrainingForDetailed(data: OrderedSet<Training>) -> OrderedSet<TrainingCellViewModel> {
         logger.log("\(#fileID) -> \(#function)")
-        var trainingModelArray = [TrainingCellViewModel]()
-        data.forEach { training in
-            trainingModelArray.append(TrainingCellViewModel(identifier: training.id,
+        let trainingModelArray = data.map { training in
+            return TrainingCellViewModel(identifier: training.id,
                 killometrs: "\(String(format: "%.2f", training.distance)) \(Tx.Timer.kilometr)",
                 image: ListImages.Training.circleIcon ?? UIImage(),
                 data: "\(training.startTime.formatDate("dd.MM.yyyy")) >",
@@ -26,10 +25,9 @@ final class InformationTrainingManager {
                                                   longitude: training.coordinatesCity.longitude),
                 averageTemp: training.averageTemp.toMinutesAndSeconds(),
                 allTime: training.time.toMinutesAndSeconds(),
-                everyKilometrs: training.everyTimeKilometrs))
-        }
-        let sortedTraining = trainingModelArray.sorted { $0.data > $1.data }
-        return OrderedSet(sortedTraining)
+                everyKilometrs: training.everyTimeKilometrs)
+        }.sorted { $0.data < $1.data }
+        return OrderedSet(trainingModelArray)
     }
     /// Метод используется для отображения всех тренировок на общем экране тренировок
     /// - Parameter data: Массив всех записанных тренировок с моделью Training
@@ -48,8 +46,7 @@ final class InformationTrainingManager {
                                 averageTemp: training.averageTemp.toMinutesAndSeconds(),
                                 allTime: training.time.toMinutesAndSeconds(),
                                 everyKilometrs: training.everyTimeKilometrs)
-        }
-        let sortedTraining = trainingCellViewModels.sorted { $0.data > $1.data }
-        return OrderedSet(sortedTraining.reversed())
+        }.sorted { $0.data < $1.data }
+        return OrderedSet(trainingCellViewModels)
     }
 }

@@ -13,6 +13,7 @@ protocol ListTrainingViewToPresenterProtocol: AnyObject {
     func viewDidLoad()
     func detailedTappedCell(_ indexPath: IndexPath)
     func chartsTappedButton()
+    func indexCell(_ indexPath: IndexPath)
 }
 
 // MARK: Protocol - ListTrainingInteractorToPresenterProtocol (Interactor -> Presenter)
@@ -29,6 +30,12 @@ final class ListTrainingPresenter {
 
 // MARK: Extension - ListTrainingViewToPresenterProtocol
 extension ListTrainingPresenter: ListTrainingViewToPresenterProtocol {
+    func indexCell(_ indexPath: IndexPath) {
+        logger.log("\(#fileID) -> \(#function)")
+        let itemID = interactor.trainingAll[indexPath.section].training[indexPath.item].identifier
+        interactor.deleteCellTraining(iD: itemID )
+        interactor.fetchTrainings()
+    }
     func chartsTappedButton() {
         logger.log("\(#fileID) -> \(#function)")
         router.navigateToChartsViewController()
