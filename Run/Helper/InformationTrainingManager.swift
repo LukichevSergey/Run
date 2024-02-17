@@ -14,7 +14,8 @@ final class InformationTrainingManager {
     /// - Returns: Возвращает модель тренировок для использования в детальном экране тренировок
     func getTrainingForDetailed(data: OrderedSet<Training>) -> OrderedSet<TrainingCellViewModel> {
         logger.log("\(#fileID) -> \(#function)")
-        let trainingModelArray = data.map { training in
+        let sortDataTraining = data.sorted { $0.startTime > $1.startTime }
+        let trainingModelArray = sortDataTraining.map { training in
             return TrainingCellViewModel(identifier: training.id,
                 killometrs: "\(String(format: "%.2f", training.distance)) \(Tx.Timer.kilometr)",
                 image: ListImages.Training.circleIcon ?? UIImage(),
@@ -26,7 +27,7 @@ final class InformationTrainingManager {
                 averageTemp: training.averageTemp.toMinutesAndSeconds(),
                 allTime: training.time.toMinutesAndSeconds(),
                 everyKilometrs: training.everyTimeKilometrs)
-        }.sorted { $0.data < $1.data }
+        }
         return OrderedSet(trainingModelArray)
     }
     /// Метод используется для отображения всех тренировок на общем экране тренировок
@@ -34,7 +35,8 @@ final class InformationTrainingManager {
     /// - Returns: Возвращает модель тренировок для использования в общем экране
     func getinformationAllTraining(data: OrderedSet<Training>) -> OrderedSet<TrainingCellViewModel> {
         logger.log("\(#fileID) -> \(#function)")
-        let trainingCellViewModels = data.map { training in
+        let sortDataTraining = data.sorted { $0.startTime > $1.startTime }
+        let trainingCellViewModels = sortDataTraining.map { training in
             return TrainingCellViewModel(identifier: training.id,
                                 killometrs: "\(String(format: "%.2f", training.distance)) \(Tx.Timer.kilometr)",
                                 image: ListImages.Training.circleIcon ?? UIImage(),
@@ -46,7 +48,7 @@ final class InformationTrainingManager {
                                 averageTemp: training.averageTemp.toMinutesAndSeconds(),
                                 allTime: training.time.toMinutesAndSeconds(),
                                 everyKilometrs: training.everyTimeKilometrs)
-        }.sorted { $0.data < $1.data }
+        }
         return OrderedSet(trainingCellViewModels)
     }
 }

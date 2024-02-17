@@ -245,13 +245,6 @@ extension TrainingViewController: SenderListTrainingDelegate {
 }
 
 extension TrainingViewController {
-    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath,
-                   for orientation: SwipeActionsOrientation) -> SwipeOptions {
-        logger.log("\(#fileID) -> \(#function)")
-        var options = SwipeOptions()
-        options.expansionStyle = .destructive(automaticallyDelete: false)
-        return options
-    }
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath,
                    for orientation: SwipeCellKit.SwipeActionsOrientation) -> [SwipeCellKit.SwipeAction]? {
         logger.log("\(#fileID) -> \(#function)")
