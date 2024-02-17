@@ -44,13 +44,13 @@ final class ListTrainingManager {
                         countTraining: countTraining,
                         allTime: alltime.toMinutesAndSeconds(),
                         averageTime: (alltime / Double(countTraining)).toMinutesAndSeconds(),
-                        training: monthTraining))
+                        training: monthTraining.sorted { $0.data > $1.data }))
             }
             monthTraining.removeAll()
             countTraining = 0
             alltime = 0
             identifierMonth = ""
         }
-        return OrderedSet(trainingModelArray)
+        return OrderedSet(trainingModelArray.sorted { $0.month < $1.month  })
     }
 }
