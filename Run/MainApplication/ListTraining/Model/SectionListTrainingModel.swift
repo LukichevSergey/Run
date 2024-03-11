@@ -8,7 +8,6 @@
 import Foundation
 
 struct SectionListTrainingModel: Hashable {
-    let identifier: String
     let month: String
     let countTraining: Int
     let allTime: String
