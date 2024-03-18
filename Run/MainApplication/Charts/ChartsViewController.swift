@@ -88,6 +88,8 @@ final class ChartsViewController: UIViewController {
     }()
     private let barChartView: BarChartView = {
         let barChart = BarChartView()
+        barChart.xAxis.labelTextColor = PaletteApp.black
+        barChart.leftAxis.labelTextColor = PaletteApp.black
         barChart.gridBackgroundColor = UIColor.white
         // Отключаем координаты сетки
         barChart.xAxis.drawGridLinesEnabled = false
@@ -100,8 +102,7 @@ final class ChartsViewController: UIViewController {
         // Отключаем легенду
         barChart.legend.enabled = false
         // Отключаем зум
-        barChart.pinchZoomEnabled = false
-        barChart.doubleTapToZoomEnabled = false
+        barChart.setScaleEnabled(false)
         barChart.xAxis.enabled = true
         barChart.drawBordersEnabled = false
         barChart.minOffset = 0
@@ -264,6 +265,9 @@ extension ChartsViewController: ChartsPresenterToViewProtocol {
         countAllTime.text = time
         titlePeriod.text = dateWeek
         switch hiddenButton {
+        case .allHiddenButton:
+            forwardPeriodButton.isHidden = true
+            backPeriodButton.isHidden = true
         case .isHiddenButtonBack:
             forwardPeriodButton.isHidden = false
             backPeriodButton.isHidden = true

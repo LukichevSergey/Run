@@ -63,8 +63,8 @@ final class ChartsManager {
             }
         }
         dataChartsPeriod.append(ChartsDataPeriodViewModel(date: "\(date.formatDate("yyyy").capitalized)",
-                                               dataCharts: dataForCharts,
-                                               dataTotal: dataForTotalWeek))
+                                                          dataCharts: dataForCharts,
+                                                          dataTotal: dataForTotalWeek))
         return dataChartsPeriod
     }
     /// Метод который получает дату для графиков за Месяц
@@ -104,8 +104,8 @@ final class ChartsManager {
             }
         }
         dataChartsPeriod.append(ChartsDataPeriodViewModel(date: "\(date.formatDate("MMM yyyy").capitalized)",
-                                               dataCharts: dataForCharts,
-                                               dataTotal: dataForTotalWeek))
+                                                          dataCharts: dataForCharts,
+                                                          dataTotal: dataForTotalWeek))
         return dataChartsPeriod
     }
     /// Метод который получает дату для графиков за неделю
@@ -193,28 +193,39 @@ final class ChartsManager {
         if let period = PeriodofTime(rawValue: indexPeriod) {
             switch period {
             case .week:
-                if firstDate?.firstOfWeek() == date.firstOfWeek() {
-                    return .isHiddenButtonBack
-                } else if lastDate?.firstOfWeek() == date.firstOfWeek() {
-                    return .isHiddenButtonForward
-                } else if date.firstOfWeek() == Date().firstOfWeek() {
-                    return .isHiddenButtonForward
+                if firstDate?.firstOfWeek() == lastDate?.firstOfWeek() {
+                    return .allHiddenButton
+                }
+                if let firstWeek = firstDate?.firstOfWeek(), let lastWeek = lastDate?.firstOfWeek() {
+                    if date.firstOfWeek() == firstWeek {
+                        return .isHiddenButtonBack
+                    } else if date.firstOfWeek() == lastWeek || date.firstOfWeek() == Date().firstOfWeek() {
+                        return .isHiddenButtonForward
+                    }
                 }
             case .month:
-                if firstDate?.firstDayOfMonth() == date.firstDayOfMonth() {
-                    return .isHiddenButtonBack
-                } else if lastDate?.firstDayOfMonth() == date.firstDayOfMonth() {
-                    return .isHiddenButtonForward
-                } else if date.firstDayOfMonth() == Date().firstDayOfMonth() {
-                    return .isHiddenButtonForward
+                if firstDate?.firstDayOfMonth() == lastDate?.firstDayOfMonth() {
+                    return .allHiddenButton
+                }
+                if let firstMonth = firstDate?.firstDayOfMonth(), let lastMonth = lastDate?.firstDayOfMonth() {
+                    if date.firstDayOfMonth() == firstMonth {
+                        return .isHiddenButtonBack
+                    } else if date.firstDayOfMonth() == lastMonth ||
+                                date.firstDayOfMonth() == Date().firstDayOfMonth() {
+                        return .isHiddenButtonForward
+                    }
                 }
             case .year:
-                if firstDate?.firstMonthOfYear() == date.firstMonthOfYear() {
-                    return .isHiddenButtonBack
-                } else if lastDate?.firstMonthOfYear() == date.firstMonthOfYear() {
-                    return .isHiddenButtonForward
-                } else if date.firstMonthOfYear() == Date().firstMonthOfYear() {
-                    return .isHiddenButtonForward
+                if firstDate?.firstMonthOfYear() == lastDate?.firstMonthOfYear() {
+                    return .allHiddenButton
+                }
+                if let firstYear = firstDate?.firstMonthOfYear(), let lastYear = lastDate?.firstMonthOfYear() {
+                    if date.firstMonthOfYear() == firstYear {
+                        return .isHiddenButtonBack
+                    } else if date.firstMonthOfYear() == lastYear ||
+                                date.firstMonthOfYear() == Date().firstMonthOfYear() {
+                        return .isHiddenButtonForward
+                    }
                 }
             }
         }
