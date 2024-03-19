@@ -10,5 +10,5 @@ custom_rules:
     severity: error
     match_kinds: string
 cyclomatic_complexity:
-  warning: 16
-  error: 18
+  warning: 13
+  error: 15

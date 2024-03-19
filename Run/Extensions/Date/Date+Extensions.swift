@@ -15,45 +15,40 @@ extension Date {
         let formattedDateString = dateFormatter.string(from: self)
         return formattedDateString
     }
-    func firstOfWeek() -> Date {
+    func firstOfData(_ dateFormatPeriod: PeriodofTime) -> Date {
         let calendar = Calendar.current
-        if let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear],
-                                                                         from: self)) {
+        switch dateFormatPeriod {
+        case .week:
+            guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear],
+                                                                                from: self)) else {
+                return Date()
+            }
             return startOfWeek
-        } else {
-            return Date()
+        case .month:
+            let components = calendar.dateComponents([.year, .month], from: self)
+            return calendar.date(from: components) ?? Date()
+        case .year:
+            return calendar.dateInterval(of: .year, for: self)?.start ?? Date()
         }
     }
-    func lastOfWeek() -> Date {
+    func lastOfData(_ dateFormatPeriod: PeriodofTime) -> Date {
         let calendar = Calendar.current
-        if let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear],
-                                                                         from: self)),
-           let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek) {
+        switch dateFormatPeriod {
+        case .week:
+            guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear],
+                                                                                from: self)),
+                  let endOfWeek = calendar.date(byAdding: .day, value: 6, to: startOfWeek) else {
+                return Date()
+            }
             return endOfWeek
-        } else {
-            return Date()
+        case .month:
+            guard let startOfMonth = calendar.dateInterval(of: .month, for: self)?.start,
+                  let endOfMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth) else {
+                return Date()
+            }
+            return endOfMonth
+        case .year:
+            return calendar.dateInterval(of: .year, for: self)?.end ?? Date()
         }
-    }
-    func firstDayOfMonth() -> Date {
-        let calendar = Calendar.current
-        let components = calendar.dateComponents([.year, .month], from: self)
-        return calendar.date(from: components) ?? Date()
-    }
-    func lastDayOfMonth() -> Date {
-        let calendar = Calendar.current
-        if let startOfMonth = calendar.dateInterval(of: .month, for: self)?.start {
-            return calendar.date(byAdding: DateComponents(month: 1, day: -1), to: startOfMonth) ?? Date()
-        }
-        return Date()
-    }
-    func firstMonthOfYear() -> Date {
-        let calendar = Calendar.current
-
-        return calendar.dateInterval(of: .year, for: self)?.start ?? Date()
-    }
-    func lastMonthOfYear() -> Date {
-        let calendar = Calendar.current
-
-        return calendar.dateInterval(of: .year, for: self)?.end ?? Date()
     }
 }

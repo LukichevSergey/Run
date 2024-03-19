@@ -39,8 +39,8 @@ final class ChartsManager {
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
-        var firstDay = date.firstMonthOfYear()
-        let endDay = date.lastMonthOfYear()
+        var firstDay = date.firstOfData(.year)
+        let endDay = date.lastOfData(.year)
         let currentYear = date.formatDate("Y")
         while firstDay < endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("M")) ?? 0, y: 0))
@@ -80,8 +80,8 @@ final class ChartsManager {
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
-        var firstDay = date.firstDayOfMonth()
-        let endDay = date.lastDayOfMonth()
+        var firstDay = date.firstOfData(.month)
+        let endDay = date.lastOfData(.month)
         let currentMonth = date.formatDate("M")
         while firstDay <= endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("d")) ?? 0, y: 0))
@@ -121,8 +121,8 @@ final class ChartsManager {
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
-        var firstDay = date.firstOfWeek()
-        let endDay = date.lastOfWeek()
+        var firstDay = date.firstOfData(.week)
+        let endDay = date.lastOfData(.week)
         let currentMonth = date.formatDate("M")
         while firstDay <= endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("d")) ?? 0, y: 0))
@@ -144,7 +144,7 @@ final class ChartsManager {
                 firstDay = nextDate
             }
         }
-        firstDay = date.firstOfWeek()
+        firstDay = date.firstOfData(.week)
         dataChartsPeriod.append(ChartsDataPeriodViewModel(date:
                 "\(firstDay.formatDate("d")) - \(endDay.formatDate("d")) \(date.formatDate("MMM yyyy").capitalized)",
                 dataCharts: dataForCharts,
@@ -193,39 +193,41 @@ final class ChartsManager {
         if let period = PeriodofTime(rawValue: indexPeriod) {
             switch period {
             case .week:
-                if firstDate?.firstOfWeek() == lastDate?.firstOfWeek() {
+                let firstWeekData = firstDate?.firstOfData(.week)
+                let lastWeekData = lastDate?.firstOfData(.week)
+                let currentWeekData = date.firstOfData(.week)
+                if firstWeekData == lastWeekData {
                     return .allHiddenButton
                 }
-                if let firstWeek = firstDate?.firstOfWeek(), let lastWeek = lastDate?.firstOfWeek() {
-                    if date.firstOfWeek() == firstWeek {
+                if currentWeekData == firstWeekData {
                         return .isHiddenButtonBack
-                    } else if date.firstOfWeek() == lastWeek || date.firstOfWeek() == Date().firstOfWeek() {
-                        return .isHiddenButtonForward
-                    }
+                } else if currentWeekData == lastWeekData || currentWeekData == Date().firstOfData(.week) {
+                    return .isHiddenButtonForward
                 }
             case .month:
-                if firstDate?.firstDayOfMonth() == lastDate?.firstDayOfMonth() {
+                let firstDayMonthData = firstDate?.firstOfData(.month)
+                let lastDayMonthData = lastDate?.firstOfData(.month)
+                let currentDayMonthData = date.firstOfData(.month)
+                if firstDayMonthData == lastDayMonthData {
                     return .allHiddenButton
                 }
-                if let firstMonth = firstDate?.firstDayOfMonth(), let lastMonth = lastDate?.firstDayOfMonth() {
-                    if date.firstDayOfMonth() == firstMonth {
-                        return .isHiddenButtonBack
-                    } else if date.firstDayOfMonth() == lastMonth ||
-                                date.firstDayOfMonth() == Date().firstDayOfMonth() {
-                        return .isHiddenButtonForward
-                    }
+                if currentDayMonthData == firstDate?.firstOfData(.month) {
+                    return .isHiddenButtonBack
+                } else if currentDayMonthData == lastDayMonthData || currentDayMonthData == Date().firstOfData(.month) {
+                    return .isHiddenButtonForward
                 }
             case .year:
-                if firstDate?.firstMonthOfYear() == lastDate?.firstMonthOfYear() {
+                let firstMonthOfYearData = firstDate?.firstOfData(.year)
+                let lastMonthOfYearData = lastDate?.firstOfData(.year)
+                let currentMonthOfYearData = date.firstOfData(.year)
+                if firstMonthOfYearData == lastDate?.firstOfData(.year) {
                     return .allHiddenButton
                 }
-                if let firstYear = firstDate?.firstMonthOfYear(), let lastYear = lastDate?.firstMonthOfYear() {
-                    if date.firstMonthOfYear() == firstYear {
-                        return .isHiddenButtonBack
-                    } else if date.firstMonthOfYear() == lastYear ||
-                                date.firstMonthOfYear() == Date().firstMonthOfYear() {
-                        return .isHiddenButtonForward
-                    }
+                if currentMonthOfYearData == firstMonthOfYearData {
+                    return .isHiddenButtonBack
+                } else if currentMonthOfYearData == lastMonthOfYearData ||
+                            currentMonthOfYearData == Date().firstOfData(.year) {
+                    return .isHiddenButtonForward
                 }
             }
         }
