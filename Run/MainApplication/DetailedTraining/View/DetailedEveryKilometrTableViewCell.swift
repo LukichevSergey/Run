@@ -34,6 +34,7 @@ final class DetailedEveryKilometrTableViewCell: UITableViewCell {
     }()
     private let titleLabel: UILabel = {
         let label = UILabel()
+        label.textColor = PaletteApp.black
         label.font = OurFonts.fontPTSansRegular24
         label.text = Tx.Training.kilometerLayout
         return label
@@ -93,6 +94,7 @@ extension DetailedEveryKilometrTableViewCell: ConfigurableViewProtocol {
             let containerView = UIView()
             stackView.addArrangedSubview(containerView)
             let kilometrLabel = UILabel()
+            kilometrLabel.textColor = PaletteApp.black
             kilometrLabel.text = "\(Tx.Training.kilometr) \(km)"
             containerView.addSubview(kilometrLabel)
             kilometrLabel.snp.makeConstraints { make in
@@ -100,6 +102,7 @@ extension DetailedEveryKilometrTableViewCell: ConfigurableViewProtocol {
                 make.centerY.equalToSuperview()
             }
             let timeLabel = UILabel()
+            timeLabel.textColor = PaletteApp.black
             timeLabel.text = "\(timeKM)"
             containerView.addSubview(timeLabel)
             timeLabel.snp.makeConstraints { make in

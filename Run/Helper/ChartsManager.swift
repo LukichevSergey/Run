@@ -39,8 +39,8 @@ final class ChartsManager {
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
-        var firstDay = date.firstMonthOfYear()
-        let endDay = date.lastMonthOfYear()
+        var firstDay = date.firstOfData(.year)
+        let endDay = date.lastOfData(.year)
         let currentYear = date.formatDate("Y")
         while firstDay < endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("M")) ?? 0, y: 0))
@@ -63,8 +63,8 @@ final class ChartsManager {
             }
         }
         dataChartsPeriod.append(ChartsDataPeriodViewModel(date: "\(date.formatDate("yyyy").capitalized)",
-                                               dataCharts: dataForCharts,
-                                               dataTotal: dataForTotalWeek))
+                                                          dataCharts: dataForCharts,
+                                                          dataTotal: dataForTotalWeek))
         return dataChartsPeriod
     }
     /// Метод который получает дату для графиков за Месяц
@@ -80,8 +80,8 @@ final class ChartsManager {
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
-        var firstDay = date.firstDayOfMonth()
-        let endDay = date.lastDayOfMonth()
+        var firstDay = date.firstOfData(.month)
+        let endDay = date.lastOfData(.month)
         let currentMonth = date.formatDate("M")
         while firstDay <= endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("d")) ?? 0, y: 0))
@@ -104,8 +104,8 @@ final class ChartsManager {
             }
         }
         dataChartsPeriod.append(ChartsDataPeriodViewModel(date: "\(date.formatDate("MMM yyyy").capitalized)",
-                                               dataCharts: dataForCharts,
-                                               dataTotal: dataForTotalWeek))
+                                                          dataCharts: dataForCharts,
+                                                          dataTotal: dataForTotalWeek))
         return dataChartsPeriod
     }
     /// Метод который получает дату для графиков за неделю
@@ -121,8 +121,8 @@ final class ChartsManager {
         var dataChartsPeriod = [ChartsDataPeriodViewModel]()
         var dataForCharts = [BarChartDataEntry]()
         var dataForTotalWeek = [ChartsDataPeriodViewModel.DataPeriod]()
-        var firstDay = date.firstOfWeek()
-        let endDay = date.lastOfWeek()
+        var firstDay = date.firstOfData(.week)
+        let endDay = date.lastOfData(.week)
         let currentMonth = date.formatDate("M")
         while firstDay <= endDay {
             dataForCharts.append(BarChartDataEntry(x: Double(firstDay.formatDate("d")) ?? 0, y: 0))
@@ -144,7 +144,7 @@ final class ChartsManager {
                 firstDay = nextDate
             }
         }
-        firstDay = date.firstOfWeek()
+        firstDay = date.firstOfData(.week)
         dataChartsPeriod.append(ChartsDataPeriodViewModel(date:
                 "\(firstDay.formatDate("d")) - \(endDay.formatDate("d")) \(date.formatDate("MMM yyyy").capitalized)",
                 dataCharts: dataForCharts,
@@ -193,27 +193,40 @@ final class ChartsManager {
         if let period = PeriodofTime(rawValue: indexPeriod) {
             switch period {
             case .week:
-                if firstDate?.firstOfWeek() == date.firstOfWeek() {
-                    return .isHiddenButtonBack
-                } else if lastDate?.firstOfWeek() == date.firstOfWeek() {
-                    return .isHiddenButtonForward
-                } else if date.firstOfWeek() == Date().firstOfWeek() {
+                let firstWeekData = firstDate?.firstOfData(.week)
+                let lastWeekData = lastDate?.firstOfData(.week)
+                let currentWeekData = date.firstOfData(.week)
+                if firstWeekData == lastWeekData {
+                    return .allHiddenButton
+                }
+                if currentWeekData == firstWeekData {
+                        return .isHiddenButtonBack
+                } else if currentWeekData == lastWeekData || currentWeekData == Date().firstOfData(.week) {
                     return .isHiddenButtonForward
                 }
             case .month:
-                if firstDate?.firstDayOfMonth() == date.firstDayOfMonth() {
+                let firstDayMonthData = firstDate?.firstOfData(.month)
+                let lastDayMonthData = lastDate?.firstOfData(.month)
+                let currentDayMonthData = date.firstOfData(.month)
+                if firstDayMonthData == lastDayMonthData {
+                    return .allHiddenButton
+                }
+                if currentDayMonthData == firstDate?.firstOfData(.month) {
                     return .isHiddenButtonBack
-                } else if lastDate?.firstDayOfMonth() == date.firstDayOfMonth() {
-                    return .isHiddenButtonForward
-                } else if date.firstDayOfMonth() == Date().firstDayOfMonth() {
+                } else if currentDayMonthData == lastDayMonthData || currentDayMonthData == Date().firstOfData(.month) {
                     return .isHiddenButtonForward
                 }
             case .year:
-                if firstDate?.firstMonthOfYear() == date.firstMonthOfYear() {
+                let firstMonthOfYearData = firstDate?.firstOfData(.year)
+                let lastMonthOfYearData = lastDate?.firstOfData(.year)
+                let currentMonthOfYearData = date.firstOfData(.year)
+                if firstMonthOfYearData == lastDate?.firstOfData(.year) {
+                    return .allHiddenButton
+                }
+                if currentMonthOfYearData == firstMonthOfYearData {
                     return .isHiddenButtonBack
-                } else if lastDate?.firstMonthOfYear() == date.firstMonthOfYear() {
-                    return .isHiddenButtonForward
-                } else if date.firstMonthOfYear() == Date().firstMonthOfYear() {
+                } else if currentMonthOfYearData == lastMonthOfYearData ||
+                            currentMonthOfYearData == Date().firstOfData(.year) {
                     return .isHiddenButtonForward
                 }
             }

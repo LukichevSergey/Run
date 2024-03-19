@@ -17,6 +17,7 @@ enum IsHiddenButton: String {
     case isHiddenButtonBack
     case isHiddenButtonForward
     case notHiddenButton
+    case allHiddenButton
 }
 
 enum PeriodofTime: Int {
