@@ -14,6 +14,11 @@ final class ChartsManager {
     var agoWeek = 0
     var agoMonth = 0
     var agoYear = 0
+    /// Метод для поиска индекса вроде как на графике кликнутой даты
+    /// - Parameters:
+    ///   - data: Данные с тренировками
+    ///   - xAxis: Ось Х
+    /// - Returns: пока хз надо подумать
     func searchIndexXAxis(data: [ChartsDataPeriodViewModel.DataPeriod],
                           xAxis: Double) -> [ChartsDataPeriodViewModel.DataPeriod] {
         logger.log("\(#fileID) -> \(#function)")
