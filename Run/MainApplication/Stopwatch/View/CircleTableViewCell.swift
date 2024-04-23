@@ -37,13 +37,13 @@ final class CircleTableViewCell: UITableViewCell {
         contentView.addSubview(distancseLabel)
         distancseLabel.snp.makeConstraints { make in
             make.top.equalTo(circleLabel)
-            make.leading.equalTo(circleLabel.snp.trailing).offset(40) // Отступ справа от circleLabel
+            make.leading.equalTo(circleLabel.snp.trailing).offset(40)
         }
 
         contentView.addSubview(timeLabel)
         timeLabel.snp.makeConstraints { make in
             make.top.equalTo(distancseLabel)
-            make.leading.equalTo(distancseLabel.snp.trailing).offset(40) // Отступ справа от distancseLabel
+            make.leading.equalTo(distancseLabel.snp.trailing).offset(40)
         }
     }
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
