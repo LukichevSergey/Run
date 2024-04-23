@@ -13,11 +13,13 @@ final class UnitRunTestsTrainingManager: XCTestCase {
     var trainingManager: TrainingManager!
 
     override func setUpWithError() throws {
+        try super.setUpWithError()
         trainingManager = TrainingManager(user: AppUser(id: "fnN8QcRtnQaXrvnWGHAXlni9oCJ3", name: "zzz111@ma.ru"))
     }
 
     override func tearDownWithError() throws {
         trainingManager = nil
+        try super.tearDownWithError()
     }
     /// Тест для проверки подсчета вреднего времени
     func testAverageTimeTemp() throws {

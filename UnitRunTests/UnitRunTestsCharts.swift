@@ -12,11 +12,13 @@ final class UnitRunTestsCharts: XCTestCase {
     var chartsModel: ChartsManager!
 
     override func setUpWithError() throws {
+        try super.setUpWithError()
         chartsModel = ChartsManager()
     }
 
     override func tearDownWithError() throws {
         chartsModel = nil
+        try super.tearDownWithError()
     }
     /// Тест проверяет  как клик на кнопку вперед определяет следующую неделю
     func testGetPeriodAgoForWeekForward() throws {
