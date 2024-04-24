@@ -140,6 +140,12 @@
 		9B8605B92B4AA00C00CF5148 /* ChartsDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8605B82B4AA00C00CF5148 /* ChartsDataViewModel.swift */; };
 		9B8605BB2B4AA43500CF5148 /* ChartsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8605BA2B4AA43500CF5148 /* ChartsManager.swift */; };
 		9B86E98A2B77A9F100634D00 /* SwipeCellKit in Frameworks */ = {isa = PBXBuildFile; productRef = 9B86E9892B77A9F100634D00 /* SwipeCellKit */; };
+		9B88CA722BD8AA920080FC09 /* ChartsYear.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B88CA6C2BD8AA910080FC09 /* ChartsYear.png */; };
+		9B88CA732BD8AA920080FC09 /* ScreenList.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B88CA6D2BD8AA910080FC09 /* ScreenList.png */; };
+		9B88CA742BD8AA920080FC09 /* ChartsMonth.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B88CA6E2BD8AA910080FC09 /* ChartsMonth.png */; };
+		9B88CA752BD8AA920080FC09 /* Profile.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B88CA6F2BD8AA910080FC09 /* Profile.png */; };
+		9B88CA762BD8AA920080FC09 /* MainScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B88CA702BD8AA920080FC09 /* MainScreen.png */; };
+		9B88CA772BD8AA920080FC09 /* ScreenDetail.png in Resources */ = {isa = PBXBuildFile; fileRef = 9B88CA712BD8AA920080FC09 /* ScreenDetail.png */; };
 		9B8D90992B1A1D9700885630 /* DetailedTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */; };
 		9B8EFD172B271B8F00AC9DBE /* DetailedTrainingEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B8EFD162B271B8F00AC9DBE /* DetailedTrainingEnum.swift */; };
 		9B9424E62B25B8AE005A28E3 /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9424E52B25B8AE005A28E3 /* String+Extension.swift */; };
@@ -148,12 +154,6 @@
 		9B9AD70D2AF7BF3800464951 /* SectionListTrainingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */; };
 		9BA2E2912AAA820700A947E2 /* HeaderForCircleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */; };
 		9BA4017E2BD4F9D200199125 /* UnitRunTestsCharts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BA4017D2BD4F9D200199125 /* UnitRunTestsCharts.swift */; };
-		9BCAD06C2BD7284000C39AC1 /* ChartsYear.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCAD0632BD7284000C39AC1 /* ChartsYear.png */; };
-		9BCAD06D2BD7284000C39AC1 /* ChartsMonth.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCAD0642BD7284000C39AC1 /* ChartsMonth.png */; };
-		9BCAD06F2BD7284000C39AC1 /* MainScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCAD0662BD7284000C39AC1 /* MainScreen.png */; };
-		9BCAD0712BD7284000C39AC1 /* DetailScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCAD0682BD7284000C39AC1 /* DetailScreen.png */; };
-		9BCAD0732BD7284000C39AC1 /* ListScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCAD06A2BD7284000C39AC1 /* ListScreen.png */; };
-		9BCAD0742BD7284000C39AC1 /* ProfileScreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 9BCAD06B2BD7284000C39AC1 /* ProfileScreen.png */; };
 		9BCAD9F32BD3F58200B1F8D5 /* UnitRunTestsTrainingManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9BCAD9F22BD3F58200B1F8D5 /* UnitRunTestsTrainingManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -295,6 +295,12 @@
 		9B7E10EE2B0C140F000904F1 /* DetailedTrainingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingViewController.swift; sourceTree = "<group>"; };
 		9B8605B82B4AA00C00CF5148 /* ChartsDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsDataViewModel.swift; sourceTree = "<group>"; };
 		9B8605BA2B4AA43500CF5148 /* ChartsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartsManager.swift; sourceTree = "<group>"; };
+		9B88CA6C2BD8AA910080FC09 /* ChartsYear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChartsYear.png; sourceTree = "<group>"; };
+		9B88CA6D2BD8AA910080FC09 /* ScreenList.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenList.png; sourceTree = "<group>"; };
+		9B88CA6E2BD8AA910080FC09 /* ChartsMonth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ChartsMonth.png; sourceTree = "<group>"; };
+		9B88CA6F2BD8AA910080FC09 /* Profile.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Profile.png; sourceTree = "<group>"; };
+		9B88CA702BD8AA920080FC09 /* MainScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = MainScreen.png; sourceTree = "<group>"; };
+		9B88CA712BD8AA920080FC09 /* ScreenDetail.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ScreenDetail.png; sourceTree = "<group>"; };
 		9B8D90982B1A1D9700885630 /* DetailedTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingManager.swift; sourceTree = "<group>"; };
 		9B8EFD162B271B8F00AC9DBE /* DetailedTrainingEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailedTrainingEnum.swift; sourceTree = "<group>"; };
 		9B9058102BD67D7500518E79 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -304,12 +310,6 @@
 		9B9AD70C2AF7BF3800464951 /* SectionListTrainingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionListTrainingModel.swift; sourceTree = "<group>"; };
 		9BA2E2902AAA820700A947E2 /* HeaderForCircleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderForCircleView.swift; sourceTree = "<group>"; };
 		9BA4017D2BD4F9D200199125 /* UnitRunTestsCharts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitRunTestsCharts.swift; sourceTree = "<group>"; };
-		9BCAD0632BD7284000C39AC1 /* ChartsYear.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChartsYear.png; path = ../../../ChartsYear.png; sourceTree = "<group>"; };
-		9BCAD0642BD7284000C39AC1 /* ChartsMonth.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ChartsMonth.png; path = ../../../ChartsMonth.png; sourceTree = "<group>"; };
-		9BCAD0662BD7284000C39AC1 /* MainScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = MainScreen.png; path = ../../../MainScreen.png; sourceTree = "<group>"; };
-		9BCAD0682BD7284000C39AC1 /* DetailScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = DetailScreen.png; path = ../../../DetailScreen.png; sourceTree = "<group>"; };
-		9BCAD06A2BD7284000C39AC1 /* ListScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ListScreen.png; path = ../../../ListScreen.png; sourceTree = "<group>"; };
-		9BCAD06B2BD7284000C39AC1 /* ProfileScreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ProfileScreen.png; path = ../../../ProfileScreen.png; sourceTree = "<group>"; };
 		9BCAD9F02BD3F58200B1F8D5 /* UnitRunTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitRunTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9BCAD9F22BD3F58200B1F8D5 /* UnitRunTestsTrainingManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitRunTestsTrainingManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -346,7 +346,7 @@
 			children = (
 				9B9058102BD67D7500518E79 /* README.md */,
 				9B9948012B61263B00F41A1D /* .swiftlint.yml */,
-				9BCAD0622BD727F400C39AC1 /* Images */,
+				9BCAD0622BD727F400C39AC1 /* Screenshots */,
 				8705D8762A978427002BBDC2 /* Run */,
 				9BCAD9F12BD3F58200B1F8D5 /* UnitRunTests */,
 				8705D8752A978427002BBDC2 /* Products */,
@@ -845,17 +845,17 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		9BCAD0622BD727F400C39AC1 /* Images */ = {
+		9BCAD0622BD727F400C39AC1 /* Screenshots */ = {
 			isa = PBXGroup;
 			children = (
-				9BCAD0662BD7284000C39AC1 /* MainScreen.png */,
-				9BCAD06B2BD7284000C39AC1 /* ProfileScreen.png */,
-				9BCAD0682BD7284000C39AC1 /* DetailScreen.png */,
-				9BCAD06A2BD7284000C39AC1 /* ListScreen.png */,
-				9BCAD0642BD7284000C39AC1 /* ChartsMonth.png */,
-				9BCAD0632BD7284000C39AC1 /* ChartsYear.png */,
+				9B88CA6E2BD8AA910080FC09 /* ChartsMonth.png */,
+				9B88CA6C2BD8AA910080FC09 /* ChartsYear.png */,
+				9B88CA702BD8AA920080FC09 /* MainScreen.png */,
+				9B88CA6F2BD8AA910080FC09 /* Profile.png */,
+				9B88CA712BD8AA920080FC09 /* ScreenDetail.png */,
+				9B88CA6D2BD8AA910080FC09 /* ScreenList.png */,
 			);
-			path = Images;
+			path = Screenshots;
 			sourceTree = "<group>";
 		};
 		9BCAD9F12BD3F58200B1F8D5 /* UnitRunTests */ = {
@@ -968,22 +968,22 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9BCAD0712BD7284000C39AC1 /* DetailScreen.png in Resources */,
-				9BCAD06F2BD7284000C39AC1 /* MainScreen.png in Resources */,
 				878EBC0E2A98D8C2001219F9 /* PTSans-Regular.ttf in Resources */,
+				9B88CA732BD8AA920080FC09 /* ScreenList.png in Resources */,
 				8705D8842A978428002BBDC2 /* LaunchScreen.storyboard in Resources */,
+				9B88CA752BD8AA920080FC09 /* Profile.png in Resources */,
 				8705D8812A978428002BBDC2 /* Assets.xcassets in Resources */,
 				878EBC0D2A98D8C2001219F9 /* PTSans-Italic.ttf in Resources */,
+				9B88CA772BD8AA920080FC09 /* ScreenDetail.png in Resources */,
 				878EBC0C2A98D8C2001219F9 /* PTSans-BoldItalic.ttf in Resources */,
 				878EBC1B2A98FBCF001219F9 /* Localizable.strings in Resources */,
+				9B88CA742BD8AA920080FC09 /* ChartsMonth.png in Resources */,
 				87EE80C72A99D27900EF4ADD /* coordinates.gpx in Resources */,
 				87C46D232A9E37670094A8F0 /* GoogleService-Info.plist in Resources */,
-				9BCAD06D2BD7284000C39AC1 /* ChartsMonth.png in Resources */,
 				8705D87F2A978427002BBDC2 /* Main.storyboard in Resources */,
+				9B88CA722BD8AA920080FC09 /* ChartsYear.png in Resources */,
+				9B88CA762BD8AA920080FC09 /* MainScreen.png in Resources */,
 				878EBC0F2A98D8C2001219F9 /* PTSans-Bold.ttf in Resources */,
-				9BCAD06C2BD7284000C39AC1 /* ChartsYear.png in Resources */,
-				9BCAD0742BD7284000C39AC1 /* ProfileScreen.png in Resources */,
-				9BCAD0732BD7284000C39AC1 /* ListScreen.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
