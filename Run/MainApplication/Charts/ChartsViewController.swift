@@ -106,7 +106,8 @@ final class ChartsViewController: UIViewController {
         barChart.xAxis.enabled = true
         barChart.drawBordersEnabled = false
         barChart.minOffset = 0
-        barChart.xAxis.labelPosition = .bottom // Расположение меток внизу
+        // Расположение меток внизу
+        barChart.xAxis.labelPosition = .bottom
         return barChart
     }()
     private let titleAllDistance = {

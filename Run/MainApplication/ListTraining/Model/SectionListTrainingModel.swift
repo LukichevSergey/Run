@@ -12,5 +12,5 @@ struct SectionListTrainingModel: Hashable {
     let countTraining: Int
     let allTime: String
     let averageTime: String
-    let training: [TrainingCellViewModel] // переиспользуется из обычных тренировок
+    let training: [TrainingCellViewModel]
 }
